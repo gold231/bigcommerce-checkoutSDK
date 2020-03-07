@@ -6,10 +6,10 @@ npm install
 
 stencil init
 
--enter url
+-enter url(for example: https://shopjoyoushealth.com/)
 
--enter API token
+-enter API token(for example: ntonasr2648xakow9ugolpt7k8bk8e6)
 
--enter port number
+-enter port number(for example: 3000)
 
 stencil start
