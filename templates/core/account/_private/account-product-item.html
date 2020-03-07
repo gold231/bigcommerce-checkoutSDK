@@ -1,0 +1,73 @@
+{{!
+  A single product, as shown in a listing.
+
+  @param this object
+         A product object.
+
+  @param show_quickshop bool
+         If true, include a link that can be used to open a quickshop modal.
+
+  @param show_compare bool
+         If true, include a checkbox to select products to compare.
+
+  @param show_remove bool
+         If true, include remove from cart form. Requires `remove_url` to be
+         available.
+
+  @param show_rating bool
+         If true, include the product rating if there are enough votes.
+}}
+<article class="account-product-item">
+  <figure class="account-product-item-thumbnail" {{#if show_bg}}style="background-image: url({{getImage image 'account-product-thumbnail' (cdn default_image)}})"{{/if}}>
+    <a href="{{url}}" title="{{name}}">
+      <img src="{{getImage image 'account-product-thumbnail' (cdn default_image)}}" alt="{{image.alt}}">
+    </a>
+
+    {{#if price.saved}}
+      <div class="account-product-item-sale-tag">{{lang 'core.product.sale'}}</div>
+    {{/if}}
+
+    {{#if show_remove}}
+      <form class="form account-product-item-remove" action="{{remove_url}}" method="post">
+        <input type="submit" value="&times;">
+      </form>
+    {{/if}}
+  </figure>
+
+  <div class="account-product-item-details">
+    {{#if show_rating}}
+      {{> core/products/rating rating=rating}}
+    {{/if}}
+
+    <h3 class="account-product-item-title">
+      <a href="{{url}}" title="{{name}}">{{name}}</a>
+    </h3>
+
+    {{#if brand.name}}
+      <span class="account-product-item-brand">
+        <a href="{{brand.url}}">{{brand.name}}</a>
+      </span>
+    {{/if}}
+
+    <div class="account-product-item-price">
+      {{> core/products/price
+        price=price
+        retail_price_label=theme_settings.retail-price-label
+        non_sale_price_label=theme_settings.non-sale-price-label
+        sale_price_label=theme_settings.sale-price-label
+        price_label=theme_settings.price-label
+      }}
+    </div>
+
+    {{#if show_compare}}
+      <label class="form-label account-product-item-compare" for="compare-{{id}}">
+        <input type="checkbox" class="form-input form-checkbox" name="products[]" value="{{id}}" id="compare-{{id}}">
+        <span class="form-label-text">{{lang 'core.product.compare'}}</span>
+      </label>
+    {{/if}}
+  </div>
+
+  {{#if show_quickshop}}
+    <a href="{{url}}" class="account-product-item-quickshop" data-quick-shop data-product-id="{{id}}">{{lang 'core.product.quickshop.view'}}</a>
+  {{/if}}
+</article>

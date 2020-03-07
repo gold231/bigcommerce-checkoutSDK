@@ -1,0 +1,39 @@
+// Address List
+
+.account-page-add-address {
+  .account-content {
+    padding-top: $account-gutter-inner;
+    border-top: 1px solid $account-border-color;
+  }
+}
+
+.account-address-detail {
+  display: block;
+}
+
+// Add Address
+
+.account-address-form {
+  padding-top: $account-gutter-inner;
+
+  @media screen and (min-width: $account-breakpoint-medium) {
+    .form-field {
+      float: left;
+      width: 50%;
+      padding-right: $account-gutter-inner;
+
+      &:nth-of-type(2n) {
+        padding-right: 0;
+        padding-left: $account-gutter-inner;
+      }
+
+      &:nth-of-type(2n + 1){
+        clear: left;
+      }
+    }
+  }
+
+  .form-actions {
+    padding-top: $account-gutter-inner;
+  }
+}

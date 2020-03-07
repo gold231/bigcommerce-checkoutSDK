@@ -1,0 +1,3 @@
+{
+  "components/sitemap/group": "{{#if items.length}}\n  <ul>\n    {{#each items}}\n      <li>\n        <a href=\"{{url}}\">{{label}}</a>\n\n        {{#if children}}\n          {{> components/sitemap/group items=children}}\n        {{/if}}\n      </li>\n    {{/each}}\n  </ul>\n{{/if}}\n"
+}

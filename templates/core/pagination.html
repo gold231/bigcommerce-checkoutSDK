@@ -1,0 +1,33 @@
+<div class="pagination">
+  {{#if previous}}
+    <a class="pagination-item pagination-previous" href="{{previous}}" data-faceted-search-facet>
+      {{lang 'core.pagination.previous'}}
+      <span class="pagination-page">{{lang 'core.pagination.page'}}</span>
+    </a>
+  {{/if}}
+
+  <div class="pagination-count">
+    <strong class="pagination-current">
+      {{#if current}}
+        {{current}}
+      {{else}}
+        1
+      {{/if}}
+    </strong>
+    <span class="pagination-of">{{lang 'core.pagination.of'}}</span>
+    <span class="pagination-total">
+      {{#if links.length}}
+        {{links.length}}
+      {{else}}
+        1
+      {{/if}}
+    </span>
+  </div>
+
+  {{#if next}}
+    <a class="pagination-item pagination-next" href="{{next}}" data-faceted-search-facet>
+      {{lang 'core.pagination.next'}}
+      <span class="pagination-page">{{lang 'core.pagination.page'}}</span>
+    </a>
+  {{/if}}
+</div>

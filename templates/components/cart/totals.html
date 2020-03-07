@@ -1,0 +1,116 @@
+{{!--
+  Cart/Totals - The footer on the cart page that displays totals
+--}}
+
+{{#if cart.items.length}}
+  <section class="cart-totals">
+    <div class="cart-totals-forms">
+      {{! Coupon Form }}
+      {{> components/cart/coupon-codes}}
+
+      {{! Gift Certificate Form }}
+      {{#if settings.gift_certificates_enabled}}
+        {{> components/cart/gift-certificates}}
+      {{/if}}
+    </div>
+
+    {{! SubTotal }}
+    {{> components/cart/cart-total-item
+      label=(lang 'cart.sub_total')
+      value=cart.sub_total.formatted
+    }}
+
+    {{! Gift Certificates }}
+    {{#each cart.gift_certificates}}
+      {{> components/cart/cart-total-item
+        label=(lang 'cart.gift_certificates.label')
+        value=used.formatted
+      }}
+    {{/each}}
+
+    {{! Coupons }}
+    {{#each cart.coupons}}
+      {{> components/cart/cart-total-item
+        label=(lang 'cart.coupon_codes.label')
+        value=discount.formatted
+      }}
+    {{/each}}
+
+    {{! Discount }}
+    {{#if cart.discount.value "<" 0}}
+      {{> components/cart/cart-total-item
+        label=(lang 'cart.discount')
+        value=cart.discount.formatted
+      }}
+    {{/if}}
+
+    {{! Gift Wrapping Cost }}
+    {{#if cart.gift_wrapping_cost.value '>' 0}}
+      {{> components/cart/cart-total-item
+        label=(lang 'cart.gift_wrapping.title')
+        value=cart.gift_wrapping_cost.formatted
+      }}
+    {{/if}}
+
+    {{! Shipping and Handling }}
+    {{#if cart.shipping_handling.show_estimator}}
+      <div class="cart-total-row">
+        <span class="cart-total-label">
+          {{lang 'cart.shipping_calculator.estimated_shipping'}}:
+        </span>
+        {{#if cart.shipping_handling.shipping_cost}}
+          <div class="cart-total-value">
+            <div>{{cart.shipping_handling.shipping_cost.formatted}}</div>
+            <button class="cart-action-minor" data-shipping-calculator-toggle>
+              {{lang 'cart.shipping_calculator.recalculate_shipping'}}
+            </button>
+          </div>
+        {{else}}
+          <button class="show-calculator" data-cancel-text="{{lang 'cart.shipping_calculator.cancel'}}" data-shipping-calculator-toggle>
+            {{lang 'cart.shipping_calculator.estimate_shipping'}}
+          </button>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    {{! Tax }}
+    {{#each cart.taxes}}
+      {{> components/cart/cart-total-item
+        label=name
+        value=cost.formatted
+      }}
+    {{/each}}
+
+    <div class="cart-totals-checkout">
+      {{! Grand Total }}
+      {{> components/cart/cart-total-item
+        label=(lang 'cart.grand_total')
+        value=cart.grand_total.formatted
+      }}
+
+      <a class="button button-primary" href="{{urls.checkout.single_address}}">
+        {{lang 'cart.checkout'}}
+      </a>
+
+      {{#if cart.show_multiple_address_shipping}}
+        <a class="checkout-multiple" href="{{urls.checkout.multiple_address}}">
+          {{lang 'cart.checkout_multiple'}}
+        </a>
+      {{/if}}
+
+      {{! Alternative Checkout }}
+      {{#if cart.additional_checkout_buttons}}
+        {{#each cart.additional_checkout_buttons}}
+          <div class="additional-checkout-buttons">
+            {{{this}}}
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
+  </section>
+{{/if}}
+
+{{! Shipping/Handling Modal}}
+<aside class="is-hidden" id="shipping-modal">
+  {{> components/cart/shipping-calculator cart.shipping_handling}}
+</aside>

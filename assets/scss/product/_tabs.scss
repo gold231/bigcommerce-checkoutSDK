@@ -1,0 +1,222 @@
+.single-product-tabs {
+  width: 100%;
+  margin-top: $space-largest;
+  margin-bottom: rem(100);
+  text-align: center;
+
+  &::before {
+    // This for bc-tabs' slide functionality
+    display: none;
+    content: "slide";
+
+    @include media($min: $screen-medium) {
+      content: "";
+    }
+  }
+
+  .tabs {
+    position: relative;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+
+    @include media($min: $screen-medium) {
+      display: flex;
+    }
+  }
+}
+
+.single-product-tab-title {
+  width: 25%;
+  text-align: center;
+  font-family: $font-secondary;
+  padding: 0 1rem;
+}
+
+.single-product-accordion-title {
+  display: block;
+  width: 100%;
+  padding-bottom: rem(1);
+  text-align: center;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @include media($min: $screen-medium) {
+    display: none;
+  }
+}
+
+.single-product-info-links {
+  @include text-style-smallcaps;  
+  font-weight: 700;
+  background: none;
+  display: block;
+  max-height: 3.75rem;
+  line-height: 3.75rem;
+  color: $color-text-lighter;
+  border-bottom: 1px solid $color-text-lighter;
+  
+  &.active {
+    border-bottom: 4px solid $color-secondary;
+    color: $color-secondary;
+  }
+}
+
+.single-product-tabs-section {
+  display: none;
+  margin-top: rem(50);
+  margin-bottom: rem(50);
+
+  @include media($min: $screen-medium) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &.active {
+    display: block;
+  }
+}
+
+.single-product-tabs-content {
+  width: 100%;
+  max-width: rem(770);
+  margin: 0 auto;
+  line-height: $line-height-loose;
+  color: $color-text;
+  text-align: left;
+  text-transform: none;
+  background: $color-background;
+  font-size: $font-size-body-large;
+
+  @include media($min: $screen-medium) {
+    margin-top: $space-larger;
+  }
+}
+
+.single-product-tabs-section-title {
+  margin-bottom: $gutter-medium;
+  font-weight: 400;
+  text-align: center;
+
+  @include media($min: $screen-medium) {
+    margin-bottom: $gutter-large;
+
+    .single-product-tabs-reviews & {
+      margin-bottom: $gutter-small;
+    }
+  }
+}
+
+.single-product-tabs-section-title-header {
+   @extend %h2;
+   font-family: $font-secondary;
+   text-transform: capitalize;
+}
+
+/*
+ * Reviews
+ */
+.review-link {
+  @include text-style-smallcaps;
+  @include reset-button;
+  width: 100%;
+  padding: 0;
+  margin-bottom: rem(50);
+  color: $color-secondary;
+  text-align: center;
+  border: 0;
+}
+
+.product-tab-review {
+  padding-top: $space;
+  padding-bottom: $space;
+  border-top: 1px solid $color-borders;
+
+  @include media($min: $screen-medium) {
+    padding-top: $space-large;
+    padding-bottom: $space-large;
+  }
+
+  .product-rating {
+    @include col-width(12);
+
+    @include media($min: $screen-small) {
+      @include col-width(6);
+      text-align: right;
+    }
+  }
+}
+
+.single-product-tab-review-header {
+  margin-bottom: $gutter-large-half;
+
+  @include media($min: $screen-small) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.single-product-tab-review-title {
+  @include col-width(12);
+  margin-bottom: $gutter-large-half / 2;
+  font-family: $font-primary;
+  font-size: $font-size-body-large;
+  text-transform: uppercase;
+
+  @include media($min: $screen-small) {
+    @include col-width(6);
+    margin-bottom: 0;
+  }
+}
+
+.single-product-tab-review-description {
+  margin-bottom: $gutter-large-half;
+  font-weight: 300;
+  color: $color-text-light;
+}
+
+.single-product-tab-review-name {
+  font-family: $font-primary;
+  color: $color-text-lighter;
+}
+
+/*
+* Videos
+*/
+.product-video-container {
+  padding-bottom: $gutter-large-half;
+
+  @include media($min: $screen-medium) {
+    padding-bottom: $gutter-large;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+/*
+ * Additional info
+ */
+ .product-tab-details-item {
+   display: flex;
+   align-items: center;
+   margin-bottom: $gutter-medium;
+ }
+
+.product-tab-details-item-name,
+.product-tab-details-item-value {
+  @include col-width(6);
+}
+
+.product-tab-details-item-name {
+  @include text-style-smallcaps;
+  font-weight: 500;
+}
+
+.product-tab-details-item-value {
+  color: $color-text-lighter;
+}

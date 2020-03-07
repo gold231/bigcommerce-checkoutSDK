@@ -1,0 +1,116 @@
+// Payment form
+.account-page-payment {
+  .account-content {
+    padding-top: $account-gutter-inner;
+    border-top: 1px solid $account-border-color;
+  }
+}
+
+.payment-method-form {
+
+  @media screen and (min-width: $account-breakpoint-x-small) {
+    max-width: 60%;
+  }
+
+  .payment-method-form-column {
+    display: flex;
+
+    .payment-method-form-inputs {
+      width: 70%;
+
+      &:last-child {
+        width: 30%;
+        padding-left: 10px;
+      }
+
+      &.payment-card-number,
+      &.payment-cvv {
+        position: relative;
+      }
+
+      .payment-method-form-inputs-icon {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+      }
+    }
+  }
+
+  .form-field-checkbox {
+    display: flex;
+    align-content: center;
+
+    .form-field-title {
+      position: relative;
+      top: 1px;
+      margin-bottom: 0;
+    }
+  }
+
+  .form-field-control {
+    width: 20px;
+  }
+
+  .payment-method-form-details {
+    display: inline-block;
+    margin-bottom: $account-gutter;
+
+    &:first-child {
+      margin-right: 30px;
+    }
+  }
+
+  .payment-method-form-details-description {
+    margin-left: 0;
+    font-weight: 700;
+  }
+}
+
+.payment-method-form-subheading {
+  margin: 0;
+}
+
+.payment-method-form-cards-icon {
+  width: 40px;
+  margin-right: 5px;
+}
+
+// Billing address
+.billing-heading {
+  margin: 0;
+}
+
+.billing-addess-form {
+  padding-top: $account-gutter-inner;
+  border-top: 1px solid $account-border-color;
+
+  .form-field {
+    width: 100%;
+
+    @media screen and (min-width: $account-breakpoint-x-small) {
+      float: left;
+      width: 50%;
+      padding-right: 7.5px;
+
+      &:nth-of-type(2n + 1) {
+        clear: left;
+      }
+    }
+  }
+}
+
+.billing-actions {
+  .button {
+    +.button {
+      margin-top: 20px;
+
+      @media screen and (min-width: $account-breakpoint-x-small) {
+        margin-top: 0;
+        margin-left: 5px;
+      }
+    }
+  }
+}

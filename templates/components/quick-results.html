@@ -1,0 +1,51 @@
+<div class="quick-search-inner">
+  {{#if result_count}}
+    <ul class="quick-search-list quick-search-list-products">
+      <li class="quick-search-item quick-search-section-title">
+        {{lang 'search.product' count=pagination.product_results.total}}
+      </li>
+      {{#if product_results.products}}
+        {{#each product_results.products}}
+          <li class="quick-search-item">
+            <a class="quick-search-item-link" href="{{url}}">
+            <div
+              class="quick-search-item-image"
+              style="background-image: url('{{getImage image 'thumb' (cdn ../theme_settings.default-product-image)}}');"
+            >
+                <img
+                  class="sr-only"
+                  src="{{getImage image 'thumb' (cdn ../theme_settings.default-product-image)}}"
+                  alt="{{image.alt}}"
+                >
+              </div>
+              <div class="quick-search-item-info">
+                <div class="quick-search-item-title" href="{{url}}">{{name}}</div>
+                {{> core/products/price
+                  price_range_display=../theme_settings.price_range_display
+                  retail_price_label=../theme_settings.retail-price-label
+                  non_sale_price_label=../theme_settings.non-sale-price-label
+                  sale_price_label=../theme_settings.sale-price-label
+                  price_label=../theme_settings.price-label
+                }}
+                <div class="quick-search-item-price"></div>
+              </div>
+            </a>
+          </li>
+        {{/each}}
+      {{else}}
+        <div class="quick-search-no-results">
+          <p>{{lang 'search.no_product_results'}}</p>
+        </div>
+      {{/if}}
+    </ul>
+  {{else}}
+    <div class="quick-search-no-results">
+      <p>{{lang 'search.no_results'}}</p>
+    </div>
+  {{/if}}
+  <div class="quick-search-link-wrapper {{#unless result_count}}no-results{{/unless}}">
+    <a class="quick-search-link" href="{{forms.search.product_url}}">
+      {{lang 'search.view_all'}}
+    </a>
+  </div>
+</div>

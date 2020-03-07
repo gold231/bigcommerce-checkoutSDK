@@ -1,0 +1,28 @@
+{{!
+  Shows the product's overall rating as N out of 5 stars.
+
+  @param rating number
+         The product's rating.
+
+  @param total number
+         The number of votes.
+}}
+{{#if rating ">=" 0}}
+  <div class="rating">
+    <div class="rating-stars" aria-hidden="true">
+      {{#enumerate 1 5}}
+        {{#if ../rating '>=' this}}
+          <span class="rating-star rating-star-full"></span>
+        {{else}}
+          <span class="rating-star rating-star-empty"></span>
+        {{/if}}
+      {{/enumerate}}
+    </div>
+
+    <span class="rating-score">{{rating}}</span>
+
+    {{#if total}}
+      <span class="rating-votes">{{lang 'core.rating.total_votes' votes=total}}</span>
+    {{/if}}
+  </div>
+{{/if}}

@@ -1,0 +1,63 @@
+// Default Variables
+
+$account-link-color: #888 !default;
+$account-light-color: #fff !default;
+$account-accent-color: #5dc5e3 !default;
+$account-border-color: #e4e4e4 !default;
+$account-gutter: 30px !default;
+$account-font-size: 15px !default;
+$account-border-radius: 0 !default;
+$account-text-color: #5f5f5f !default;
+
+$account-card-background-color: #f5f5f5 !default;
+
+$giftcard-nav-use-default-styles: true !default;
+
+$account-breakpoint-x-small: 400px !default; // the account table columns change to full-width
+$account-breakpoint-small: 620px !default; // menu changes from full-width to column
+$account-breakpoint-medium: 900px !default; // menu changes from 35% to 25% width
+
+// Internal Variables
+
+$account-font-size-heading: $account-font-size + 2 !default;
+
+$account-text-color-light: lighten($account-text-color,20%) !default;
+
+$account-gutter-inner: $account-gutter / 2 !default;
+
+$auth-gutter: $account-gutter !default;
+$auth-font-size: $account-font-size !default;
+
+// Imports
+
+@import "account/components/layout";
+@import "account/components/forms";
+@import "account/components/table";
+@import "account/components/list";
+@import "account/components/header";
+@import "account/components/navigation";
+@import "account/components/pagination";
+@import "account/components/card";
+@import "account/components/toggle";
+@import "account/components/status";
+@import "account/components/shipments";
+@import "account/components/payment-methods";
+
+@import "account/pages/address";
+@import "account/pages/orders-receipt";
+@import "account/pages/recent-items";
+@import "account/pages/returns";
+@import "account/pages/wishlists";
+@import "account/pages/messages";
+@import "account/pages/download";
+@import "account/pages/invoice";
+@import "account/pages/settings";
+@import "account/pages/payments";
+
+@import "account/pages/auth-login";
+@import "account/pages/auth-forgot";
+@import "account/pages/auth-create";
+@import "account/pages/auth-created";
+@import "account/pages/auth-new-password";
+
+@import "account/pages/gift-certificate";

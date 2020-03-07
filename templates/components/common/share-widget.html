@@ -1,0 +1,35 @@
+{{!--
+  Share Links - Displayed on Blog Posts and Product Pages
+
+  @param url
+    The URL of the post that should be shared to social media.
+
+  @param share_buttons
+    The data for the buttons to be shared from Bigcommerce
+
+  @param share_type (optional)
+    Added as a class name to the share-links-container
+
+  @param image
+    The image to add to the pinterest post
+--}}
+
+{{#if settings.add_this.buttons.length}}
+  <div class="dropdown product-share-block" data-dropdown>
+    <button class="dropdow-toggle share-dropdown-toggle" data-dropdown-toggle>
+      <span class="share-icon">
+        {{> svg/icon-share}}
+      </span>
+      {{ lang 'product.share_item'}}
+    </button>
+    <div class="dropdown-panel share-dropdown-panel" data-dropdown-panel>
+      {{> components/common/share-links
+        url=product.url
+        title=product.title
+        share_type='product-post'
+        share_buttons=settings.add_this
+        image=(getImage product.main_image 'share')
+      }}
+    </div>
+  </div>
+{{/if}}

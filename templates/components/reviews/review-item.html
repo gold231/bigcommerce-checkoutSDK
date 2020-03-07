@@ -1,0 +1,18 @@
+<article class="product-tab-review {{#if index '>' 2}}hidden{{/if}}">
+  <div class="single-product-tab-review-header">
+    <h1 class="single-product-tab-review-title">{{title}}</h1>
+    <div class="product-rating">
+      <div class="rating-stars" aria-hidden="true">
+        {{#enumerate 1 5}}
+          {{#compare ../rating this operator='>='}}
+            {{> svg/icon-star-full}}
+          {{else}}
+            {{> svg/icon-star-empty}}
+          {{/compare}}
+        {{/enumerate}}
+      </div>
+    </div>
+  </div>
+  <div class="single-product-tab-review-description">{{nl2br text}}</div>
+  <div class="single-product-tab-review-name">{{lang 'product.reviews.post_on_by' date=date name=name}}</div>
+</article>

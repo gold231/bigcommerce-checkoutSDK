@@ -1,0 +1,14 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.orders.heading_completed'}}
+{{/partial}}
+
+{{#partial 'account-toolbar'}}
+  <a class="account-tool" href="{{urls.account.orders.all}}">{{lang 'core.account.orders.view_all'}}</a>
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{> core/account/_private/orders-list orders=customer.orders}}
+  {{> core/pagination pagination.orders}}
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='orders' class='orders-all'}}

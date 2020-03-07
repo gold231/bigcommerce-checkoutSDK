@@ -1,0 +1,24 @@
+{{#if settings.blog_enabled}}
+  {{#if theme_settings.home_show_blog}}
+    {{#if blog.recent_posts}}
+      <section class="home-section home-section-grid home-section-grid-blog" data-home-blog>
+        {{> components/home/section-title
+          title=blog.name
+        }}
+        <div
+          class="home-section-grid-container recent-blog-posts"
+          data-recent-posts-slider
+        >
+          {{#each blog.recent_posts}}
+            {{> components/blog/blog-item
+              fit="image-cover"
+              lazyload=../theme_settings.lazyload_mode
+              fallback_size=../theme_settings.product-list
+              default_image=../theme_settings.default_image
+            }}
+          {{/each}}
+        </div>
+      </section>
+    {{/if}}
+  {{/if}}
+{{/if}}

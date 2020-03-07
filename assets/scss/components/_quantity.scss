@@ -1,0 +1,42 @@
+.form-field-quantity-control {
+  position: relative;
+  display: block;
+
+  .form-input {
+    width: 100%;
+    padding-right: $gutter-large;
+    padding-left: $gutter-large;
+    text-align: center;
+    font-family: $font-primary;
+    font-size: $font-size-body-smaller;
+
+    .cart-item-quantity & {
+      padding-right: $space;
+      padding-left: $space;
+    }
+  }
+
+  .quantity-control-action {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(40);
+    height: rem(40);
+    margin-top: rem(-20);
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  .quantity-decrement {
+    left: $space-smallest;
+  }
+
+  .quantity-increment {
+    right: $space-smallest;
+  }
+}

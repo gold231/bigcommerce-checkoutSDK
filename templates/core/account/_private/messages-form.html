@@ -1,0 +1,56 @@
+<form
+  class="form account-messages-form account-toggle-hidden account-card"
+  action="{{urls.account.send_message}}"
+  method="post"
+  data-validated-form
+>
+  {{! TODO: Reuse forms/common/select partial when Handlebars is updated to v4 }}
+  <div class="form-field form-field-select form-required">
+    <label class="form-label">
+      <span class="form-field-title">
+        {{lang 'core.account.inbox.order'}}
+        <span class="required-text">
+          {{lang 'core.account.common.required'}}
+        </span>
+      </span>
+      <span class="form-field-control">
+        <span class="form-select-wrapper">
+          <select
+            class="form-input form-select"
+            name="message_order_id"
+            required
+            aria-required="true">
+            <option disabled selected value="">
+              {{lang 'core.account.inbox.order_pick_one'}}
+            </option>
+            {{#each customer.inbox.orders}}
+              <option value="{{id}}">
+                {{lang 'core.account.inbox.order_display' id=id date=date total=amount.formatted}}
+              </option>
+            {{/each}}
+          </select>
+        </span>
+      </span>
+    </label>
+  </div>
+
+  {{> core/forms/common/text
+    name='message_subject'
+    required=true
+    label=(lang 'core.account.inbox.subject')
+  }}
+  {{> core/forms/common/multiline
+    name='message_content'
+    required=true
+    rows=7
+    label=(lang 'core.account.inbox.message')
+  }}
+
+  <div class="form-actions">
+    <input
+      class="button account-button-primary"
+      type="submit"
+      value="{{lang 'core.account.inbox.submit'}}"
+    >
+  </div>
+</form>

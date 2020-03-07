@@ -1,0 +1,18 @@
+
+<div class="form-field form-field-customizations form-field-textarea{{#if required}} form-required{{/if}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{display_name}}:
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <textarea
+        class="form-input"
+        id="product-fields-{{id}}"
+        name="ProductFields[{{this.id}}]"
+        rows="4"
+        {{#if required}}required{{/if}}
+        aria-required="{{required}}">{{prefill}}</textarea>
+    </span>
+  </label>
+</div>

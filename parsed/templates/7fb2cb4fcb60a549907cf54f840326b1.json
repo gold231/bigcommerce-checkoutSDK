@@ -1,0 +1,3 @@
+{
+  "core/amp/common/price-class": "{{#if price.with_tax}}\n  {{#unless price.without_tax}}\n    {{#if price.rrp_with_tax}}\n      prices-taxed-onsale\n    {{else}}\n      prices-taxed\n    {{/if}}\n  {{/unless}}\n{{/if}}\n{{#if price.without_tax}}\n  {{#unless price.with_tax}}\n    {{#if price.rrp_without_tax}}\n      prices-notax-onsale\n    {{else}}\n      prices-notax\n    {{/if}}\n  {{/unless}}\n{{/if}}\n{{#if price.with_tax}}\n  {{#if price.without_tax}}\n    {{#if price.rrp_with_tax}}\n      prices-both-onsale\n    {{else}}\n      prices-both\n    {{/if}}\n  {{/if}}\n{{/if}}\n"
+}

@@ -1,0 +1,28 @@
+<div class="cart-totals-block cart-totals-giftcards" data-gift-certificates>
+  <form class="form form-inline" method="post" action="{{urls.cart}}" data-gift-certificate-form>
+    <input type="hidden" name="action" value="applycoupon">
+    <input
+      class="form-input"
+      id="couponcode"
+      type="text"
+      name="certcode"
+      value=""
+      placeholder="{{lang 'cart.gift_certificates.gift_certificate'}}"
+      data-gift-certificate-input
+    >
+    <button class="button button-secondary button-small" type="submit">
+      {{lang 'cart.gift_certificates.submit'}}
+    </button>
+  </form>
+
+  {{! Gift Certificates }}
+  {{#each cart.gift_certificates}}
+    <div class="cart-total-row">
+      <span class="cart-total-label">
+        {{code}}
+        <span class="cart-total-label">{{lang 'cart.gift_certificates.remaining' value=remaining.formatted}}</span>
+      </span>
+      <a class="cart-action-minor" href="{{remove_url}}" data-gift-certificate-remove>{{lang 'cart.gift_certificates.remove'}}</a>
+    </div>
+  {{/each}}
+</div>

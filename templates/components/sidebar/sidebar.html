@@ -1,0 +1,34 @@
+<aside
+  class="site-main-sidebar has-{{theme_settings.sidebar_link_list}}"
+  data-sidebar
+>
+  <div class="site-main-sidebar-inner">
+    {{> components/navigation/main-navigation
+      type='categories'
+      navigation=categories
+      show_all=true
+      show_count=theme_settings.show_product_count
+    }}
+
+    {{#if theme_settings.sidebar_link_list '==' 'pages'}}
+      {{> components/navigation/main-navigation
+        type='pages'
+        navigation=pages
+        show_all=false
+        show_count=false
+      }}
+    {{else}}
+      <div class="main-navigation-container">
+        {{> components/common/link-lists
+          type=theme_settings.sidebar_link_list
+        }}
+      </div>
+    {{/if}}
+
+    <div class="site-utils-small">
+      <div class="main-navigation-container">
+        {{> components/common/currency-selector}}
+      </div>
+    </div>
+  </div>
+</aside>

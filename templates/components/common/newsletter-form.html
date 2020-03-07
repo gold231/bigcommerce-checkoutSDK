@@ -1,0 +1,42 @@
+<div class="newsletter">
+  <h2 class="newsletter-heading">
+    {{lang 'newsletter.heading'}}
+  </h2>
+  <form
+    class="form newsletter-subscription-form"
+    action="{{urls.subscribe.action}}"
+    method="post"
+    data-validated-form
+  >
+    <input type="hidden" name="action" value="subscribe">
+    <input type="hidden" name="nl_first_name" value="bc">
+    <input type="hidden" name="check" value="1">
+    <div class="form-field form-inline">
+      <label
+        class="sr-only"
+        for="nl_email"
+      >
+        {{lang 'newsletter.email_placeholder'}}
+      </label>
+      <input
+        class="form-input newsletter-input"
+        id="nl_email"
+        name="nl_email"
+        type="email"
+        value="{{customer.email}}"
+        placeholder="{{lang 'newsletter.email_placeholder'}}"
+        required
+      >
+      <div class="newsletter-button-wrapper">
+        <input
+          class="button button-primary button-small"
+          type="submit"
+          value="{{lang 'newsletter.submit'}}"
+        >
+      </div>
+    </div>
+  </form>
+  {{#if settings.show_newsletter_summary}}
+    <div class="newsletter-summary">{{settings.newsletter_summary}}</div>
+  {{/if}}
+</div>

@@ -1,0 +1,83 @@
+// link lists
+.link-list-title {
+  @extend %text-style-smallcaps;
+  margin-bottom: $space-smallest;
+  font-weight:700;
+  
+  .dark & {
+    color: $color-white;
+  }
+}
+
+.link-list-item {
+  a {
+    color: iromi_type($color-highlight, "less");
+
+    .dark & {
+      color: $color-white;
+    }
+  }
+
+  .site-footer & {
+    @extend %text-style-smallcaps;
+  }
+
+  .site-main-sidebar & {
+    line-height: 2.25;
+
+    @include media($min: $screen-small) {
+      line-height: 2.5;
+    }
+  }
+}
+
+// sidebar link list
+.site-main-sidebar {
+  .link-list-wrapper {
+    margin-bottom: $space-larger;
+
+    @include media($min: $screen-small) {
+      margin-bottom: $space-large;
+    }
+
+    &::before {
+      display: block;
+      width: 100%;
+      height: rem(1);
+      background-color: $color-white;
+      content: "";
+
+      @include media($min: $screen-small) {
+        width: rem(75);
+        background-color: $color-borders;
+      }
+    }
+  }
+
+  .link-list {
+    padding-top: $space;
+  }
+
+  .link-list-title {
+    padding-top: $gutter-small;
+    padding-bottom: $gutter-small;
+    margin-bottom: $gutter-small;
+    color: $color-white;
+    border-bottom: 1px solid rgba($color-white, 0.3);
+
+    @include media($min: $screen-large) {
+      color: $color-text;
+      border-color: $color-borders;
+    }
+  }
+
+  .link-list-item {
+    a {
+      color: $color-white;
+
+      @include media($min: $screen-large) {
+        color: $color-text;
+      }
+    }
+  }
+}

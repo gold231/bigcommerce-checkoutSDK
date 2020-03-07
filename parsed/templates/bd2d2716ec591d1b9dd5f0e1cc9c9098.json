@@ -1,0 +1,3 @@
+{
+  "components/product/tabs/description": "{{#if product.description}}\n  <section\n    class=\"single-product-tabs-section single-product-tabs-description user-content\"\n    id=\"description\"\n    data-tab-content\n  >\n  <p class=\"single-product-tabs-section-title-header\">\n    {{lang 'product.tabs.description'}}\n  </p>\n    {{{product.description}}}\n  </section>\n{{/if}}\n"
+}

@@ -1,0 +1,3 @@
+{
+  "components/amp/styles/mini-cart": ".mini-cart-toggle {\n  display: flex;\n  align-items: center;\n  color: {{color_text}};\n}\n\n.mini-cart-toggle:hover {\n  opacity: 1;\n}\n\n.mini-cart-icon-wrap {\n  height: 18px;\n}\n\n.mini-cart-icon-wrap.cart-empty .mini-cart-icon-full {\n  display: none;\n}\n\n.mini-cart-icon-wrap.cart-full .mini-cart-icon-empty {\n  display: none;\n}\n\n.mini-cart-icon-wrap.cart-full .mini-cart-icon-full {\n  display: inline-block;\n}\n\n.mini-cart-count {\n  display: none;\n  margin-left: 5px;\n  font-size: 16px;\n  line-height: 18px;\n}\n\n.mini-cart-count.show {\n  display: inline-block;\n}\n"
+}

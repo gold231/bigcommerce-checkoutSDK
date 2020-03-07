@@ -1,0 +1,61 @@
+.account-page-create {
+  .account-header {
+    padding-bottom: $account-gutter-inner;
+    margin-bottom: $account-gutter;
+    border-bottom: 1px solid $account-border-color;
+  }
+
+  .account-body {
+    max-width: 860px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.account-create-form {
+  .g-recaptcha > div {
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: $account-breakpoint-small) {
+    .form-field {
+      float: left;
+      width: 50%;
+      padding-right: $account-gutter-inner;
+
+      &:nth-of-type(2n) {
+        padding-right: 0;
+        padding-left: $account-gutter-inner;
+      }
+
+      &:nth-of-type(2n + 1) {
+        clear: left;
+      }
+    }
+  }
+}
+
+.account-create-details,
+.account-create-address {
+  @extend %clearfix;
+  padding-bottom: $account-gutter-inner;
+  margin-bottom: $account-gutter;
+  border-bottom: 1px solid $account-border-color;
+}
+
+.account-create-form-actions {
+  text-align: center;
+}
+
+.account-create-captcha {
+  display: inline-block;
+  vertical-align: middle;
+
+  @media screen and (max-width: $account-breakpoint-small - 1) {
+    margin-bottom: $account-gutter-inner;
+  }
+
+  @media screen and (min-width: $account-breakpoint-small) {
+    margin-right: $account-gutter-inner;
+  }
+}

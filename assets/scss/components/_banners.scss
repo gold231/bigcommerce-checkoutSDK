@@ -1,0 +1,50 @@
+.banners {
+  @include container-offset;
+  @include layout-spacing((padding-right, padding-left));
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  color: $color-text-light;
+  background-color: $color-highlight;
+  border-bottom: 1px solid $color-borders;
+}
+
+.banners-top {
+  .carousel + & {
+    border-top: 1px solid $color-borders;
+  }
+}
+
+.banners-bottom {
+  @include layout-spacing(margin-top);
+  margin-bottom: -1 * $gutter-small;
+  border-top: 1px solid $color-borders;
+
+  @include media($min: $screen-medium) {
+    margin-bottom: -1 * $gutter-medium;
+  }
+
+  @include media($min: $screen-large) {
+    margin-bottom: -1 * $gutter-large;
+  }
+}
+
+.banner {
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// cart level discount banners
+.promo-message {
+  @extend .banners;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: none;
+}

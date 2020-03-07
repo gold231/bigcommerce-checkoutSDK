@@ -1,0 +1,21 @@
+{{{snippet 'forms_search'}}}
+
+<form
+  class="search-form"
+  action="/search.php"
+  data-validated-form
+>
+  <div class="form-field">
+    <button class="button-search-submit" type="submit">
+      {{> svg/icon-search}}
+    </button>
+    <input
+      class="search-input form-input form-input-short"
+      name="search_query"
+      placeholder="{{lang 'header.search'}}"
+      autocomplete="off"
+      aria-label="{{lang 'header.search'}}"
+      required
+    >
+  </div>
+</form>

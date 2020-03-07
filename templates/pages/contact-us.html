@@ -1,0 +1,27 @@
+{{#partial "page"}}
+
+  <article class="page-container">
+    <header class="page-header">
+      {{> components/common/page-title title=page.title}}
+    </header>
+
+    <div class="page-content cms-page">
+      <div class="page-message-area">
+        {{#if forms.contact.success}}
+          {{> core/alerts/alert-success message=(lang 'core.contact.successful' shopPath=urls.home)}}
+        {{else}}
+          <p>{{{page.content}}}</p>
+        {{/if}}
+      </div>
+
+      {{#unless forms.contact.success}}
+        <div class="contact-form-container">
+          {{> core/forms/form-contact-us}}
+        </div>
+      {{/unless}}
+    </div>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

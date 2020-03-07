@@ -1,0 +1,11 @@
+{
+  "normalStoreUrl": "https://shopjoyoushealth.com/",
+  "accessToken": "ntonasr2648xakow9ugolpt7k8bk8e6",
+  "port": "5000",
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  }
+}

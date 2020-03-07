@@ -1,0 +1,3 @@
+{
+  "core/amp/category/subcategories": "<nav>\n  {{#if category.subcategories}}\n    <div class=\"amp-subcategories-container\">\n      <h5 class=\"amp-subcategories-heading\">\n        {{lang 'core.amp.subcategories'}}\n      </h5>\n      <ul class=\"amp-subcategories-list\">\n        {{#each category.subcategories}}\n          <li class=\"amp-subcategories-list-item\">\n            <a class=\"amp-subcategories-list-action\" href=\"{{url}}\">\n              {{name}}\n            </a>\n          </li>\n        {{/each}}\n      </ul>\n    </div>\n  {{/if}}\n</nav>\n"
+}

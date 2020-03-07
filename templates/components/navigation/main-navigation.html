@@ -1,0 +1,103 @@
+{{!--
+  Main navigation displayed on sidebar
+
+  @param type string
+    The type of navigation to show: either categories or pages
+
+  @param navigation object
+    The list of links to show: either categories or pages
+
+  @param show_all bool
+    Whether to show "all" before parent link
+--}}
+<nav
+  class="main-navigation
+  {{#if navigation '==' categories}}
+    categories-navigation
+  {{else}}
+    pages-navigation
+  {{/if}}"
+  data-main-navigation="{{type}}"
+>
+  <div class="main-navigation-breadcrumbs" data-navigation-breadcrumbs>
+    <button
+      class="main-navigation-breadcrumb
+      navigation-go-back"
+      data-toggle-navigation="{{type}}"
+      data-navigation-return
+    >
+      <span class="navigation-go-back-desktop">
+        {{> svg/chevron-left}}
+      </span>
+      {{lang 'header.go_back'}}
+    </button>
+    <button
+      class="main-navigation-breadcrumb
+      reset-all"
+      data-navigation-reset
+    >
+    {{#if navigation '==' categories}}
+      {{lang 'header.navigation_all_categories'}}
+    {{else}}
+      {{lang 'header.navigation_all_pages'}}
+    {{/if}}
+    </button>
+    <span class="main-navigation-panel-title">
+      {{#if navigation '==' categories}}
+        {{lang 'header.navigation_categories'}}
+      {{/if}}
+      {{#if navigation '==' pages}}
+        {{lang 'header.navigation_pages'}}
+      {{/if}}
+    </span>
+  </div>
+  <div class="main-navigation-container">
+    <ul
+      class="main-navigation-panel
+        main-navigation-panel-parent
+        is-active"
+        data-panel-depth="0"
+        data-navigation-menu="{{type}}"
+        data-navigation-panel
+        data-navigation-panel-parent
+      >
+      {{#each navigation}}
+        <li
+          class="main-navigation-item
+          main-navigation-item-parent
+          {{#if children}}has-children{{/if}}"
+          data-navigation-item-parent
+        >
+          {{> components/navigation/navigation-item-loop
+            show_all=../show_all
+            show_count=../show_count
+          }}
+        </li>
+      {{/each}}
+      {{#if navigation '==' pages}}
+        {{#if settings.gift_certificates_enabled}}
+          <li
+            class="main-navigation-item
+            main-navigation-item-parent"
+            data-navigation-item-parent
+          >
+            <a href="{{urls.gift_certificate.purchase}}">
+              {{lang 'link-list.gift_certificates'}}
+            </a>
+          </li>
+        {{/if}}
+        {{#if theme_settings.show_sitemap}}
+          <li
+            class="main-navigation-item
+            main-navigation-item-parent"
+            data-navigation-item-parent
+          >
+            <a href="{{urls.sitemap}}">
+              {{lang 'sitemap.title'}}
+            </a>
+          </li>
+        {{/if}}
+      {{/if}}
+    </ul>
+  </div>
+</nav>

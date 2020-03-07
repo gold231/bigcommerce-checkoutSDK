@@ -1,0 +1,53 @@
+// All prices
+.price {
+  font-family: $font-primary;
+  color: $color-text;
+
+  .price-withtax,
+  .price-withouttax {
+    display: block;
+  }
+
+  .price-saved {
+    display: block;
+    margin-top: $space-smallest;
+    font-size: $font-size-body-large;
+  }
+
+  .price-value {
+    display: inline-block;
+  }
+}
+
+.price-rrp {
+  text-decoration: line-through;
+}
+
+// Conditional prices
+.prices-both,
+.prices-both-onsale {
+  .price-withouttax {
+    display: block;
+    margin-top: rem(2);
+  }
+}
+
+.prices-both-onsale,
+.prices-taxed-onsale,
+.prices-notax-onsale {
+  .price-rrp {
+    margin-right: $space-smallest;
+  }
+}
+
+.prices-both-onsale,
+.prices-taxed-onsale,
+.prices-notax-onsale {
+  .price-value {
+    color: $color-text;
+  }
+}
+
+.price-is-discounted {
+  text-decoration: line-through;
+}

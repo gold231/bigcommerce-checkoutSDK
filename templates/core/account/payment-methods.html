@@ -1,0 +1,12 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.payment_methods.heading'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{> core/account/_private/payment-methods-list}}
+{{/partial}}
+
+{{> core/account/_private/layout
+  nav_page='payment_methods'
+  class='payment methods'
+}}

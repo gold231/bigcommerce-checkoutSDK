@@ -1,0 +1,97 @@
+{{#if forms.contact.error}}
+  {{> core/alerts/alert-error
+    message=forms.contact.error
+    dismissable=true
+  }}
+{{/if}}
+
+<form
+  class="form"
+  id="form-contact-us"
+  action="{{urls.contact_us_submit}}"
+  method="post"
+  data-validated-form
+>
+  <input
+    type="hidden"
+    name="page_id"
+    id="page_id"
+    value="{{forms.contact.page_id}}"
+  >
+
+  {{#if forms.contact.name}}
+    {{> core/forms/common/text
+      label=(lang 'core.contact.full_name')
+      name="contact_fullname"
+      id="contact_fullname"
+      required="true"
+      prefill=(lang 'core.contact.full_name_placeholder')
+      value=customer.name
+    }}
+  {{/if}}
+
+  {{#if forms.contact.phone}}
+    {{> core/forms/common/text
+      label=(lang 'core.contact.phone')
+      name="contact_phone"
+      id="contact_phone"
+      prefill=(lang 'core.contact.phone_placeholder')
+      value=customer.phone
+    }}
+  {{/if}}
+
+  {{> core/forms/common/email
+    label=(lang 'core.contact.email')
+    name="contact_email"
+    id="contact_email"
+    required="true"
+    prefill=(lang 'core.contact.email_placeholder')
+    value=customer.email
+  }}
+
+  {{#if forms.contact.order}}
+    {{> core/forms/common/text
+      label=(lang 'core.contact.order')
+      name="contact_orderno"
+      id="contact_orderno"
+      prefill=(lang 'core.contact.order_placeholder')
+    }}
+  {{/if}}
+
+  {{#if forms.contact.company}}
+    {{> core/forms/common/text
+      label=(lang 'core.contact.company')
+      name="contact_companyname"
+      id="contact_companyname"
+      prefill=(lang 'core.contact.company_placeholder')
+    }}
+  {{/if}}
+
+  {{#if forms.contact.rma}}
+    {{> core/forms/common/text
+      label=(lang 'core.contact.rma')
+      name="contact_rma"
+      id="contact_rma"
+      prefill=(lang 'core.contact.rma_placeholder')
+    }}
+  {{/if}}
+
+  {{> core/forms/common/multiline
+    label=(lang 'core.contact.question')
+    name="contact_question"
+    id="contact_question"
+    required=true
+    prefill=(lang 'core.contact.question_placeholder')
+    rows=4
+  }}
+
+  {{{forms.contact.recaptcha.markup}}}
+
+  <div class="form-actions">
+    <input
+      class="button button-contact-submit"
+      type="submit"
+      value="{{lang 'core.contact.submit'}}"
+    >
+  </div>
+</form>

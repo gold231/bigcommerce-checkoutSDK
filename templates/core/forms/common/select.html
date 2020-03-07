@@ -1,0 +1,85 @@
+{{!
+  @param display_name string (optional)
+         The label text.
+
+  @param required bool (optional)
+         If true, this field will be required. Defaults to false.
+
+  @param id string (optional)
+         A unique ID for this field.
+
+  @param name string
+         The form input name.
+
+  @param private_id string (optional)
+         Assigned to the data-field-type attribute. A unique ID provided by the
+         Bigcommerce platform. Used to target specific elements, for example
+         Country or State inputs.
+
+  @param select_type string (optional)
+         Controls how the select options are populated.
+
+         If `range`, options will be generated for numbers using the `from` and
+         `to` params.
+
+         If `array`, options will be generated using the `options` param, an
+         array of values.
+
+         Otherwise, options will be generated using the `options` param, an
+         array of objects with `value` and `label` properties. This is what
+         the Bigcommerce platform passes us.
+
+  @param from number
+         The starting point for the range. Only used if `select_type` is set to
+         `range`.
+
+  @param to number
+         The ending point for the range. Only used if `select_type` is set to
+         `range`.
+}}
+<div class="form-field form-field-common form-field-select {{#if required}} form-required{{/if}}" id="{{id}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{#if display_name}}
+        {{display_name}}
+      {{else}}
+        {{label}}
+      {{/if}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <span class="form-select-wrapper">
+        <select
+          class="form-input form-select"
+          id="select-{{id}}"
+          name="{{name}}"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}"
+          {{#if private_id}}data-field-type="{{private_id}}"{{/if}}>
+
+          {{#if select_type '===' 'range'}}
+            {{#for from to}}
+              <option value="{{$index}}">{{$index}}</option>
+            {{/for}}
+
+          {{else}}
+            {{#if select_type '===' 'array'}}
+              {{#each options}}
+                <option value="{{this}}">{{this}}</option>
+              {{/each}}
+
+            {{else}}
+              {{#if options}}
+                <option value="" disabled>{{chooseprefix}}</option>
+                {{#each options}}
+                  <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+                {{/each}}
+              {{/if}}
+            {{/if}}
+
+          {{/if}}
+        </select>
+      </span>
+    </span>
+  </label>
+</div>

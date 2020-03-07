@@ -1,0 +1,24 @@
+{{#partial "page"}}
+  <div class="unavailable-container">
+    <article class="unavailable-container-inner">
+
+      <h1 class="unavailable-logo">
+        {{#if settings.store_logo.image.data}}
+          <img src="{{getImage settings.store_logo.image 'account-logo'}}" alt="{{settings.store_logo.image.alt}}">
+        {{else}}
+          {{settings.store_logo.title}}
+        {{/if}}
+      </h1>
+
+      <h2 class="unavailable-heading">{{lang 'core.unavailable.maintenance_heading'}}</h2>
+      <p class="unavailable-message">
+        {{#if settings.maintenance.message}}
+          {{{settings.maintenance.message}}}</p>
+        {{else}}
+          {{lang 'core.unavailable.maintenance_message'}}
+        {{/if}}
+    </article>
+  </div>
+{{/partial}}
+
+{{> core/unavailable/layout}}

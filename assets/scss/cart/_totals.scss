@@ -1,0 +1,113 @@
+.cart-lower {
+  @include grid-container;
+  margin-top: $space;
+}
+
+.cart-totals-container {
+  @include grid-item;
+  @include col-width(12);
+
+  @include media($min: $screen-large) {
+    @include col-width(8);
+    margin-left: auto;
+  }
+
+  @include media($min: $screen-xlarge) {
+    @include col-width(5);
+  }
+}
+
+.cart-totals {
+  .form-inline {
+    .button {
+      min-width: 0;
+    }
+  }
+}
+
+.cart-totals-block {
+  margin-bottom: $space-small;
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $space-smallest;
+  padding-bottom: $space-smallest;
+  color: $color-text-light;
+}
+
+.cart-total-label {
+  @extend %text-style-smallcaps;
+}
+
+.cart-action-minor {
+  @extend %reset-button, %text-style-smallcaps, %link-style;
+}
+
+.cart-total-value {
+  font-family: $font-primary;
+  text-align: right;
+}
+
+.cart-totals-forms {
+  margin-bottom: $space;
+}
+
+.show-calculator {
+  @extend %reset-button, %link-style;
+}
+
+.cart-totals-checkout {
+  padding-top: $space-small;
+  margin-top: $space-small;
+  border-top: 1px solid $color-borders;
+
+  .button {
+    display: block;
+    margin-top: $space-small;
+    color:$color-white;
+  }
+}
+
+.additional-checkout-buttons {
+  text-align: center;
+}
+
+// Shipping
+.shipping-quotes {
+  padding-top: $space;
+  text-align: center;
+}
+
+.shipping-quote-submit {
+  display: flex;
+  justify-content: space-between;
+
+  .button {
+    min-width: 0;
+    width: calc(50% - #{$space-smallest});
+  }
+
+  .button-cancel {
+    @extend %reset-button, %link-style;
+    position: static;
+  }
+}
+
+.empty-cart {
+  padding-top: $space;
+  text-align: center;
+}
+
+.checkout-multiple {
+  display: block;
+  margin-top: $space-smaller;
+  text-align: center;
+  color: $color-primary;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

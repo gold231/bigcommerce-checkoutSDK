@@ -1,0 +1,124 @@
+<div
+  class="
+    form-field
+    form-field-options
+    form-field-swatch
+    {{#if required}}
+      form-required
+    {{/if}}
+  "
+  data-swatch-selector
+  data-product-attribute="swatch"
+>
+  <div class="form-field-title">
+    {{display_name}}
+    <span class="swatch-value" data-swatch-value>
+      {{lang 'forms.swatches_none_selected'}}
+    </span>
+    {{#if required}}
+      <span class="required-text">{{lang 'common.required'}}</span>
+    {{/if}}
+  </div>
+
+  <div class="form-field-control">
+    {{#each values}}
+      <label
+        class="swatch-wrap"
+        data-swatch-value="{{label}}"
+        data-product-attribute-value="{{id}}"
+      >
+        <span class="form-label-text">{{label}}</span>
+
+        <input
+          class="form-input swatch-radio"
+          id="attribute-{{id}}"
+          type="radio"
+          name="attribute[{{../id}}]"
+          value="{{id}}"
+          {{#if selected}}
+            checked
+            data-default
+          {{/if}}
+          {{#if ../required}}required{{/if}}
+          aria-required="{{required}}"
+        >
+
+        <span
+          class="
+            swatch
+            {{#if data.[1]}}two-colors{{/if}}
+            {{#if data.[2]}}three-colors{{/if}}"
+          >
+          {{#if pattern}}
+            <span
+              class="swatch-color swatch-pattern"
+              style="background-image: url('{{getImage image 'core-swatch'}}');"
+            >
+            </span>
+          {{/if}}
+
+          {{#if data.[0]}}
+            <span
+              class="swatch-color"
+              style="background-color: #{{data.[0]}}"
+            >
+            </span>
+          {{/if}}
+
+          {{#if data.[1]}}
+            <span
+              class="swatch-color secondary"
+              style="background-color: #{{data.[1]}}"
+            >
+            </span>
+          {{/if}}
+
+          {{#if data.[2]}}
+            <span
+              class="swatch-color tertiary"
+              style="background-color: #{{data.[2]}}"
+            >
+            </span>
+          {{/if}}
+        </span>
+
+        {{#if pattern}}
+          <span class="swatch-pattern-expanded">
+            <img
+              class="swatch-pattern-image"
+              src="{{getImage image 'core-swatch'}}"
+            >
+          </span>
+        {{/if}}
+
+      </label>
+    {{/each}}
+    {{#unless required}}
+      <label
+        class="swatch-wrap swatch-none"
+        data-swatch-value="{{lang 'core.product.none'}}"
+        data-product-attribute-value="{{id}}"
+      >
+        <span class="form-label-text">{{lang 'core.product.none'}}</span>
+        <input
+          class="form-input swatch-radio"
+          name="attribute[{{../id}}]"
+          type="radio"
+          value="0"
+          {{#if prefill '==' 0}}checked{{/if}}
+          aria-required="{{required}}"
+        >
+        <span class="swatch">
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M46.717.5633l2.7197 2.7196L3.283 49.4366.5632 46.717" fill-rule="nonzero" fill="#D0021B"/>
+          </svg>
+        </span>
+      </label>
+    {{/unless}}
+  </div>
+</div>

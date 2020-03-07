@@ -1,0 +1,16 @@
+<button
+  class="button button-primary button-progress"
+  id="form-action-addToCart"
+  type="submit"
+  data-button-purchase
+  data-product-title="{{product.title}}"
+>
+  {{#if product.pre_order}}
+    <span class="button-text">{{lang 'product.pre_order'}}</span>
+  {{else}}
+    <span class="button-text">{{lang 'product.atc'}}</span>
+  {{/if}}
+  <span class="complete-text">
+    {{> svg/icon-checkmark}}
+  </span>
+</button>

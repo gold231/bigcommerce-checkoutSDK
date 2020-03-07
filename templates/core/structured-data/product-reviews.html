@@ -1,0 +1,31 @@
+{{!-- Product Reviews: include in product.html page template --}}
+
+{{#if settings.show_product_reviews}}
+  {{#each product.reviews.list}}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "Review",
+        "itemReviewed": {
+          "@type": "Product",
+          "image": "{{getImage ../product.main_image}}",
+          "name": "{{../product.title}}"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "{{rating}}"
+        },
+        "name": "{{title}}",
+        "author": {
+          "@type": "Person",
+          "name": "{{name}}"
+        },
+        "reviewBody": "{{text}}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "{{../settings.store_name}}"
+        }
+      }
+    </script>
+  {{/each}}
+{{/if}}

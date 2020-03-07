@@ -1,0 +1,98 @@
+%sr-only {
+  @include sr-only;
+}
+
+%reset-button {
+  @include reset-button;
+}
+
+// typography
+%antialiased {
+  -webkit-font-smoothing: antialiased;
+}
+
+%text-style-smallcaps {
+  @include text-style-smallcaps;
+}
+
+%h1 { @include heading(1); }
+%h2 { @include heading(2); }
+%h3 { @include heading(3); }
+%h4 { @include heading(4); }
+%h5 { @include heading(5); }
+
+%link-style {
+  color: $color-primary;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+%text-style-meta {
+  font-family: $font-secondary;
+  color: $color-text-lighter;
+}
+
+// UI
+// Checkbox
+%checkmark {
+  transition: stroke-dashoffset 0.4s ease-in-out;
+  stroke-dasharray: 50 50;
+  stroke-dashoffset: 50;
+}
+
+%checkmark-visible {
+  stroke-dashoffset: 0;
+}
+
+%checkbox-unchecked {
+  display: inline-block;
+  width: rem(18);
+  height: rem(18);
+  border: 1px solid $color-borders;
+  transition: all 0.2s ease-out 0.4s;
+}
+
+%checkbox-checked {
+  background-color: $color-primary;
+  border-color: transparent;
+  transition: all 0.2s ease-out;
+}
+
+%nav-separator {
+  display: block;
+  width: calc(100% - #{$space-large});
+  height: rem(1);
+  margin: 0 auto;
+  background-color: rgba($color-white, 0.3);
+  content: "";
+
+  @include media($min: $screen-small) {
+    @include layout-spacing(margin-left);
+    width: rem(75);
+    background-color: $color-borders;
+  }
+}
+
+// Tabs
+%tab-style {
+  @extend %text-style-smallcaps;
+  display: block;
+  max-height: rem(60);
+  line-height: rem(60);
+  color: $color-text-lighter;
+  background: $color-highlight;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &.active {
+    color: $color-white;
+    background: $color-primary;
+  }
+}

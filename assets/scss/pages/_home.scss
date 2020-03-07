@@ -1,0 +1,198 @@
+.home-section {
+  @include layout-spacing((padding-top, padding-bottom, margin-top, margin-bottom));
+  overflow: hidden;
+
+  & + & {
+    border-top: 1px solid $color-borders;
+  }
+
+  &:first-child {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+
+.home-section-title {
+  @include heading(4);
+  margin-top: $space-large;
+  margin-bottom: $space-large;
+  font-family: $font-secondary;
+  text-align: center;
+}
+
+/*----------  Featured Grid & Blog  ----------*/
+
+.home-section-grid-blog,
+.home-section-grid-featured {
+  .home-section-grid-container {
+    &:after {
+      display: none;
+      content: "flickity";
+    }
+
+    @include media($min: $screen-medium) {
+      @include grid-container;
+
+      &:after {
+        content: "";
+      }
+    }
+  }
+}
+
+.home-section-grid-featured-item {
+  @include grid-item;
+  @include layout-spacing((margin-bottom));
+  position: relative;
+  width: calc(100% - #{$space-large});
+
+  @include media($min: $screen-small) {
+    width: 70%;
+  }
+
+
+  img {
+    @include lazy-loaded-img();
+    width: 100%;
+    height: 100%;
+  }
+
+  @include media($min: $screen-medium) {
+    &:only-child {
+      .home-section-grid-featured-item-image {
+        @include maintain-ratio(16 9);
+      }
+    }
+
+    &:not(:only-child) {
+      &:first-child,
+      &:nth-child(2) {
+        @include col-width(6);
+
+        .home-section-grid-featured-item-image {
+          @include maintain-ratio(485 391);
+          position: relative;
+          overflow: hidden;
+        }
+      }
+
+      &:nth-child(n+3) {
+        @include col-width(4);
+
+        .home-section-grid-featured-item-image {
+          @include maintain-ratio(1 1);
+        }
+      }
+    }
+  }
+
+  .item-info {
+    @include layout-spacing((padding-top, padding-right, margin-right));
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-background;
+  }
+
+  .item-info-name {
+    @include heading(5);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .item-info-cta {
+    margin-top: $space-smallest;
+    font-family: $font-secondary;
+    color: $color-primary;
+  }
+}
+
+/*----------  Simple Grid  ----------*/
+
+.home-section-grid {
+  .home-section-grid-container {
+    @include grid-container;
+  }
+
+  .product-grid-item {
+    @include product-grid-item-layout;
+    @include layout-spacing(margin-bottom);
+
+    &:only-child {
+      flex-grow: 1;
+    }
+
+    @include media($min: $screen-small, $max: $screen-large) {
+      &:first-child:nth-last-child(2),
+      &:first-child:nth-last-child(2) ~ .product-grid-item {
+        flex-grow: 1;
+      }
+    }
+
+    @include media($min: $screen-xlarge) {
+      &:first-child:nth-last-child(2),
+      &:first-child:nth-last-child(2) ~ .product-grid-item {
+        flex-grow: 1;
+      }
+    }
+
+    @include media($min: $breakpoint-product-grid-large) {
+      @for $i from 2 through 3 {
+        &:first-child:nth-last-child(#{$i}),
+        &:first-child:nth-last-child(#{$i}) ~ .product-grid-item {
+          flex-grow: 1;
+        }
+      }
+    }
+
+    @include media($min: $screen-xxlarge) {
+      @for $i from 2 through 5 {
+        &:first-child:nth-last-child(#{$i}),
+        &:first-child:nth-last-child(#{$i}) ~ .product-grid-item {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}
+
+/*----------  Carousel  ----------*/
+
+.home-section-carousel {
+  .home-section-grid-container {
+    @include grid-container;
+    display: block;
+  }
+
+  .product-grid-item {
+    @include product-grid-item-layout;
+  }
+}
+
+/*----------  Recent Blog Posts  ----------*/
+
+.recent-blog-posts {
+  &.home-section-grid-container {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+
+    @include media($min: $screen-medium) {
+      display: flex;
+    }
+  }
+
+  .blog-item {
+    width: calc(100% - #{$space-large});
+
+    @include media($min: $screen-small) {
+      width: 70%;
+    }
+
+    @include media($min: $screen-medium) {
+      @include col-width(4);
+    }
+  }
+}

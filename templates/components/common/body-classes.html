@@ -1,0 +1,15 @@
+{{theme_settings.product_grid_layout}}
+logo-position-{{theme_settings.header_logo_alignment}}
+{{#if theme_settings.show_grid_image_overlay}} grid-image-overlay{{/if}}
+{{#if theme_settings.contain_grid_images}} grid-image-contain{{/if}}
+{{#if theme_settings.crop_cover_collections_banner_image}} banner-image-cover{{/if}}
+{{#unless in_production}} dev-environment{{/unless}}
+{{#if theme_settings.product_catalog_infinite_scroll}} infinite-scroll-enabled{{/if}}
+{{#any
+  template '==' 'pages/category'
+  template '==' 'pages/brand'
+  template '==' 'pages/search'
+}}
+  catalog-page
+{{/any}}
+{{#unless in_production}} dev-environment{{/unless}}

@@ -1,0 +1,3 @@
+{
+  "svg/icon-cart-empty": "<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" xmlns=\"http://www.w3.org/2000/svg\" role=\"presentation\" title=\"Cart\">\n  <path d=\"M1 17h16V5H1v12zM0 4h18v14H0V4zm5.126 0H5v1h8V4h-.126a4.002 4.002 0 0 0-7.748 0zM4 5a5 5 0 1 1 10 0H4z\" fill=\"currentColor\" />\n</svg>\n"
+}

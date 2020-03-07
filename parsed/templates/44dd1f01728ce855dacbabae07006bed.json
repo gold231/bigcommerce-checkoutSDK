@@ -1,0 +1,3 @@
+{
+  "core/gift-certificate/redeem": "<div class=\"giftcard-body\">\n  <div class=\"giftcard-heading-container\">\n    <h1 class=\"giftcard-heading\">{{lang 'core.giftcard.redeem.heading'}}</h1>\n    <p class=\"giftcard-subheading\">{{lang 'core.giftcard.redeem.subheading' store_name=settings.store_name}}</p>\n  </div>\n  <ol class=\"giftcard-redeem-steps\">\n    <li>{{lang 'core.giftcard.redeem.item1'}}</li>\n    <li>{{lang 'core.giftcard.redeem.item2'}}</li>\n    <li>{{{lang 'core.giftcard.redeem.item3' cart_url=urls.cart}}}</li>\n    <li>{{lang 'core.giftcard.redeem.item4'}}</li>\n  </ol>\n</div>\n"
+}

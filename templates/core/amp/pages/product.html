@@ -1,0 +1,75 @@
+{{#partial "amp-style"}}
+  {{> core/amp/products/styles
+    header_background=../header_background
+    header_text=../header_text
+    body_background=../body_background
+    color_headings=../color_headings
+    color_text=../color_text
+    footer_background=../footer_background
+    footer_text=../footer_text
+    color_accent=../color_accent
+    color_borders=../color_borders
+  }}
+{{/partial}}
+
+{{#partial "amp-scripts"}}
+  {{#any product.images product.videos}}
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  {{/any}}
+  {{#if product.options}}
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+  {{/if}}
+  {{#if product.videos}}
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+  {{/if}}
+  {{#if settings.add_this.buttons}}
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+  {{/if}}
+{{/partial}}
+
+
+{{#partial "page"}}
+  {{> core/amp/common/header}}
+  {{> core/amp/products/product-view}}
+
+  {{#block "amp-footer"}} {{/block}}
+
+  {{#if settings.amp_analytics_id}}
+    <amp-analytics type="googleanalytics">
+      <script type="application/json">
+      {
+        "vars": {
+          "account": "{{settings.amp_analytics_id}}"
+        },
+        "extraUrlParams": {
+          "cd1": "{{page_type}}",
+          "cd2": "{{category.id}}",
+          "cd3": "{{category.url}}",
+          "cd4": "{{category.name}}"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview"
+          },
+          "trackClickOnProductCard" : {
+            "on": "click",
+            "selector": ".amp-grid-item-link, .amp-grid-item-name a",
+            "request": "event",
+            "vars": {
+              "eventCategory": "Category",
+              "eventAction": "Product Card"
+            },
+            "extraUrlParams": {
+              "cd6": "${productLink}",
+              "cd7": "${productId}",
+              "cd8": "${productName}"
+            }
+          }
+        }
+      }
+      </script>
+    </amp-analytics>
+  {{/if}}
+  {{> core/structured-data/product-reviews}}
+{{/partial}}

@@ -1,0 +1,62 @@
+---
+brands:
+  limit: 100
+---
+
+{{#partial "page"}}
+
+  <header class="search-header page-header">
+    <h1 class="search-title page-title">
+      <span class="search-query">{{lang 'brand.label'}}</span>
+    </h1>
+  </header>
+
+  {{{region name="brands_below_header"}}}
+
+  <section class="product-listing section">
+    <div class="container">
+      <ul class="brand-items-list grid-container">
+        {{#each brands}}
+          <li
+            class="
+              grid-item
+              brand-item
+              {{#unless image}}
+                no-brand-image
+              {{/unless}}
+            "
+          >
+
+              {{#if image}}
+              <div class="brand-item-image">
+                <a href="{{url}}">
+                  {{> components/common/responsive-image
+                    image=image
+                    fit="image-cover"
+                    lazyload=../../theme_settings.lazyload_mode
+                    fallback_size=../../theme_settings.product-list
+                    default_image=../../theme_settings.default_image
+                  }}
+                  </a>
+                </div>
+              <a class="brand-name" href="{{url}}">{{name}}</a>
+            {{else}}
+              <a class="brand-item-title" href="{{url}}">
+                <span class="brand-name">{{name}}</span>
+              </a>
+            {{/if}}
+
+          </li>
+        {{/each}}
+      </ul>
+
+      {{> components/common/pagination pagination.brands}}
+
+    </div>
+
+    {{{region name="brands_below_content"}}}
+  </section>
+
+{{/partial}}
+
+{{> layout/base}}

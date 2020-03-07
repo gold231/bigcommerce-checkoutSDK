@@ -1,0 +1,105 @@
+{{!
+  Markup and styles related to this page use `receipt` instead of
+  `order-details`. Receipt is shorter and doesn't conflict with other "details"
+  sections.
+}}
+
+{{#partial 'account-heading'}}
+  {{lang 'core.account.receipt.heading' number=order.id}}
+{{/partial}}
+
+{{#partial 'account-toolbar'}}
+  <div class="alert alert-error">
+      <a class="alert-dismiss">
+        <svg
+          class="icon-x"
+          width="11"
+          height="11"
+          viewBox="0 0 11 11"
+          xmlns="http://www.w3.org/2000/svg"
+          role="presentation"
+        >
+          <path
+            d="M.367.933l9.2 9.2c.156.156.41.156.566 0 .156-.156.156-.41 0-.566l-9.2-9.2C.777.21.523.21.367.367.21.523.21.777.367.933zm9.2-.566l-9.2 9.2c-.156.156-.156.41 0 .566.156.156.41.156.566 0l9.2-9.2c.156-.156.156-.41 0-.566-.156-.156-.41-.156-.566 0z"
+            fill-rule="nonzero"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    <div class="alert-message">
+      {{lang 'core.account.orders.reorder_error'}}
+    </div>
+  </div>
+  <a
+    class="account-tool"
+    href="{{order.invoice_url}}"
+    target="_blank"
+  >
+    {{lang 'core.account.receipt.actions.print_invoice'}}
+  </a>
+  <form
+    class="account-order-invoice"
+    action="{{order.reorder_url}}"
+    method="post"
+    data-account-reorder-form
+  >
+    <input
+      type="hidden"
+      name="orderid"
+      value="{{order.id}}"
+    >
+    {{#each order.items}}
+      {{#if show_reorder}}
+        <input
+          type="hidden"
+          name="reorderitem[{{order_product_id}}]"
+        >
+      {{/if}}
+    {{/each}}
+    <input
+      class="account-tool"
+      type="submit"
+      value="{{lang 'core.account.receipt.actions.reorder_items'}}"
+    >
+  </form>
+
+  {{#if order.is_complete}}
+    {{#if order.returns_enabled}}
+      <a href="{{order.return_url}}" class="account-tool">
+        {{lang 'core.account.receipt.actions.return_items'}}
+      </a>
+    {{/if}}
+  {{/if}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{! Summary }}
+  {{> core/account/_private/receipt-summary}}
+
+  {{! Comments }}
+  {{#if order.comments}}
+    <section class="account-receipt-comments account-card">
+      {{order.comments}}
+    </section>
+  {{/if}}
+
+  {{! Shipments }}
+  {{> core/account/_private/receipt-shipments}}
+
+  {{! Products }}
+  {{> core/account/_private/receipt-items}}
+
+  {{! Totals }}
+  <div class="account-receipt-totals">
+    {{#each order.total_rows}}
+      {{#if value.value}}
+        <div class="account-receipt-total">
+          <div class="account-receipt-total-title">{{label}}</div>
+          <div class="account-receipt-total-value">{{value.formatted}}</div>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='orders' class='orders-receipt'}}

@@ -1,0 +1,49 @@
+{{#partial 'account-heading'}}
+  {{#if forms.wishlist.id}}
+    {{lang 'core.account.wishlists.edit'}}
+  {{else}}
+    {{lang 'core.account.wishlists.new'}}
+  {{/if}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  <div class="wishlist-add">
+    <header class="wishlist-header">
+      {{#if forms.wishlist.errors}}
+        {{> core/alerts/alert-error forms.wishlist.errors}}
+      {{/if}}
+    </header>
+
+    <form class="form wishlist-form" action="{{#if forms.wishlist.id}}{{urls.account.wishlists.edit}}{{else}}{{urls.account.wishlists.add}}{{/if}}" method="post" data-validated-form>
+      <input type="hidden" name="submit">
+
+      {{> core/forms/common/text required=true name="wishlistname" id="wishlistname" value=forms.wishlist.name label=(lang 'core.account.wishlists.wishlist_name')}}
+
+      <div class="form-field form-field-checkbox">
+        <div class="form-field-control">
+          <label class="form-label">
+            <input
+              class="form-checkbox"
+              name="publicwishlist"
+              type="checkbox"
+              {{#if forms.wishlist.is_public}}checked{{/if}}
+              aria-required="false">
+            <span class="form-label-text">{{lang 'core.account.wishlists.make_public'}}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        {{#if forms.wishlist.id}}
+          <input type="submit" class="button account-button-primary" value="{{lang 'core.account.wishlists.save'}}">
+          <input type="hidden" name="wishlistid" value="{{forms.wishlist.id}}">
+        {{else}}
+          <input type="submit" class="button account-button-primary" value="{{lang 'core.account.wishlists.create'}}">
+        {{/if}}
+      </div>
+
+    </form>
+  </div>
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='wishlists' class='add-wishlist'}}

@@ -1,0 +1,179 @@
+.carousel {
+  @include container-offset;
+  overflow: hidden;
+
+  .flickity-viewport {
+    transition: height 0.2s ease-out;
+  }
+}
+
+// Slides
+.carousel-item {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+.carousel-item-image {
+  background: {
+    size: cover;
+    position: 50%;
+  }
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+
+  &.flickity-bg-lazyloaded {
+    opacity: 1;
+  }
+
+  img {
+    opacity: 0;
+  }
+
+  &:not(.ratio-any) {
+    img {
+      @include sr-only;
+    }
+  }
+
+  &.ratio-vh {
+    height: 90vw;
+
+    @include media($min: $screen-small) {
+      height: calc(100vh - #{map-get($site, header)});
+    }
+  }
+}
+
+// Slide nav
+.carousel-nav {
+  position: absolute;
+  bottom: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  @include media($max: $screen-small) {
+    @include layout-spacing(left);
+  }
+}
+
+.carousel-nav-item {
+  @extend %reset-button;
+  display: block;
+  float: left;
+  width: rem(50);
+  height: rem(50);
+  background-color: rgba($color-white, 0.9);
+
+  &:first-child {
+    border-right: 1px solid contrast($color-white, 15%);
+  }
+
+  svg {
+    pointer-events: none;
+  }
+
+  .carousel-style-dark & {
+    color: contrast($color-black, 95%);
+    background-color: rgba($color-black, 0.9);
+
+    &:first-child {
+      border-right: 1px solid contrast($color-black, 20%);
+    }
+  }
+
+  .carousel-style-accent & {
+    color: $color-white;
+    background-color: rgba($color-primary, 0.9);
+
+    &:first-child {
+      border-right: 1px solid rgba(contrast($color-primary, 10%), 0.8);
+    }
+  }
+}
+
+// Slide text
+.carousel-item-info-wrapper {
+  position: relative;
+  opacity: 0;
+  transition: all 0.4s ease-out 0.4s;
+
+  @include media($min: $screen-small) {
+    @include container;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(#{$space-large});
+  }
+
+  .is-selected & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-item-info {
+  overflow: hidden;
+  max-width: rem(552);
+  padding-top: $gutter-small;
+  padding-right: $gutter-small;
+  padding-left: $gutter-small;
+  background-color: $color-white;
+
+  @include media($min: $screen-small) {
+    padding-top: $gutter-large;
+    padding-right: $gutter-large;
+    padding-left: $gutter-large;
+  }
+
+  .carousel-style-light &,
+  .carousel-style-dark & {
+    .button {
+      @include button;
+    }
+  }
+
+  .carousel-style-dark & {
+    color: $color-white;
+    background-color: $color-black;
+  }
+
+  .carousel-style-accent & {
+    color: $color-white;
+    background-color: $color-primary;
+
+    .button {
+      @include button($style: "white");
+      border-bottom: 1px solid $color-primary;
+    }
+  }
+}
+
+.carousel-item-title {
+  @include heading(2);
+  margin-bottom: rem(18);
+  color: inherit;
+
+  @include media($min: $screen-small) {
+    @include heading(1);
+    color: inherit;
+  }
+}
+
+.carousel-item-text {
+  margin-bottom: $space-large;
+  font-family: $font-secondary;
+  line-height: $line-height-loose;
+
+  @if $font-primary == 'Work Sans' {
+    font-weight: 300;
+  }
+
+  .carousel-style-dark & {
+    opacity: 0.8;
+  }
+}
+
+.carousel-button-wrapper {
+  line-height: 0;
+}

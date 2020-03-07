@@ -1,0 +1,21 @@
+.main {
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    // margin: 0 auto;
+    // max-width: 1200px;
+    // padding: 32px 0;
+
+    margin: 0 auto;
+    max-width: 92.30769rem;
+    width: 100%;
+    min-height: 15.38462rem;
+    padding: 0 1.5rem 7.5rem;
+
+    @media (max-width: 990px) {
+        flex-direction: column-reverse;
+    }
+}

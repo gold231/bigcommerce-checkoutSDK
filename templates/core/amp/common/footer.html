@@ -1,0 +1,63 @@
+<footer class="amp-footer" role="contentinfo">
+  <article class="amp-footer-section" data-section-type="amp-footer-web-pages">
+    <h5 class="amp-footer-heading">{{lang 'core.amp.footer.pages'}}</h5>
+    <ul class="amp-footer-list">
+      {{#each pages}}
+        <li>
+          <a href="{{url}}">{{name}}</a>
+        </li>
+      {{/each}}
+      <li>
+        <a href="{{urls.sitemap}}">{{lang 'core.amp.footer.sitemap_title'}}</a>
+      </li>
+    </ul>
+  </article>
+
+  <article class="amp-footer-section" data-section-type="amp-footer-categories">
+    <h5 class="amp-footer-heading">{{lang 'core.amp.footer.categories'}}</h5>
+    <ul class="amp-footer-list">
+      {{#each categories}}
+        <li>
+          <a href="{{url}}">{{name}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </article>
+
+  <article class="amp-footer-section" data-section-type="amp-footer-brands">
+    <h5 class="amp-footer-heading">{{lang 'core.amp.footer.brands'}}</h5>
+    <ul class="amp-footer-list">
+      {{#each shop_by_brand}}
+        <li>
+          <a href="{{url}}">{{name}}</a>
+        </li>
+      {{/each}}
+        <li>
+          <a href="{{urls.brands}}">
+            {{lang 'core.amp.view_all'}}
+          </a>
+        </li>
+    </ul>
+  </article>
+
+  <article class="amp-footer-section" data-section-type="amp-store-info">
+    <h5 class="amp-footer-heading">{{lang 'core.amp.footer.contact'}}</h5>
+    <address>{{nl2br settings.address}}</address>
+    {{#if settings.phone_number}}
+      <p class="amp-footer-phone">
+        {{lang 'core.amp.footer.call_us' phone_number=settings.phone_number}}
+      </p>
+    {{/if}}
+  </article>
+  <article class="amp-footer-credits">
+    {{#if social_media.length}}
+      {{#block 'amp-social'}} {{/block}}
+    {{/if}}
+    {{#if theme_credits}}
+      <p>{{theme_name}} theme by <a href="https://pixelunion.net" target="_blank" rel="nofollow">Pixel Union</a>, Powered by <a href="http://bigcommerce.com" rel="nofollow">BigCommerce</a></p>
+    {{/if}}
+    {{#if store_copyright}}
+      <p>&copy; {{settings.store_name}}</p>
+    {{/if}}
+  </article>
+</footer>

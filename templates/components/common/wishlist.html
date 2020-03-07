@@ -1,0 +1,30 @@
+{{#if customer.wishlists.length}}
+  <div
+    class="dropdown"
+    data-dropdown
+    data-dropdown-options='{
+      "constraints": [
+        {
+          "to": ".single-product-page",
+          "pin": ["left", "right"]
+        }
+      ]
+    }'
+  >
+    <a class="dropdown-toggle button button-secondary button-progress" href="#" data-dropdown-toggle>
+      <span class="button-text">
+        {{lang 'product.add_to_wishlist'}}
+      </span>
+      <span class="complete-text">
+        {{> svg/icon-checkmark}}
+      </span>
+    </a>
+    <ul class="dropdown-panel product-dropdown-panel" data-dropdown-panel>
+     {{#each customer.wishlists}}
+       <li><a href="{{../product.add_to_wishlist_url}}&wishlistid={{id}}" data-wishlist="{{view_url}}">{{name}} ({{num_items}})</a></li>
+     {{/each}}
+    </ul>
+  </div>
+{{else}}
+  <a class="button button-secondary" href="{{product.add_to_wishlist_url}}">{{lang 'product.add_to_wishlist'}}</a>
+{{/if}}

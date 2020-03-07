@@ -1,0 +1,3 @@
+{
+  "components/common/contact-info": "<h2 class=\"footer-address-heading\">{{lang 'common.address'}}</h2>\n<div class=\"footer-address-content\">\n  <p>{{nl2br settings.address}}</p>\n  <p>{{settings.phone_number}}</p>\n</div>\n"
+}

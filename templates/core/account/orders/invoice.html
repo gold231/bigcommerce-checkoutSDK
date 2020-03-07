@@ -1,0 +1,185 @@
+{{#partial "head"}}
+  <link href="{{cdn '/assets/css/invoice.css'}}" rel="stylesheet">
+{{/partial}}
+
+{{#partial "page"}}
+  <div class="invoice">
+    <h1>
+      {{#if settings.store_logo.image}}
+        <img class="header-logo header-logo-image" src="{{getImage settings.store_logo.image 'account-logo'}}" alt="{{settings.store_logo.title}}">
+      {{else}}
+        <span class="header-logo header-logo-text">{{settings.store_logo.title}}</span>
+      {{/if}}
+    </h1>
+
+    <div class="invoice-title">
+      {{lang 'core.invoice.for_order' name=settings.store_name id=order.id}}
+    </div>
+
+    <address>
+      <strong>{{nl2br settings.address}}</strong>
+    </address>
+
+    <div class="address-row">
+      <div class="invoice-upper-column">
+        <h3>{{lang 'core.account.receipt.billing_title'}}</h3>
+        <ul>
+          <li><strong>{{order.billing_address.full_name}}</strong></li>
+          <li>{{order.billing_address.company}}</li>
+          {{#each order.billing_address.address_lines}}
+            <li>{{this}}</li>
+          {{/each}}
+          <li>{{order.billing_address.city}}, {{order.billing_address.state}} {{order.billing_address.zip}}</li>
+          <li>{{order.billing_address.country}}</li>
+          <li>&nbsp;</li>
+          <li>{{lang 'core.invoice.phone' number=order.billing_address.phone}}</li>
+          {{#if order.billing_address.email}}<li>{{lang 'core.invoice.email' email=order.billing_address.email}}</li>{{/if}}
+        </ul>
+      </div>
+      {{#if order.shipping_address}}
+        {{#unless order.has_multiple_shipping_addresses}}
+          <div class="invoice-upper-column">
+            <h3>{{lang 'core.account.receipt.shipping_title'}}</h3>
+            <ul>
+              <li><strong>{{order.shipping_address.full_name}}</strong></li>
+              <li>{{order.shipping_address.company}}</li>
+              {{#each order.shipping_address.address_lines}}
+                <li>{{this}}</li>
+              {{/each}}
+              <li>{{order.shipping_address.city}}, {{order.shipping_address.state}} {{order.shipping_address.zip}}</li>
+              <li>{{order.shipping_address.country}}</li>
+              <li>&nbsp;</li>
+              <li>{{lang 'core.invoice.phone' number=order.shipping_address.phone}}</li>
+              {{#if order.shipping_address.email}}<li>{{lang 'core.invoice.email' email=order.shipping_address.email}}</li>{{/if}}
+            </ul>
+          </div>
+        {{/unless}}
+      {{/if}}
+    </div>
+
+    <div class="invoice-details">
+      <div class="invoice-upper-column">
+        <div class="detail-row-upper">
+          <div class="label">{{lang 'core.invoice.order'}}</div>
+          <div class="value">#{{order.id}}</div>
+        </div>
+        <div class="detail-row-upper">
+          <div class="label">{{lang 'core.invoice.payment_method'}}</div>
+          <div class="value">{{order.payment_method}} ({{order.total.formatted}})</div>
+        </div>
+      </div>
+      <div class="invoice-upper-column">
+        <div class="detail-row-upper">
+          <div class="label">{{lang 'core.invoice.order_date'}}</div>
+          <div class="value">{{order.date}}</div>
+        </div>
+        {{#if order.shipping_method}}
+          <div class="detail-row-upper">
+            <div class="label">{{lang 'core.invoice.shipping_method'}}</div>
+            <div class="value">{{order.shipping_method}}</div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="invoice-items">
+      <h2 class="invoice-heading">{{lang 'core.invoice.order_items'}}</h2>
+
+      <table class="invoice-table">
+        <thead>
+        <tr>
+          {{#if order.has_multiple_shipping_addresses}}
+            <th class="product-address">{{lang 'core.invoice.shipping_address'}}</th>
+          {{/if}}
+          <th class="product-quantity">{{lang 'core.invoice.qty'}}</th>
+          <th class="product-sku">{{lang 'core.invoice.code'}}</th>
+          <th class="ProductDetails">{{lang 'core.invoice.product_name'}}</th>
+          <th class="product-cost">{{lang 'core.invoice.price'}}</th>
+          <th class="product-total">{{lang 'core.invoice.total'}}</th>
+        </tr>
+        </thead>
+        <tbody class="invoice-items-list">
+        {{#each order.items}}
+          <tr>
+            {{#if ../order.has_multiple_shipping_addresses}}
+              <td class="product-address">
+                {{#each shipping_rows}}
+                  <div>{{address}}</div>
+                  <div>{{city}}, {{state}} {{zip}}</div>
+                  <div>{{country}}</div>
+                {{/each}}
+              </td>
+            {{/if}}
+            <td class="product-quantity">{{quantity}}</td>
+            <td class="product-sku">{{sku}}</td>
+            <td class="product-details">
+              {{name}}
+              <div class="product-address">
+                {{#each options}}
+                  <div class="configurable-product-row">
+                    <div class="label">{{name}}:</div>
+                    <div class="value">{{value}}</div>
+                  </div>
+                {{/each}}
+              </div>
+              <div class="product-configurable-fields">
+                {{#each customizations}}
+                  <div class="configurable-product-row">
+                    <div class="label">{{name}}:</div>
+                    <div class="value">{{value}}</div>
+                  </div>
+                {{/each}}
+              </div>
+              {{#if gift_wrapping_name}}
+                <div class="product-giftwrapping">
+                  {{gift_wrapping_name}}
+                </div>
+              {{/if}}
+              {{#if event_date}}
+                <div class="product-event-date">
+                  <div class="configurable-product-row">
+                    <div class="label">{{event_date.name}}:</div>
+                    <div class="value">{{event_date.date}}</div>
+                  </div>
+                </div>
+              {{/if}}
+              {{#if pre_ordered}}
+                <div class="product-preorder">
+                  <div class="configurable-product-row">
+                    <div class="label">Preordered:</div>
+                    <div class="value">{{lang 'core.account.common.yes'}}</div>
+                  </div>
+                </div>
+              {{/if}}
+            </td>
+            <td class="product-cost">{{price.formatted}}</td>
+            <td class="product-total">{{total.formatted}}</td>
+          </tr>
+        {{/each}}
+
+        </tbody>
+        <tfoot class="invoice-totals">
+        {{#each order.total_rows}}
+          <tr class="invoice-totals-row">
+            <td class="Title" colspan="{{#if ../order.has_multiple_shipping_addresses}}5{{else}}4{{/if}}">{{label}}</td>
+            <td class="Total">{{value.formatted}}</td>
+          </tr>
+        {{/each}}
+        </tfoot>
+      </table>
+      {{#if order.comments}}
+        <div class="invoice-comments">
+          <h3 class="invoice-comment-heading">{{lang 'core.invoice.comments'}}</h3>
+          <div class="invoice-comments-body">
+            {{order.comments}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <script>
+    window.print();
+  </script>
+{{/partial}}
+
+{{> core/account/_private/layout-empty}}

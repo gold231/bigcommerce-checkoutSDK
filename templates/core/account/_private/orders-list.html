@@ -1,0 +1,51 @@
+{{#if orders}}
+  <div class="account-items">
+    {{#each orders}}
+      <article class="account-item">
+        <a class="account-item-link" href="{{details_url}}"></a>
+
+        <div class="account-item-thumbnail">
+          <a href="{{details_url}}">
+            {{#if items.0.type '===' 'giftcertificate'}}
+              <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}">
+            {{else}}
+              <img src="{{getImage image 'account-product-thumbnail' (cdn ../../theme_settings.default_image)}}" alt="{{image.alt}}">
+            {{/if}}
+          </a>
+        </div>
+
+        <div class="account-item-body">
+          <h1 class="account-item-title">
+            <a href="{{details_url}}">{{lang 'core.account.orders.items.number' number=id}}</a>
+          </h1>
+
+          <p class="account-item-description">
+            {{lang 'core.account.orders.items.description' num_products=items.length cost=total.formatted}}
+          </p>
+
+          <div class="account-item-details">
+            <div class="account-item-detail">
+              <h2 class="account-item-detail-title">{{lang 'core.account.orders.items.placed'}}</h2>
+              <span class="account-item-detail-value">{{date}}</span>
+            </div>
+
+            {{#if date '!==' last_update_date}}
+              <div class="account-item-detail">
+                <h2 class="account-item-detail-title">{{lang 'core.account.orders.items.updated'}}</h2>
+                <span class="account-item-detail-value">{{last_update_date}}</span>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="account-item-badge">
+          <h2 class="account-status">{{status}}</h2>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+
+{{else}}
+  <div class="account-empty">{{lang 'core.account.orders.items.empty'}}</div>
+
+{{/if}}

@@ -1,0 +1,109 @@
+<section
+  class="single-product-tabs-section product-tabs-additional-info"
+  id="additional-info"
+  data-tab-content
+>
+  <h3 class="single-product-tabs-section-title">
+    {{lang 'product.tabs.additional_info'}}
+  </h3>
+
+  {{#if product.sku}}
+    <div class="product-tab-details-item product-tab-details-sku">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.sku'}}</span>
+      <span class="product-tab-details-item-value" data-product-sku>{{product.sku}}</span>
+    </div>
+  {{/if}}
+  {{#if product.upc}}
+    <div class="product-tab-details-item product-tab-details-upc">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.upc'}}</span>
+      <span class="product-tab-details-item-value" data-product-upc>{{product.upc}}</span>
+    </div>
+  {{/if}}
+  {{#if product.condition}}
+    <div class="product-tab-details-item product-tab-details-condition">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.condition'}}</span>
+      <span class="product-tab-details-item-value">{{product.condition}}</span>
+    </div>
+  {{/if}}
+  {{#if product.availability}}
+    <div class="product-tab-details-item product-tab-details-availability">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.availability'}}</span>
+      <span class="product-tab-details-item-value">{{product.availability}}</span>
+    </div>
+  {{/if}}
+  {{#if product.weight}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.weight'}}</span>
+      <span class="product-tab-details-item-value" data-product-weight>{{product.weight}}</span>
+    </div>
+  {{/if}}
+  {{#if product.width}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.width'}}</span>
+      <span class="product-tab-details-item-value" data-product-width>{{product.width}}</span>
+    </div>
+  {{/if}}
+  {{#if product.height}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.height'}}</span>
+      <span class="product-tab-details-item-value" data-product-height>{{product.height}}</span>
+    </div>
+  {{/if}}
+  {{#if product.depth}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.depth'}}</span>
+      <span class="product-tab-details-item-value" data-product-depth>{{product.depth}}</span>
+    </div>
+  {{/if}}
+  {{#if product.min_purchase_quantity}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.min_purchase_quantity'}}</span>
+      <span class="product-tab-details-item-value">{{lang 'product.tabs.details.purchase_units' quantity=product.min_purchase_quantity}}</span>
+    </div>
+  {{/if}}
+  {{#if product.max_purchase_quantity}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.max_purchase_quantity'}}</span>
+      <span class="product-tab-details-item-value">{{lang 'product.tabs.details.purchase_units' quantity=product.max_purchase_quantity}}</span>
+    </div>
+  {{/if}}
+  {{#if product.gift_wrapping_available}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.gift_wrapping'}}</span>
+      <span class="product-tab-details-item-value">{{lang 'product.tabs.details.gift_wrapping_available'}}</span>
+    </div>
+  {{/if}}
+  {{#if product.shipping}}
+    {{#if product.shipping.calculated}}
+      <div class="product-tab-details-item">
+        <span class="product-tab-details-item-name">{{lang 'product.tabs.details.shipping'}}</span>
+        <span class="product-tab-details-item-value">{{lang 'product.tabs.details.shipping_calculated'}}</span>
+      </div>
+    {{else}}
+      {{#if product.shipping.price.value '===' 0}}
+        <div class="product-tab-details-item">
+          <span class="product-tab-details-item-name">{{lang 'product.tabs.details.shipping'}}</span>
+          <span class="product-tab-details-item-value">{{lang 'product.tabs.details.shipping_free'}}</span>
+        </div>
+      {{else}}
+        <div class="product-tab-details-item">
+          <span class="product-tab-details-item-name">{{lang 'product.tabs.details.shipping'}}</span>
+          <span class="product-tab-details-item-value">{{lang 'product.tabs.details.shipping_fixed' amount=product.shipping.price.formatted}}</span>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+  {{#if product.warranty}}
+    <div class="product-tab-details-item">
+      <span class="product-tab-details-item-name">{{lang 'product.tabs.details.warranty'}}</span>
+      <span class="product-tab-details-item-value">{{{product.warranty}}}</span>
+    </div>
+  {{/if}}
+
+  {{#each product.custom_fields}}
+    <div class="product-tab-details-item product-tab-details-item-custom">
+      <span class="product-tab-details-item-name">{{name}}:</span>
+      <span class="product-tab-details-item-value">{{{value}}}</span>
+    </div>
+  {{/each}}
+</section>

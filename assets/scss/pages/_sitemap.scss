@@ -1,0 +1,45 @@
+.sitemap-content {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sitemap-group {
+  @include container;
+  flex-basis: auto;
+  width: 100%;
+  text-align: left;
+
+  @include media($min: $screen-small) {
+    @include col-width(6);
+  }
+
+  @include media($min: $screen-large) {
+    @include col-width(4);
+  }
+
+  ul {
+    padding-left: $gutter-small;
+    list-style: disc;
+
+    li {
+      margin-bottom: $gutter-small;
+
+      a {
+        color: $color-text;
+      }
+    }
+  }
+}
+
+.sitemap-title {
+  @include heading(5);
+  margin-bottom: $gutter-small;
+}
+
+.sitemap-showall {
+  display: block;
+  margin-top: $gutter-small;
+  font-weight: 600;
+}

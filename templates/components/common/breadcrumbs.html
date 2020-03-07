@@ -1,0 +1,14 @@
+{{#if breadcrumbs}}
+  <div class="breadcrumbs">
+    {{#each breadcrumbs}}
+      {{#unless @last}}
+        <a class="breadcrumb" href="{{url}}">{{{name}}}</a>
+        <span class="breadcrumb-separator">/</span>
+      {{else}}
+        <span class="breadcrumb breadcrumb-active">
+          {{{name}}}
+        </span>
+      {{/unless}}
+    {{/each}}
+  </div>
+{{/if}}

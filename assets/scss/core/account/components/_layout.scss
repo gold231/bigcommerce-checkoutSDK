@@ -1,0 +1,48 @@
+.account-wrapper {
+  @extend %clearfix;
+  font-size: $account-font-size;
+}
+
+.account-nav,
+.account-body {
+  vertical-align: top;
+}
+
+.account-body {
+  @media screen and (min-width: $account-breakpoint-small) {
+    float: right;
+    width: 65%;
+    padding-left: $account-gutter-inner;
+  }
+
+  @media screen and (min-width: $account-breakpoint-medium) {
+    width: 75%;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  .account-nav-hidden & {
+    float: none;
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
+.account-nav {
+  @media screen and (max-width: $account-breakpoint-small - 1) {
+    margin-bottom: $account-gutter;
+  }
+
+  @media screen and (min-width: $account-breakpoint-small) {
+    float: left;
+    width: 35%;
+    padding-right: $account-gutter-inner;
+  }
+
+  @media screen and (min-width: $account-breakpoint-medium) {
+    width: 25%;
+  }
+}

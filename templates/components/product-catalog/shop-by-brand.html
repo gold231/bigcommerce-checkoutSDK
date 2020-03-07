@@ -1,0 +1,22 @@
+<ul class="catalog-shop-by">
+  {{#each shop_by}}
+    <li class="catalog-shop-by-item">
+      <a
+        class="catalog-shop-by-action {{#if selected}}active{{/if}}"
+        href="{{url}}"
+        title="{{name}}"
+      >
+        {{name}}
+      </a>
+    </li>
+  {{/each}}
+  <li class="catalog-shop-by-item">
+    <a
+      class="catalog-shop-by-action"
+      href="{{url}}"
+      title="{{lang 'link-list.view_brands'}}"
+    >
+      {{lang 'link-list.view_brands'}}
+    </a>
+  </li>
+</ul>

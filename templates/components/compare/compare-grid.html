@@ -1,0 +1,78 @@
+<div class="compare-grid" data-product-compare>
+  {{#each comparisons}}
+    <article class="compare-grid-item">
+      <div class="compare-grid-item-top">
+        <div class="compare-grid-item-image {{../theme_settings.product_grid_image_ratio}}">
+          {{> components/common/responsive-image
+            image=image
+            fit=../theme_settings.product_grid_image_cropping
+            lazyload=../theme_settings.lazyload_mode
+            fallback_size=../theme_settings.product-list
+            default=../theme_settings.default_image
+          }}
+        </div>
+        <header class="compare-grid-item-header">
+          {{#if ../comparisons.length ">" 2}}
+            <button
+              class="compare-grid-item-remove"
+              data-remove-url="{{remove_url}}"
+              data-compare-item-remove="{{id}}"
+              aria-label="{{lang 'common.compare.remove'}}"
+            >
+              {{> svg/icon-x}}
+            </button>
+          {{/if}}
+
+          <h2 class="product-grid-item-name">
+            <a href="{{url}}">{{name}}</a>
+          </h2>
+        </header>
+
+        {{#if brand.name}}
+          <div class="product-grid-item-brand">{{brand.name}}</div>
+        {{/if}}
+
+        {{> core/products/price
+          price_range_display=../theme_settings.price_range_display
+          retail_price_label=../theme_settings.retail-price-label
+          non_sale_price_label=../theme_settings.non-sale-price-label
+          sale_price_label=../theme_settings.sale-price-label
+          price_label=../theme_settings.price-label
+        }}
+
+        <div class="compare-grid-item-actions">
+          {{#if ../settings.show_wishlist}}
+            <div class="compare-wishlist">
+              {{> components/common/wishlist}}
+            </div>
+          {{/if}}
+
+          {{> components/product-catalog/product-grid-item-actions
+            quickshop=../theme_settings.product_catalog_quickshop
+          }}
+
+          {{#if out_of_stock_message}}
+            <div class="button button-primary button-small button-disabled">
+              {{lang 'product.sold_out'}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="compare-grid-item-bottom">
+        {{#any ../comparisons summary}}
+          <div class="compare-grid-item-label">Description</div>
+          <div>{{{summary}}}</div>
+        {{/any}}
+
+        {{#any ../comparisons rating}}
+          <div class="compare-grid-item-label label-rating">Rating</div>
+          {{#if num_reviews}}
+            {{> components/reviews/ratings rating=rating}}
+          {{else}}
+            {{lang 'product.reviews.no_reviews'}}
+          {{/if}}
+        {{/any}}
+      </div>
+    </article>
+  {{/each}}
+</div>

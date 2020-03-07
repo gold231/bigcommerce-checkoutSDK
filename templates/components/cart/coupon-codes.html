@@ -1,0 +1,29 @@
+<div class="cart-totals-block cart-totals-coupons" data-coupon-codes>
+  <form class="form form-inline" method="post" action="{{urls.cart}}" data-coupon-code-form>
+    <input type="hidden" name="action" value="applycoupon">
+    <input
+      class="form-input"
+      id="couponcode"
+      type="text"
+      name="search_query_adv"
+      value=""
+      placeholder="{{lang 'cart.coupon_codes.coupon_code'}}"
+      data-coupon-code-input
+    >
+    <button class="button button-secondary button-small" type="submit">
+      {{lang 'cart.coupon_codes.submit'}}
+    </button>
+  </form>
+
+  {{! Coupons Value }}
+  {{#each cart.coupons}}
+    <div class="cart-total-row">
+      <span class="cart-total-label">
+        {{code}}
+      </span>
+      <a class="cart-action-minor" href="{{remove_url}}" data-coupon-remove>
+        {{lang 'cart.coupon_codes.remove'}}
+      </a>
+    </div>
+  {{/each}}
+</div>

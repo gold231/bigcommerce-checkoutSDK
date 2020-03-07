@@ -1,0 +1,73 @@
+<section class="single-product-tabs" data-tabs>
+  <ul class="tabs">
+    {{#if product.description}}
+      <li class="single-product-tab-title tab-title">
+        <a href="#description" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.description'}}
+        </a>
+      </li>
+    {{/if}}
+    {{#if settings.show_product_reviews}}
+      <li class="single-product-tab-title tab-title">
+        <a href="#write_review" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.reviews' num=product.reviews.total}}
+        </a>
+      </li>
+    {{/if}}
+    {{#if product.videos.list.length}}
+      <li class="single-product-tab-title tab-title">
+        <a href="#videos" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.videos'}}
+        </a>
+      </li>
+    {{/if}}
+    {{#unless theme_settings.hide_info}}
+      <li class="single-product-tab-title tab-title">
+        <a href="#additional-info" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.additional_info'}}
+        </a>
+      </li>
+    {{/unless}}
+  </ul>
+
+  {{#if product.description}}
+    <div class="single-product-tabs-content single-product-tabs-content-mobile">
+      <div class="single-product-accordion-title accordion-title">
+        <a href="#description" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.description'}}
+        </a>
+      </div>
+      {{> components/product/tabs/description}}
+    </div>
+  {{/if}}
+  {{#if settings.show_product_reviews}}
+    <div class="single-product-tabs-content single-product-tabs-content-mobile">
+      <div class="single-product-accordion-title accordion-title">
+        <a href="#write_review" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.reviews' num=product.reviews.total}}
+        </a>
+      </div>
+      {{> components/product/tabs/reviews}}
+    </div>
+  {{/if}}
+  {{#if product.videos.list.length}}
+    <div class="single-product-tabs-content single-product-tabs-content-mobile">
+      <div class="single-product-accordion-title accordion-title">
+        <a href="#videos" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.videos'}}
+        </a>
+      </div>
+      {{> components/product/tabs/video}}
+    </div>
+  {{/if}}
+  {{#unless theme_settings.hide_info}}
+    <div class="single-product-tabs-content single-product-tabs-content-mobile">
+      <div class="single-product-accordion-title accordion-title">
+        <a href="#additional-info" class="single-product-info-links" data-tab-link>
+          {{lang 'product.tabs.additional_info'}}
+        </a>
+      </div>
+      {{> components/product/tabs/additional-info}}
+    </div>
+  {{/unless}}
+</section>

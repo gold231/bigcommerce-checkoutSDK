@@ -1,0 +1,69 @@
+<p>{{lang 'rss.intro'}}</p>
+
+{{#if urls.rss.blog}}
+  <div class="page-rss-group">
+    <h2>{{lang 'rss.blog.heading'}}</h2>
+    <p>
+      {{lang 'rss.blog.intro' limit=settings.rss_item_limit store=settings.store_name}}
+    </p>
+    <ul class="page-rss-list">
+      <li>
+        <a href="{{urls.rss.blog}}">{{lang 'rss.blog.rss' limit=settings.rss_item_limit}}</a>
+      </li>
+      <li>
+        <a href="{{urls.rss.blog_atom}}">{{lang 'rss.blog.rss_atom' limit=settings.rss_item_limit}}</a>
+      </li>
+    </ul>
+  </div>
+{{/if}}
+
+{{#if urls.rss.products.new}}
+  <div class="page-rss-group">
+    <h2>{{lang 'rss.products.new.heading'}}</h2>
+    <p>
+      {{lang 'rss.products.new.intro' limit=settings.rss_item_limit store=settings.store_name}}
+    </p>
+    <ul class="page-rss-list">
+      <li>
+        <a href="{{urls.rss.products.new}}">{{lang 'rss.products.new.rss' limit=settings.rss_item_limit}}</a>
+      </li>
+      <li>
+        <a href="{{urls.rss.products.new_atom}}">{{lang 'rss.products.new.rss_atom' limit=settings.rss_item_limit}}</a>
+      </li>
+    </ul>
+  </div>
+{{/if}}
+
+{{#if urls.rss.products.popular}}
+  <div class="page-rss-group">
+    <h2>{{lang 'rss.products.popular.heading'}}</h2>
+    <p>
+      {{lang 'rss.products.popular.intro' limit=settings.rss_item_limit store=settings.store_name}}
+    </p>
+    <ul class="page-rss-list">
+      <li>
+        <a href="{{urls.rss.products.popular}}">{{lang 'rss.products.popular.rss' limit=settings.rss_item_limit}}</a>
+      </li>
+      <li>
+        <a href="{{urls.rss.products.popular_atom}}">{{lang 'rss.products.popular.rss_atom' limit=settings.rss_item_limit}}</a>
+      </li>
+    </ul>
+  </div>
+{{/if}}
+
+{{#if urls.rss.products.featured}}
+  <div class="page-rss-group">
+    <h2>{{lang 'rss.products.featured.heading'}}</h2>
+    <p>
+      {{lang 'rss.products.featured.intro' limit=settings.rss_item_limit store=settings.store_name}}
+    </p>
+    <ul class="page-rss-list">
+      <li>
+        <a href="{{urls.rss.products.featured}}">{{lang 'rss.products.featured.rss' limit=settings.rss_item_limit}}</a>
+      </li>
+      <li>
+        <a href="{{urls.rss.products.featured_atom}}">{{lang 'rss.products.featured.rss_atom' limit=settings.rss_item_limit}}</a>
+      </li>
+    </ul>
+  </div>
+{{/if}}

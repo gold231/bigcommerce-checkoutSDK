@@ -1,0 +1,68 @@
+{{!--
+  Cart Item: an individual product item shown on the shopping cart page.
+--}}
+
+<article class="cart-item" data-cart-item data-item-id="{{id}}">
+  <div class="cart-item-image cart-item-section">
+    {{#if type '===' 'GiftCertificate'}}
+      {{> svg/giftcard}}
+    {{else}}
+      <a href={{url}}>
+        {{> components/common/responsive-image
+          image=image
+          fit=fit
+          fallback_size=fallback_size
+          lazyload=lazyload
+          default_image=default_image
+        }}
+      </a>
+    {{/if}}
+  </div>
+
+  <div class="cart-item-details cart-item-section">
+    <h1 class="cart-item-title">
+      <a href="{{url}}">{{{name}}}</a>
+    </h1>
+    {{> components/cart/item-options}}
+    {{> components/cart/gift-wrap-item}}
+  </div>
+
+  <div class="cart-item-unit-price cart-item-section">
+    {{#any bulk_pricing.discount_percentage bulk_pricing.discount_amount}}
+      <div class="cart-item-discount-line">
+        <span class="cart-item-price-label">
+          {{lang 'cart.base_price'}}
+        </span>
+        <span class="price-is-discounted">
+          {{bulk_pricing.base_price.formatted}}
+        </span>
+      </div>
+
+      <div class="cart-item-discount-line">
+        <span class="cart-item-price-label">
+          {{lang 'cart.bulk_discount'}}
+        </span>
+        {{price.formatted}}
+      </div>
+    {{else}}
+      <div>{{price.formatted}}</div>
+    {{/any}}
+  </div>
+
+  <div class="cart-item-quantity cart-item-section">
+    {{> components/common/quantity}}
+  </div>
+
+  <div class="cart-item-total-price cart-item-section">
+    {{#if total_discounted}}
+      <div class="price-is-discounted">{{total.formatted}}</div>
+      <div>{{total_discounted.formatted}}</div>
+    {{else}}
+      <div class="cart-item-price">{{total.formatted}}</div>
+    {{/if}}
+  </div>
+
+  <a class="cart-item-remove" href="{{remove_url}}" data-cart-item-remove>
+    {{> svg/icon-x}}
+  </a>
+</article>

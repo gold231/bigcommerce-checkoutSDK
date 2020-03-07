@@ -1,0 +1,31 @@
+
+{{#if radios}}
+  <div class="form-field form-field-common form-field-radio {{#if required}} form-required{{/if}}" id="{{id}}">
+    <div class="form-field-title">
+      {{label}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </div>
+    <div class="form-field-control">
+      {{#each radios}}
+        <label class="form-label">
+          <input class="form-input form-radio"
+            id="radio-{{../name}}-{{#if id}}{{id}}{{else}}{{display}}{{/if}}"
+            name="{{../name}}"
+            type="radio"
+            value="{{value}}"
+            {{#if checked}}checked{{/if}}
+            {{#if private_id}}data-field-type="{{private_id}}"{{/if}}
+            {{#if ../required}}required{{/if}}
+            aria-required="{{../required}}">
+          <span class="form-label-text">
+            {{#if label}}
+              {{label}}
+            {{else}}
+              {{display}}
+            {{/if}}
+          </span>
+        </label>
+      {{/each}}
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,33 @@
+<header class="site-header container">
+  <div class="grid-container">
+    <div class="site-header-section header-section-branding">
+      <button class="button-navigation-toggle" data-navigation-toggle>
+        <div class="burger"></div>
+        <span class="sr-only">{{lang 'header.menu'}}</span>
+      </button>
+
+      {{> components/header/branding}}
+    </div>
+    
+    <div class="site-header-section header-section-search">
+      {{> components/common/search-form }}
+      <div class="quick-search" data-quick-search>
+        <div class="quick-search-loading">
+          <span class="quick-search-loader">
+            {{> svg/loading-square}}
+          </span>
+          <span class="quick-search-loader">
+            {{> svg/loading-square}}
+          </span>
+          <span class="quick-search-loader">
+            {{> svg/loading-square}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-header-section header-section-utils">
+      {{> components/header/site-utils}}
+    </div>
+  </div>
+</header>

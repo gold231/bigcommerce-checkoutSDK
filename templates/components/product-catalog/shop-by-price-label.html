@@ -1,0 +1,9 @@
+{{#any shop_by selected=true}}
+  {{#each shop_by}}
+    {{#if selected}}
+      {{low.formatted}} - {{high.formatted}}
+    {{/if}}
+  {{/each}}
+{{else}}
+  {{lang 'common.shop_by.any_price'}}
+{{/any}}

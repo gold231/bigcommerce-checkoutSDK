@@ -1,0 +1,71 @@
+// List
+
+.account-download {
+  padding: $account-gutter-inner 0 0;
+  margin: $account-gutter-inner 0;
+  border-top: 1px solid $account-border-color;
+}
+
+.account-download-title {
+  margin: 0;
+  font-size: 1em;
+}
+
+.account-download-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.account-download-filename {
+  font-size: 1.2em;
+}
+
+.account-download-filesize {
+  padding-left: 5px;
+  font-weight: normal;
+  color: $account-text-color-light;
+}
+
+.account-download-description {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.account-download-expiry {
+  font-size: 0.9em;
+  color: $account-text-color-light;
+}
+
+.account-download-expiry-item {
+  display: block;
+  padding-bottom: 5px;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
+// Gallery
+
+.account-downloads-gallery-image {
+  text-align: center;
+}
+
+.account-downloads-gallery-thumbs {
+  @extend %clearfix;
+  text-align: center;
+}
+
+.account-downloads-gallery-thumb {
+  display: inline-block;
+  width: 10%;
+  height: 10%;
+  padding: 0 2px;
+  vertical-align: middle;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

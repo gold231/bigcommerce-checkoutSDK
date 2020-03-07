@@ -1,0 +1,99 @@
+{{!
+  Rating form field. Shows a radio input for each possible rating.
+
+  Note: Shown in reverse-order to allow :checked styling without JS.
+
+  Not used by stencil.
+
+  @param label string
+         The title of this form field.
+
+  @param name string
+         The name attribute for the form inputs.
+
+  @param value number (optional)
+         The selected rating.
+
+  @param required bool (optional)
+         If true, this field is required for the form submission.
+
+  @param icon string (optional)
+         Some markup to insert into the labels.
+
+  @param id string (optional)
+         An HTML ID to give the field element.
+}}
+<div class="form-field form-field-rating {{#if required}}form-required{{/if}}" {{#if id}}id="{{id}}"{{/if}}>
+  <div class="form-field-title">
+    {{label}}
+    {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+  </div>
+  <div class="form-field-control">
+
+    <input class="form-input form-radio"
+      id="form-rating-{{name}}-5"
+      name="{{name}}"
+      type="radio"
+      value="5"
+      {{#if value '===' 5}}checked{{/if}}
+      {{#if required}}required{{/if}}
+      aria-required="{{required}}">
+    <label class="form-label" for="form-rating-{{name}}-5">
+      {{#if icon}}{{{icon}}}{{/if}}
+      <span class="form-label-text">{{lang 'forms.rating.label' rating=5 min=1 max=5}}</span>
+    </label>
+
+    <input class="form-input form-radio"
+      id="form-rating-{{name}}-4"
+      name="{{name}}"
+      type="radio"
+      value="4"
+      {{#if value '===' 4}}checked{{/if}}
+      {{#if required}}required{{/if}}
+      aria-required="{{required}}">
+    <label class="form-label" for="form-rating-{{name}}-4">
+      {{#if icon}}{{{icon}}}{{/if}}
+      <span class="form-label-text">{{lang 'forms.rating.label' rating=4 min=1 max=5}}</span>
+    </label>
+
+    <input class="form-input form-radio"
+      id="form-rating-{{name}}-3"
+      name="{{name}}"
+      type="radio"
+      value="3"
+      {{#if value '===' 3}}checked{{/if}}
+      {{#if required}}required{{/if}}
+      aria-required="{{required}}">
+    <label class="form-label" for="form-rating-{{name}}-3">
+      {{#if icon}}{{{icon}}}{{/if}}
+      <span class="form-label-text">{{lang 'forms.rating.label' rating=3 min=1 max=5}}</span>
+    </label>
+
+    <input class="form-input form-radio"
+      id="form-rating-{{name}}-2"
+      name="{{name}}"
+      type="radio"
+      value="2"
+      {{#if value '===' 2}}checked{{/if}}
+      {{#if required}}required{{/if}}
+      aria-required="{{required}}">
+    <label class="form-label" for="form-rating-{{name}}-2">
+      {{#if icon}}{{{icon}}}{{/if}}
+      <span class="form-label-text">{{lang 'forms.rating.label' rating=2 min=1 max=5}}</span>
+    </label>
+
+    <input class="form-input form-radio"
+      id="form-rating-{{name}}-1"
+      name="{{name}}"
+      type="radio"
+      value="1"
+      {{#if value '===' 1}}checked{{/if}}
+      {{#if required}}required{{/if}}
+      aria-required="{{required}}">
+    <label class="form-label" for="form-rating-{{name}}-1">
+      {{#if icon}}{{{icon}}}{{/if}}
+      <span class="form-label-text">{{lang 'forms.rating.label' rating=1 min=1 max=5}}</span>
+    </label>
+
+  </div>
+</div>

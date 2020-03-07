@@ -1,0 +1,165 @@
+.cart-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $space;
+  padding-bottom: $space;
+  border-bottom: 1px solid $color-borders;
+
+  @include media($max: $screen-medium) {
+    flex-wrap: wrap;
+  }
+
+  &:first-child {
+    border-top: 1px solid $color-borders;
+  }
+
+  .form-field-quantity-control {
+    width: map-get($site, cart-item-spacing);
+  }
+
+  .quantity-decrement {
+    left: 0;
+  }
+
+  .quantity-increment {
+    right: 0;
+  }
+}
+
+.cart-item-section {
+  @include media($min: $screen-medium) {
+    margin-right: $space-smaller;
+  }
+}
+
+.cart-item-image {
+  width: map-get($site, cart-item-spacing);
+  height: map-get($site, cart-item-spacing);
+
+  @include media($max: $screen-medium) {
+    margin-bottom: $space-smaller;
+  }
+
+  .replaced-image {
+    height: 100%;
+    background-size: contain;
+  }
+}
+
+.cart-item-title {
+  @include heading(5);
+}
+
+.cart-item-options {
+  @extend %text-style-meta;
+}
+
+.cart-item-details {
+  flex-basis: calc(100% - #{map-get($site, cart-item-spacing) + $space-smaller});
+
+  @include media($max: $screen-medium) {
+    margin-top: $space-small;
+    margin-right: 0;
+    margin-bottom: $space-small;
+  }
+
+  @include media($min: $screen-medium) {
+    flex-basis: 30%;
+  }
+}
+
+// Gift wrapping
+
+.cart-modal-content {
+  .form-field-title {
+    display: block;
+  }
+
+  .form-field {
+    margin-bottom: $space-smaller;
+  }
+
+  .form-actions {
+    margin-top: $space;
+    text-align: center;
+  }
+}
+
+.cart-item-giftwrap-control {
+  @extend %reset-button;
+  @extend %link-style;
+}
+
+.cart-item-giftwrap-type,
+.cart-item-giftwrap-message {
+  @extend %text-style-meta;
+  display: block;
+}
+
+.cart-item-giftwrap-control,
+.cart-item-giftwrap-info {
+  margin-top: $space-smallest;
+}
+
+.giftwrap-image {
+  @extend %link-style;
+  float: right;
+}
+
+.giftwrap-toggle {
+  margin-bottom: $space-small;
+}
+
+// Pricing
+
+.cart-item-unit-price,
+.cart-item-total-price {
+  @include media($min: $screen-medium) {
+    flex-basis: 15%;
+  }
+}
+
+.cart-item-discount-line {
+  & + & {
+    margin-top: $space-smallest;
+  }
+}
+
+.cart-item-price-label {
+  @extend %text-style-smallcaps;
+  display: block;
+  margin-right: $space-smallest;
+}
+
+.cart-item-quantity {
+  @include media($max: $screen-medium) {
+    align-self: flex-end;
+  }
+}
+
+.cart-item-total-price {
+  text-align: right;
+
+  @include media($max: $screen-medium) {
+    flex-basis: 100%;
+    margin-top: $space-smaller;
+  }
+}
+
+.cart-item-remove {
+  margin-right: $space;
+
+  @include media($max: $screen-medium) {
+    position: absolute;
+    top: $space-small;
+    right: 0;
+    margin-right: 0;
+  }
+
+  svg {
+    width: rem(14);
+    height: rem(14);
+  }
+}

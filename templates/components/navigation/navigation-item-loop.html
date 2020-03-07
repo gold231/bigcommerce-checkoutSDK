@@ -1,0 +1,54 @@
+<a
+  href="{{url}}"
+  {{#if is_active}}class="is-active"{{/if}}
+  {{#if children}}
+    data-toggle-navigation="{{url}}"
+    data-navigation-name="{{name}}"
+  {{/if}}
+>
+  {{name}}
+  {{#if show_count}}
+    <span class="main-navigation-item-count">
+      {{count}}
+    </span>
+  {{/if}}
+</a>
+{{#if children}}
+  <span class="main-navigation-item-toggle">
+    {{> svg/chevron-right}}
+  </span>
+  <ul
+    class="main-navigation-panel
+    main-navigation-panel-child
+    is-right"
+    data-navigation-menu="{{url}}"
+    data-navigation-panel
+  >
+    <li class="main-navigation-item main-navigation-item-all">
+      <a
+        href="{{url}}"
+        {{#if is_active}}class="is-active"{{/if}}
+        data-navigation-all-name="{{name}}"
+      >
+        {{#if show_all}}
+          {{lang 'header.all'}} {{name}}
+        {{else}}
+          {{name}}
+        {{/if}}
+        {{#if show_count}}
+          <span class="main-navigation-item-count">
+            {{count}}
+          </span>
+        {{/if}}
+      </a>
+    </li>
+    {{#each children}}
+      <li class="main-navigation-item {{#if children}}has-children{{/if}}">
+        {{> components/navigation/navigation-item-loop
+          show_all=../show_all
+          show_count=../show_count
+        }}
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

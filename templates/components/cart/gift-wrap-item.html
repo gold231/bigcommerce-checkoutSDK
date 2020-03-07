@@ -1,0 +1,36 @@
+{{!--
+  Gift Wrap Item - Shown as part of cart-items
+  with links to add / change / remove gift wrapping for that item
+--}}
+
+{{inject 'removeGiftWrap' (lang 'cart.gift_wrapping.remove_confirm')}}
+
+{{#if show_gift_wrapping}}
+  <div class="cart-item-giftwrapping">
+    {{#if gift_wrapping}}
+
+      {{! Show type of giftwrap and message }}
+      <div class="cart-item-giftwrap-info">
+        <span class="cart-item-giftwrap-type">{{lang 'cart.gift_wrapping.gift_wrap' wrap=(limit gift_wrapping.name 30)}}</span>
+        {{#if gift_wrapping.message}}
+          <span class="cart-item-giftwrap-message">{{lang 'cart.gift_wrapping.message' type=gift_wrapping.message}}</span>
+        {{/if}}
+      </div>
+
+      {{! Change / Remove }}
+      <div class="cart-item-giftwrap-control">
+        <a class="primary-link" href="#" data-item-giftwrap="{{id}}">{{lang 'cart.gift_wrapping.change'}}</a>
+        /
+        <a class="primary-link" href="{{gift_wrapping.remove_url}}" data-giftwrap-remove>{{lang 'cart.gift_wrapping.remove'}}</a>
+      </div>
+
+    {{else}}
+
+      {{! Add Giftwrapping }}
+      <button class="cart-item-giftwrap-control" data-item-giftwrap="{{id}}">
+        {{lang 'cart.gift_wrapping.add'}}
+      </button>
+
+    {{/if}}
+  </div>
+{{/if}}

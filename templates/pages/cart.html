@@ -1,0 +1,28 @@
+{{#partial "page"}}
+
+    <div data-cart-content>
+      {{#if cart.items.length}}
+        {{> components/common/page-title title=(lang 'cart.title')}}
+        {{> components/cart/items}}
+      {{else}}
+        <div class="empty-cart">
+          {{> components/common/page-title title=(lang 'cart.empty')}}
+          <a
+            class="button button-primary"
+            href="{{urls.home}}"
+          >
+            {{lang "cart.continue_shopping"}}
+          </a>
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="cart-lower">
+      <div class="cart-totals-container" data-cart-totals>
+        {{> components/cart/totals}}
+      </div>
+    </div>
+
+{{/partial}}
+
+{{> layout/base}}

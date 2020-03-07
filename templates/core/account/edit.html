@@ -1,0 +1,30 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.settings.heading'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#if forms.edit_account.error}}
+    {{> core/alerts/alert-error forms.edit_account.error}}
+  {{/if}}
+
+  {{#if forms.edit_account.success}}
+    {{> core/alerts/alert-success forms.edit_account.success}}
+  {{/if}}
+
+  <form action="{{urls.account.update_action}}" class="account-settings-form" method="post" data-validated-form>
+    {{> core/forms/common/text name='account_firstname' required=true label=(lang 'core.account.settings.first_name') value=forms.edit_account.first_name}}
+    {{> core/forms/common/text name='account_lastname' required=true label=(lang 'core.account.settings.last_name') value=forms.edit_account.last_name}}
+    {{> core/forms/common/text name='account_companyname' label=(lang 'core.account.settings.company') value=forms.edit_account.company_name}}
+    {{> core/forms/common/text name='account_phone' required=true label=(lang 'core.account.settings.phone') value=forms.edit_account.phone}}
+
+    {{#each forms.edit_account.fields}}
+      {{{dynamicComponent 'core/forms/common'}}}
+    {{/each}}
+
+    <div class="form-actions">
+      <button class="button account-button-primary">{{lang 'core.account.settings.submit'}}</button>
+    </div>
+  </form>
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='settings' class='settings'}}

@@ -1,0 +1,32 @@
+//scss-lint:disable NameFormat - stencil functions
+
+// Accents
+$color-primary: stencilColor("color_primary");
+$color-secondary: stencilColor("color_secondary");
+$color-highlight: stencilColor("color_highlight");
+$color-background: stencilColor("color_background");
+
+// Alerts
+$color-error: stencilColor("color_error");;
+$color-info: stencilColor("color_info");;
+$color-success: stencilColor("color_success");;
+
+// Text
+$color-text: stencilColor("color_text");
+$color-text-light: transparentize($color-text, 0.2);
+$color-text-lighter: transparentize($color-text, 0.5);
+$color-headings: stencilColor("color_headings");
+
+// Lines
+$color-borders: stencilColor("color_borders");
+$color-rule: change-color($color-text, $lightness: 88%);
+
+// General
+$color-black: #000;
+$color-white: #fff;
+
+// Core color overrides
+$account-text-color: $color-text;
+$account-link-color: $color-headings;
+$account-accent-color: $color-primary;
+$account-border-color: $color-borders;

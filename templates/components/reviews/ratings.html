@@ -1,0 +1,19 @@
+{{!--
+  Display rating as series of stars
+
+  @param rating
+    The Rating value to display.
+--}}
+
+<div
+  class="rating-stars"
+  aria-label="{{lang 'product.reviews.rating_stars' rating=rating}}"
+>
+  {{#for 1 5}}
+    {{#if ../rating '>=' $index}}
+      {{> svg/icon-star-full}}
+    {{else}}
+      {{> svg/icon-star-empty}}
+    {{/if}}
+  {{/for}}
+</div>

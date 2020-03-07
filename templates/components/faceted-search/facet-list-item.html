@@ -1,0 +1,12 @@
+<li class="facet-item {{#if selected}}active{{/if}}">
+  <a class="facet-item-link" href="{{url}}" rel="nofollow" data-faceted-search-facet>
+    <span class="checkbox-box">
+      {{> svg/icon-checkmark}}
+    </span>
+
+    {{title}}
+    {{#if ../show_product_counts}}
+      <span class="facet-item-count">({{count}})</span>
+    {{/if}}
+  </a>
+</li>

@@ -1,0 +1,3 @@
+{
+  "core/forms/common/captcha": "{{!\n  Basically just a wrapper.\n  If you call this file it should serve the correct markup based on where it's called from.\n}}\n\n{{#if product.reviews.recaptcha}}\n  {{{product.reviews.recaptcha.markup}}}\n{{/if}}\n{{#if forms.create_account.recaptcha}}\n  {{{forms.create_account.recaptcha.markup}}}\n{{/if}}\n{{#if forms.contact.recaptcha}}\n  {{{forms.contact.recaptcha.markup}}}\n{{/if}}\n"
+}

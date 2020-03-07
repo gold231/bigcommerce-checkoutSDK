@@ -1,0 +1,42 @@
+.account-wrapper {
+  .form-label-text {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .form-field-checkbox,
+  .form-field-radio {
+    .form-label-text { width: auto; }
+  }
+
+  .form-field {
+    margin-bottom: $account-gutter-inner;
+  }
+
+  .form-input {
+    width: 100%;
+
+    &.account-form-half {
+      width: 50%;
+    }
+  }
+
+  .form-actions {
+    clear: both;
+  }
+}
+
+.account-form-column-container {
+  @extend %clearfix;
+
+  .form-field {
+    @media screen and (min-width: 480px) {
+      float: left;
+      width: 50%;
+
+      &:nth-child(odd) { padding-right: $account-gutter-inner; }
+      &:nth-child(even) { padding-left: $account-gutter-inner; }
+    }
+  }
+}

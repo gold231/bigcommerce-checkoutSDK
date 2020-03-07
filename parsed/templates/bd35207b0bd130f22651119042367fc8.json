@@ -1,0 +1,3 @@
+{
+  "components/product-catalog/shop-by-price": "<ul class=\"catalog-shop-by\">\n  {{#each shop_by}}\n    <li class=\"catalog-shop-by-item\">\n      <a\n        class=\"catalog-shop-by-action {{#if selected}}active{{/if}}\"\n        href=\"{{url}}\"\n        title=\"{{low.formatted}} - {{high.formatted}}\"\n      >\n        {{low.formatted}} - {{high.formatted}}\n      </a>\n    </li>\n  {{/each}}\n</ul>\n"
+}

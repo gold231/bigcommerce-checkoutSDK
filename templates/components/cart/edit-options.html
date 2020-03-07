@@ -1,0 +1,40 @@
+<button class="modal-close">
+  {{> svg/icon-x}}
+</button>
+
+{{> components/common/page-title title=(lang 'cart.reconfigure_product' name=product_name)}}
+
+<section class="cart-edit-options product-options">
+  <form id="CartEditProductFieldsForm" method="post" action="cart.php" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="EditProductFieldsInCart">
+    <input type="hidden" name="item_id" value="{{quote_item_id}}">
+    <div class="alert alert-error reconfigure-errors" data-reconfigure-errors></div>
+
+    {{#if options}}
+      <div class="form-field" data-product-option-change>
+        {{#each options}}
+          {{{dynamicComponent 'core/forms/options'}}}
+        {{/each}}
+      </div>
+    {{/if}}
+
+    {{#if customizations}}
+      <div class="form-field" data-product-option-change>
+        {{#each customizations}}
+          {{{dynamicComponent 'core/forms/customizations'}}}
+        {{/each}}
+      </div>
+    {{/if}}
+
+    {{#if product.event_date}}
+      {{> core/products/event}}
+    {{/if}}
+
+
+    <div class="form-actions">
+      <button class="button button-primary" type="submit">
+        {{lang 'cart.update'}}
+      </button>
+    </div>
+  </form>
+</section>

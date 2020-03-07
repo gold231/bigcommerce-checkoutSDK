@@ -1,0 +1,25 @@
+{{#if content_results}}
+  {{#each content_results}}
+    <article class="content-result">
+      <div class="content-result-type">
+        {{lang 'search.content_type' type=type}}
+      </div>
+      <h1 class="content-result-title">
+        <a href="{{url}}">{{title}}</a>
+      </h1>
+
+      <div class="content-result-summary">
+        {{content}}
+      </div>
+
+      <div class="content-result-summary-actions">
+        <a class="content-result-read-more" href="{{url}}">
+          {{ lang 'blog.read_more' }}
+        </a>
+      </div>
+    </article>
+  {{/each}}
+  {{> components/common/pagination pagination.content_results}}
+{{else}}
+  <h4>{{lang 'search.no_content_results'}}</h4>
+{{/if}}

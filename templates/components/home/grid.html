@@ -1,0 +1,46 @@
+{{!--
+  Homepage Standard Grid / Carousel
+
+  @param items object
+    The list of items to display in the section (featured, new, top sellers, or categories)
+--}}
+
+{{#each (limit items limit)}}
+  {{#if ../style '===' 'carousel'}}
+    {{> components/product-catalog/product-grid-item
+      compare=../../catalog_type.show_compare
+      quickshop=../../theme_settings.product_catalog_quickshop
+      image_ratio=../../theme_settings.product_grid_image_ratio
+      fit=../../theme_settings.product_grid_image_cropping
+      lazyload=../../theme_settings.lazyload_mode
+      fallback_size=../../theme_settings.product-list
+      default_image=../../theme_settings.default_image
+      show_rating=../../settings.show_product_rating
+      show_actions=../../show_actions
+      price_range_display=../../theme_settings.price_range_display
+      retail_price_label=../../theme_settings.retail-price-label
+      non_sale_price_label=../../theme_settings.non-sale-price-label
+      sale_price_label=../../theme_settings.sale-price-label
+      price_label=../../theme_settings.price-label
+      sale_badges=../../theme_settings.sale-badges
+    }}
+  {{else}}
+    {{> components/product-catalog/product-grid-item
+      compare=../../catalog_type.show_compare
+      quickshop=../../theme_settings.product_catalog_quickshop
+      image_ratio=../../theme_settings.product_grid_image_ratio
+      fit=../../theme_settings.product_grid_image_cropping
+      lazyload=../../theme_settings.lazyload_mode
+      fallback_size=../../theme_settings.product-list
+      default_image=../../theme_settings.default_image
+      show_rating=../../settings.show_product_rating
+      show_actions=../../show_actions
+      price_range_display=../../theme_settings.price_range_display
+      retail_price_label=../../theme_settings.retail-price-label
+      non_sale_price_label=../../theme_settings.non-sale-price-label
+      sale_price_label=../../theme_settings.sale-price-label
+      price_label=../../theme_settings.price-label
+      sale_badges=../../theme_settings.sale-badges
+    }}
+  {{/if}}
+{{/each}}

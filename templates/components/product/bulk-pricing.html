@@ -1,0 +1,21 @@
+{{#if product.bulk_discount_rates.length}}
+  <div class="single-product-bulk-pricing-block">
+    <h1 class="bulk-pricing-title">{{lang 'product.bulk_pricing.title'}}</h1>
+    <ul>
+      {{#each product.bulk_discount_rates}}
+        <li>
+          {{lang 'product.bulk_pricing.range' min=min max=max}}
+          {{#if type '===' 'percent'}}
+            {{lang 'product.bulk_pricing.percent' discount=discount.formatted}}
+          {{/if}}
+          {{#if type '===' 'fixed'}}
+            {{lang 'product.bulk_pricing.fixed' discount=discount.formatted}}
+          {{/if}}
+          {{#if type '===' 'price'}}
+            {{lang 'product.bulk_pricing.price' discount=discount.formatted}}
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

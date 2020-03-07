@@ -1,0 +1,88 @@
+.container {
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(95, 95, 95, 0.14);
+    margin: 3rem 0 1.5rem;
+    min-height: 300px;
+    
+    @media (max-width: 990px) {
+        display: none;
+    }
+}
+
+.cartContainer {
+    padding: 0;
+}
+
+.cartHeaderContainer {
+    border-bottom: 1px solid #e7e7e7;
+    display: flex;
+    padding: 1.5rem;
+}
+
+.cartHeader {
+    flex: 1;
+    font-size: 1.15385rem;
+    color: #2d2d2d;
+    font-family: brandon-grotesque, Lato, sans-serif;
+    font-weight: 400;
+}
+
+.cartAction {
+    align-self: flex-end;
+    color: #63c4bf;
+    font-weight: 400;
+}
+
+.orderSummaryContainer {
+    background-color: #fff;
+    // padding: 1.5rem;
+}
+
+.grandTotalContainer {
+    // background-color: #f1f5f8;
+    border-top: 1px solid #e7e7e7;
+    display: flex;
+    padding: 1.5rem;
+}
+
+.orderSummaryContainer {
+    border-top: 1px solid #e7e7e7;
+    padding: 1.5rem;
+}
+
+.orderSummaryContent {
+    border-top: 1px solid #e7e7e7;
+    padding: 1.5rem;
+}
+
+.grandTotalLabel {
+    align-self: center;
+    flex-grow: 1;
+    color: #4f4f4f;
+    font-family: brandon-grotesque, Lato, sans-serif;
+    font-weight: 400;
+    font-size: 1.15385rem;
+}
+
+.grandTotalAmount {
+    font-size: 2.30769rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #4f4f4f;
+}
+
+.cartItemsContainer {
+    padding: 1.5rem;
+    width: 100%;
+    padding: 1.5rem;
+    // border-top: 1px solid #e7e7e7;
+}
+
+.itemsCount {
+    color: #4f4f4f;
+    font-family: brandon-grotesque, Lato, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}

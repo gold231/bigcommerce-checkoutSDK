@@ -1,0 +1,10 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.orders.heading_all'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{> core/account/_private/orders-list orders=customer.orders}}
+  {{> core/pagination pagination.orders}}
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='orders' class='orders-all'}}

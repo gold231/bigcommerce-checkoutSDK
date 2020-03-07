@@ -1,0 +1,25 @@
+// Shipments
+// A list of shipments made for an order. Shown on the Order Details page.
+
+.account-shipments {
+  margin-bottom: $account-gutter;
+}
+
+.account-shipments-table {
+  th,
+  td {
+    padding: 10px 0;
+    text-align: left;
+  }
+
+  th {
+    padding: $account-gutter-inner 0 0;
+    border-top: 1px solid $account-border-color;
+  }
+
+  // Override default margins
+  .account-wrapper & {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

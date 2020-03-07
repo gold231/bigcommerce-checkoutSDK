@@ -1,0 +1,25 @@
+.product-tab-review {
+  &.hidden {
+    display: none;
+  }
+
+  &.animating,
+  &.visible {
+    display: block;
+  }
+}
+
+.rating-stars {
+  color: $color-primary;
+
+  .compare-grid-item-bottom & {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.single-product-tabs-no-reviews {
+  color: $color-primary;
+  text-align: center;
+  cursor: pointer;
+}

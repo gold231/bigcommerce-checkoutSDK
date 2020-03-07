@@ -1,0 +1,3 @@
+{
+  "core/forms/common/text": "\n<div class=\"form-field form-field-common form-field-text {{#if required}} form-required{{/if}}\" id=\"{{id}}\">\n  <label class=\"form-label\">\n    <span class=\"form-field-title\">\n      {{label}}\n      {{#if required}}<span class=\"required-text\">{{lang 'common.required'}}</span>{{/if}}\n    </span>\n    <span class=\"form-field-control\">\n      <input class=\"form-input\"\n        id=\"input-{{id}}\"\n        name=\"{{name}}\"\n        type=\"text\"\n        placeholder=\"{{prefill}}\"\n        {{#if value}}value=\"{{value}}\"{{/if}}\n        {{#if private_id}}data-field-type=\"{{private_id}}\"{{/if}}\n        {{#if required}}required{{/if}}\n        aria-required=\"{{required}}\">\n    </span>\n  </label>\n</div>\n"
+}

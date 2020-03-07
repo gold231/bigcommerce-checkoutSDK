@@ -1,0 +1,27 @@
+<footer class="site-footer">
+  <div class="site-footer-upper {{theme_settings.footer_style}}">
+    <div
+      class="site-footer-upper-container"
+    >
+      {{> components/footer/footer-section
+        section=theme_settings.footer_section_1
+      }}
+
+      {{> components/footer/footer-section
+        section=theme_settings.footer_section_2
+      }}
+
+      {{> components/footer/footer-section
+        section=theme_settings.footer_section_3
+      }}
+
+      {{> components/footer/footer-section
+        section=theme_settings.footer_section_4
+      }}
+    </div>
+  </div>
+  <div class="site-footer-lower">
+    {{> components/footer/site-footer-credits}}
+    {{> components/footer/site-footer-payment}}
+  </div>
+</footer>

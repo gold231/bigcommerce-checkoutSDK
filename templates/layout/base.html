@@ -1,0 +1,191 @@
+<!doctype html>
+<html class="no-js" lang="{{ locale_name }}">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{{head.title}}</title>
+
+  {{{head.meta_tags}}}
+  {{{head.config}}}
+
+  <link href="{{head.favicon}}" rel="shortcut icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  {{!-- Load Lazysizes script ASAP so images will appear --}}
+  <script>
+    {{!-- Only load visible elements until the onload event fires,
+      after which preload nearby elements. --}}
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.loadMode = 1;
+  </script>
+  <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
+
+  <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');</script>
+
+  {{{stylesheet '/assets/css/theme.css'}}}
+  
+    <style type="text/css" media="screen, print">
+           
+           /* Clarika Regular*/
+           @font-face {
+               font-family: "ClarikaProGeo-Rg";
+                src: url("{{cdn 'webdav:ClarikaProGeo-Rg.eot'}}"); /* IE9 Compat Modes */
+                src: url("{{cdn 'webdav:ClarikaProGeo-Rg.eot?#iefix'}}"), /* IE6-IE8 */
+                     url("{{cdn 'webdav:ClarikaProGeo-Rg.woff2'}}"), /* Super Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-Rg.woff'}}"), /* Pretty Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-Rg.svg#svgFontName'}}"); /* Legacy iOS */
+                     font-weight: 400;
+					font-style: normal;
+					font-display: swap;
+           }
+           
+           /* Clarika Regular Italic*/
+           @font-face {
+               font-family: "ClarikaProGeo-Rg";
+                src: url("{{cdn 'webdav:ClarikaProGeo-RgIt.eot'}}"); /* IE9 Compat Modes */
+                src: url("{{cdn 'webdav:ClarikaProGeo-RgIt.eot?#iefix'}}"), /* IE6-IE8 */
+                     url("{{cdn 'webdav:ClarikaProGeo-RgIt.woff2'}}"), /* Super Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-RgIt.woff'}}"), /* Pretty Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-RgIt.svg#svgFontName'}}"); /* Legacy iOS */
+                     font-weight: 400;
+					font-style: italic;
+					font-display: swap;
+           }
+           
+           /* Clarika Bold */
+           @font-face {
+               font-family: "ClarikaProGeo-Rg";
+                src: url("{{cdn 'webdav:ClarikaProGeo-Bd.eot'}}"); /* IE9 Compat Modes */
+                src: url("{{cdn 'webdav:ClarikaProGeo-Bd.eot?#iefix'}}"), /* IE6-IE8 */
+                     url("{{cdn 'webdav:ClarikaProGeo-Bd.woff2'}}"), /* Super Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-Bd.woff'}}"), /* Pretty Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-Bd.svg#svgFontName'}}"); /* Legacy iOS */
+                     font-weight: 700;
+					font-style: normal;
+					font-display: swap;
+           }
+           
+           
+            /* Clarika Bold Italic*/
+           @font-face {
+               font-family: "ClarikaProGeo-Rg";
+                src: url("{{cdn 'webdav:ClarikaProGeo-BdIt.eot'}}"); /* IE9 Compat Modes */
+                src: url("{{cdn 'webdav:ClarikaProGeo-BdIt.eot?#iefix'}}"), /* IE6-IE8 */
+                     url("{{cdn 'webdav:ClarikaProGeo-BdIt.woff2'}}"), /* Super Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-BdIt.woff'}}"), /* Pretty Modern Browsers */
+                     url("{{cdn 'webdav:ClarikaProGeo-BdIt.svg#svgFontName'}}"); /* Legacy iOS */
+                     font-weight: 700;
+					font-style: italic;
+					font-display: swap;
+           }
+           
+           /* Wulkan Display Bold */
+           @font-face {
+				font-family: "Wulkan-Display";
+				src:	url("{{cdn 'webdav:Wulkan Display Bold.eot'}}"); /* IE9 Compat Modes */
+				src:	url("{{cdn 'webdav:Wulkan Display Bold.eot?#iefix'}}"), /* IE6-IE8 */
+						url("{{cdn 'webdav:Wulkan Display Bold.woff2'}}"), /* Super Modern Browsers */
+						url("{{cdn 'webdav:Wulkan Display Bold.woff'}}"); /* Pretty Modern Browsers */
+				font-weight: 700;
+				font-style: normal;
+				font-display: swap;
+			}
+			
+			/* Wulkan Display Bold Italic */
+			@font-face {
+				font-family: "Wulkan-Display";
+				src:	url("{{cdn 'webdav:Wulkan Display Bold Italic.eot'}}"); /* IE9 Compat Modes */
+				src:	url("{{cdn 'webdav:Wulkan Display Bold Italic.eot?#iefix'}}"), /* IE6-IE8 */
+						url("{{cdn 'webdav:Wulkan Display Bold Italic.woff2'}}"), /* Super Modern Browsers */
+						url("{{cdn 'webdav:Wulkan Display Bold Italic.woff'}}"); /* Pretty Modern Browsers */
+				font-weight: 700;
+				font-style: italic;
+				font-display: swap;
+			}
+			
+			/* Wulkan Display Regular */
+			@font-face {
+				font-family: "Wulkan-Display";
+				src:	url("{{cdn 'webdav:Wulkan Display Medium.eot'}}"); /* IE9 Compat Modes */
+				src:	url("{{cdn 'webdav:Wulkan Display Medium.eot?#iefix'}}"), /* IE6-IE8 */
+						url("{{cdn 'webdav:Wulkan Display Medium.woff2'}}"), /* Super Modern Browsers */
+						url("{{cdn 'webdav:Wulkan Display Medium.woff'}}"); /* Pretty Modern Browsers */
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+			
+			/* Wulkan Display Regular Italic */
+			@font-face {
+				font-family: "Wulkan-Display";
+				src:	url("{{cdn 'webdav:Wulkan Display Medium Italic.eot'}}"); /* IE9 Compat Modes */
+				src:	url("{{cdn 'webdav:Wulkan Display Medium Italic.eot?#iefix'}}"), /* IE6-IE8 */
+						url("{{cdn 'webdav:Wulkan Display Medium Italic.woff2'}}"), /* Super Modern Browsers */
+						url("{{cdn 'webdav:Wulkan Display Medium Italic.woff'}}"); /* Pretty Modern Browsers */
+				font-weight: 400;
+				font-style: italic;
+				font-display: swap;
+			}
+  </style>
+  
+  {{ getFontsCollection }} 
+
+  {{{head.scripts}}}
+  {{{head.rsslinks}}}
+  {{inject 'themeImageSizes' theme_images}}
+  {{> components/common/global-injects}}
+  {{{snippet 'html_head'}}}
+
+  {{> core/structured-data/website}}
+</head>
+
+<body class="page-{{page_type}} {{> components/common/body-classes}}">
+  {{{snippet 'header'}}}
+
+  {{> components/header/site-header}}
+  <div class="icons-svg-sprite">{{> components/common/icons/icon-defs}}</div>
+
+  <div class="site-main">
+    {{> components/sidebar/sidebar}}
+
+    <main class="site-main-content">
+      {{{region name="header_bottom"}}}
+      {{#if template '!==' 'pages/home'}}
+        {{> components/common/breadcrumbs}}
+        {{> components/common/banners banners=banners.top class='banners-top'}}
+        {{> components/common/shipping-messages}}
+      {{/if}}
+
+      {{#block "page"}}{{/block}}
+
+      {{> components/common/banners banners=banners.bottom class='banners-bottom'}}
+    </main>
+  </div>
+
+  {{> components/common/alerts}}
+  {{> components/mini-cart/mini-cart}}
+
+  {{> components/footer/site-footer}}
+  {{#and settings.privacy_cookie settings.is_eu_ip_address}}
+    {{> core/alerts/cookie}}
+  {{/and}}
+
+  {{> components/product-catalog/compare-widget}}
+
+  {{> core/structured-data/breadcrumbs}}
+
+  <div class="off-canvas-screen"></div>
+
+  <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+  <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>
+  <script>
+    {{!-- Exported in app.js --}}
+    window.stencilBootstrap("{{template_file}}", {{jsContext}}).load();
+  </script>
+
+  {{{footer.scripts}}}
+  {{{snippet 'footer'}}}
+</body>
+</html>

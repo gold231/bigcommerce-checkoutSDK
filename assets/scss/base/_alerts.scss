@@ -1,0 +1,118 @@
+.site-alerts {
+  position: fixed;
+  top: 0;
+  z-index: z("mini-cart");
+  width: 100%;
+}
+
+.alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: map-get($site, alert);
+  padding: $space-smallest $space-smaller;
+  color: $color-white;
+  box-shadow: 0 0 0 1px $color-white;
+  transition: opacity 0.3s ease;
+
+  &.dismissed {
+    opacity: 0;
+  }
+
+  &.hidden,
+  &.alert-dynamic {
+    display: none;
+  }
+
+  &.animating,
+  &.visible {
+    display: block;
+  }
+
+  // initial state for enter transition
+  &.animating-in,
+  &.animating-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  // final states for both in and out
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .alert-dismiss {
+    position: absolute;
+    top: 50%;
+    right: rem(16);
+    width: rem(12);
+    height: rem(12);
+    margin-top: rem(-6);
+    line-height: 0;
+    color: transparent;
+    cursor: pointer;
+
+    &:hover { opacity: 1; }
+  }
+
+  &.alert-success,
+  &.success {
+    background-color: $color-success;
+
+    .alert-dismiss {
+      color: darken($color-success, 20%);
+    }
+  }
+
+  &.alert-error,
+  &.error {
+    background-color: $color-error;
+
+    .alert-dismiss {
+      color: darken($color-error, 30%);
+    }
+  }
+
+  &.alert-info,
+  &.neutral {
+    background-color: $color-info;
+
+    .alert-dismiss {
+      color: darken($color-info, 30%);
+    }
+  }
+
+  a:not(.alert-dismiss) {
+    color: $color-white;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &.out-of-stock-alert {
+    @extend %text-style-smallcaps;
+    border: 1px solid $color-secondary;
+    background: $color-white;
+    color: $color-secondary;
+    min-width: fit-content;
+    width: fit-content;
+  } 
+}
+
+.stocknotification {
+    @extend %text-style-smallcaps;
+    padding: $space-smallest $space-smaller;
+    text-align: left;
+    text-decoration: underline;
+}
+
+.oos_notification {
+    display: flex;
+    align-items: center;
+    margin-top: $space-smaller;
+}

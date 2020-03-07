@@ -1,0 +1,96 @@
+<div
+  class="product-details
+  {{#if quick_view}}
+    product-quick-view
+  {{/if}}"
+  data-product-details
+  data-product-title="{{product.title}}"
+>
+  {{#if sale_badges}}
+    {{> core/products/sale-badge
+      classes="product-badge product-badge-sale"
+    }}
+  {{/if}}
+  
+    <div class="product-details-header">
+     {{#if quick_view}}
+      <h1 class="product-title">
+        <a href="{{product.url}}">
+          {{product.title}}
+        </a>
+      </h1>
+     {{/if}}
+  </div>
+
+  {{#if product.brand}}
+    <a class="product-brand" href="{{product.brand.url}}">
+      {{product.brand.name}}
+    </a>
+  {{/if}}
+
+  {{> core/products/price
+    price=product.price
+    show_saved=true
+    price_range_display=theme_settings.price_range_display
+    retail_price_label=theme_settings.retail-price-label
+    non_sale_price_label=theme_settings.non-sale-price-label
+    sale_price_label=theme_settings.sale-price-label
+    price_label=theme_settings.price-label
+    show_savings=true
+  }}
+
+  {{#if product.call_for_price}}
+    <p class="single-product-call-for-price">{{product.call_for_price}}</p>
+  {{/if}}
+  
+  {{#if settings.show_product_rating}}
+    <a href="#write_review" data-review-section-link>
+        {{> components/reviews/ratings rating=product.rating}}
+    </a>
+  {{/if}}
+  
+  {{#if product.out_of_stock_message}}
+    <div class="oos_notification">
+        <div class="alert alert-error out-of-stock-alert">
+          <div class="alert-message">
+            {{product.out_of_stock_message}}
+          </div>
+        </div>
+        <div id="stocknotification" class="stocknotification"></div>
+    </div>
+  {{/if}}
+  
+  {{#if product.description}}
+    <div
+      class="product-description user-content has-excerpt"
+      data-excerpt-length="220">
+      {{{product.description}}}
+    </div>
+    {{#unless quick_view}}
+      {{#if product.description.length '>' 220}}
+        <a
+          class="product-description-read-more"
+          href="#description"
+          data-description-link>
+          {{lang 'product.read_more'}}
+        </a>
+      {{/if}}
+    {{/unless}}
+  {{/if}}
+
+  {{> components/product/bulk-pricing}}
+
+  {{#if quick_view}}
+    <a class="quick-view-link" href="{{product.url}}">
+      {{lang 'product.view_product'}}
+      {{> svg/chevron-right}}
+    </a>
+  {{/if}}
+
+  {{> components/product/add-to-cart}}
+
+  {{! container for appending product-option-change errors}}
+  {{#if product.can_purchase}}
+    <div class="product-alert" data-product-option-message></div>
+  {{/if}}
+</div>

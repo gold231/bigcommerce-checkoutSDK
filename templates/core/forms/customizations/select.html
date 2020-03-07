@@ -1,0 +1,24 @@
+
+<div class="form-field form-field-customizations form-field-select{{#if required}} form-required{{/if}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{display_name}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <span class="form-select-wrapper">
+        <select
+          class="form-input input-select"
+          id="product-fields-{{id}}"
+          name="ProductFields[{{this.id}}]"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}">
+          <option value="" {{#any values selected=true}}{{else}}selected{{/any}} disabled>{{lang 'product.pick_one'}}</option>
+          {{#each values}}
+            <option value="{{this}}" {{#if selected}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </span>
+    </span>
+  </label>
+</div>

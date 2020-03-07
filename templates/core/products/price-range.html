@@ -1,0 +1,49 @@
+{{!
+  Shows a product's price range.
+
+  @param price_range object
+
+  @param show_amp_classes bool
+    If true include amp class component
+}}
+<div
+  class="
+    price
+    {{#if show_amp_classes}}
+      {{> core/amp/common/price-class}}
+    {{/if}}
+  "
+>
+  {{#and price_range.min.with_tax price_range.max.with_tax}}
+    <div class="price-withtax" data-product-price-wrapper="with-tax">
+      <span data-product-price-with-tax class="price price-value">
+        {{price_range.min.with_tax.formatted}} - {{price_range.max.with_tax.formatted}}
+      </span>
+      {{#and price_range.min.without_tax price_range.max.without_tax}}
+        <span class="price-tax-label">
+          {{lang
+            'core.price.with_tax'
+            tax_label=price.tax_label
+          }}
+        </span>
+      {{/and}}
+    </div>
+  {{/and}}
+  {{#and price_range.min.without_tax price_range.max.without_tax}}
+    <div class="price-withouttax" data-product-price-wrapper="without-tax">
+      <span data-product-price-without-tax class="price price-without-tax">
+        {{price_range.min.without_tax.formatted}} - {{price_range.max.without_tax.formatted}}
+      </span>
+      {{#and price_range.min.with_tax price_range.max.with_tax}}
+        <span class="price-tax-label">
+          {{lang
+            'core.price.without_tax'
+            tax_label=price.tax_label
+          }}
+        </span>
+      {{/and}}
+    </div>
+  {{/and}}
+
+  <span class="price-saved" data-product-price-saved></span>
+</div>

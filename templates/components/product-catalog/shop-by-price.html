@@ -1,0 +1,13 @@
+<ul class="catalog-shop-by">
+  {{#each shop_by}}
+    <li class="catalog-shop-by-item">
+      <a
+        class="catalog-shop-by-action {{#if selected}}active{{/if}}"
+        href="{{url}}"
+        title="{{low.formatted}} - {{high.formatted}}"
+      >
+        {{low.formatted}} - {{high.formatted}}
+      </a>
+    </li>
+  {{/each}}
+</ul>

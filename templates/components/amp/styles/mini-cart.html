@@ -1,0 +1,36 @@
+.mini-cart-toggle {
+  display: flex;
+  align-items: center;
+  color: {{color_text}};
+}
+
+.mini-cart-toggle:hover {
+  opacity: 1;
+}
+
+.mini-cart-icon-wrap {
+  height: 18px;
+}
+
+.mini-cart-icon-wrap.cart-empty .mini-cart-icon-full {
+  display: none;
+}
+
+.mini-cart-icon-wrap.cart-full .mini-cart-icon-empty {
+  display: none;
+}
+
+.mini-cart-icon-wrap.cart-full .mini-cart-icon-full {
+  display: inline-block;
+}
+
+.mini-cart-count {
+  display: none;
+  margin-left: 5px;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.mini-cart-count.show {
+  display: inline-block;
+}

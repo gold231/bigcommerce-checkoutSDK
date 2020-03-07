@@ -1,0 +1,36 @@
+---
+cart: true
+---
+
+{{#partial "page"}}
+
+  <article class="page-container">
+    <header class="page-header">
+      {{> components/common/page-title title=page.title}}
+    </header>
+
+    <div class="page-content-program user-content">
+      {{#if page.content}}
+        {{#replace '%%Syndicate%%' page.content}}
+          {{> components/page/rss-feed}}
+        {{else}}
+          {{{page.content}}}
+        {{/replace}}
+      {{/if}}
+
+      {{#if page.feed}}
+        <ul>
+          {{#each page.feed}}
+            <li>
+              <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+              <p>{{{content}}}</p>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

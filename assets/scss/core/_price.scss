@@ -1,0 +1,14 @@
+.price-ns-label,
+.price-value-label,
+.price-rrp-label {
+  word-break: break-word;
+}
+
+.price-rrp,
+.price-ns {
+  text-decoration: line-through;
+}
+
+.price-ns-wrapper {
+    margin-bottom: $space-smallest;
+}

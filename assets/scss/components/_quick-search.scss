@@ -1,0 +1,144 @@
+// layout
+.quick-search {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
+  min-height: rem(100);
+  overflow: hidden;
+  background: $color-background;
+  border: 1px solid $color-borders;
+
+  &.animating,
+  &.visible {
+    display: flex;
+  }
+
+  &.animating-in,
+  &.animating-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quick-search-inner {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+// search result list
+.quick-search-list {
+  width: 100%;
+  max-height: rem(345);
+  margin-bottom: rem(85);
+  overflow: scroll;
+
+  &:first-child {
+    border-right: 0px solid $color-borders;
+  }
+}
+
+// quick search loading
+.quick-search-loading {
+  padding: $gutter-medium;
+  color: $color-text-lighter;
+}
+
+.quick-search-loader {
+  display: block;
+  padding-bottom: $gutter-small;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+// quick search item
+.quick-search-item {
+  padding: $gutter-small;
+
+  &:hover {
+    background: $color-highlight;
+  }
+}
+
+.quick-search-item-link {
+  display: block;
+}
+
+.quick-search-item-image {
+  height: rem(100);
+  background: {
+    position: 0 50%;
+    repeat: no-repeat;
+    size: contain;
+  }
+
+  .thumbnail-cover & {
+    background-size: cover;
+  }
+}
+
+.quick-search-item-info {
+  margin-top: $gutter-small;
+}
+
+// quick search link
+.quick-search-link-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: $space;
+  padding-bottom: $space;
+  text-align: center;
+
+  a {
+    color: $color-primary;
+    text-transform: uppercase;
+  }
+
+  &.no-results {
+    display: none;
+  }
+}
+
+// quick search section title
+.quick-search-section-title {
+  font-size: $font-size-body-small;
+  letter-spacing: rem(2);
+  color: $color-text-lighter;
+  text-align: center;
+  text-transform: uppercase;
+  background: $color-highlight;
+}
+
+.quick-search-item-content-title {
+  display: block;
+  font-size: $font-size-body-smaller;
+  text-transform: uppercase;
+
+  @include media($min: $screen-small) {
+    font-size: $font-size-body;
+  }
+}
+
+.quick-search-item-content-summary {
+  font-size: $font-size-body-smaller;
+  color: $color-text-lighter;
+}
+
+// quick search no results
+.quick-search-no-results {
+  width: 100%;
+  padding: $gutter-medium;
+  text-align: center;
+}

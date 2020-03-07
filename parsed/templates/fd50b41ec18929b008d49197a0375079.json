@@ -1,0 +1,3 @@
+{
+  "components/common/breadcrumbs": "{{#if breadcrumbs}}\n  <div class=\"breadcrumbs\">\n    {{#each breadcrumbs}}\n      {{#unless @last}}\n        <a class=\"breadcrumb\" href=\"{{url}}\">{{{name}}}</a>\n        <span class=\"breadcrumb-separator\">/</span>\n      {{else}}\n        <span class=\"breadcrumb breadcrumb-active\">\n          {{{name}}}\n        </span>\n      {{/unless}}\n    {{/each}}\n  </div>\n{{/if}}\n"
+}

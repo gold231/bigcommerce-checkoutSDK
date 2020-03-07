@@ -1,0 +1,44 @@
+{{!--
+  Pagination: Previous / Next buttons and a list of links to other pages.
+  @param this Object containing links, count, etc
+--}}
+
+{{#any previous links next}}
+  <nav class="pagination">
+    {{#if previous}}
+      <a
+        class="pagination-item pagination-previous"
+        href="{{previous}}"
+        data-faceted-search-facet
+      >
+        {{> svg/chevron-left}}
+        <span class="sr-only">
+          {{lang 'common.pagination.previous'}}
+        </span>
+      </a>
+    {{/if}}
+
+    {{#each links}}
+      <a
+        class="pagination-item {{#if number '==' ../current}} pagination-current{{/if}}"
+        href="{{url}}"
+        data-faceted-search-facet
+      >
+        {{number}}
+      </a>
+    {{/each}}
+
+    {{#if next}}
+      <a
+        class="pagination-item pagination-next"
+        href="{{next}}"
+        data-faceted-search-facet
+      >
+        {{> svg/chevron-right}}
+        <span class="sr-only">
+          {{lang 'common.pagination.next'}}
+        </span>
+      </a>
+    {{/if}}
+  </nav>
+{{/any}}

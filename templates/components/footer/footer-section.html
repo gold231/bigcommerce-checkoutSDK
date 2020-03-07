@@ -1,0 +1,38 @@
+{{!
+  Additional Navigation lists
+
+  @param section  options
+         'pages', 'newsletter', 'social' and 'brands' to determine the order of the lists
+         in the footer
+}}
+
+<div
+  class="site-footer-section site-footer-{{section}}">
+  {{#if section '==' 'pages'}}
+    {{> components/common/link-lists
+      type=section
+    }}
+  {{/if}}
+
+  {{#if section '==' 'social'}}
+    {{> components/common/link-lists
+      type=section
+    }}
+  {{/if}}
+
+  {{#if section '==' 'brands'}}
+    {{> components/common/link-lists
+      type=section
+    }}
+  {{/if}}
+
+  {{#if settings.show_newsletter_box}}
+    {{#if section '==' 'newsletter'}}
+      {{> components/common/newsletter-form}}
+    {{/if}}
+  {{/if}}
+
+  {{#if section '==' 'address'}}
+    {{> components/common/contact-info}}
+  {{/if}}
+</div>

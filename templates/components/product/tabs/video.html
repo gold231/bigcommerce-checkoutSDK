@@ -1,0 +1,16 @@
+<section
+  class="single-product-tabs-section single-product-tabs-videos"
+  id="videos"
+  data-tab-content
+>
+  <h3 class="single-product-tabs-section-title">
+    {{lang 'product.tabs.videos'}}
+  </h3>
+    <div class="product-videos-list">
+      {{#each product.videos.list}}
+        <div class="product-video-container">
+          <iframe src="https://www.youtube.com/embed/{{id}}?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+      {{/each}}
+    </div>
+</section>

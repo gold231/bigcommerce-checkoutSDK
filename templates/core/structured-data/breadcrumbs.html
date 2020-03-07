@@ -1,0 +1,27 @@
+{{!-- Breadcrumbs: include in base.html --}}
+
+<script id="schema-breadcrumbs">
+  var schema = document.createElement('script');
+  schema.type = 'application/ld+json';
+  schema.text = JSON.stringify({
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {{#each breadcrumbs}}
+        {
+          "@type": "ListItem",
+          "position": {{@index}} + 1,
+          "item": {
+            "@id": {{#unless @last}}"{{url}}"{{else}}window.location.href{{/unless}},
+            "name": "{{name}}"
+          }
+        }{{#unless @last}},{{/unless}}
+      {{/each}}
+    ]
+  });
+
+  document.querySelector('body').appendChild(schema);
+
+  var script = document.getElementById('schema-breadcrumbs');
+  script.parentElement.removeChild(script);
+</script>

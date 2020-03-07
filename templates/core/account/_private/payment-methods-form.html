@@ -1,0 +1,22 @@
+<form
+  class="form payment-method-edit-form"
+  action="{{delete_url}}"
+  method="post"
+  data-delete-payment-method="{{lang 'core.auth.payment_methods.confirm_delete'}}"
+  data-validated-form
+>
+  <div class="form-actions">
+    <a
+      class="button account-button-primary"
+      href="{{edit_url}}"
+    >
+      {{lang 'core.account.common.edit'}}
+    </a>
+    <button
+      type="submit"
+      class="button account-button-secondary"
+    >
+      {{lang 'core.account.common.delete'}}
+    </button>
+  </div>
+</form>

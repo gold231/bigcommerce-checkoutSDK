@@ -1,0 +1,216 @@
+{{#partial 'account-heading'}}
+
+  {{inject 'creditCardNumber' (lang 'forms.validate.payment_method.credit_card_number')}}
+  {{inject 'expiration' (lang 'forms.validate.payment_method.expiration')}}
+  {{inject 'nameOnCard' (lang 'forms.validate.payment_method.name_on_card')}}
+  {{inject 'cvv' (lang 'forms.validate.payment_method.cvv')}}
+
+  {{inject 'firstNameLabel' (lang 'forms.payment_methods.first_name')}}
+  {{inject 'lastNameLabel' (lang 'forms.payment_methods.last_name')}}
+  {{inject 'companyLabel' (lang 'forms.payment_methods.company')}}
+  {{inject 'phoneLabel' (lang 'forms.payment_methods.phone')}}
+  {{inject 'address1Label' (lang 'forms.payment_methods.address1')}}
+  {{inject 'address2Label' (lang 'forms.payment_methods.address2')}}
+  {{inject 'cityLabel' (lang 'forms.payment_methods.city')}}
+  {{inject 'countryLabel' (lang 'forms.payment_methods.country')}}
+  {{inject 'stateLabel' (lang 'forms.payment_methods.state')}}
+  {{inject 'postalCodeLabel' (lang 'forms.payment_methods.postal_code')}}
+  {{inject 'chooseCountryLabel' (lang 'forms.payment_methods.choose_country')}}
+
+  {{inject 'paymentMethodsUrl' urls.account.payment_methods.all}}
+  {{inject 'paymentsUrl' settings.payments_url}}
+  {{inject 'storeHash' settings.store_hash}}
+  {{inject 'vaultToken' vault.access_token}}
+  {{inject 'shopperId' customer.id}}
+  {{inject 'countries' countries}}
+
+  {{lang 'core.auth.payment_methods.edit.add_payment_method'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  <div class="account">
+
+    {{#if forms.error}}
+      {{> core/alerts/alert-error forms.error}}
+    {{/if}}
+
+    <form class="form" data-payment-method-form data-validated-form>
+      <input type="hidden" name="email" value="{{customer.email}}">
+      <input type="hidden" name="provider_id" value="{{forms.provider}}">
+
+      <h3 class="payment-method-form-heading">
+        {{lang 'core.account.payment_methods.heading'}}
+      </h3>
+
+      <div class="payment-method-form">
+        <p class="payment-method-form-subheading">
+          <span class="payment-method-form-cards">
+            {{#each ../theme_settings.supported_card_type_icons}}
+              <img
+                class="payment-method-form-cards-icon"
+                src="{{cdn (concat (concat 'img/core/payment-methods/' this) '.svg')}}"
+                alt="{{lang (concat 'core.account.payment_methods.card_types.' this)}}"
+                title="{{lang (concat 'core.account.payment_methods.card_types.' this)}}"
+              >
+            {{/each}}
+          </span>
+        </p>
+        <div class="payment-method-form-column">
+          <div class="payment-method-form-inputs payment-card-number">
+            {{> core/forms/common/text
+              id="credit_card_number"
+              required=true
+              name="credit_card_number"
+              label=(lang 'core.auth.payment_methods.credit_card_number')
+            }}
+            <svg class="payment-method-form-inputs-icon icon">
+              <use xlink:href="#icon-lock" />
+            </svg>
+          </div>
+          <div class="payment-method-form-inputs payment-expiration">
+            {{> core/forms/common/text
+              id="expiration"
+              required=true
+              name="expiration"
+              label=(lang 'core.auth.payment_methods.expiration')
+              prefill="MM/YY"
+            }}
+          </div>
+        </div>
+        <div class="payment-method-form-column">
+          <div class="payment-method-form-inputs payment-name-on-card">
+            {{> core/forms/common/text
+              id="name_on_card"
+              required=true
+              name="name_on_card"
+              label=(lang 'core.auth.payment_methods.name_on_card')
+            }}
+          </div>
+          <div class="payment-method-form-inputs payment-cvv">
+            {{> core/forms/common/text
+              id="cvv"
+              required=true
+              name="cvv"
+              label=(lang 'core.auth.payment_methods.cvv')
+            }}
+            <svg class="payment-method-form-inputs-icon icon">
+              <use xlink:href="#icon-lock" />
+            </svg>
+          </div>
+        </div>
+        <div class="form-field form-field-common form-field-checkbox">
+          <div class="form-field-control">
+            <label class="form-label" for="default_instrument">
+              <input
+                type="checkbox"
+                name="default_instrument"
+                id="default_instrument"
+                data-label="{{lang 'core.auth.payment_methods.default_instrument'}}"
+                class="form-input form-checkbox"
+              >
+            </label>
+          </div>
+          <div class="form-field-title">
+            {{lang 'core.auth.payment_methods.default_instrument'}}
+          </div>
+        </div>
+      </div>
+
+      <h3 class="payment-method-form-heading billing-heading">
+        {{lang 'core.account.payment_methods.billing_address'}}
+      </h3>
+
+      <div class="billing-addess-form">
+        {{> core/forms/common/text
+          private_id="FirstName"
+          required=true
+          id="first_name"
+          name="first_name"
+          label=(lang 'core.auth.payment_methods.first_name')
+        }}
+        {{> core/forms/common/text
+          private_id="LastName"
+          required=true
+          id="last_name"
+          name="last_name"
+          label=(lang 'core.auth.payment_methods.last_name')
+        }}
+        {{> core/forms/common/text
+          private_id="CompanyName"
+          required=false
+          id="company"
+          name="company"
+          label=(lang 'core.auth.payment_methods.company')
+        }}
+        {{> core/forms/common/text
+          private_id="Phone"
+          required=false
+          id="phone"
+          name="phone"
+          label=(lang 'core.auth.payment_methods.phone')
+        }}
+        {{> core/forms/common/text
+          private_id="AddressLine1"
+          required=true
+          id="address1"
+          name="address1"
+          label=(lang 'core.account.payment_methods.billing_address_labels.address_line_1')
+        }}
+        {{> core/forms/common/text
+          private_id="AddressLine2"
+          required=false
+          id="address2"
+          name="address2"
+          label=(lang 'core.account.payment_methods.billing_address_labels.address_line_2')
+        }}
+        {{> core/forms/common/text
+          private_id="City"
+          required=true
+          id="city"
+          name="city"
+          label=(lang 'core.account.payment_methods.billing_address_labels.suburb_city')
+        }}
+        {{> core/forms/common/select
+          private_id="Country"
+          required=true
+          id="country"
+          name="country"
+          label=(lang 'core.account.payment_methods.billing_address_labels.country')
+          chooseprefix=(lang 'core.account.payment_methods.billing_address_labels.choose_country')
+          options=countries
+        }}
+        {{> core/forms/common/text
+          private_id="State"
+          required=true id="state"
+          name="state"
+          label=(lang 'core.account.payment_methods.billing_address_labels.state_province')
+        }}
+        {{> core/forms/common/text
+          private_id="Zip"
+          required=true
+          id="postal_code"
+          name="postal_code"
+          label=(lang 'core.account.payment_methods.billing_address_labels.zip_postcode')
+        }}
+      </div>
+      <div class="form-actions">
+        <input
+          type="submit"
+          class="button button-primary"
+          value="{{lang 'core.auth.payment_methods.submit_value'}}"
+        >
+        <a href="{{urls.account.payment_methods.all}}" class="button">
+          {{lang 'core.account.common.cancel'}}
+        </a>
+        {{inject 'required' (lang 'core.account.common.required')}}
+        {{inject 'state_error' (lang 'core.account.state_error')}}
+        {{inject 'generic_error' (lang 'core.account.common.generic_error')}}
+      </div>
+    </form>
+  </div>
+{{/partial}}
+
+{{> core/account/_private/layout
+  nav_page='payment_methods'
+  class='payment methods'
+}}

@@ -1,0 +1,31 @@
+<div class="amp-product-actions">
+  {{#if product.options}}
+    <amp-iframe
+      height="500"
+      width="250"
+      layout="responsive"
+      sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals"
+      resizable
+      src="{{product.amp_options_url}}"
+    >
+      <div class="button amp-button-primary" overflow tabindex="0" role="button">
+        {{lang 'core.amp.product.choose_options'}}
+      </div>
+    </amp-iframe>
+  {{else}}
+    <a
+      class="button amp-button-primary"
+      href="{{product.cart_url}}"
+    >
+      {{#if product.pre_order}}
+        <span class="button-text">
+          {{lang 'core.amp.product.pre_order'}}
+        </span>
+      {{else}}
+        <span class="button-text">
+          {{lang 'core.amp.product.atc'}}
+        </span>
+      {{/if}}
+    </a>
+  {{/if}}
+</div>

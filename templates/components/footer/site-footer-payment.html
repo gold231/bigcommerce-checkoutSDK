@@ -1,0 +1,50 @@
+<div class="site-footer-payment">
+  <ul
+    class="
+      site-footer-payment-list
+      {{#if theme_settings.geotrust-ssl-common-name}}
+        footer-has-trust-seal
+      {{/if}}
+    "
+  >
+    {{#if theme_settings.payment_visa}}
+      <li class="site-footer-payment-list-item">
+        {{> svg/payment-visa}}
+      </li>
+    {{/if}}
+
+    {{#if theme_settings.payment_mastercard}}
+      <li class="site-footer-payment-list-item">
+        {{> svg/payment-mastercard}}
+      </li>
+    {{/if}}
+
+    {{#if theme_settings.payment_american_express}}
+      <li class="site-footer-payment-list-item">
+        {{> svg/payment-american-express}}
+      </li>
+    {{/if}}
+
+    {{#if theme_settings.payment_discover}}
+      <li class="site-footer-payment-list-item">
+        {{> svg/payment-discover}}
+      </li>
+    {{/if}}
+
+    {{#if theme_settings.payment_paypal}}
+      <li class="site-footer-payment-list-item">
+        {{> svg/payment-paypal}}
+      </li>
+    {{/if}}
+
+    {{#if theme_settings.payment_apple_pay}}
+      <li class="site-footer-payment-list-item">
+        {{> svg/payment-apple-pay}}
+      </li>
+    {{/if}}
+  </ul>
+
+  {{#if theme_settings.geotrust-ssl-common-name}}
+    {{> core/geotrust-ssl-seal}}
+  {{/if}}
+</div>

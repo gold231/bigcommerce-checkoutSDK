@@ -1,0 +1,62 @@
+
+// typography
+.newsletter-heading {
+  @extend %text-style-smallcaps;    
+  display: inline-block;
+  margin-bottom: calc(#{$gutter-small} - #{rem(2)});
+  font-weight:700;
+
+  .dark & {
+    color: $color-white;
+  }
+}
+
+.newsletter-subheading {
+  margin: 0 auto $gutter-small;
+  color: iromi_type($color-highlight, "less");
+
+  .dark & {
+    color: rgba($color-white, 0.8);
+  }
+
+  .site-footer & {
+    font-family: $font-secondary;
+    font-weight: 300;
+  }
+}
+
+// form
+.newsletter-subscription-form {
+  .form-inline {
+    justify-content: center;
+
+    @include media($max: $screen-large, $min: $screen-medium) {
+      justify-content: flex-start;
+    }
+  }
+
+  .newsletter-input {
+    width: 50%;
+    max-width: rem(250);
+    font-family: $font-primary;
+    color: $color-borders;
+  }
+
+  .newsletter-button-wrapper {
+    .button-small {
+      min-width: auto;
+      background: $color-white;
+      color:#606060 ;
+    }
+  }
+}
+
+.newsletter-summary {
+  font-family: $font-secondary;
+  font-weight: 300;
+  color: iromi_type($color-highlight, "less");
+
+  .dark & {
+    color: rgba($color-white, 0.8);
+  }
+}

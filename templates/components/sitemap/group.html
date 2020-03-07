@@ -1,0 +1,13 @@
+{{#if items.length}}
+  <ul>
+    {{#each items}}
+      <li>
+        <a href="{{url}}">{{label}}</a>
+
+        {{#if children}}
+          {{> components/sitemap/group items=children}}
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

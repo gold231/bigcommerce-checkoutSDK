@@ -1,0 +1,36 @@
+{{#if children}}
+  <amp-accordion disable-session-states>
+    <section>
+      <h3 class="amp-navigation-link parent-link {{#if is_active}}is-active{{/if}}">
+        {{name}}
+        <span class="arrow-down">
+          <svg width="9" height="14" viewBox="0 0 7 12" xmlns="http://www.w3.org/2000/svg" role="presentation">
+            <path d="M.34 10.66l.71.703L6.364 6.01 1.05.66l-.71.703L4.955 6.01" fill="currentColor"/>
+          </svg>
+        </span>
+      </h3>
+      <ul class="amp-navigation-list amp-navigation-list-tier">
+        <li class="amp-navigation-tier-item">
+          <a class="amp-navigation-link {{#if is_active}}is-active{{/if}}" href="{{url}}">
+            {{#if show_all}}
+              {{lang 'core.amp.header.all'}} {{name}}
+            {{else}}
+              {{name}}
+            {{/if}}
+          </a>
+        <li>
+        {{#each children}}
+          <li class="amp-navigation-tier-item {{#if children}}has-children{{/if}}">
+            {{> core/amp/common/navigation-loop
+              show_all=../show_all
+            }}
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  </amp-accordion>
+{{else}}
+  <a class="amp-navigation-link {{#if is_active}}is-active{{/if}}" href="{{url}}">
+    {{name}}
+  </a>
+{{/if}}

@@ -1,0 +1,3 @@
+{
+  "components/product/tabs/video": "<section\n  class=\"single-product-tabs-section single-product-tabs-videos\"\n  id=\"videos\"\n  data-tab-content\n>\n  <h3 class=\"single-product-tabs-section-title\">\n    {{lang 'product.tabs.videos'}}\n  </h3>\n    <div class=\"product-videos-list\">\n      {{#each product.videos.list}}\n        <div class=\"product-video-container\">\n          <iframe src=\"https://www.youtube.com/embed/{{id}}?rel=0&showinfo=0&autohide=1\" frameborder=\"0\" allowfullscreen></iframe>\n        </div>\n      {{/each}}\n    </div>\n</section>\n"
+}

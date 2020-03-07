@@ -1,0 +1,3 @@
+{
+  "components/common/shipping-messages": "{{#if shipping_messages}}\n  {{#each shipping_messages}}\n    <div class=\"promo-message\">{{{message}}}</div>\n  {{/each}}\n{{/if}}\n\n{{#if cart.status_messages}}\n  {{#each cart.status_messages}}\n    {{#if type '==' 2}}\n      <div class=\"promo-message\">{{{message}}}</div>\n    {{/if}}\n  {{/each}}\n{{/if}}\n\n{{#if product.shipping_messages}}\n  {{#each product.shipping_messages}}\n    <div class=\"promo-message\">{{{message}}}</div>\n  {{/each}}\n{{/if}}\n"
+}

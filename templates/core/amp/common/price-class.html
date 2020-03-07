@@ -1,0 +1,27 @@
+{{#if price.with_tax}}
+  {{#unless price.without_tax}}
+    {{#if price.rrp_with_tax}}
+      prices-taxed-onsale
+    {{else}}
+      prices-taxed
+    {{/if}}
+  {{/unless}}
+{{/if}}
+{{#if price.without_tax}}
+  {{#unless price.with_tax}}
+    {{#if price.rrp_without_tax}}
+      prices-notax-onsale
+    {{else}}
+      prices-notax
+    {{/if}}
+  {{/unless}}
+{{/if}}
+{{#if price.with_tax}}
+  {{#if price.without_tax}}
+    {{#if price.rrp_with_tax}}
+      prices-both-onsale
+    {{else}}
+      prices-both
+    {{/if}}
+  {{/if}}
+{{/if}}

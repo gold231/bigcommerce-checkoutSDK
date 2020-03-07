@@ -1,0 +1,78 @@
+{{#if returns}}
+  <div class="account-items">
+    {{#each returns}}
+      <article class="account-item">
+        <div class="account-item-thumbnail">
+          <img src="{{getImage product.image 'account-product-thumbnail' (cdn ../theme_settings.default_image)}}" alt="{{product.image.alt}}">
+        </div>
+
+        <div class="account-item-body">
+          <h1 class="account-item-title">
+            {{lang 'core.account.returns.list.number' number=id}}
+          </h1>
+
+          <p class="account-item-description">
+            {{lang 'core.account.returns.list.title' name=product.name quantity=quantity}}
+          </p>
+
+          <div class="account-item-details">
+            <div class="account-item-detail">
+              <h2 class="account-item-detail-title">{{lang 'core.account.returns.list.date'}}</h2>
+              <span class="account-item-detail-value">{{date_requested}}</span>
+            </div>
+
+            <div class="account-item-detail">
+              <h2 class="account-item-detail-title">{{lang 'core.account.returns.list.action'}}</h2>
+              <span class="account-item-detail-value">{{action}}</span>
+            </div>
+          </div>
+
+          <div class="account-item-details">
+            <div class="account-item-detail">
+              <h2 class="account-item-detail-title">{{lang 'core.account.returns.list.reason'}}</h2>
+              <span class="account-item-detail-value">{{reason}}</span>
+            </div>
+          </div>
+
+          {{#if comments}}
+            <div class="account-item-details">
+              <div class="account-item-detail">
+                <h2 class="account-item-detail-title">{{lang 'core.account.returns.list.comments'}}</h2>
+                <span class="account-item-detail-value">{{comments}}</span>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="account-item-badge">
+          <h2 class="account-status">
+            {{#if status '===' 'ReturnStatusPending'}}
+              {{lang 'core.account.returns.status.pending'}}
+            {{/if}}
+            {{#if status '===' 'ReturnStatusReceived'}}
+              {{lang 'core.account.returns.status.received'}}
+            {{/if}}
+            {{#if status '===' 'ReturnStatusAuthorized'}}
+              {{lang 'core.account.returns.status.authorized'}}
+            {{/if}}
+            {{#if status '===' 'ReturnStatusRepaired'}}
+              {{lang 'core.account.returns.status.repaired'}}
+            {{/if}}
+            {{#if status '===' 'ReturnStatusRefunded'}}
+              {{lang 'core.account.returns.status.refunded'}}
+            {{/if}}
+            {{#if status '===' 'ReturnStatusRejected'}}
+              {{lang 'core.account.returns.status.rejected'}}
+            {{/if}}
+            {{#if status '===' 'ReturnStatusCancelled'}}
+              {{lang 'core.account.returns.status.cancelled'}}
+            {{/if}}
+          </h2>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+
+{{else}}
+  <div class="account-empty">{{lang 'core.account.returns.no_returns'}}</div>
+{{/if}}

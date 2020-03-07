@@ -1,0 +1,43 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.addresses.heading'}}
+{{/partial}}
+
+{{#partial 'account-toolbar'}}
+  <a class="account-tool" href="{{urls.account.add_address}}">
+    {{lang 'core.account.addresses.new_address'}}
+  </a>
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#unless customer.addresses}}
+    {{> core/alerts/alert-info (lang 'core.account.addresses.no_addresses')}}
+  {{/unless}}
+
+  <div class="account-items">
+    {{#each customer.addresses}}
+      <article class="account-item">
+        <div class="account-item-body">
+          <h1 class="account-item-title account-item-title-large">
+            {{first_name}} {{last_name}}
+          </h1>
+
+          <div class="account-item-details">
+            <span class="account-address-detail">{{company}}</span>
+            <span class="account-address-detail">{{address1}}</span>
+            <span class="account-address-detail">{{address2}}</span>
+            <span class="account-address-detail">{{city}}, {{state}} {{zip}}</span>
+            <span class="account-address-detail">{{lang 'core.account.addresses.phone' phone_number=phone}}</span>
+          </div>
+        </div>
+        <div class="account-item-actions">
+          <form class="form" action="{{delete_url}}" method="post">
+            <a class="button account-button-primary account-button-small" href="{{edit_url}}">{{lang 'core.account.common.edit'}}</a>
+            <button type="submit" class="button account-button-primary account-button-small">{{lang 'core.account.common.delete'}}</button>
+          </form>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='addresses' class='addresses'}}

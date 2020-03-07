@@ -1,0 +1,37 @@
+// Contact page
+.contact-form-container {
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .form-field-text,
+  .form-field-email {
+    @include media($min: $screen-medium) {
+      @include col-width(6);
+
+      &:nth-child(even) {
+        margin-right: $gutter-medium;
+      }
+    }
+  }
+
+  .form-field-multiline {
+    @include col-width(12);
+    margin-right: $gutter-medium * 2;
+  }
+}
+
+.button-contact-submit {
+  @extend .button-primary;
+  margin-top: $gutter-large;
+}
+
+#form-contact-us .g-recaptcha {
+  margin-top: $space;
+
+  @include media($min: $screen-small) {
+    transform: scale(0.90);
+    transform-origin: 0 0;
+  }
+}

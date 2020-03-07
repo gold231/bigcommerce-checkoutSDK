@@ -1,0 +1,34 @@
+{{!
+  @param page string
+         should be assigned to the active gift card page (purchase, redeeem or balance)
+}}
+
+<nav class="giftcard-nav">
+  {{#if page '===' 'purchase'}}
+    <span class="giftcard-nav-item is-active">
+      {{lang 'core.giftcard.purchase.heading'}}
+    </span>
+  {{else}}
+    <a class="giftcard-nav-item" href="{{urls.gift_certificate.purchase}}">
+      {{lang 'core.giftcard.purchase.heading'}}
+    </a>
+  {{/if}}
+  {{#if page '===' 'redeem'}}
+    <span class="giftcard-nav-item is-active">
+      {{lang 'core.giftcard.redeem.heading'}}
+    </span>
+  {{else}}
+    <a class="giftcard-nav-item" href="{{urls.gift_certificate.redeem}}">
+      {{lang 'core.giftcard.redeem.heading'}}
+    </a>
+  {{/if}}
+  {{#if page '===' 'balance'}}
+    <span class="giftcard-nav-item is-active">
+      {{lang 'core.giftcard.balance.heading'}}
+    </span>
+  {{else}}
+    <a class="giftcard-nav-item" href="{{urls.gift_certificate.balance}}">
+      {{lang 'core.giftcard.balance.heading'}}
+    </a>
+  {{/if}}
+</nav>

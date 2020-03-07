@@ -1,0 +1,36 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.wishlists.view_heading' name=wishlist.name}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#all wishlist.is_public wishlist.is_editable}}
+    <div class="account-share-wishlist-url">
+      <h2 class="account-sub-heading">{{lang 'core.account.wishlists.share_intro'}}</h2>
+      <input class="form-input" value="{{settings.base_url}}{{wishlist.share_url}}" readonly>
+    </div>
+  {{/all}}
+
+  <section class="account-wishlist {{products_per_row_class}}">
+    {{#if wishlist.is_editable}}
+      <h2 class="account-sub-heading">{{lang 'core.account.wishlists.wishlist_contents'}}</h2>
+    {{/if}}
+    
+    {{#if wishlist.items}}
+      <div class="account-wishlist-items account-product-wrapper {{#unless wishlist.is_editable}}public-wishlist-items{{/unless}}">
+        {{#each wishlist.items}}
+          {{> core/account/_private/account-product-item show_remove=../wishlist.is_editable remove_url=remove_url default_image=../theme_settings.default_image show_bg=../show_bg}}
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="account-wishlist-empty">
+        {{lang 'core.account.wishlists.details_empty'}}
+      </div>
+    {{/if}}
+  </section>
+{{/partial}}
+
+{{#if wishlist.is_editable}}
+  {{> core/account/_private/layout nav_page='wishlists' class='wishlist-details'}}
+{{else}}
+  {{> core/account/_private/layout nav_page='wishlists' class='wishlist-details' nav='hidden'}}
+{{/if}}

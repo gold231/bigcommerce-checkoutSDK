@@ -1,0 +1,36 @@
+.apple-pay-checkout-button {
+  display: none;
+  box-sizing: border-box;
+  min-width: 50px;
+  height: 60px;
+  background: {
+    size: 100% 60%;
+    repeat: no-repeat;
+    position: 50% 50%;
+  }
+  border-radius: 5px;
+
+  @if stencilString("style_apple_pay_button") == "white" {
+    background-image: -webkit-named-image(apple-pay-logo-black);
+    background-color: white;
+  }
+
+  @else if stencilString("style_apple_pay_button") == "white-border" {
+    background-image: -webkit-named-image(apple-pay-logo-black);
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  @else {
+    background-image: -webkit-named-image(apple-pay-logo-white);
+    background-color: black;
+  }
+
+  .additional-checkout-buttons & {
+    margin: 15px 0;
+  }
+
+  .apple-pay-supported & {
+    display: block;
+  }
+}

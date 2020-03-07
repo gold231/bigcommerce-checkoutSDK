@@ -1,0 +1,87 @@
+
+{{#partial 'account-heading'}}
+{{lang 'core.account.return.heading' id=forms.return.order_id}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+{{#if forms.return.order_products.length}}
+  <form
+    action="{{urls.account.orders.save_new_return}}"
+    class="form"
+    method="post"
+    data-validated-form
+  >
+    <input type="hidden" name="order_id" value="{{forms.return.order_id}}">
+
+    <table class="table table-clean account-return-table account-table-tight">
+      <tr>
+        <th>{{lang 'core.account.return.order_item'}}</th>
+        <th>{{lang 'core.account.return.item_price'}}</th>
+        <th>{{lang 'core.account.return.quantity'}}</th>
+      </tr>
+
+      {{#each forms.return.order_products}}
+        <tr>
+          <td>
+            {{name}}
+            <br>
+            {{#if options}}
+              {{#each options}}
+                {{name}}:
+                {{value}}
+              {{/each}}
+            {{/if}}
+          </td>
+          <td>{{price.formatted}}</td>
+          <td>
+            {{> core/forms/common/number
+              limitfrom=0
+              limitto=quantity
+              name=(concat 'return_qty[' (concat id ']'))
+            }}
+          </td>
+        </tr>
+      {{/each}}
+    </table>
+
+    <div class="account-return-fields">
+      {{> core/forms/common/select
+        name='return_reason'
+        select_type='array'
+        options=forms.return.reasons
+        required=true display_name=(lang 'core.account.return.reason')
+      }}
+      {{> core/forms/common/select
+        name='return_action'
+        select_type='array'
+        options=forms.return.actions
+        required=true
+        display_name=(lang 'core.account.return.action')
+      }}
+      {{> core/forms/common/multiline
+        name='return_comments'
+        required=true
+        rows=8
+        label=(lang 'core.account.return.comments')
+      }}
+    </div>
+
+    <div class="form-actions">
+      <input
+        class="button account-button-primary"
+        type="submit"
+        value="{{lang 'core.account.return.request_return'}}"
+      >
+    </div>
+  </form>
+
+{{else}}
+  <div class="account-empty">{{lang 'core.account.return.empty'}}</div>
+
+{{/if}}
+{{/partial}}
+
+{{> core/account/_private/layout
+  nav_page='returns'
+  class='add-return'
+}}

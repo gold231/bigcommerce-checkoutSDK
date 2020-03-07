@@ -1,0 +1,22 @@
+<ul class="amp-product-review-list">
+  {{#each reviews.list}}
+    <li class="amp-product-review">
+      <article>
+        <header>
+          <span class="amp-product-review-rating">
+            {{> core/amp/common/ratings rating=rating}}
+          </span>
+          <h3 class="amp-product-review-title">{{title}}</h3>
+          {{#if name}}
+            <p class="amp-product-review-author">
+              {{lang 'core.amp.product.reviews_post_on_by' date=date name=name}}
+            </p>
+          {{/if}}
+        </header>
+        <p class="amp-product-review-content">
+          {{nl2br text}}
+        </p>
+    </li>
+  {{/each}}
+</ul>
+{{> core/amp/common/pagination pagination.reviews}}

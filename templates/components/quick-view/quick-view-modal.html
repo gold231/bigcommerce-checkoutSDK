@@ -1,0 +1,24 @@
+<button class="modal-close" data-quick-view-modal-close>
+  {{> svg/icon-x}}
+</button>
+
+<div class="modal-body">
+  <div
+    class="quick-view-container
+    grid-container
+    catalog-product"
+    data-quick-view-product
+    data-product-container
+  >
+
+    {{> components/product/images}}
+
+    {{> components/product/details
+      quick_view=true
+      show_saved=true
+      sale_badges=theme_settings.sale-badges
+      price=product.price
+    }}
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap');
+
+.body {
+    flex-basis: 66.67%;
+
+    @media (max-width: 990px) {
+        flex-basis: 100%;
+    }
+    @media (min-width: 801px){
+        padding-right: 6rem;
+    }
+}
+
+.side {
+    flex-basis: 33.33%;
+    padding-left: 20px;
+
+    @media (max-width: 990px) {
+        flex-basis: 100%;
+        padding-left: 0px;
+        padding-bottom: 20px;
+    }
+}
+
+.actionContainer {
+    padding: 24px;
+}

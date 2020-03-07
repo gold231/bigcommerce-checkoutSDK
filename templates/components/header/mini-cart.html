@@ -1,0 +1,31 @@
+<a
+  href="{{urls.cart}}"
+  class="mini-cart-toggle"
+  title="{{lang 'header.view_cart'}}"
+  aria-label="{{lang 'header.view_cart'}}"
+  data-cart-preview
+>
+  <div
+    class="mini-cart-icon-wrap
+    {{#if cart.quantity '<=' 0}}
+      cart-empty
+    {{else}}
+      cart-full
+    {{/if}}"
+  >
+    <span class="mini-cart-icon-empty">
+      {{> svg/icon-cart-empty}}
+    </span>
+    <span class="mini-cart-icon-full">
+      {{> svg/icon-cart-full}}
+    </span>
+  </div>
+  <span
+    class="mini-cart-count {{#if cart.quantity '>' 0}}show{{/if}}"
+    id="quickcart-count"
+  >
+    <span class="number">
+      ({{cart.quantity}})
+    </span>
+  </span>
+</a>

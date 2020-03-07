@@ -1,0 +1,17 @@
+<ul class="facet-control facet-control-{{display}} facet-control-{{toLowerCase facet}}">
+  {{#each items}}
+    <li class="facet-item">
+      <a class="facet-item-link" href="{{url}}" rel="nofollow" data-faceted-search-facet>
+        {{> components/reviews/ratings rating=param_value}}
+        <span class="rating-and-up-text">
+          {{{lang 'faceted_search.and_up'}}}
+        </span>
+        {{#if ../show_product_counts}}
+          <div class="facet-item-count">
+            ({{lang 'faceted_search.num_items' count=count}})
+          </div>
+        {{/if}}
+      </a>
+    </li>
+  {{/each}}
+</ul>

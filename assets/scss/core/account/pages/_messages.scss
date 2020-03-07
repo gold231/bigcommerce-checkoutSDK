@@ -1,0 +1,55 @@
+// Listing
+
+.account-messages-table.table-clean {
+  border-bottom: 1px solid $account-border-color;
+
+  td {
+    padding-right: 0;
+    padding-left: 0;
+    vertical-align: top;
+    border-top: 1px solid $account-border-color;
+  }
+}
+
+.account-messages-table-date {
+  width: 22%;
+  text-align: right;
+}
+
+.account-message-subject {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: $account-font-size-heading;
+  font-weight: 500;
+
+  .account-message-is-reply &:before {
+    padding-right: 5px;
+    content: "\21c9";
+  }
+
+  .account-message-is-read & {
+    color: $account-text-color-light;
+  }
+}
+
+.account-message-content {
+  padding-right: $account-gutter;
+  font-size: $account-font-size;
+  line-height: 1.5;
+  color: $account-text-color;
+  white-space: pre-line;
+
+  .account-message-is-read & {
+    color: lighten($account-text-color-light,10%);
+  }
+}
+
+.account-message-date {
+  color: $account-text-color-light;
+}
+
+// Form
+
+.account-messages-form-subject {
+  width: 50%;
+}

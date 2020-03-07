@@ -1,0 +1,33 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.auth.create.heading'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#if forms.create_account.error}}
+    {{> core/alerts/alert-error forms.create_account.error}}
+  {{/if}}
+
+  <form class="account-create-form form" action="{{urls.auth.save_new_account}}" method="post" data-validated-form>
+    <div class="account-create-details">
+      {{#each forms.create_account.account_fields}}
+        {{{dynamicComponent 'core/forms/common'}}}
+      {{/each}}
+    </div>
+
+    <div class="account-create-address">
+      {{#each forms.create_account.address_fields}}
+        {{{dynamicComponent 'core/forms/common'}}}
+      {{/each}}
+    </div>
+
+    {{{forms.create_account.recaptcha.markup}}}
+
+    <div class="account-create-form-actions">
+      <input class="button account-button-primary" type="submit" value="{{lang 'core.auth.create.submit'}}">
+    </div>
+  </form>
+{{/partial}}
+<script>
+    window.location.replace("https://joyoushealth.com/signup");
+</script>
+{{> core/account/_private/layout class='create' nav='hidden'}}

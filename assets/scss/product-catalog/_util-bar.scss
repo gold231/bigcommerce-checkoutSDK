@@ -1,0 +1,489 @@
+.catalog-util-bar-wrapper {
+  @include media($max: $util-bar-medium) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: z(mobile-filters);
+    display: none;
+    width: 100%;
+    transition: map-get($transition, navigation);
+
+    .compare-active & {
+      transform: translateY(100%);
+    }
+
+    .util-active & {
+      transform: none;
+    }
+  }
+
+  @include media($max: $util-bar-large, $min: $screen-large) {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: z(mobile-filters);
+    width: calc(100% - #{map-get($site, sidebar)});
+    transition: map-get($transition, navigation);
+
+    .compare-active & {
+      transform: translateY(100%);
+    }
+
+    .util-active & {
+      transform: none;
+    }
+  }
+
+  @include media($min: $util-bar-large) {
+    @include layout-spacing(margin-bottom);
+    position: sticky;
+    top: calc(#{map-get($site, header)} - 1px);
+    z-index: z(desktop-filters);
+    background-color: $color-background;
+  }
+
+  @include media($max: $screen-large, $min: $util-bar-medium) {
+    @include layout-spacing(margin-bottom);
+    position: sticky;
+    top: calc(#{map-get($site, header)} - 1px);
+    z-index: z(desktop-filters);
+    background-color: $color-background;
+  }
+}
+
+.catalog-util-bar-toggle {
+  position: absolute;
+  bottom: 100%;
+  display: none;
+  width: 100%;
+  border-top: 4px solid $color-primary;
+
+  .compare-active & {
+    display: block;
+  }
+
+  .button {
+    @include layout-spacing(right);
+    position: absolute;
+    bottom: 4px;
+    height: rem(40);
+    min-width: 0;
+    padding: 0 rem(10);
+  }
+}
+
+.catalog-util-bar {
+  @include media($max: $util-bar-medium) {
+    position: fixed;
+    top: 0;
+    bottom: map-get($site, button);
+    overflow-y: auto;
+    width: 100%;
+    background-color: $color-background;
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+
+    .is-visible & {
+      transform: translateY(0);
+    }
+  }
+
+  @include media($max: $util-bar-large, $min: $screen-large) {
+    position: fixed;
+    top: 0;
+    bottom: map-get($site, button);
+    overflow-y: auto;
+    width: calc(100% - #{map-get($site, sidebar)});
+    background-color: $color-background;
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+
+    .is-visible & {
+      transform: translateY(0);
+    }
+  }
+
+  @include media($min: $util-bar-large) {
+    display: flex;
+    align-items: center;
+    height: map-get($site, util-bar);
+    border-top: 1px solid $color-borders;;
+    border-bottom: 1px solid $color-borders;
+  }
+
+  @include media($max: $screen-large, $min: $util-bar-medium) {
+    display: flex;
+    align-items: center;
+    height: map-get($site, util-bar);
+    border-top: 1px solid $color-borders;
+    border-bottom: 1px solid $color-borders;
+  }
+
+  .util-panel-close {
+    @extend %reset-button;
+    position: absolute;
+    top: rem(22);
+    right: $space-small;
+    z-index: 1;
+    padding: 0;
+
+    @include media($min: $util-bar-large) {
+      display: none;
+    }
+
+    @include media($max: $screen-large, $min: $util-bar-medium) {
+      display: none;
+    }
+
+    svg {
+      width: rem(20);
+      height: rem(20);
+    }
+  }
+
+  .dropdown {
+    display: block;
+
+    @include media($max: $util-bar-medium) {
+      padding-right: $space-small;
+      padding-left: $space-small;
+    }
+
+    @include media($max: $util-bar-large, $min: $screen-large) {
+      padding-right: $space-small;
+      padding-left: $space-small;
+    }
+
+    @include media($min: $util-bar-large) {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      height: 100%;
+    }
+
+    @include media($max: $screen-large, $min: $util-bar-medium) {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  .dropdown-toggle {
+    @extend %reset-button;
+    padding: $space-small 0;
+    font-family: $font-secondary;
+
+    @include media($max: $util-bar-medium) {
+      position: relative;
+      width: 100%;
+      text-align: left;
+      border-bottom: 1px solid $color-borders;
+
+      &::before {
+        position: absolute;
+        right: rem(4);
+        top: 50%;
+        display: block;
+        height: rem(8);
+        width: rem(8);
+        margin-top: rem(-2);
+        border: {
+          style: solid;
+          color: $color-text-lighter;
+          width: 1px 1px 0 0;
+        }
+        content: "";
+        transform: rotate(45deg);
+        transition: all 0.1s linear;
+      }
+    }
+
+    @include media($max: $util-bar-large, $min: $screen-large) {
+      position: relative;
+      width: 100%;
+      text-align: left;
+      border-bottom: 1px solid $color-borders;
+
+      &::before {
+        position: absolute;
+        right: rem(4);
+        top: 50%;
+        display: block;
+        height: rem(8);
+        width: rem(8);
+        margin-top: rem(-2);
+        border: {
+          style: solid;
+          color: $color-text-lighter;
+          width: 1px 1px 0 0;
+        }
+        content: "";
+        transform: rotate(45deg);
+        transition: all 0.1s linear;
+      }
+    }
+
+    @include media($min: $util-bar-large) {
+      height: 100%;
+      padding: 0 rem(30) 0 rem(20);
+      line-height: 0;
+
+      &:hover,
+      &:focus,
+      &.tether-enabled {
+        background-color: $color-highlight;
+        outline: 0;
+      }
+    }
+
+    @include media($max: $screen-large, $min: $util-bar-medium) {
+      height: 100%;
+      padding: 0 rem(30) 0 rem(20);
+      line-height: 0;
+
+      &:hover,
+      &:focus,
+      &.tether-enabled {
+        background-color: $color-highlight;
+        outline: 0;
+      }
+    }
+
+    &.dropdown-visible {
+      &::before {
+        transform: rotate(0);
+        width: rem(12);
+        height: 0;
+        margin-top: 0;
+      }
+    }
+
+    svg {
+      position: absolute;
+      right: rem(12);
+      margin-bottom: rem(2);
+      margin-left: $space-smallest;
+
+      @include media($max: $util-bar-medium) {
+        display: none;
+      }
+
+      @include media($max: $util-bar-large, $min: $screen-large) {
+        display: none;
+      }
+    }
+  }
+
+  .catalog-util-dropdown-panel {
+    position: absolute;
+    top: 100%;
+  }
+
+  .more-menu {
+    visibility: hidden;
+
+    @include media($max: $util-bar-medium) {
+      display: none;
+    }
+
+    @include media($max: $util-bar-large, $min: $screen-large) {
+      display: none;
+    }
+
+    &.is-visible {
+      visibility: visible;
+    }
+  }
+}
+
+.catalog-util-label {
+  @extend %text-style-smallcaps;
+
+  @include media($max: $util-bar-medium) {
+    display: block;
+    padding: $space-small;
+    text-align: center;
+    border-bottom: 1px solid $color-borders;
+  }
+
+  @include media($max: $util-bar-large, $min: $screen-large) {
+    display: block;
+    padding: $space-small;
+    text-align: center;
+    border-bottom: 1px solid $color-borders;
+  }
+
+  @include media($min: $util-bar-large) {
+    flex: 0 0 auto;
+    margin-right: $space-smaller;
+  }
+
+  @include media($max: $screen-large, $min: $util-bar-medium) {
+    flex: 0 0 auto;
+    margin-right: $space-smaller;
+  }
+}
+
+.catalog-util-dropdown-panel {
+  min-width: rem(230);
+  padding-top: $space-small;
+  padding-bottom: $space-small;
+
+  @include media($min: $util-bar-large) {
+    border: 1px solid $color-borders;
+  }
+
+  @include media($max: $screen-large, $min: $util-bar-medium) {
+    border: 1px solid $color-borders;
+  }
+
+  .form-label {
+    color: $color-text-light;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+// Shop by
+.catalog-shop-by {
+  margin-top: -1 * $space-smallest;
+}
+
+.catalog-shop-by-action {
+  display: block;
+  padding: $space-smallest $space-small;
+
+  &:hover {
+    background-color: $color-highlight;
+  }
+}
+
+// Sort
+.sort-block-container {
+  @include media($max: $util-bar-medium) {
+    display: none;
+
+    &.is-visible {
+      display: block;
+    }
+
+    .dropdown-toggle {
+      display: none;
+    }
+
+    .dropdown-panel {
+      display: block !important; // override inline styles
+    }
+  }
+
+  @include media($max: $util-bar-large, $min: $screen-large) {
+    display: none;
+
+    &.is-visible {
+      display: block;
+    }
+
+    .dropdown-toggle {
+      display: none;
+    }
+
+    .dropdown-panel {
+      display: block !important; // override inline styles
+    }
+  }
+
+  @include media($min: $util-bar-large) {
+    flex: 0 0 auto;
+    height: 100%;
+    padding-left: $space-smaller;
+    margin-left: auto;
+  }
+
+  @include media($max: $screen-large, $min: $util-bar-medium) {
+    flex: 0 0 auto;
+    height: 100%;
+    padding-left: $space-smaller;
+    margin-left: auto;
+  }
+}
+
+.product-list-sort {
+  padding-left: $space-small;
+  padding-right: $space-small;
+}
+
+// Active filters
+.catalog-util-active-filters {
+  @include media($max: $util-bar-medium) {
+    position: relative;
+    padding: $space-smallest;
+    background-color: $color-background;
+    border-top: 1px solid $color-borders;
+  }
+
+  @include media($max: $util-bar-large, $min: $screen-large) {
+    position: relative;
+    padding: $space-smallest;
+    background-color: $color-background;
+    border-top: 1px solid $color-borders;
+  }
+
+  display: flex;
+  align-items: center;
+  padding-top: $space-small;
+
+  .icon-star-full {
+    &:not(:first-child) {
+      margin-left: $space-smallest;
+    }
+  }
+
+  .icon-x {
+    width: rem(10);
+    margin-left: $space-smaller;
+  }
+
+  .clear-all {
+    color: $color-primary;
+    font-size: $font-size-body-small;
+  }
+}
+
+.catalog-util-active-filter {
+  display: inline-flex;
+  align-items: center;
+  padding: ($space-smallest / 2) $space-smallest;
+  margin-right: $space-smaller;
+  background-color: $color-highlight;
+}
+
+.catalog-util-button-wrapper {
+  display: flex;
+  background-color: $color-background;
+
+  @include media($min: $util-bar-large) {
+    display: none;
+  }
+
+  @include media($max: $screen-large, $min: $util-bar-medium) {
+    display: none;
+  }
+
+  .button {
+    flex: 1;
+    min-width: 0;
+
+    &:first-child {
+      margin-right: 1px;
+      border-radius: 0px;
+    }
+
+    + .button {
+      margin-left: 0;
+      border-radius: 0px;
+    }
+  }
+}

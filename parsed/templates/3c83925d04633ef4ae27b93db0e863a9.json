@@ -1,0 +1,3 @@
+{
+  "core/products/oos-badge": "{{!\n  Shows an out of stock badge if a product is out of stock\n\n  @param classes string\n    Class(es) to append to oos badge\n}}\n{{#if out_of_stock_message.length}}\n  <span class=\"oos-badge {{classes}}\">{{out_of_stock_message}}</span>\n{{/if}}\n"
+}

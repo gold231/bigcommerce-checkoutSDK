@@ -1,0 +1,11 @@
+<div class="alert alert-error">
+  {{#if dismissable}}<a class="alert-dismiss">&times;</a>{{/if}}
+
+  <div class="alert-message">
+    {{#if message}}
+      {{{message}}}
+    {{else}}
+      {{{this}}}
+    {{/if}}
+  </div>
+</div>

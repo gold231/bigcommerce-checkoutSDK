@@ -1,0 +1,73 @@
+<div class="amp-product-options-container" data-product-container>
+  <div class="amp-product-options">
+    <form
+      class="form"
+      method="post"
+      action="{{product.cart_url}}"
+      enctype="multipart/form-data"
+      data-cart-item-add
+      data-validated-form
+      target="_self"
+    >
+      <input type="hidden" name="action" value="add">
+      <input type="hidden" name="product_id" value="{{product.id}}" data-product-id/>
+      <div data-product-option-change>
+        {{#each product.options}}
+          {{{dynamicComponent 'core/forms/options'}}}
+        {{/each}}
+      </div>
+
+      {{#each product.customizations}}
+        {{{dynamicComponent 'core/forms/customizations'}}}
+      {{/each}}
+
+      {{#if product.event_date}}
+        {{> core/products/event}}
+      {{/if}}
+
+      {{#if product.show_quantity_input}}
+        <div class="add-to-cart-quantity-container">
+          <div class="form-field" data-product-quantity>
+            <label class="form-label">
+              <span class="form-label-text">
+                {{ lang 'core.amp.product.quantity'}}
+              </span>
+              {{> core/amp/common/quantity product}}
+            </label>
+          </div>
+        </div>
+      {{/if}}
+
+      {{> core/amp/common/alerts}}
+
+      {{#if product.can_purchase}}
+        <div class="product-alert" data-product-option-message></div>
+      {{/if}}
+
+      {{#if product.can_purchase}}
+        <button
+          class="button button-primary button-progress"
+          type="submit"
+          data-button-purchase
+          data-product-title="{{product.title}}"
+        >
+          {{#if product.pre_order}}
+            <span class="button-text">
+              {{lang 'core.amp.product.pre_order'}}
+            </span>
+          {{else}}
+            <span class="button-text">{{lang 'core.amp.product.atc'}}</span>
+          {{/if}}
+        </button>
+      {{else}}
+        {{#if product.price}}
+          {{#if product.out_of_stock}}
+            <div class="button button-primary button-disabled">
+              {{lang 'core.amp.product.sold_out'}}
+            </div>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+    </form>
+  </div>
+</div>

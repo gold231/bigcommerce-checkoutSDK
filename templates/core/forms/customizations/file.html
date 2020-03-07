@@ -1,0 +1,26 @@
+
+<div class="form-field form-field-customizations form-field-file {{#if required}}form-required{{/if}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{display_name}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <span class="form-file-wrapper" data-button-label="{{lang 'core.account.products.upload'}}">
+        <input
+          class="form-input form-file"
+          id="product-fields-{{id}}"
+          name="ProductFields[{{this.id}}]"
+          type="file"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}">
+      </span>
+    </span>
+  </label>
+
+  {{#if file_types '!==' ''}}
+    <span class="form-file-types">{{lang 'core.account.products.filetypes' file_types=file_types}}</span>
+  {{/if}}
+
+  <span class="form-file-size">{{lang 'core.account.products.max_filesize' bytes=file_size}}</span>
+</div>

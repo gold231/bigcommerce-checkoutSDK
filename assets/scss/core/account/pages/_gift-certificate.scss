@@ -1,0 +1,85 @@
+// (optional) gift card nav
+
+@if ($giftcard-nav-use-default-styles) {
+  .giftcard-nav {
+    padding: $account-gutter * 2;
+    margin-bottom: $account-gutter * 2;
+    text-align: center;
+  }
+
+  .giftcard-nav-item {
+    display: inline-block;
+    margin: 0 1em;
+    color: $account-link-color;
+
+    &.is-active { color: $account-text-color; }
+  }
+}
+
+.giftcard-heading-container {
+  margin-bottom: $account-gutter * 2;
+  text-align: center;
+}
+
+
+// Purchase
+
+.giftcard-form-help-message {
+  display: block;
+  margin-top: 6px;
+}
+
+.giftcard-form-preview {
+  iframe { width: 100%; }
+}
+
+.giftcard-single-theme {
+  display: none;
+}
+
+
+// Check balance
+
+.giftcard-balance-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-giftcard-balance {
+  position: relative;
+
+  .form-field-title {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .form-field-control {
+    display: block;
+
+    @media screen and (min-width: 600px + ($account-gutter-inner * 2)) {
+      margin-right: calc(30% + #{$account-gutter-inner});
+    }
+  }
+
+  .form-actions {
+    @media screen and (min-width: 600px + ($account-gutter-inner * 2)) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30%;
+    }
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+
+// Redeem
+
+.giftcard-redeem-steps {
+  line-height: 1.5;
+
+  li { margin-bottom: 0.75em; }
+}

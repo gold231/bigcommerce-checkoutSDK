@@ -1,0 +1,31 @@
+.account-nav-list {
+  padding: 0;
+  margin-bottom: $account-gutter-inner;
+  list-style: none;
+  border: 1px solid $account-border-color;
+  border-radius: $account-border-radius;
+}
+
+.account-nav-item {
+  color: $account-link-color;
+  border-top: 1px solid $account-border-color;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  &.is-active {
+    color: $account-accent-color;
+    border-left: 3px solid $account-accent-color;
+  }
+}
+
+.account-nav-link {
+  display: block;
+  padding: 15px;
+  color: inherit;
+}
+
+.account-nav-badge {
+  float: right;
+}

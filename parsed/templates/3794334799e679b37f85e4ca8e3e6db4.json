@@ -1,0 +1,4 @@
+{
+  "components/common/atc-button": "<button\n  class=\"button button-primary button-progress\"\n  id=\"form-action-addToCart\"\n  type=\"submit\"\n  data-button-purchase\n  data-product-title=\"{{product.title}}\"\n>\n  {{#if product.pre_order}}\n    <span class=\"button-text\">{{lang 'product.pre_order'}}</span>\n  {{else}}\n    <span class=\"button-text\">{{lang 'product.atc'}}</span>\n  {{/if}}\n  <span class=\"complete-text\">\n    {{> svg/icon-checkmark}}\n  </span>\n</button>\n",
+  "svg/icon-checkmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\">\n  <path class=\"checkmark\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M1 8l5 6 9-11\" fill=\"none\" stroke=\"currentColor\"/>\n</svg>\n"
+}

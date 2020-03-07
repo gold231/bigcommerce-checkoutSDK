@@ -1,0 +1,20 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.recent_items.heading'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#if customer.recently_viewed_products.items}}
+    <form class="form" action="{{customer.recently_viewed_products.compare_url}}" method="post">
+      <div class="account-recently-viewed account-product-wrapper {{products_per_row_class}}">
+        {{!-- TODO: Limit to 3 products? --}}
+        {{#each customer.recently_viewed_products.items}}
+          {{> core/account/_private/account-product-item default_image=../theme_settings.default_image show_bg=../show_bg}}
+        {{/each}}
+      </div>
+    </form>
+  {{else}}
+    <p>{{lang 'core.account.recent_items.empty'}}</p>
+  {{/if}}
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='recent_items' class='recent-items'}}

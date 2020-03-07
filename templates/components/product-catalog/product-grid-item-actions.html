@@ -1,0 +1,37 @@
+{{#if quickshop}}
+  <button
+    class="button button-primary button-small"
+    data-quick-view="view"
+    data-product-id="{{id}}"
+  >
+    {{lang 'product.quick_view'}}
+  </button>
+{{/if}}
+{{#if show_cart_action}}
+  {{#if has_options}}
+    <button
+      class="button button-primary button-small"
+      data-quick-view="add"
+      data-product-id="{{id}}"
+    >
+      {{lang 'product.select_options'}}
+    </button>
+  {{else}}
+    {{#if add_to_cart_url}}
+      <a
+        class="button button-primary button-small button-progress"
+        href="{{add_to_cart_url}}"
+        data-add-to-cart="{{id}}"
+        data-button-purchase
+        data-product-title="{{name}}"
+      >
+        <span class="button-text">
+          {{lang 'product.atc'}}
+        </span>
+        <span class="complete-text">
+          {{> svg/icon-checkmark}}
+        </span>
+      </a>
+    {{/if}}
+  {{/if}}
+{{/if}}

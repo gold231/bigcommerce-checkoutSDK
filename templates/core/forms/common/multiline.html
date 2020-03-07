@@ -1,0 +1,29 @@
+{{!
+  Textarea form component
+
+  @param validation_message string
+         Custom validation message
+}}
+<div class="form-field form-field-common form-field-multiline {{#if required}}form-required{{/if}}" id="{{id}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{label}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <textarea
+        class="form-input"
+        id="textarea-{{id}}"
+        name="{{name}}"
+        placeholder="{{prefill}}"
+        rows="{{rows}}"
+        {{#if required}}
+          required
+          {{#if validation_message}}
+            data-vd-message-required="{{validation_message}}"
+          {{/if}}
+        {{/if}}
+        aria-required="{{required}}">{{value}}</textarea>
+    </span>
+  </label>
+</div>

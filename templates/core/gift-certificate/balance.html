@@ -1,0 +1,32 @@
+<div class="giftcard-body">
+  <div class="giftcard-heading-container">
+    <h1 class="giftcard-heading">{{lang 'core.giftcard.balance.heading'}}</h1>
+    <p class="giftcard-subheading">{{lang 'core.giftcard.balance.subheading'}}</p>
+  </div>
+
+  <div class="giftcard-balance-container">
+    {{#if gift_certificate}}
+      {{#if gift_certificate.error}}
+        {{> core/alerts/alert-error gift_certificate.error}}
+      {{else}}
+        <h2>{{gift_certificate.balance.formatted}}</h2>
+        <h3>{{gift_certificate.code}}</h3>
+      {{/if}}
+    {{/if}}
+
+    <form class="form form-giftcard-balance" id="giftcard-balance" method="get" data-validated-form>
+      <input type="hidden" name="action" value="balance">
+
+      {{> core/forms/common/text
+          required=true id="giftcard-code"
+          name="giftcertificatecode"
+          label=(lang 'core.giftcard.balance.code')
+          prefill=(lang 'core.giftcard.balance.code')
+      }}
+
+      <div class="form-actions">
+        <input type="submit" class="button button-primary" value="{{lang 'core.giftcard.balance.submit_value'}}">
+      </div>
+    </form>
+  </div>
+</div>

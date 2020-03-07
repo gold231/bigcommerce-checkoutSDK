@@ -1,0 +1,15 @@
+{{#partial "page"}}
+
+  <section class="page-compare">
+    {{> components/common/page-title
+      title=(lang 'common.compare.title' count=comparisons.length)
+    }}
+
+    <div class="compare-grid-wrapper">
+      {{> components/compare/compare-grid}}
+    </div>
+  </section>
+
+{{/partial}}
+
+{{> layout/base}}

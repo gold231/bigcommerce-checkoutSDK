@@ -1,0 +1,64 @@
+<div class="account-receipt-summaries">
+  {{#if order.shipping_address}}
+    <div class="account-receipt-summary">
+      <h2 class="account-receipt-summary-title">{{lang 'core.account.receipt.shipping_title'}}</h2>
+      <ul class="account-receipt-summary-address">
+        <li>{{order.shipping_address.full_name}}</li>
+        <li>{{order.shipping_address.company}}</li>
+        <li>{{order.shipping_address.address_lines.[0]}}</li>
+        <li>{{order.shipping_address.address_lines.[1]}}</li>
+        <li>
+          {{order.shipping_address.city}},
+          {{order.shipping_address.state}}
+          {{order.shipping_address.zip}}
+        </li>
+        <li>{{order.shipping_address.country}}</li>
+      </ul>
+    </div>
+  {{else}}
+    {{#if order.has_multiple_shipping_addresses}}
+      <div class="account-receipt-summary">
+        <h2 class="account-receipt-summary-title">{{lang 'core.account.receipt.shipping_title'}}</h2>
+        <div class="account-receipt-summary-address">
+          {{lang 'core.account.receipt.ship_to_multi_text'}}
+        </div>
+      </section>
+    {{/if}}
+  {{/if}}
+
+  <div class="account-receipt-summary">
+    <h2 class="account-receipt-summary-title">
+      {{lang 'core.account.receipt.billing_title'}}
+    </h2>
+    <ul class="account-receipt-summary-address">
+      <li>{{order.billing_address.full_name}}</li>
+      <li>{{order.billing_address.company}}</li>
+      <li>{{order.billing_address.address_lines.[0]}}</li>
+      <li>{{order.billing_address.address_lines.[1]}}</li>
+      <li>
+        {{order.billing_address.city}},
+        {{order.billing_address.state}}
+        {{order.billing_address.zip}}
+      </li>
+      <li>{{order.billing_address.country}}</li>
+    </ul>
+  </div>
+
+  <div class="account-receipt-summary">
+    <span class="account-status">{{order.status_text}}</span>
+
+    <div class="account-item-details">
+      <div class="account-item-detail">
+        <span class="account-item-detail-title">{{lang 'core.account.orders.items.placed'}}</span>
+        <span class="account-item-detail-value">{{order.date}}</span>
+      </div>
+
+      {{#if order.date '!==' order.last_updated}}
+        <div class="account-item-detail">
+          <span class="account-item-detail-title">{{lang 'core.account.orders.items.updated'}}</span>
+          <span class="account-item-detail-value">{{order.last_updated}}</span>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

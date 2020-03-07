@@ -1,0 +1,9 @@
+{{!
+  Shows an out of stock badge if a product is out of stock
+
+  @param classes string
+    Class(es) to append to oos badge
+}}
+{{#if out_of_stock_message.length}}
+  <span class="oos-badge {{classes}}">{{out_of_stock_message}}</span>
+{{/if}}

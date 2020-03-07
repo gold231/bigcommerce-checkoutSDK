@@ -1,0 +1,26 @@
+// Fonts
+$font-primary: ClarikaProGeo-Rg, Lato, sans-serif;
+$font-secondary: Wulkan-Display, "Playfair Display", serif;
+
+// Line Height
+$line-height-tight: 1.2em;
+$line-height:       1.4em;
+$line-height-loose: 1.6em;
+
+// Font Size
+$font-size-body-smaller: 0.75rem;  // (12px) / $line-height
+$font-size-body-small:   0.875rem; // (14px) / $line-height
+$font-size-body:         1rem;     // (16px) / $line-height
+$font-size-body-large:   1.25rem;  // (18px) / $line-height
+$font-size-body-larger:  1.5rem;   // (24px) / $line-height
+
+$font-size-small-caps: $font-size-body-smaller;
+
+// Headings
+$font-size-heading: (
+  1: 3rem,    // (48px) / $line-height-tight
+  2: 2.25rem, // (36px) / $line-height
+  3: 2rem,    // (32px) / $line-height
+  4: 1.5rem,  // (24px) / $line-height
+  5: 1rem,    // (16px) / $line-height
+);

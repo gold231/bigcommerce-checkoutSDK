@@ -1,0 +1,20 @@
+<article class="blog-item">
+  {{#if thumbnail}}
+    <figure class="blog-item-thumbnail ratio-1-1">
+      <a href="{{url}}">
+        {{> components/common/responsive-image
+          image=thumbnail
+          fit=fit
+          fallback_size=fallback_size
+          lazyload=lazyload
+          default_image=default_image
+        }}
+      </a>
+    </figure>
+  {{/if}}
+  <div class="blog-item-content {{#unless thumbnail}}no-thumbnail{{/unless}}">
+    <h2 class="blog-item-title"><a href="{{url}}">{{title}}</a></h2>
+    <p class="blog-item-summary">{{summary}}</p>
+    <a class="blog-item-readmore" href="{{url}}">{{lang 'blog.read_more'}}</a>
+  </div>
+</article>

@@ -1,0 +1,44 @@
+// core gift certifcate override styles
+.giftcard-nav {
+  margin-bottom: 0;
+}
+
+.giftcard-nav-item {
+  &.is-active {
+    color: $color-primary;
+  }
+}
+
+.giftcard-form-preview {
+  &.has-preview {
+    padding: $gutter-small 0;
+  }
+}
+
+.giftcard-heading-container {
+  text-align: left;
+}
+
+.giftcard-heading {
+  @include heading(3);
+}
+
+.giftcard-header,
+.giftcard-subheading {
+  display: none;
+
+  .giftcard-heading-container & {
+    display: block;
+  }
+}
+
+.giftcard-balance-container {
+  h2,
+  h3 {
+    margin: rem(10) 0;
+  }
+
+  .button-primary {
+    @extend .button-small;
+  }
+}

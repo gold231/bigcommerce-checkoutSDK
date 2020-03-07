@@ -1,0 +1,3 @@
+{
+  "core/account/_private/payment-methods-form": "<form\n  class=\"form payment-method-edit-form\"\n  action=\"{{delete_url}}\"\n  method=\"post\"\n  data-delete-payment-method=\"{{lang 'core.auth.payment_methods.confirm_delete'}}\"\n  data-validated-form\n>\n  <div class=\"form-actions\">\n    <a\n      class=\"button account-button-primary\"\n      href=\"{{edit_url}}\"\n    >\n      {{lang 'core.account.common.edit'}}\n    </a>\n    <button\n      type=\"submit\"\n      class=\"button account-button-secondary\"\n    >\n      {{lang 'core.account.common.delete'}}\n    </button>\n  </div>\n</form>\n"
+}

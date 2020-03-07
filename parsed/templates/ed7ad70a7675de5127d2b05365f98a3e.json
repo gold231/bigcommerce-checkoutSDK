@@ -1,0 +1,3 @@
+{
+  "components/home/section-title": "<h1 class=\"home-section-title\">\n  {{title}}\n</h1>\n"
+}

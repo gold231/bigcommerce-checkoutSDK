@@ -1,0 +1,116 @@
+{{!--
+  Product Grid Item - As displayed within a grid listing of products.
+
+  @param product object
+    The product object to display, handed over from the loop
+
+  @param compare bool
+    Whether to show "compare" checkboxes
+
+  @param quickshop theme-setting
+    Theme setting to enable / disable quickshop
+
+  @param image_ratio theme-setting
+    The image ratio for this grid
+
+  @param fit theme-setting
+    The image size for this grid (cover/contain)
+
+  @param default_image theme-setting
+    The default image if none exists
+
+  @param show_rating platform-setting
+    Platform setting to toggle ratings
+
+  @param price_range_display theme-setting
+    Whether to show the price range or not
+
+  @param retail_price_label theme-setting
+    Label for retail price
+
+  @param non_sale_price_label theme-setting
+    Label for crossed price on sales
+
+  @param sale_price_label theme-setting
+    Label for sale price
+
+  @param price_label theme-setting
+    Label for price
+--}}
+
+<article class="grid-item product-grid-item">
+  {{#unless out_of_stock_message}}
+    {{#if sale_badges}}
+      {{> core/products/sale-badge
+        classes="product-badge product-badge-sale"
+      }}
+    {{/if}}
+  {{else}}
+    {{> core/products/oos-badge
+      classes="product-badge product-badge-sold-out"
+    }}
+  {{/unless}}
+
+  <div class="grid-item-image-container {{image_ratio}}" data-quick-shop="{{id}}">
+      {{> components/common/responsive-image
+        image=image
+        class="grid-item-image"
+        fit=fit
+        fallback_size=fallback_size
+        lazyload=lazyload
+        default_image=default_image
+      }}
+    <div class="grid-item-overlay">
+      {{#all show_rating num_reviews}}
+        {{> components/reviews/ratings
+          rating=rating
+        }}
+      {{/all}}    
+      <a class="grid-item-overlay-link" href="{{url}}"></a>
+      {{#if show_actions}}
+        {{> components/product-catalog/product-grid-item-actions
+          quickshop=quickshop
+        }}
+      {{/if}}
+    </div>
+  </div>
+    <h2 class="product-grid-item-name">
+    <a href="{{url}}">{{name}}</a>
+  </h2>
+
+  {{> core/products/price
+    price_range_display=price_range_display
+    retail_price_label=retail_price_label
+    non_sale_price_label=non_sale_price_label
+    sale_price_label=sale_price_label
+    price_label=price_label
+  }}
+
+  {{#if out_of_stock_message}}
+    <p class="product-grid-item-out-of-stock-message">
+      {{out_of_stock_message}}
+    </p>
+  {{/if}}
+
+  {{#if compare}}
+    <div class="grid-item-compare">
+      <input
+        id="compare-{{id}}"
+        class="compare-checkbox"
+        type="checkbox"
+        data-compare-checkbox
+        data-compare-id="{{id}}"
+        data-compare-title="{{name}}"
+        data-compare-url="{{url}}"
+        data-compare-thumbnail="{{getImage image 'product-list' (cdn default)}}"
+      >
+      <label class="compare-checkbox-label" for="compare-{{id}}">
+        <span class="compare-checkbox-box">
+          {{> svg/icon-checkmark}}
+        </span>
+
+        {{lang 'core.product.compare'}}
+      </label>
+    </div>
+  {{/if}}
+</article>

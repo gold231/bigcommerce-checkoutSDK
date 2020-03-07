@@ -1,0 +1,60 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.download.heading' number=downloads.order_id name=downloads.product_name}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  <div class="account-downloads">
+    {{#if downloads.images}}
+      <div class="account-downloads-gallery">
+        <div class="account-downloads-gallery-image account-card">
+          <img src="{{getImage downloads.thumbnail 'account-product-thumbnail' (cdn ../theme_settings.default_image)}}" alt="{{downloads.images.thumbnail}}" data-account-download-image>
+        </div>
+
+        {{#if downloads.images.length '>' 1}}
+          <div class="account-downloads-gallery-thumbs">
+            {{#each downloads.images}}
+              <div class="account-downloads-gallery-thumb">
+                <img src="{{getImage this}}" alt="{{alt}}" data-account-download-thumb>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    {{#each downloads.items}}
+      <div class="account-download {{#if expired}}is-expired{{/if}}">
+        <h1 class="account-download-title">
+          <span class="account-download-filename">
+            {{#unless expired}}<a class="account-download-link" href="{{url}}">{{/unless}}{{name}}{{#unless expired}}</a>{{/unless}}
+          </span>
+          <span class="account-download-filesize">{{size}}</span>
+        </h1>
+
+        {{#if description}}
+          <div class="account-download-description">{{description}}</div>
+        {{/if}}
+
+        <div class="account-download-expiry">
+          {{#if expired}}
+            <span class="account-download-expiry-item">{{lang 'core.account.download.expired'}}</span>
+          {{else}}
+            {{#if days_remaining}}
+              <span class="account-download-expiry-item">
+                {{lang 'core.account.download.days_remaining' days=days_remaining}}
+              </span>
+            {{/if}}
+
+            {{#if downloads_remaining}}
+              <span class="account-download-expiry-item">
+                {{lang 'core.account.download.downloads_remaining' downloads=downloads_remaining}}
+              </span>
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='orders' class='download-item'}}

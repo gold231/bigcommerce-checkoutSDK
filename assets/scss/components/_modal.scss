@@ -1,0 +1,101 @@
+.modal-container {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: z("loading-overlay");
+  display: none;
+  background-color: rgba($color-text, 0.75);
+  opacity: 0;
+
+  &.animating,
+  &.visible {
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: z("modal");
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  opacity: 0;
+
+  &.animating,
+  &.visible {
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  &.animating-in {
+    transition-delay: 0.1s;
+  }
+
+  &.visible {
+    overflow-x: hidden;
+    overflow-y: auto;
+    opacity: 1;
+    z-index: 100;
+  }
+}
+
+.modal {
+  position: relative;
+  max-width: rem(630);
+  margin-right: auto;
+  margin-left: auto;
+
+  &.modal-quick-view,
+  &.modal-quick-add {
+    width: calc(100% - #{$gutter-small});
+  }
+
+  &.modal-quick-view {
+    max-width: rem(1170);
+  }
+}
+
+.modal-content {
+  position: relative;
+  padding: $space-large $space;
+  margin-top: $gutter-small-half;
+  margin-bottom: $gutter-small-half;
+  background: $color-background;
+
+  @include media($min: $screen-large) {
+    margin-top: $space;
+    margin-bottom: $space;
+  }
+
+  @include media($min: $screen-large) {
+    padding: $space-larger;
+  }
+
+  .modal-close {
+    @extend %reset-button;
+    position: absolute;
+    top: $space-small;
+    right: $space-small;
+
+    svg {
+      width: rem(14);
+      height: rem(14);
+    }
+  }
+}

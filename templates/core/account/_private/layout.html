@@ -1,0 +1,38 @@
+{{!
+  A wrapper for all account pages.
+
+  @block account-heading
+         The page's title.
+
+  @block account-content
+         The content for the main part of the layout.
+
+  @param class string
+         A name for the current page, added as a class to the account wrapper.
+
+  @param nav string
+         If "hidden", no nav will be shown.
+
+  @param nav_page string
+         If matches a string in navigation.html, that link will be made active.
+
+  @param header string
+         If "hidden", no header will be shown.
+         If "top", header will be shown above the nav.
+         Otherwise, header will be shown above the content.
+}}
+<section class="account-wrapper account-page-{{class}}{{#if nav '===' 'hidden'}} account-nav-hidden{{/if}}">
+  {{#if header '===' 'top'}}{{> core/account/_private/layout-heading}}{{/if}}
+
+  {{#if nav '!==' 'hidden'}}
+    {{> core/account/_private/navigation nav_page=nav_page}}
+  {{/if}}
+
+  <div class="account-body">
+    {{#unless header}}{{> core/account/_private/layout-heading}}{{/unless}}
+
+    <div class="account-content">
+      {{#block 'account-content'}}{{/block}}
+    </div>
+  </div>
+</section>

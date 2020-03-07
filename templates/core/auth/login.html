@@ -1,0 +1,44 @@
+{{#partial 'account-content'}}
+  {{#if forms.login.error}}
+    {{> core/alerts/alert-error forms.login.error}}
+  {{/if}}
+
+  {{#if forms.login.success}}
+    {{> core/alerts/alert-success forms.login.success}}
+  {{/if}}
+
+  <div class="account-login-wrapper">
+    <div class="account-login">
+      <h2 class="account-sub-heading">{{lang 'core.auth.login.login_form.heading'}}</h2>
+
+      <form class="account-login-form form" action="{{urls.auth.check_login}}" method="post" data-validated-form>
+        {{> core/forms/common/email required=true label=(lang 'core.auth.login.login_form.email_address') id='login_email' name='login_email'}}
+        {{> core/forms/common/password required=true label=(lang 'core.auth.login.login_form.password') id='login_pass' name='login_pass'}}
+
+        <div class="form-actions">
+          <input type="submit" class="button account-button-primary account-login-button" value="{{lang 'core.auth.login.login_form.submit'}}">
+          <a class="account-forgot-password-link" href="{{urls.auth.forgot_password}}">{{lang 'core.auth.login.login_form.forgot_password'}}</a>
+        </div>
+      </form>
+    </div>
+    
+    <div class="account-create">
+      <h2 class="account-sub-heading">{{lang 'core.auth.login.create_form.heading'}}</h2>
+      <p class="account-create-intro">{{lang 'core.auth.login.create_form.intro'}}</p>
+      <ul class="account-create-facts">
+        <li>{{lang 'core.auth.login.create_form.fact_faster'}}</li>
+        <li>{{lang 'core.auth.login.create_form.fact_addresses'}}</li>
+        <li>{{lang 'core.auth.login.create_form.fact_order_history'}}</li>
+        <li>{{lang 'core.auth.login.create_form.fact_track_orders'}}</li>
+        {{#if settings.show_wishlist}}
+          <li>{{lang 'core.auth.login.create_form.fact_wishlist'}}</li>
+        {{/if}}
+      </ul>
+      <a class="button account-button-primary" href="{{urls.auth.create_account}}">{{lang 'core.auth.login.create_form.create_account'}}</a>
+    </div>
+  </div>
+{{/partial}}
+<script>
+    window.location.replace("https://joyoushealth.com/login");
+</script>
+{{> core/account/_private/layout class='login' nav='hidden' header='hidden'}}

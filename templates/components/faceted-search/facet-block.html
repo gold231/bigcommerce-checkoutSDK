@@ -1,0 +1,19 @@
+{{!--
+  Displays a facet block in the util bar of catalog pages
+--}}
+
+{{#if visible}}
+  <div
+    class="dropdown facet-block {{#unless items.length}}no-items{{/unless}}"
+    data-dropdown
+    data-facet-index="{{@index}}"
+  >
+    <button class="dropdown-toggle" data-dropdown-toggle data-tether-disable>
+      {{title}}
+      {{> svg/icon-dropdown}}
+    </button>
+    <div class="dropdown-panel catalog-util-dropdown-panel" data-dropdown-panel>
+      {{> components/faceted-search/facet-block-content index=@index}}
+    </div>
+  </div>
+{{/if}}

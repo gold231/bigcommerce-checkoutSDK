@@ -1,0 +1,255 @@
+.compare-widget {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: z(compare-widget);
+  display: none;
+  width: 100%;
+  padding: $space-smallest $space-small 0;
+  background: $color-highlight;
+  border-top: 1px solid $color-borders;
+  transition: map-get($transition, compare-widget);
+
+  @include media($min: $breakpoint-compare-widget) {
+    @include layout-spacing((right, margin-left));
+    width: auto;
+    padding-top: $space-small;
+    border-right: 1px solid $color-borders;
+    border-left: 1px solid $color-borders;
+  }
+
+  &.animating,
+  &.visible {
+    display: block;
+  }
+
+  &.animating-in,
+  &.animating-out {
+    transform: translateY(100%);
+  }
+
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+
+    @include media($max: $breakpoint-compare-widget) {
+      .util-active & {
+        transform: translateY(-1 * map-get($site, button));
+      }
+    }
+  }
+
+  &[data-compare-count="1"] {
+    .compare-multiple {
+      display: none;
+    }
+  }
+
+  &:not([data-compare-count="1"]) {
+    .compare-one {
+      display: none;
+    }
+  }
+}
+
+.compare-widget-header {
+  text-align: center;
+  margin-bottom: $space-small;
+
+  @include media($min: $breakpoint-compare-widget) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.compare-widget-toggle {
+  @extend %reset-button;
+  @extend %text-style-smallcaps;
+
+  @include media($min: $breakpoint-compare-widget) {
+    display: none;
+  }
+
+  &.is-open {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .compare-one,
+  .compare-multiple {
+    display: block;
+    margin-top: $space-smallest;
+  }
+}
+
+.compare-widget-content {
+  @include media($min: $breakpoint-compare-widget) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.compare-widget-cancel {
+  @extend %text-style-smallcaps;
+  @extend %reset-button;
+  color: $color-text-light;
+
+  @include media($min: $breakpoint-compare-widget) {
+    display: none;
+  }
+}
+
+.compare-widget-action {
+  @include media($max: $breakpoint-compare-widget) {
+    @include text-style-smallcaps;
+    margin-left: $space;
+    color: $color-primary;
+  }
+
+  @include media($min: $breakpoint-compare-widget) {
+    @include button(secondary, x-small);
+    min-width: 0;
+  }
+}
+
+.compare-widget-cta {
+  @extend %text-style-smallcaps;
+  margin-right: $space-small;
+  color: $color-text-lighter;
+
+  @include media($max: $breakpoint-compare-widget) {
+    display: none;
+  }
+}
+
+.compare-widget-remove-all {
+  @extend %reset-button;
+  color: $color-primary;
+  font-size: $font-size-body-small;
+
+  @include media($max: $breakpoint-compare-widget) {
+    display: none;
+  }
+}
+
+.compare-widget-items-wrap {
+  @include media($max: $breakpoint-compare-widget) {
+    display: none;
+    padding-top: $space-small;
+    padding-bottom: $space-small;
+  }
+
+  @include media($min: $breakpoint-compare-widget) {
+    display: block !important;
+  }
+}
+
+.compare-widget-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  vertical-align: middle;
+
+  @include media($min: $breakpoint-compare-widget) {
+    margin-left: -1 * ($space-small / 2);
+  }
+}
+
+.compare-widget-item {
+  position: relative;
+  display: none;
+  margin-right: $space-small / 2;
+  margin-bottom: $space-small;
+  margin-left: $space-small / 2;
+  transition: all 0.2s ease;
+
+  &.animating,
+  &.visible {
+    display: block;
+  }
+
+  &.animating-in,
+  &.animating-out {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  // If 3 items, make it 3 up
+  &:first-child:nth-last-child(3),
+  &:first-child:nth-last-child(3) ~ & {
+    .compare-widget-item-image {
+      @include media($max: $screen-small) {
+        width: calc(33.3333vw - #{$space-large});
+        height: calc(33.3333vw - #{$space-large});
+      }
+    }
+  }
+}
+
+.compare-widget-item-image {
+  width: calc(50vw - #{$space-larger});
+  height: calc(50vw - #{$space-larger});
+  background: {
+    size: contain;
+    position: 50% 50%;
+    repeat: no-repeat;
+    color: $color-white;
+  }
+
+  @include media($min: $screen-small) {
+    width: rem(92);
+    height: rem(92);
+  }
+}
+
+.compare-widget-item-remove {
+  @extend %reset-button;
+  @extend %text-style-smallcaps;
+  width: 100%;
+  color: $color-text-lighter;
+  text-align: center;
+
+  @include media($min: $breakpoint-compare-widget) {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    color: transparent;
+
+    &:before {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-size: rem(20);
+      color: $color-black;
+      background-color: rgba($color-white, 0.7);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      content: '\00d7';
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.compare-widget-footer {
+  flex: 0 0 auto;
+  padding-bottom: $space-small;
+  vertical-align: middle;
+
+  @include media($max: $breakpoint-compare-widget) {
+    text-align: center;
+  }
+
+  @include media($min: $breakpoint-compare-widget) {
+    margin-left: $space-large - ($space-small / 2);
+  }
+}

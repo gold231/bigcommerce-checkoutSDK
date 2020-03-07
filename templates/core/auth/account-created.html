@@ -1,0 +1,11 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.auth.created.heading'}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  <p>{{{lang 'core.auth.created.message' store_name=settings.store_name email=customer.email}}}</p>
+
+  <a class="button account-button-primary" href="{{urls.home}}">{{lang 'core.auth.created.continue'}}</a>
+{{/partial}}
+
+{{> core/account/_private/layout class='created' nav='hidden'}}

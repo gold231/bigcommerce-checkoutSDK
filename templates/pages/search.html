@@ -1,0 +1,67 @@
+---
+product_results:
+  shop_by_price: true
+  limit: {{theme_settings.product_catalog_limit}}
+---
+
+{{#partial "page"}}
+
+  <section
+    class="product-catalog"
+    {{#if product_results.show_compare}}data-product-compare{{/if}}
+    data-search-page
+    data-search-query="{{forms.search.query}}"
+  >
+    {{{snippet 'product_results'}}}
+
+    <header class="product-catalog-header">
+      {{> components/common/page-title
+        title=(lang 'search.title' count=result_count)
+      }}
+      <h2 class="page-subtitle">
+        {{lang 'search.subtitle' count=result_count search_term=forms.search.query}}
+      </h2>
+
+      {{#if forms.search.has_suggestions}}
+        {{#if forms.search.suggested_query}}
+          <div class="search-results-suggestion">
+            <a href="{{forms.search.suggested_query.url}}">
+              {{lang 'search.suggestion' suggestion=forms.search.suggested_query.query}}
+            </a>
+          </div>
+        {{/if}}
+      {{/if}}
+    </header>
+
+    {{#any product_results.products content_results}}
+      <div class="search-tabs" data-tabs>
+        <div class="tabs" style="display: none;">
+          <a class="tab-title" href="#product-results" data-tab-link>
+            {{lang 'search.product' count=pagination.product_results.total}}
+          </a>
+          <a class="tab-title" href="#content-results"  data-tab-link>
+            {{lang 'search.content' count=pagination.content_results.total}}
+          </a>
+        </div>
+
+        <div id="product-results" data-tab-content>
+          <h2 class="search-tab-title">{{lang 'search.product' count=pagination.product_results.total}}</h2>
+          <div class="facet-content" data-facet-content>
+            {{> components/product-catalog/catalog-index}}
+          </div>
+        </div>
+        <div id="content-results" data-tab-content>
+          <h2 class="search-tab-title">{{lang 'search.content' count=pagination.content_results.total}}</h2>
+          <div class="facet-content" data-facet-content>
+            {{> components/search/content-results}}
+          </div>
+        </div>
+      </div>
+    {{/any}}
+
+    {{{region name="search_below_content"}}}
+  </section>
+
+{{/partial}}
+
+{{> layout/base}}

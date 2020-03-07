@@ -1,0 +1,3 @@
+{
+  "components/faceted-search/facet-toggle-more": "<li class=\"facet-toggle-more\">\n  <a href=\"#\" data-facet-more=\"{{facet}}\">\n    {{lang 'faceted_search.show_more'}}\n  </a>\n</li>\n"
+}

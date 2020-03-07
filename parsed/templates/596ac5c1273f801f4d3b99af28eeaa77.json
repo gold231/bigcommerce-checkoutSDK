@@ -1,0 +1,3 @@
+{
+  "components/amp/styles/product": ".single-product-tabs-section-title {\n  display: none;\n}\n\n.product-tab-details-item-name {\n  font-weight: 600;\n}\n"
+}

@@ -1,0 +1,3 @@
+{
+  "core/amp/products/videos": "<amp-carousel\n  width=\"640\"\n  height=\"490\"\n  layout=\"responsive\"\n  type=\"slides\"\n>\n  {{#each this.list}}\n    <div>\n      <div>\n        <amp-youtube\n          width=\"640\"\n          height=\"390\"\n          data-videoid=\"{{id}}\"\n          layout=\"responsive\"\n        >\n      </amp-youtube>\n    </div>\n    <div class=\"amp-product-video-body\">\n      <h3 class=\"amp-product-video-title\">\n        {{title_long}}\n      </h3>\n      <p class=\"amp-product-video-description\">\n        {{description_short}}\n      </p>\n    </div>\n  </div>\n  {{/each}}\n</amp-carousel>\n"
+}

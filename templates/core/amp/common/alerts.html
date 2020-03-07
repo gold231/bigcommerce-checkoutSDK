@@ -1,0 +1,29 @@
+<div class="site-alerts" data-alerts>
+  {{! container for appending cart-add errors}}
+  <div class="product-alert" data-product-cart-message></div>
+
+  {{#each product.reviews.messages}}
+    {{#if error}}
+      {{> core/alerts/alert-error message=error dismissable=true}}
+    {{/if}}
+    {{#if success}}
+      {{> core/alerts/alert-success message=success dismissable=true}}
+    {{/if}}
+  {{/each}}
+
+  {{#if cart.status_messages}}
+    {{#each cart.status_messages}}
+      {{#if type '==' 0}}
+        {{> core/alerts/alert-error message=message dismissable=true}}
+      {{/if}}
+
+      {{#if type '==' 1}}
+        {{> core/alerts/alert-success message=message dismissable=true}}
+      {{/if}}
+
+      {{#if type '==' 3}}
+        {{> core/alerts/alert-error message=message dismissable=true}}
+      {{/if}}
+    {{/each}}
+  {{/if}}
+</div>

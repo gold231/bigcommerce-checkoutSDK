@@ -1,0 +1,61 @@
+{{#if customer.wishlists}}
+
+  <div class="account-items">
+    {{#each customer.wishlists}}
+      <article class="account-item">
+        <div class="account-item-body">
+          <h1 class="account-item-title account-item-title-large">
+            <a href="{{view_url}}">{{name}}</a>
+          </h1>
+
+          <div class="account-item-details">
+            <div class="account-item-detail">
+              <h2 class="account-item-detail-title">{{lang 'core.account.wishlists.num_items'}}</h2>
+              <span class="account-item-detail-value">{{num_items}}</span>
+            </div>
+
+            <div class="account-item-detail">
+              <h2 class="account-item-detail-title">{{lang 'core.account.wishlists.public'}}</h2>
+              <span class="account-item-detail-value">
+                {{#if is_public}}
+                  {{lang 'core.account.common.yes'}}
+                {{else}}
+                  {{lang 'core.account.common.no'}}
+                {{/if}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="account-item-actions">
+          <form method="post" action="{{delete_url}}" class="form">
+            <div class="form-actions">
+              <a href="{{edit_url}}" class="button account-button-primary account-button-small">{{lang 'core.account.common.edit'}}</a>
+              <input class="button account-button-primary account-button-small" type="submit" value="{{lang 'core.account.common.delete'}}">
+              {{#if is_public}}
+                <a href="{{share_url}}" class="button account-button-primary account-button-small" role="button">{{lang 'core.account.common.share'}}</a>
+              {{/if}}
+            </div>
+          </form>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+
+{{else}}
+  <div class="account-empty">{{lang 'core.account.wishlists.empty'}}</div>
+{{/if}}
+
+<form class="form" action="{{this.urls.account.wishlists.delete}}" method="post">
+  <div class="form-actions">
+    <a class="button account-button-primary" href="{{this.urls.account.wishlists.add}}" role="button">
+      {{lang 'core.account.wishlists.new'}}
+    </a>
+    {{#each customer.wishlists}}
+      <input type="hidden" value="{{this.id}}" name="deletewishlist[]"/>
+    {{/each}}
+
+    {{#if customer.wishlists}}
+      <input class="button account-button-secondary" type="submit" value="{{lang 'core.account.wishlists.delete_all'}}" id="wishlist-delete">
+    {{/if}}
+  </div>
+</form>

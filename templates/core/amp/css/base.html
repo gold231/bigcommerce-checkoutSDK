@@ -1,0 +1,183 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  height: auto;
+}
+
+body {
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: {{color_text}};
+  background: {{body_background}};
+  padding-top: 55px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: {{color_accent}};
+  line-height: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  opacity: 0.7;
+}
+
+*:focus {
+  outline: 0;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: {{color_headings}};
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: .25px;
+  margin-bottom: .78571rem;
+  margin-top: 2.28571rem;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 25px
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+hr {
+  border: solid {{color_borders}};
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+  margin: 2rem 0 1.92857rem;
+}
+
+ul,
+ol,
+dl {
+  list-style-position: outside;
+  margin-bottom: 1.5rem;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+ul {
+  margin-left: 1.15rem;
+}
+
+ol {
+  margin-left: 1.15rem;
+}
+
+dl dt {
+  font-weight: 700;
+  margin-bottom: .35714rem;
+}
+
+dl dd {
+  margin-bottom: 1.5rem;
+}
+
+abbr,
+acronym {
+  border-bottom: 1px dotted {{color_borders}};
+  color: {{color_text}};
+  cursor: help;
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+abbr {
+  text-transform: none;
+}
+
+blockquote,
+blockquote p {
+  font-size: 22px;
+  line-height: 29px;
+}
+
+cite {
+  color: {{color_accent}};
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.body {
+  margin-bottom: 6rem;
+  margin-top: 1.5rem;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 91.71429rem;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

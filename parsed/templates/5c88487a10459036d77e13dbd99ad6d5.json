@@ -1,0 +1,3 @@
+{
+  "core/account/_private/messages-list": "{{#if messages}}\n  <table class=\"account-messages-table table-clean\">\n    {{#each messages}}\n      <tr class=\"account-messages-table-message {{#if is_reply}}account-message-is-reply{{/if}} {{#unless unread}}account-message-is-read{{/unless}}\">\n        <td>\n          <h2 class=\"account-message-subject\">{{subject}}</h2>\n          <div class=\"account-message-content\">{{message}}</div>\n        </td>\n        <td class=\"account-messages-table-date\">\n          <time class=\"account-message-date\">{{date}}</time>\n        </td>\n      </tr>\n    {{/each}}\n  </table>\n\n{{else}}\n  <div class=\"account-empty\">{{lang 'core.account.messages.no_messages'}}</div>\n\n{{/if}}\n"
+}

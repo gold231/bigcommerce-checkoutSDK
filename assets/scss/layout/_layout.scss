@@ -1,0 +1,119 @@
+.sidebar-is-visible {
+  @include media($max: $screen-large) {
+    position: fixed;
+    overflow: hidden;
+  }
+}
+
+.site-main {
+  margin-top: map-get($site, header-mobile);
+  overflow: hidden;
+
+  @include media($min: $screen-small) {
+    display: flex;
+    margin-top: map-get($site, header);
+  }
+}
+
+.site-main-sidebar {
+  width: 100%;
+  overflow: hidden;
+
+  // Offcanvas nav
+  @include media($max: $screen-large) {
+    position: fixed;
+    top: map-get($site, header-mobile);
+    right: 100%;
+    bottom: 0;
+    z-index: z("sidebar");
+    transition: transform 0.2s ease-out;
+
+    .sidebar-is-visible & {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+
+  @include media($min: $screen-small, $max: $screen-large) {
+    top: map-get($site, header);
+  }
+
+  @include media($min: $screen-small) {
+    flex: 0 0 auto;
+    width: map-get($site, sidebar);
+    color: $color-text;
+    margin-top: $space;
+  }
+
+  .site-utils-small {
+    color: $color-white;
+
+    &::before {
+      @extend %nav-separator;
+    }
+
+    @include media($min: $screen-medium) {
+      display: none;
+    }
+
+    .main-navigation-container {
+      padding-top: map-get($site, breadcrumbs);
+    }
+  }
+}
+
+.site-main-sidebar-inner {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $color-primary;
+
+  @include media($max: $screen-small) {
+    position: absolute;
+    top: 0 !important;
+    bottom: 0;
+  }
+
+  @include media($min: $screen-large) {
+    width: map-get($site, sidebar);
+    height: 100%;
+    max-height: calc(100vh - #{map-get($site, header)});
+    background-color: $color-background;
+    border-right: 0px solid $color-borders;
+  }
+
+  @include media($min: $screen-large) {
+    &.is-sticky {
+      position: fixed;
+      top: map-get($site, header);
+      left: 0;
+      padding-top:$space-large;
+    }
+  }
+}
+
+.site-main-content {
+  @include container;
+  @include layout-spacing(padding-bottom);
+
+  @include media($min: $screen-large) {
+    width: calc(100% - #{map-get($site, sidebar)});
+  }
+
+  .page-account_addressbook & {
+    overflow-x: hidden;
+  }
+}
+
+.page-content {
+  max-width: $max-width-text;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: $font-secondary;
+}
+
+.page-content-program {
+  margin-right: auto;
+  margin-left: auto;
+  font-family: $font-secondary;
+}

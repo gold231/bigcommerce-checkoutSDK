@@ -1,0 +1,52 @@
+/*----------  Catalog Header  ----------*/
+
+.product-catalog-header {
+  margin-bottom: $space-large;
+
+  .page-title {
+    @include heading(1);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: $font-secondary;
+  }
+}
+
+.product-catalog-banner {
+  @include layout-spacing(margin-top);
+  display: none;
+}
+
+.product-catalog-description {
+  margin: $space-smaller auto 0;
+  max-width: $max-width-text;
+  font-family: $font-secondary;
+  font-size: $font-size-body-large;
+  line-height: $line-height-loose;
+  color: $color-text-light;
+  text-align: center;
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*----------  Catalog Grid  ----------*/
+
+.product-grid {
+  .product-grid-item {
+    @include product-grid-item-layout;
+    @include layout-spacing(margin-bottom);
+  }
+}
+
+.facet-content {
+  > .loading-overlay .loading {
+    margin-top: rem(200);
+  }
+}

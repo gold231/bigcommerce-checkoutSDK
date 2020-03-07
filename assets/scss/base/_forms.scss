@@ -1,0 +1,215 @@
+// layout
+.form-field-control {
+  @extend %clearfix;
+  display: block;
+}
+
+.form-inline-message {
+  display: inline-block;
+  margin-top: $gutter-small;
+  color: $color-error;
+
+  .search-form & {
+    position: absolute;
+    margin-top: $space-smallest;
+  }
+}
+
+.form-inline {
+  display: flex;
+
+  .form-input {
+    margin-right: $space-small;
+  }
+
+  .button {
+    flex: 0 0 auto;
+  }
+}
+
+.form-input {
+  width: 100%;
+  height: rem(48);
+  padding: $gutter-medium-half $space-smaller;
+  font-family: $font-primary;
+  background: transparent;
+  border: 1px solid $color-borders;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+
+  &::placeholder {
+    color: $color-text-lighter;
+  }
+
+  &:focus {
+    background: none;
+    outline: none;
+  }
+
+  &.form-checkbox,
+  &.form-radio {
+    @extend %sr-only;
+  }
+
+  &.form-file {
+    display: flex;
+    flex: 0 0 1;
+  }
+
+  .form-inline & {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+textarea {
+  height: auto !important; //override above input height for multiline
+}
+
+.form-fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.form-label {
+  display: block;
+  padding-bottom: $gutter-medium-half;
+  color: $color-text;
+
+  .product-options & {
+    min-width: rem(125); // to give enough room when all values are short for dropdown arrow display
+  }
+}
+
+.form-field-title {
+  @extend %text-style-smallcaps;
+  display: inline-block;
+  margin-bottom: $space-smallest;
+  color: $color-text;
+  font-family: $font-primary;
+
+  .form-required &::after {
+    color: $color-error;
+    content: "*";
+  }
+}
+
+// Required form element display 'required' text next title
+.required-text {
+  @extend .sr-only;
+}
+
+.form-label-text {
+  position: relative;
+}
+
+// checkboxes
+input[type=checkbox] + .form-label-text {
+  &::before {
+    @extend %checkbox-unchecked;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: "";
+    transform: translateY(-50%);
+  }
+}
+
+input[type=checkbox]:checked + .form-label-text::before {
+  @extend %checkbox-checked;
+  color: $color-white;
+  text-align: center;
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 16 16"><path class="checkmark" fill="none" stroke="#{$color-white}" stroke-width="2" stroke-miterlimit="10" d="M1 8l5 6 9-11"/></svg>');
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+}
+
+// radio buttons
+.shipping-calculator .form-field-radio {
+  span {
+    @extend .form-label-text;
+    position: relative;
+  }
+}
+
+input[type=radio] + .form-label-text,
+input[type=radio] + span {
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: inline-block;
+    width: rem(18);
+    height: rem(18);
+    border: 1px solid $color-borders;
+    border-radius: 50%;
+    content: "";
+    transform: translateY(-50%);
+  }
+}
+
+input[type=radio]:checked + .form-label-text::before,
+input[type=radio]:checked + span::before {
+  background-color: $color-primary;
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"><circle cx="8" cy="8" r="4" fill="#{$color-white}" /></svg> ');
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  border: 1px solid $color-primary;
+  content: "";
+}
+
+// ---------------------------------------------------------------- //
+// Select Wrappers - Provides some additional style control for select elements
+
+.form-select-wrapper {
+  position: relative;
+  display: block;
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    top: calc(50% - #{rem(4)});
+    right: $gutter-small-half;
+    width: $gutter-large-half / 2;
+    height: $gutter-large-half / 2;
+    pointer-events: none;
+    background-image: svg-url('<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path id="a" d="M12 8l-3 3-3-3h6z" fill="#{$color-text-lighter}" /></svg>');
+    background-position: 50% center;
+    background-repeat: no-repeat;
+    content: "";
+  }
+
+  .form-select {
+    width: 100%;
+    background: transparent;
+    -moz-appearance: none;
+
+    &:hover {
+      border-color: $color-text-lighter;
+    }
+
+    option {
+      color: $color-black;
+    }
+  }
+}
+
+.form-selected-text {
+  display: inline-block;
+  padding: rem(10) 0;
+  vertical-align: middle;
+}
+
+// Hide HTML5 Up and Down arrows in number input[type="number"]
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

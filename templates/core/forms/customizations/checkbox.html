@@ -1,0 +1,22 @@
+
+<div class="form-field form-field-customizations form-field-checkbox{{#if required}} form-required{{/if}}">
+  <div class="form-field-title">
+    {{display_name}}
+    {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+  </div>
+  <label class="form-label">
+    <span class="form-field-control">
+      <input class="form-input form-checkbox"
+        id="product-field-{{id}}"
+        name="ProductFields[{{this.id}}]"
+        type="checkbox"
+        {{#if value}}checked{{/if}}
+        {{#if required}}required{{/if}}
+        aria-required="{{required}}"
+      >
+      <span class="form-label-text product-customization-text">
+        {{display_name}}
+      </span>
+    </span>
+  </label>
+</div>

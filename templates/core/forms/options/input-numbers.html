@@ -1,0 +1,31 @@
+<div
+  class="
+    form-field
+    form-field-options
+    form-field-number
+    {{#if required}}
+      form-required
+    {{/if}}
+  "
+  data-product-attribute="input-number"
+>
+  <label class="form-label">
+    <span class="form-field-title">
+      {{display_name}}
+      {{#if required}}
+        <span class="required-text">{{lang 'common.required'}}</span>
+      {{/if}}
+    </span>
+    <span class="form-field-control">
+      <input
+        class="form-input"
+        id="attribute-{{id}}"
+        name="attribute[{{id}}]"
+        type="number"
+        value="{{prefill}}"
+        {{#if required}}required{{/if}}
+        aria-required="{{required}}"
+      >
+    </span>
+  </label>
+</div>

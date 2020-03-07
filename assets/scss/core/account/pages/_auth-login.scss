@@ -1,0 +1,71 @@
+
+.account-page-login .alert {
+  max-width: 860px;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: $account-gutter;
+  margin-left: auto;
+}
+
+.account-login-wrapper {
+  max-width: 860px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media screen and (min-width: $account-breakpoint-small) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+}
+
+.account-page-login .account-sub-heading {
+  margin: 0 0 20px;
+}
+
+.account-login,
+.account-create {
+  @media screen and (min-width: $account-breakpoint-small) {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+// Login Form
+
+.account-login {
+  @media screen and (max-width: $account-breakpoint-small - 1) {
+    margin-bottom: $account-gutter;
+  }
+
+  @media screen and (min-width: $account-breakpoint-small) {
+    padding: $account-gutter-inner (30px + $account-gutter-inner) $account-gutter-inner 0;
+  }
+}
+
+.account-login-button {
+  margin-right: $account-gutter-inner;
+}
+
+// New Account
+
+.account-create {
+  padding: $account-gutter-inner;
+  background: $account-card-background-color;
+}
+
+.account-create-intro {
+  &:empty {
+    display: none;
+  }
+}
+
+.account-create-facts {
+  padding-left: 20px;
+  margin-bottom: 30px;
+  list-style: disc;
+
+  li:empty {
+    display: none;
+  }
+}

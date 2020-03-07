@@ -1,0 +1,43 @@
+// ================================================================ */
+//  Function to convert px to rem
+// from: https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+
+$browser-context: 16px !default;
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $browser-context) {
+  //scss-lint:disable ZeroUnit - unit needed for accurate conditional evaluation
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+
+@function rem($values, $base-value: $browser-context) {
+  $max: length($values);
+
+  @if $max == 1 {
+    @return convert-to-rem(nth($values, 1), $base-value);
+  }
+
+  $rem-values: ();
+  @for $i from 1 through $max {
+    $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
+  }
+
+  @return $rem-values;
+}
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}

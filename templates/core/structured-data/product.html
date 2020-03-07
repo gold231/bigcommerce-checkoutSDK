@@ -1,0 +1,52 @@
+{{!-- Product: include in product.html page template --}}
+<script id="schema-product">
+  var schema = document.createElement('script');
+  schema.type = 'application/ld+json';
+  schema.text = JSON.stringify({
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": "{{product.title}}",
+    "image": "{{getImage product.main_image}}",
+    "description": "{{json product.description}}",
+    "brand": {
+      "@type": "Thing",
+      "name": "{{product.brand.name}}"
+    },
+    {{#if product.reviews.list}}
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{{product.rating}}",
+        "reviewCount": "{{product.num_reviews}}"
+      },
+    {{/if}}
+    "offers": {
+      "@type": "Offer",
+      "itemCondition": "{{#if product.condition '===' 'New'}}http://schema.org/NewCondition{{/if}}{{#if product.condition '===' 'Used'}}http://schema.org/UsedCondition{{/if}}{{#if product.condition '===' 'Refurbished'}}http://schema.org/RefurbishedCondition{{/if}}",
+      "availability": "{{#unless product.out_of_stock_message}}http://schema.org/InStock{{else}}http://schema.org/OutOfStock{{/unless}}",
+      "sku": "{{product.sku}}",
+      "priceCurrency": "{{currency_selector.active_currency_code}}",
+      "url": window.location.href,
+      "seller": {
+        "@type": "Organization",
+        "name": "{{settings.store_name}}"
+      },
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "{{currency_selector.active_currency_code}}",
+        {{#if product.price.price_range}}
+          "minPrice": "{{#if product.price.price_range.min.without_tax}}{{product.price.price_range.min.without_tax.value}}{{/if}}{{#if product.price.price_range.min.with_tax}}{{#unless product.price.price_range.min.without_tax}}{{product.price.price_range.min.with_tax.value}}{{/unless}}{{/if}}",
+          "price": "{{#if product.price.price_range.min.without_tax}}{{product.price.price_range.min.without_tax.value}}{{/if}}{{#if product.price.price_range.min.with_tax}}{{#unless product.price.price_range.min.without_tax}}{{product.price.price_range.min.with_tax.value}}{{/unless}}{{/if}}",
+          "maxPrice": "{{#if product.price.price_range.max.without_tax}}{{product.price.price_range.max.without_tax.value}}{{/if}}{{#if product.price.price_range.max.with_tax}}{{#unless product.price.price_range.max.without_tax}}{{product.price.price_range.max.with_tax.value}}{{/unless}}{{/if}}",
+          "valueAddedTaxIncluded": "{{#if product.price_range.min.without_tax}}false{{/if}}{{#if product.price.price_range.min.with_tax}}{{#unless product.price.price_range.min.without_tax}}true{{/unless}}{{/if}}"
+        {{else}}
+          "price": "{{#if product.price.without_tax}}{{product.price.without_tax.value}}{{/if}}{{#if product.price.with_tax}}{{#unless product.price.without_tax}}{{product.price.with_tax.value}}{{/unless}}{{/if}}",
+          "valueAddedTaxIncluded": "{{#if product.price.without_tax}}false{{/if}}{{#if product.price.with_tax}}{{#unless product.price.without_tax}}true{{/unless}}{{/if}}"
+        {{/if}}
+      }
+    }
+  });
+
+  document.querySelector('body').appendChild(schema);
+  var script = document.getElementById('schema-product');
+  script.parentElement.removeChild(script);
+</script>

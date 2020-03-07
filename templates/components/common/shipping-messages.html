@@ -1,0 +1,19 @@
+{{#if shipping_messages}}
+  {{#each shipping_messages}}
+    <div class="promo-message">{{{message}}}</div>
+  {{/each}}
+{{/if}}
+
+{{#if cart.status_messages}}
+  {{#each cart.status_messages}}
+    {{#if type '==' 2}}
+      <div class="promo-message">{{{message}}}</div>
+    {{/if}}
+  {{/each}}
+{{/if}}
+
+{{#if product.shipping_messages}}
+  {{#each product.shipping_messages}}
+    <div class="promo-message">{{{message}}}</div>
+  {{/each}}
+{{/if}}

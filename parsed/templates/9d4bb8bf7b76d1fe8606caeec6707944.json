@@ -1,0 +1,3 @@
+{
+  "components/common/banners": "{{#if banners}}\n  <div class=\"banners {{class}}\">\n    <div class=\"banner user-content\">\n      {{{limit banners 1}}}\n    </div>\n  </div>\n{{/if}}\n"
+}

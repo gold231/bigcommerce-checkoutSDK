@@ -1,0 +1,55 @@
+
+<div class="form-field form-field-common form-field-date {{#if required}} form-required{{/if}}" id="{{id}}">
+  <span class="form-label">
+
+    <span class="form-field-title">
+      {{label}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+
+    <span class="form-field-control">
+      <span class="form-select-wrapper form-date-year">
+        <select
+          class="form-input form-select"
+          id="date-year-{{id}}"
+          name="{{year.name}}"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}">
+          <option disabled>{{lang 'forms.date.year'}}</option>
+          {{#each year.items}}
+            <option {{#if ../year.value '==' value}}selected{{/if}} value="{{value}}">{{label}}</option>
+          {{/each}}
+        </select>
+      </span>
+
+      <span class="form-select-wrapper form-date-month">
+        <select
+          class="form-input form-select"
+          id="date-month-{{id}}"
+          name="{{month.name}}"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}">
+          <option disabled>{{lang 'forms.date.month'}}</option>
+          {{#each month.items}}
+            <option {{#if ../month.value '==' value}}selected{{/if}} value="{{value}}">{{label}}</option>
+          {{/each}}
+        </select>
+      </span>
+
+      <span class="form-select-wrapper form-date-day">
+        <select
+          class="form-input form-select"
+          id="date-day-{{id}}"
+          name="{{day.name}}"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}">
+          <option disabled>{{lang 'forms.date.day'}}</option>
+          {{#each day.items}}
+            <option {{#if ../day.value '==' value}}selected{{/if}} value="{{value}}">{{label}}</option>
+          {{/each}}
+        </select>
+      </span>
+    </span>
+
+  </span>
+</div>

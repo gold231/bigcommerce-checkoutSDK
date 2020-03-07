@@ -1,0 +1,17 @@
+{{#if currency_selector.currencies.length ">" 1}}
+  <div class="currency-selector" data-currency-selector>
+    <span class="currency-selected" data-currency-selector-toggle>
+      {{currency_selector.active_currency_code}}
+    </span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" role="presentation">
+      <path id="a" d="M12 8l-3 3-3-3h6z" fill="currentColor" />
+    </svg>
+    <select class="currencies" aria-label="{{lang 'header.currency_selector'}}">
+      {{#each currency_selector.currencies}}
+        <option value="{{{switch_url}}}" {{#if is_active}}selected{{/if}}>
+          {{name}}
+        </option>
+      {{/each}}
+    </select>
+  </div>
+{{/if}}

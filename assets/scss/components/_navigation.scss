@@ -1,0 +1,245 @@
+// layout
+.main-navigation {
+  .js & {
+    visibility: hidden;
+
+    &.loaded {
+      visibility: visible;
+    }
+  }
+}
+
+.main-navigation-container {
+  @include layout-spacing((padding-right, padding-left));
+  position: relative;
+  margin-top: $space-smaller;
+  margin-bottom: $space-larger;
+  overflow: hidden;
+
+  @include media($min: $screen-small) {
+    margin-top: 0;
+    margin-bottom: $space-large;
+  }
+}
+
+// Nav breadcrumbs
+.main-navigation-breadcrumbs {
+  @include layout-spacing((margin-right, margin-left));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $space-small;
+  border-bottom: 1px solid rgba($color-white, 0.3);
+  transition: map-get($transition, navigation);
+  height: map-get($site, breadcrumbs);
+  padding-top: $gutter-small;
+
+  @include media($min: $screen-large) {
+    border-color: $color-borders;
+  }
+
+  &.is-active {
+    .navigation-go-back {
+      @extend %text-style-smallcaps;    
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      font-weight:700;
+    }
+
+    .main-navigation-panel-title {
+      display: none;
+    }
+  }
+
+  &.no-transition {
+    transition-duration: 0s;
+  }
+
+  .navigation-go-back {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .main-navigation-panel-title {
+    @extend %text-style-smallcaps;      
+    margin-bottom: 1rem;
+    font-weight:700;
+  }
+}
+
+.main-navigation-breadcrumb {
+  @extend %reset-button;
+  margin-bottom: $gutter-medium;
+  color: $color-white;
+
+  @include media($min: $screen-small) {
+    margin-bottom: $gutter-small;
+  }
+
+  @include media($min: $screen-large) {
+    color: $color-text;
+  }
+
+  &:focus {
+    border-bottom: 1px solid;
+    outline: 0;
+  }
+
+  &.reset-all {
+    display: inline-block;
+    order: 2;
+    text-align: right;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-out;
+    display: none;
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .no-transition & {
+      transition-duration: 0s;
+    }
+  }
+
+  .navigation-go-back-desktop {
+    display: inline-block;
+    margin-right: $space-smallest;
+  }
+
+  .navigation-go-back-mobile {
+    position: relative;
+    top: rem(2);
+    left: rem(-9);
+    display: inline-block;
+    transform: rotate(90deg);
+
+    @include media($min: $screen-small) {
+      display: none;
+    }
+  }
+}
+
+// Nav panel
+.main-navigation-panel {
+  width: 100%;
+  color: $color-white;
+  transform: translate3d(0, 0, 0);
+  transition: map-get($transition, navigation), height 0.3s ease-out;
+
+  @include media($min: $screen-small) {
+    padding-top: $space-smaller;
+  }
+
+  @include media($min: $screen-large) {
+    color: $color-text;
+  }
+
+  &.is-right,
+  &.is-left {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+  }
+
+  &.is-right {
+    transform: translateX(calc(100% + #{$gutter-large}));
+  }
+
+  &.is-left {
+    transform: translateX(calc(-100% - #{$gutter-large}));
+  }
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  &.no-transition {
+    transition-duration: 0s;
+  }
+
+  a {
+    display: block;
+    padding-right: $space-smallest;
+    padding-left: $space-smallest;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      @include media($min: $screen-small) {
+        background: rgba($color-primary, 0.3);
+      }
+    }
+  }
+}
+
+.main-navigation-panel-title {
+  @extend %text-style-smallcaps;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: rgba($color-white, 0.8);
+
+  @include media($min: $screen-small) {
+    padding: $space-smaller 0;
+  }
+
+  @include media($min: $screen-large) {
+    color: inherit;
+  }
+
+  .main-navigation-panel-child & {
+    @include media($max: $screen-small) {
+      padding-top: $space;
+      padding-bottom: $space-smaller;
+      margin-top: 0;
+    }
+  }
+}
+
+// Nav items
+.main-navigation-item {
+  @extend %text-style-smallcaps;      
+  position: relative;
+  margin-right: -$space-smallest;
+  margin-left: -$space-smallest;
+  line-height: 2.25;
+
+  @include media($min: $screen-small) {
+    line-height: 2.5;
+  }
+
+  &.is-active a,
+  &.is-active a:hover {
+    background-color: rgba($color-white, 0.1);
+
+    @include media($min: $screen-small) {
+      color: $color-primary;
+      background-color: rgba($color-primary, 0.08);
+    }
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: $space-smallest;
+    transform: translateY(-50%);
+  }
+}
+
+.main-navigation-item-count {
+  font-size: $font-size-body-smaller;
+  font-weight: 700;
+  color: rgba($color-white, 0.7);
+
+  @include media($min: $screen-large) {
+    color: $color-borders;
+  }
+}

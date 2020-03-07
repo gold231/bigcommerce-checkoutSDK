@@ -1,0 +1,16 @@
+<section class="related-products related-products-{{number}}">
+  <h2 class="related-products-title">{{lang 'product.related_products'}}</h2>
+  <div class="product-grid grid-container related-products-grid">
+    {{#each product.related_products}}
+      {{> components/product-catalog/product-grid-item
+        quickshop=../theme_settings.product_catalog_quickshop
+        image_ratio=../theme_settings.product_grid_image_ratio
+        fit=../theme_settings.product_grid_image_cropping
+        default=../theme_settings.default_image
+        show_rating=../../settings.show_product_rating
+        show_actions=true
+        sale_badges=../../theme_settings.sale-badges
+      }}
+    {{/each}}
+  </div>
+</section>

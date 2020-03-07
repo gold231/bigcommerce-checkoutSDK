@@ -1,0 +1,51 @@
+{{!--
+  Shipping Quotes - Template pulled in by shipping calculator and set up to
+  display the individual quotes that can be selected from.
+--}}
+
+<h2>{{lang 'cart.shipping_calculator.shipping_methods'}}</h2>
+
+<form class="form" data-validated-form>
+  <div class="form-field-radio">
+    {{#each quotes.shipping_methods}}
+      <label class="form-label" for="shipping-quote-{{id}}">
+        <input
+          id="shipping-quote-{{id}}"
+          class="form-input form-radio"
+          type="radio"
+          name="shipping_method"
+          value="{{id}}"
+          {{#if @index '===' 0}} checked="checked" {{/if}}
+          data-shipping-quote
+        >
+        <span class="form-label-text">{{provider_name}} - {{cost.formatted}}</span>
+      </label>
+    {{/each}}
+
+    {{#each quotes.ups_shipping_methods}}
+      <label class="form-label" for="shipping-quote-{{id}}">
+        <input
+          id="shipping-quote-{{id}}"
+          class="form-input form-radio"
+          type="radio"
+          name="shipping_method"
+          value="{{id}}"
+          data-shipping-quote
+        >
+        <span>
+          {{#if logo_path}}
+            <img src="{{logo_path}}" alt="{{description}}">
+          {{/if}}
+          {{description}} - {{cost.formatted}}
+        </span>
+      </label>
+    {{/each}}
+  </div>
+
+  <div class="form-actions shipping-quote-submit">
+    <button class="button button-cancel modal-close" href="#">
+      {{lang 'common.cancel'}}
+    </button>
+    <input class="button button-primary" type="submit" value="{{lang 'cart.shipping_calculator.select'}}">
+  </div>
+</form>

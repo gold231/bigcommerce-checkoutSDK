@@ -1,0 +1,42 @@
+{{! TODO: where is this used, and is it necessary }}
+<div class="form-field form-field-common form-field-selectortext {{#if required}} form-required{{/if}}" id="{{id}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{label}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+
+    <span class="form-field-control">
+      {{! text input for non-JS experience }}
+      <noscript>
+        <input
+          class="form-input"
+          id="input-{{id}}"
+          name="{{name}}"
+          type="text"
+          value="{{value}}"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}">
+      </noscript>
+
+      {{! TODO: hide this for non-JS users? Otherwise two inputs show }}
+      <div class="form-select-wrapper">
+        <select
+          class="form-input form-select"
+          id="select-{{id}}"
+          name="{{name}}"
+          {{#if required}}required{{/if}}
+          aria-required="{{required}}"
+          data-label="{{label}}"
+          {{#if private_id}}data-field-type="{{private_id}}"{{/if}}>
+          {{#if options}}
+            <option disabled>{{chooseprefix}}</option>
+            {{#each options}}
+              <option {{#if selected}} selected {{/if}}value="{{value}}">{{label}}</option>
+            {{/each}}
+          {{/if}}
+        </select>
+      </div>
+    </span>
+  </label>
+</div>

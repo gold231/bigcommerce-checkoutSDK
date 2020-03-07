@@ -1,0 +1,3 @@
+{
+  "core/alerts/alert-success": "<div class=\"alert alert-success\">\n  {{#if dismissable}}<a class=\"alert-dismiss\">&times;</a>{{/if}}\n\n  <div class=\"alert-message\">\n    {{#if message}}\n      {{{message}}}\n    {{else}}\n      {{{this}}}\n    {{/if}}\n  </div>\n</div>\n"
+}

@@ -1,0 +1,3 @@
+{
+  "components/product-catalog/shop-by-brand-label": "{{#any shop_by selected=true}}\n  {{#each shop_by}}\n    {{#if selected}}\n      {{name}}\n    {{/if}}\n  {{/each}}\n{{else}}\n  {{lang 'common.shop_by.all_brands'}}\n{{/any}}\n"
+}

@@ -1,0 +1,26 @@
+.account-page-forgot .account-body {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  float: none;
+}
+
+.account-forgot-form {
+  display: table;
+  width: 100%;
+  margin-top: $account-gutter;
+
+  .form-field,
+  .form-actions {
+    display: table-cell;
+    text-align: left;
+    vertical-align: bottom;
+  }
+
+  .form-actions {
+    width: 1px;
+    padding-left: 10px;
+  }
+}

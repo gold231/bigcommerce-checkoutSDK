@@ -1,0 +1,25 @@
+{{#partial "page"}}
+
+  <header class="page-header">
+    <h1 class="page-title">
+      {{lang 'sitemap.title'}}
+    </h1>
+  </header>
+  <section class="sitemap">
+    <div class="container">
+      <article class="sitemap-content user-content">
+        {{#each sitemap}}
+          <div class="sitemap-group">
+            <h2 class="sitemap-title">{{title}}</h2>
+            {{> components/sitemap/group items=body show_all_link=show_all_link subsection_url=subsection_url}}
+
+            {{#if show_all_link}}
+              <a class="sitemap-showall" href="{{subsection_url}}">{{lang 'sitemap.show_all'}}</a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </article>
+    </div>
+  </section>
+{{/partial}}
+{{> layout/base}}

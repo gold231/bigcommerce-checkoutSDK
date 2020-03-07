@@ -1,0 +1,3 @@
+{
+  "core/products/sale-badge": "{{!\n  Shows a sale badge if a sale price has been entered\n\n  Themes can use this to display a sale badge.\n\n  @param classes string\n    Class(es) to append to sale badge\n}}\n{{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}\n  <span class=\"sale-badge {{classes}}\">\n    {{lang 'core.product.sale'}}\n  </span>\n{{/or}}\n"
+}

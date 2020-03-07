@@ -1,0 +1,16 @@
+// none swatch value for non-required swatches
+.form-field-swatch {
+  .swatch-none {
+    .swatch {
+      overflow: hidden;
+      border: 1px solid rgba(#000, 0.15);
+
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{{!-- Blog Post: include in blog-post.html page template --}}
+{{!-- Note: not having a modified date throws an error in the validator --}}
+{{!-- BC doesn't give us a modified date so I'll be using the published date --}}
+
+<script id="schema-blog">
+  var postDate = '{{blog.post.date_published}}';
+  postDate = postDate.split(' ');
+  postDate = postDate[0].replace(/\D/g, '');
+  postDate = new Date(postDate);
+  try {
+    postDate = postDate.toISOString();
+  }
+  catch(error) {
+    postDate = '{{blog.post.date_published}}';
+  }
+
+  var schema = document.createElement('script');
+  schema.type = 'application/ld+json';
+  schema.text = JSON.stringify({
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{blog.post.url}}"
+    },
+    "headline": "{{blog.post.title}}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{getImage blog.post.thumbnail core-blog-thumbnail}}",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": postDate,
+    "dateModified": postDate,
+    "author": {
+      "@type": "Person",
+      "name": "{{blog.post.author}}"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "{{settings.store_name}}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{getImage settings.store_logo.image}}",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "{{blog.post.title}}"
+  });
+
+  document.querySelector('body').appendChild(schema);
+
+  var script = document.getElementById('schema-blog')
+  script.parentElement.removeChild(script);
+</script>

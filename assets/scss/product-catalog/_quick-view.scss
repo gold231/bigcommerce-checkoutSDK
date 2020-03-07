@@ -1,0 +1,58 @@
+.quick-view-link {
+  letter-spacing: rem(2);
+  color: $color-primary;
+  text-transform: uppercase;
+}
+
+// product page style overrides for quick view & quick add
+.modal-quick-add,
+.modal-quick-view {
+  .modal-content {
+    opacity: 0;
+
+    .loaded & {
+      opacity: 1;
+    }
+  }
+
+  .product-actions {
+    padding-top: 0;
+    border-top: 0;
+
+    .button + .button {
+      margin-top: 1.25em;
+
+      @include media($min: 635px) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .dropdown-panel {
+    z-index: z("modal");
+  }
+}
+
+.modal-quick-view {
+  .product-image-slides-wrap {
+    @include media($min: $screen-large) {
+      top: $gutter-large;
+    }
+  }
+}
+
+.modal-quick-add {
+  .product-title {
+    width: 100%;
+    margin-bottom: $gutter-medium;
+
+    @include media($min: $screen-medium) {
+      margin-bottom: $gutter-large;
+    }
+  }
+
+  .quick-view-link {
+    display: inline-block;
+    margin-top: $space;
+  }
+}

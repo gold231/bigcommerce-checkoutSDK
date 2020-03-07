@@ -1,0 +1,3 @@
+{
+  "core/structured-data/website": "{{!-- Website: include in base.html --}}\n\n<script type=\"application/ld+json\">\n  {\n    \"@context\": \"http://schema.org\",\n    \"@type\": \"WebSite\",\n    \"name\": \"{{settings.store_name}}\",\n    \"url\": \"{{urls.home}}\"\n  }\n</script>\n"
+}

@@ -1,0 +1,30 @@
+{{#any brand_results category_results}}
+  <div class="search-result-group-wrapper">
+    {{#if brand_results.length}}
+      <div class="search-result-group search-brand">
+        <h1 class="search-results-title">{{lang 'search.brand_title'}}</h1>
+        {{#each brand_results}}
+          <div class="search-result search-result-brand">
+            <a href="{{url}}">{{name}}</a>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    {{#if category_results.length}}
+      <div class="search-result-group search-category">
+        <h1 class="search-results-title">{{lang 'search.category_title'}}</h1>
+        <ul>
+          {{#each category_results}}
+            <li class="search-result search-result-category">
+              {{#each this}}
+                <a href="{{url}}">{{name}}</a>
+                {{#unless @last}} > {{/unless}}
+              {{/each}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+{{/any}}

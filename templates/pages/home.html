@@ -1,0 +1,59 @@
+---
+carousel: true
+products:
+  new:
+    limit: 12
+  featured:
+    limit: 12
+  top_sellers:
+    limit: 12
+brands: true
+blog:
+  recent_posts:
+    limit: 3
+---
+
+{{#partial "page"}}
+  {{> components/home/carousel}}
+
+  {{{region name="home_below_carousel"}}}
+
+  {{> components/common/banners banners=banners.top class='banners-top'}}
+  {{> components/common/shipping-messages}}
+
+  <div class="home-sections">
+    {{> components/home/section
+      item_type=theme_settings.home_section_1_item_type
+      style=theme_settings.home_section_1_style
+      limit=theme_settings.home_section_1_limit
+    }}
+
+    {{{region name="home_below_featured_products"}}}
+
+    {{> components/home/section
+      item_type=theme_settings.home_section_2_item_type
+      style=theme_settings.home_section_2_style
+      limit=theme_settings.home_section_2_limit
+    }}
+
+    {{{region name="home_below_new_products"}}}
+
+    {{> components/home/section
+      item_type=theme_settings.home_section_3_item_type
+      style=theme_settings.home_section_3_style
+      limit=theme_settings.home_section_3_limit
+    }}
+
+    {{{region name="home_below_top_products"}}}
+
+    {{> components/home/section
+      item_type=theme_settings.home_section_4_item_type
+      style=theme_settings.home_section_4_style
+      limit=theme_settings.home_section_4_limit
+    }}
+
+    {{> components/home/recent-blog}}
+  </div>
+{{/partial}}
+
+{{> layout/base}}

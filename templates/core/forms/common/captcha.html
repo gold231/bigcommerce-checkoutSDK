@@ -1,0 +1,14 @@
+{{!
+  Basically just a wrapper.
+  If you call this file it should serve the correct markup based on where it's called from.
+}}
+
+{{#if product.reviews.recaptcha}}
+  {{{product.reviews.recaptcha.markup}}}
+{{/if}}
+{{#if forms.create_account.recaptcha}}
+  {{{forms.create_account.recaptcha.markup}}}
+{{/if}}
+{{#if forms.contact.recaptcha}}
+  {{{forms.contact.recaptcha.markup}}}
+{{/if}}

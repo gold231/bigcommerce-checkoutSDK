@@ -1,0 +1,77 @@
+// brands page
+.brand-item {
+  @include col-width(6);
+  @include layout-spacing(margin-bottom);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $color-borders;
+
+  @include media($min: $screen-medium) {
+    @include col-width(4);
+  }
+
+  a {
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    .replaced-image {
+      transform: translate3d(0, 0, 0) scale(1.1);
+    }
+  }
+
+  .replaced-image {
+    @include maintain-ratio(1 1);
+    transition: all 0.2s ease;
+
+    img {
+      @include sr-only;
+    }
+  }
+
+  &.no-brand-image {
+
+    &:hover {
+      background: $color-primary;
+      border-color: $color-primary;
+      transition: all 0.2s ease-out;
+
+      a {
+        color: $color-white;
+      }
+
+      &:active {
+        &::before {
+          opacity: 0.1;
+          transform: scale(0,0);
+          transition-duration: 0s;
+        }
+      }
+    }
+
+    .brand-name {
+      background-color: transparent;
+    }
+  }
+
+  .brand-name {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    background: rgba($color-background, 0.8);
+    transform: translateY(-50%);
+  }
+}
+
+.brand-item-title {
+  @include heading(5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 45% 0;
+}

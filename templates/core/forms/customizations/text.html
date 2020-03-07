@@ -1,0 +1,19 @@
+
+<div class="form-field form-field-customizations form-field-text{{#if required}} form-required{{/if}}">
+  <label class="form-label" for="product-fields-{{id}}">
+    <span class="form-field-title">
+      {{display_name}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <input class="form-input"
+        id="product-fields-{{id}}"
+        name="ProductFields[{{this.id}}]"
+        type="text"
+        placeholder="{{prefill}}"
+        value="{{value}}"
+        {{#if required}}required{{/if}}
+        aria-required="{{required}}">
+    </span>
+  </label>
+</div>

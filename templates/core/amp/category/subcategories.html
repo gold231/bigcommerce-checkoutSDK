@@ -1,0 +1,18 @@
+<nav>
+  {{#if category.subcategories}}
+    <div class="amp-subcategories-container">
+      <h5 class="amp-subcategories-heading">
+        {{lang 'core.amp.subcategories'}}
+      </h5>
+      <ul class="amp-subcategories-list">
+        {{#each category.subcategories}}
+          <li class="amp-subcategories-list-item">
+            <a class="amp-subcategories-list-action" href="{{url}}">
+              {{name}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</nav>

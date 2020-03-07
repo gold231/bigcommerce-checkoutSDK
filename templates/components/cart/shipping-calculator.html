@@ -1,0 +1,97 @@
+<button class="modal-close">
+  {{> svg/icon-x}}
+</button>
+<div class="shipping-calculator cart-modal-content" data-shipping-calculator>
+
+  {{> components/common/page-title title=(lang 'cart.shipping_calculator.title')}}
+
+  {{!-- Select Destination Form --}}
+  <form class="form">
+    <div class="form-field form-field-select form-required">
+      <label class="form-label" for="shipping-country">
+        <span class="form-field-title">
+          {{lang 'cart.shipping_calculator.select_a_country'}}
+          <span class="required-text">{{lang 'common.required'}}</span>
+        </span>
+        <span class="form-field-control">
+          <span class="form-select-wrapper">
+            <select
+              class="form-select form-input"
+              id="shipping-country"
+              name="shipping-country"
+              data-field-type="Country"
+            >
+              <option>{{lang 'cart.shipping_calculator.select_a_country'}}</option>
+              {{#each countries}}
+                <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
+                  {{name}}
+                </option>
+              {{/each}}
+            </select>
+          </span>
+        </span>
+      </label>
+    </div>
+
+    <div class="form-field form-field-select form-required">
+      <label class="form-label" for="shipping-state">
+        <span class="form-field-title">
+          {{lang 'cart.shipping_calculator.select_a_state'}}
+          <span class="required-text">{{lang 'common.required'}}</span>
+        </span>
+        <span class="form-field-control">
+          <span class="form-select-wrapper">
+            <select
+              class="form-select form-input"
+              id="shipping-state"
+              name="shipping-state"
+              data-field-type="State"
+            >
+              <option>{{lang 'cart.shipping_calculator.select_a_state'}}</option>
+              {{#each states}}
+                <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>
+                  {{name}}
+                </option>
+              {{/each}}
+            </select>
+          </span>
+        </span>
+      </label>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="shipping-city">
+        <span class="form-field-title">
+          {{lang 'cart.shipping_calculator.suburb_city'}}
+        </span>
+        <input
+          class="form-input"
+          type="text"
+          id="shipping-city"
+          name="shipping-city"
+          value="{{selected_city}}"
+        >
+      </label>
+    </div>
+
+    {{> core/forms/common/text
+      label=(lang 'cart.shipping_calculator.zip_postal_code')
+      name="shipping-zip"
+      id="shipping-zip"
+    }}
+
+    <div data-shipping-errors>
+      {{!-- Alert placeholder --}}
+    </div>
+
+    <div class="form-actions">
+      <button class="button button-secondary">
+        {{lang 'cart.shipping_calculator.estimate_shipping'}}
+      </button>
+    </div>
+  </form>
+
+  <div data-shipping-quotes class="shipping-quotes">
+    {{!-- Quotes placeholder --}}
+  </div>
+</div>

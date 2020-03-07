@@ -1,0 +1,66 @@
+// layout
+$site: (
+  "header": rem(104),
+  "header-mobile": rem(94),
+  "top-bar-mobile": rem(46),
+  "search-mobile": rem(40),
+  "sidebar": rem(268),
+  "breadcrumbs": rem(50),
+  "alert": rem(50),
+  "mini-cart": rem(480),
+  "util-bar": rem(61),
+  "button": rem(56),
+  "cart-item-spacing": rem(100),
+);
+
+$z-layers: (
+  "product-badge": 1,
+  "product-item-overlay": 2,
+  "desktop-filters": 3,
+  "header": 4,
+  "dropdown": 4,
+  "alerts": 5,
+  "compare-widget": 10,
+  "mobile-filters": 11,
+  "loading-overlay": 12,
+  "sidebar": 12,
+  "modal": 13,
+  "mini-cart": 14,
+);
+
+// spacing
+$space-smallest: 0.5rem; // (8px)
+$space-smaller:  1rem;   // (16px)
+$space-small:    1.5rem; // (24px)
+$space:          2rem;   // (32px)
+$space-large:    2.5rem; // (40px)
+$space-larger:   4rem;   // (64px)
+$space-largest:  5rem;   // (80px)
+
+// gutters
+$gutter-small:       $space-smaller;
+$gutter-small-half:  $space-smaller / 2;
+
+$gutter-medium:      $space-small;
+$gutter-medium-half: $space-small / 2;
+
+$gutter-large:       $space-large;
+$gutter-large-half:  $space-large / 2;
+
+// breakpoints
+$screen-xxlarge: 1800;
+$screen-xlarge:  1200;
+$screen-large:   1024;
+$screen-medium:  768;
+$screen-small:   540;
+
+// Util bar breakpoints
+$util-bar-large: 1330;
+$util-bar-medium: 900;
+
+$breakpoint-compare-widget: $screen-medium;
+$breakpoint-product-grid-large: 1400;
+
+// content
+$content-contained: rem(1280);
+$max-width-text: rem(776);

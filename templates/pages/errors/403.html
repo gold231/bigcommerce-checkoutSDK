@@ -1,0 +1,22 @@
+{{#partial "page"}}
+
+<section class="error-container">
+  <div class="page-header error-header">
+    <h1 class="page-title error-title">
+      {{lang 'page_errors.forbidden.page_heading'}}
+    </h1>
+  </div>
+
+  <article class="page-error">
+    <div class="page-error-message">
+      <p>{{lang 'page_errors.forbidden.message'}}</p>
+      <a class="button button-primary error-button" href="{{urls.home}}">
+        {{lang "page_errors.back_to_home"}}
+      </a>
+    </div>
+  </article>
+</section>
+
+{{/partial}}
+
+{{> layout/base}}

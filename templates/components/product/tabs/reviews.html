@@ -1,0 +1,37 @@
+<section
+  class="single-product-tabs-section single-product-tabs-reviews"
+  id="write_review"
+  data-tab-content
+>
+  {{#if product.reviews.list.length}}
+    <a
+      class="review-link button-link"
+      href="{{product.url}}#write_review"
+      data-review-link
+    >
+      {{lang 'product.tabs.leave_review'}}
+    </a>
+    {{#each product.reviews.list}}
+      {{> components/reviews/review-item index=@index}}
+    {{/each}}
+
+    {{#if product.reviews.list.length '>' 3}}
+      <div class="reviews-more-wrap">
+        <a class="button button-primary" href="#" data-show-all-reviews>
+          {{lang 'product.reviews.load_more'}}
+        </a>
+      </div>
+    {{/if}}
+  {{else}}
+    <p class="single-product-tabs-no-reviews">
+      <a
+        class="no-review-link link-button"
+        href="{{product.url}}#write_review"
+        data-review-link
+      >
+        {{lang 'product.reviews.first_review'}}
+      </a>
+    </p>
+  {{/if}}
+  {{> components/reviews/review-modal}}
+</section>

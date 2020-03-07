@@ -1,0 +1,246 @@
+// Account navigation override bc-core styles
+.account-tool {
+  z-index: 3;
+  border:  1px solid #898989;
+  padding: .5rem;
+}
+
+.account-nav {
+  margin-right: -1rem;
+  margin-left: -1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  color: $color-text;
+  text-align: center;
+  padding: 1.25em 1rem;
+  white-space: nowrap;
+  width:auto;
+  float:none;
+  background: #f9f9f9;
+}
+
+.account-nav-list {
+  margin-bottom: $space-smallest;
+  text-align: center;
+  border: 0;
+}
+
+.account-nav-item {
+  display: inline-block;
+  padding: $gutter-small $gutter-small $gutter-small 0;
+  border-top: 0;
+  text-transform: uppercase;
+  font-size: $font-size-body-smaller;
+  letter-spacing: 1px;
+
+  &.is-active {
+    border-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+.account-nav-link {
+  padding: 0;
+}
+
+@include media($max: $screen-medium) {
+  .account-toolbar,
+  .account-heading {
+    display: block;
+  }
+}
+
+.account-toolbar {
+  padding-top: 10px;
+
+  @include media($max: $screen-medium) {
+    text-align: center;
+  }
+
+  .alert-error {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    line-height: 34px;
+  }
+}
+
+// override for body placement with navigation placement override
+.account-body {
+  float: none;
+  width: 100%;
+  padding-left: 0;
+
+  .account-heading {
+    padding-top: $gutter-small;
+  }
+}
+
+.account-wrapper {
+  margin-top: $space-smallest;
+  margin-bottom: $space;
+
+  .pagination-next {
+    color: $color-primary;
+  }
+}
+
+.account-heading {
+  @include heading(3);
+}
+
+.account-button-primary {
+  @extend .button-primary;
+
+  &.account-login-button,
+  &.account-button-small {
+    min-width: auto;
+  }
+}
+
+.account-button-secondary {
+  @extend .button-secondary;
+  margin-top: $gutter-small;
+
+  @include media($min: $screen-medium) {
+    margin-top: 0;
+    margin-left: 1.25em;
+  }
+}
+
+.account-forgot-password-link {
+  color: $color-primary;
+}
+
+.account-content {
+  .form-actions,
+  .account-item-actions {
+    .button {
+      overflow: visible;
+    }
+  }
+
+  .alert {
+    height: auto;
+    padding: $space-smallest 0;
+    line-height: rem(20);
+  }
+}
+
+
+.account-product-wrapper {
+  @include grid-container;
+}
+
+.account-product-item {
+  @include grid-item;
+  @include col-width(3);
+  @include layout-spacing(margin-bottom);
+  position: relative;
+  text-align: center;
+
+  figure {
+    margin: 0;
+  }
+}
+
+.account-product-item-remove {
+  input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: rem(32);
+    height: rem(32);
+    font-size: $font-size-body-larger;
+    background: $color-white;
+    border: 0;
+  }
+}
+
+.account-product-item-title {
+  @extend .product-grid-item-name;
+}
+
+.account-product-item-brand {
+  display: none;
+}
+
+.account-product-item-price {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.account-create-details,
+.account-create-address {
+  display: inline-block;
+  width: 100%;
+}
+
+.account-wishlist {
+  .account-sub-heading {
+    @extend .sr-only;
+  }
+}
+
+.account-forgot-form {
+  .form-label {
+    padding-bottom: 0;
+  }
+
+  .account-button-primary {
+    @extend .button-small;
+  }
+}
+
+// Account payment override bc-core styles
+
+.payment-method-form {
+  .form-checkbox {
+    position: relative !important;
+    top: 3px;
+    width: 18px !important;
+    height: 18px !important;
+    clip: auto;
+    -webkit-appearance: checkbox; //override hidden checkbox from theme styles
+  }
+}
+
+[data-payment-method-form],
+[data-address-form] {
+  .button:not(.button-primary) {
+    @extend .button-secondary;
+  }
+
+  .payment-method-form-inputs {
+    .form-field-control {
+      width: 100%;
+    }
+  }
+
+  .payment-method-form-inputs-icon {
+    top: 43px !important; // Override top position in core
+  }
+
+  .payment-method-form-subheading {
+    margin: 0.5rem 0;
+  }
+}
+
+.payment-method {
+  .payment-method-details {
+    margin-bottom: 0;
+  }
+
+  @include media($max: $screen-medium) {
+    width: 100%;
+  }
+}
+
+.payment-method-edit-form {
+  .button {
+    min-width: auto;
+  }
+}

@@ -1,0 +1,185 @@
+{{!
+  Show product prices
+
+  Prices are fairly complicated. Besides having to be able to show the price
+  with and without tax, a merchant can also assign a Recommended Retail Price,
+  and a Sale Price.
+
+  This means that in extreme cases, we have to show 4 different prices at once.
+
+  When a Sale Price is set we do not have direct access to it--instead it
+  overwrites the regular price.
+
+  @param price object
+
+  @param show_tax_labels bool
+    If true, show a label saying the price is with or without tax.
+
+  @param show_savings bool
+    If true, show a label saying how much is saved from the full price.
+
+  @param show_sale_badges bool
+    If true, show sale badges inline with price.
+
+  @param sale_badge_classes string
+    Class to append to sale badge
+
+  @param price_range_display string
+    If set to "both", show price as a range when applicable.
+
+  @param show_amp_classes bool
+    If true include amp class component
+}}
+{{#if price}}
+   {{#all (if price_range_display '===' 'both') price.price_range}}
+    {{> core/products/price-range
+      price_range=price.price_range
+      show_amp_classes=show_amp_classes
+    }}
+  {{else}}
+    <div
+      class="
+        price
+        {{#all price.without_tax price.with_tax}}multiple-prices{{/all}}
+        {{#if show_amp_classes}}
+          {{> core/amp/common/price-class}}
+        {{/if}}
+        "
+      >
+      {{#if price.without_tax}}
+        <div
+          class="price-withouttax"
+          data-product-price-wrapper="without-tax"
+        >
+
+          {{#if price.rrp_without_tax}}
+            <div class="price-rrp-wrapper">
+              <label class="price-rrp-label">
+                {{retail_price_label}}
+              </label>
+              <span class="price-rrp" data-price-rrp>
+                {{price.rrp_without_tax.formatted}}
+              </span>
+            </div>
+          {{/if}}
+
+          {{#if price.non_sale_price_without_tax}}
+            <div class="price-ns-wrapper">
+              <label class="price-ns-label">
+                {{non_sale_price_label}}
+              </label>
+              <span class="price-ns" data-price-rrp>
+                {{price.non_sale_price_without_tax.formatted}}
+              </span>
+            </div>
+          {{/if}}
+
+          <div class="price-value-wrapper">
+            {{!-- If there is another price show "now" label --}}
+            {{#if price.non_sale_price_without_tax}}
+              <label class="price-value-label">
+                {{sale_price_label}}
+              </label>
+            {{else}}
+              <label class="price-label">
+                {{price_label}}
+              </label>
+            {{/if}}
+            <span class="price-value" data-product-price>
+              {{price.without_tax.formatted}}
+            </span>
+
+            {{#if show_tax_labels}}
+              {{#all price.with_tax price.without_tax}}
+                <span class="price-tax-label">
+                  {{lang
+                    'core.price.without_tax'
+                    tax_label=price.tax_label
+                  }}
+                </span>
+              {{/all}}
+            {{/if}}
+
+            {{#all show_sale_badges (unless price.with_tax)}}
+              {{> core/products/sale-badge
+                classes=sale_badge_classes
+              }}
+            {{/all}}
+          </div>
+
+        </div>
+      {{/if}}
+
+      {{#if price.with_tax}}
+        <div
+          class="price-withtax"
+          data-product-price-wrapper="with-tax"
+        >
+
+          {{#if price.rrp_with_tax}}
+            <div class="price-rrp-wrapper">
+              <label class="price-rrp-label">
+                {{retail_price_label}}
+              </label>
+              <span class="price-rrp" data-price-rrp>
+                {{price.rrp_with_tax.formatted}}
+              </span>
+            </div>
+          {{/if}}
+
+          {{#if price.non_sale_price_with_tax}}
+            <div class="price-ns-wrapper">
+              <label class="price-ns-label">
+                {{non_sale_price_label}}
+              </label>
+              <span class="price-ns" data-price-rrp>
+                {{price.non_sale_price_with_tax.formatted}}
+              </span>
+            </div>
+          {{/if}}
+
+          <div class="price-value-wrapper">
+            {{!-- If there is another price show "now" label --}}
+            {{#if price.non_sale_price_with_tax}}
+              <label class="price-value-label">
+                {{sale_price_label}}
+              </label>
+            {{else}}
+              <label class="price-label">
+                {{price_label}}
+              </label>
+            {{/if}}
+            <span class="price-value" data-product-price>
+              {{price.with_tax.formatted}}
+            </span>
+
+            {{#if show_tax_labels}}
+              {{#all price.with_tax price.without_tax}}
+                <span class="price-tax-label">
+                  {{lang
+                    'core.price.with_tax'
+                    tax_label=price.tax_label
+                  }}
+                </span>
+              {{/all}}
+            {{/if}}
+
+            {{#if show_sale_badges}}
+              {{> core/products/sale-badge
+                classes=sale_badge_classes
+              }}
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if show_savings}}
+        {{#if price.saved}}
+          <span class="price-saved" data-product-price-saved>
+            {{lang 'core.price.you_save' amount=price.saved.formatted}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+  {{/all}}
+{{/if}}

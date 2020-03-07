@@ -1,0 +1,28 @@
+<amp-carousel
+  width="640"
+  height="490"
+  layout="responsive"
+  type="slides"
+>
+  {{#each this.list}}
+    <div>
+      <div>
+        <amp-youtube
+          width="640"
+          height="390"
+          data-videoid="{{id}}"
+          layout="responsive"
+        >
+      </amp-youtube>
+    </div>
+    <div class="amp-product-video-body">
+      <h3 class="amp-product-video-title">
+        {{title_long}}
+      </h3>
+      <p class="amp-product-video-description">
+        {{description_short}}
+      </p>
+    </div>
+  </div>
+  {{/each}}
+</amp-carousel>

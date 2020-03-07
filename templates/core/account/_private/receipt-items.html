@@ -1,0 +1,112 @@
+{{#if order.items}}
+  <div class="account-items account-receipt-items">
+    <h2 class="account-sub-heading">{{lang 'core.account.receipt.items.title'}}</h2>
+
+    {{#each order.items}}
+      <article class="account-item">
+        <div class="account-item-checkbox form-field form-field-checkbox">
+          {{#if show_reorder}}
+            <div class="form-field-control">
+              <label for="account-product-id-{{order_product_id}}" class="form-label">
+                <input
+                  class="form-input form-checkbox"
+                  type="checkbox"
+                  id="account-product-id-{{order_product_id}}"
+                  value="{{order_product_id}}"
+                >
+                  <span class="form-label-text"></span>
+              </label>
+            </div>
+          {{/if}}
+        </div>
+        <div class="account-item-thumbnail">
+          {{#if type '===' 'giftcertificate'}}
+            <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}">
+          {{else}}
+            <img src="{{getImage image 'account-product-thumbnail' (cdn ../../theme_settings.default_image)}}" alt="{{image.alt}}">
+          {{/if}}
+        </div>
+
+        <div class="account-item-body">
+          <h1 class="account-item-title">
+            {{lang 'core.account.receipt.items.product_title' name=name quantity=quantity}}
+          </h1>
+
+          <div class="account-item-description">
+            {{#if brand}}
+              <div class="account-receipt-item-brand">{{brand.name}}</div>
+            {{/if}}
+
+            {{#if download_url}}
+              {{#unless refunded}}
+                <a class="button account-button-primary account-button-small account-receipt-download" href="{{download_url}}">{{lang 'core.account.receipt.items.download'}}</a>
+              {{/unless}}
+            {{/if}}
+          </div>
+
+          <div class="account-item-details">
+            {{#if options}}
+              <div class="account-item-detail">
+                <h2 class="account-item-detail-title">{{lang 'core.account.receipt.items.options'}}</h2>
+                <div class="account-item-detail-value account-receipt-item-options">
+                  {{#each options}}
+                    <div class="account-receipt-item-option">
+                      <span class="account-receipt-option-name">{{name}}:</span>
+                      <span class="account-receipt-option-value">{{value}}</span>
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+            {{/if}}
+
+            {{#if customizations}}
+              <div class="account-item-detail">
+                <h2 class="account-item-detail-title">{{lang 'core.account.receipt.items.customizations'}}</h2>
+                <div class="account-item-detail-value account-receipt-item-options">
+                  {{#each customizations}}
+                    <div class="account-receipt-item-option">
+                      <span class="account-receipt-option-name">{{name}}:</span>
+                      <span class="account-receipt-option-value">{{value}}</span>
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+            {{/if}}
+          </div>
+
+          <div class="account-item-details">
+            {{#if gift_wrapping_name}}
+              <div class="account-item-detail">
+                <h2 class="account-item-detail-title">{{lang 'core.account.receipt.items.gift_wrapping'}}</h2>
+                <span class="account-item-detail-value">{{gift_wrapping_name}}</span>
+              </div>
+            {{/if}}
+
+            {{#if refunded}}
+              <div class="account-item-detail">
+                <span class="account-item-detail-title">{{lang 'core.account.receipt.items.refunded'}}</span>
+                <span class="account-item-detail-value">{{refunded_qty}}</span>
+              </div>
+            {{else}}
+              {{#if refunded_qty}}
+                <div class="account-item-detail">
+                  <span class="account-item-detail-title">{{lang 'core.account.receipt.items.refunded'}}</span>
+                  <span class="account-item-detail-value">{{refunded_qty}}</span>
+                </div>
+              {{/if}}
+            {{/if}}
+
+            {{#unless show_reorder}}
+              <div class="account-item-detail">
+                <span class="account-item-detail-title">{{lang 'core.account.receipt.items.reorder'}}</span>
+                <span class="account-item-detail-value">{{{reorder_message}}}</span>
+              </div>
+            {{/unless}}
+          </div>
+        </div>
+
+        <div class="account-item-badge">{{total.formatted}}</div>
+      </article>
+    {{/each}}
+  </div>
+{{/if}}

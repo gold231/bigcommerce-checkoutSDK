@@ -1,0 +1,106 @@
+<form
+  class="form add-to-cart-form"
+  id="form-add-to-cart"
+  method="post"
+  action="{{product.cart_url}}"
+  enctype="multipart/form-data"
+  data-cart-item-add
+  data-validated-form
+  {{#if customer}}data-is-customer{{/if}}
+>
+  <input type="hidden" name="action" value="add">
+  <input type="hidden" name="product_id" value="{{product.id}}" data-product-id>
+
+  {{#if product.options}}
+    <div class="product-options" data-product-option-change>
+      {{#each product.options}}
+        {{{dynamicComponent 'core/forms/options'}}}
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if product.customizations}}
+    <div data-product-option-change>
+      {{#each product.customizations}}
+        {{{dynamicComponent 'core/forms/customizations'}}}
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if product.event_date}}
+    {{> core/products/event}}
+  {{/if}}
+
+  <div
+    class="
+      single-product-form-section
+      {{#unless product.show_quantity_input}}no-qty{{/unless}}
+    "
+  >
+    {{#if product.show_quantity_input}}
+      <div class="add-to-cart-quantity-container">
+        <div class="form-field" data-product-quantity>
+          <label class="form-label">
+            <span class="form-label-text">{{ lang 'product.quantity'}}</span>
+            {{> components/common/quantity product}}
+          </label>
+        </div>
+      </div>
+    {{/if}}
+
+    {{! Social sharing }}
+    {{> components/common/share-widget}}
+  </div>
+
+  {{#if theme_settings.show_stock_levels}}
+    <div class="
+      product-stock
+      {{#unless product.stock_level}}
+        product-stock-hidden
+      {{/unless}}
+      {{#if product.stock_level '<' 5}}
+        product-stock-low
+      {{/if}}"
+    >
+      <span
+        class="product-stock-title"
+        data-product-stock
+      >
+        {{lang 'product.details.current_stock'}}
+      </span>
+      <span
+        class="product-stock-count"
+        data-product-stock
+        data-product-stock-level
+      >
+        {{#if product.stock_level}}
+          {{product.stock_level}}
+        {{else}}
+          0
+        {{/if}}
+      </span>
+    </div>
+  {{/if}}
+
+  <div class="form-field product-actions" data-product-add>
+    {{#if product.can_purchase}}
+      {{> components/common/atc-button}}
+    {{else}}
+      {{#if product.price}}
+        {{#if product.out_of_stock}}
+          <div class="button button-primary button-disabled">
+            {{lang 'product.sold_out'}}
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+    
+    {{#if settings.show_wishlist}}
+      {{> components/common/wishlist}}
+    {{/if}}
+
+    {{#if product.release_date}}
+      <span class="product-release-date">{{product.release_date}}</span>
+    {{/if}}
+  </div>
+</form>

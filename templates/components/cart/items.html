@@ -1,0 +1,11 @@
+<div class="cart-items-container">
+  {{#each cart.items}}
+    {{> components/cart/item
+      price=price
+      fit="image-contain"
+      lazyload=../theme_settings.lazyload_mode
+      fallback_size=../theme_settings.thumb
+      default_image=../theme_settings.default_image
+    }}
+  {{/each}}
+</div>

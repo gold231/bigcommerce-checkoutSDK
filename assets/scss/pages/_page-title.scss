@@ -1,0 +1,13 @@
+.page-title {
+  @include heading(2);
+  margin-top: $space;
+  margin-bottom: $space-large;
+  text-align: center;
+}
+
+.page-subtitle {
+  font-size: map-get($font-size-heading, 4);
+  margin-top: $space-small;
+  margin-bottom: $space;
+  text-align: center;
+}

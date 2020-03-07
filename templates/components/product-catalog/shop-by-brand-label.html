@@ -1,0 +1,9 @@
+{{#any shop_by selected=true}}
+  {{#each shop_by}}
+    {{#if selected}}
+      {{name}}
+    {{/if}}
+  {{/each}}
+{{else}}
+  {{lang 'common.shop_by.all_brands'}}
+{{/any}}

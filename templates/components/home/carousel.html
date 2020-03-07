@@ -1,0 +1,77 @@
+{{#if carousel.slides}}
+  <section
+    class="carousel carousel-style-{{theme_settings.carousel_style}}"
+    id="carousel"
+    aria-live="polite"
+  >
+    <div
+      class="carousel-slides"
+      data-carousel
+      data-swap-frequency="{{carousel.swap_frequency}}"
+    >
+      {{#each carousel.slides}}
+        <figure class="carousel-item" data-carousel-item>
+          {{#unless button_text}}
+            {{#if url}}<a href="{{url}}">{{/if}}
+          {{/unless}}
+
+          <div
+            class="carousel-item-image {{../theme_settings.carousel_aspect_ratio}}"
+            data-flickity-bg-lazyload="{{image}}"
+          >
+            <img src="{{image}}" alt="{{{alt_text}}}" />
+          </div>
+
+          <div class="carousel-item-info-wrapper">
+            <fieldset
+              class="carousel-nav"
+              aria-label="{{ lang 'home.carousel.navigation'}}"
+              aria-controls="carousel"
+            >
+              {{#if ../carousel.slides.length '>' 1}}
+                <button
+                  class="carousel-nav-item carousel-nav-prev"
+                  data-action="previous"
+                  aria-label="{{ lang 'home.carousel.previous_slide'}}"
+                >
+                  {{> svg/chevron-left}}
+                </button>
+                <button
+                  class="carousel-nav-item carousel-nav-next"
+                  data-action="next"
+                  aria-label="{{ lang 'home.carousel.next_slide'}}"
+                >
+                  {{> svg/chevron-right}}
+                </button>
+              {{/if}}
+            </fieldset>
+
+            {{#any text heading button_text}}
+              <figcaption class="carousel-item-info">
+                <h2 class="carousel-item-title">
+                  {{{heading}}}
+                </h2>
+                {{#if text}}
+                  <div class="carousel-item-text">
+                    {{{text}}}
+                  </div>
+                {{/if}}
+                {{#if url}}
+                  {{#if button_text}}
+                    <div class="carousel-button-wrapper">
+                      <a class="button" href="{{{url}}}">{{{button_text}}}</a>
+                    </div>
+                  {{/if}}
+                {{/if}}
+              </figcaption>
+            {{/any}}
+          </div>
+
+          {{#unless button_text}}
+            {{#if url}}</a>{{/if}}
+          {{/unless}}
+        </figure>
+      {{/each}}
+    </div>
+  </section>
+{{/if}}

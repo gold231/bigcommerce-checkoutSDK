@@ -1,0 +1,31 @@
+.account-page-settings {
+  .alert:first-of-type {
+    margin-top: 0;
+  }
+
+  .account-content {
+    padding-top: $account-gutter-inner;
+    border-top: 1px solid $account-border-color;
+  }
+}
+
+.account-settings-form {
+  @extend %clearfix;
+  padding-top: $account-gutter-inner;
+
+  .form-field {
+    float: left;
+    width: 50%;
+    padding-right: $account-gutter-inner / 2;
+    vertical-align: top;
+
+    &:nth-of-type(2n+0) {
+      padding-right: 0;
+      padding-left: $account-gutter-inner / 2;
+    }
+  }
+
+  .form-actions {
+    padding-top: $account-gutter-inner;
+  }
+}

@@ -1,0 +1,236 @@
+$local-transition: 0.2s ease-out;
+
+.product-grid-item {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  &:hover {
+    .grid-item-overlay {
+      opacity: 1;
+    }
+
+    .button {
+      bottom: 0;
+    }
+
+    .product-badge {
+      color: $color-white;
+      transform: scale(0.66);
+    }
+  }
+
+  @media (any-hover:none), (any-hover:on-demand) {
+    .grid-item-overlay {
+      position: absolute;
+      padding: 0;
+      margin-top: $space-smaller;
+      background-color: transparent;
+      opacity: 1;
+
+      .button {
+        @include button(primary, x-small, false);
+        color: $color-white;
+        bottom: auto;
+        padding-right: $space-smallest;
+        padding-left: $space-smallest;
+        display: none;
+
+        & + .button {
+          @include button(secondary, x-small, false);
+        }
+      }
+    }
+  }
+
+  .rating-stars {
+    margin-bottom: $space-smaller;
+  }
+
+  .price {
+    display: block;
+    margin-top: $space-smallest;
+    color: $color-text-light;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: z(product-badge);
+    transition: all $local-transition;
+    transform-origin: top right;
+  }
+
+  .flickity-page-dots {
+    bottom: 10px;
+  }
+}
+
+.grid-item-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-item-image {
+  @include lazy-loaded-img();
+  width: 100%;
+  height: 100%;
+}
+
+.grid-item-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: z(product-item-overlay);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: $space-small;
+  padding-left: $space-small;
+  background-color: rgba($color-black, 0.5);
+  opacity: 0;
+  transition: opacity $local-transition;
+
+  .button {
+    position: relative;
+    bottom: $space;
+    width: 100%;
+    max-width: rem(220);
+    min-width: 0;
+    font-size: $font-size-body-smaller;
+    transition: bottom $local-transition;
+    color:$color-white;
+
+    & + .button {
+      margin-top: $space-smaller;
+      margin-left: 0;
+    }
+  }
+}
+
+.grid-item-overlay-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.product-grid-item-name {
+  font-family: $font-secondary;
+  margin-top: $space-smaller;
+  font-size: $font-size-body;
+  line-height: $line-height;
+  transition: color 0.2s ease-out;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.product-grid-item-out-of-stock-message {
+  margin-top: $space-smallest;
+  margin-bottom: 0;
+  font-size: rem(14);
+  display:none;
+}
+
+.product-badge {
+  @extend %text-style-smallcaps;
+  height: rem(40);
+  padding-right: 1.25em;
+  padding-left: 1.25em;
+  line-height: rem(40);
+  color: contrast($color-black, 100%);
+  background-color: $color-primary;
+
+  &.product-badge-sold-out {
+    background-color: $color-black;
+    color:$color-white;
+  }
+}
+
+.compare-checkbox {
+  @extend %sr-only;
+
+  &:checked {
+    & ~ .compare-checkbox-label {
+      .compare-checkbox-box {
+        @extend %checkbox-checked;
+      }
+
+      .checkmark {
+        @extend %checkmark-visible;
+      }
+    }
+  }
+
+  &:focus {
+    & ~ .compare-checkbox-label {
+      .compare-checkbox-box {
+        outline: $color-primary auto 3px;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+.compare-checkbox-label {
+  position: relative;
+  display: inline-flex;
+  margin-top: $space-smaller;
+  font-size: $font-size-body-small;
+  color: $color-text-lighter;
+  cursor: pointer;
+
+  .compare-checkbox-box {
+    @extend %checkbox-unchecked;
+    margin-right: $space-smallest;
+    overflow: hidden;
+    color: contrast($color-primary, 100%);
+  }
+
+  svg {
+    width: rem(10);
+  }
+
+  .checkmark {
+    @extend %checkmark;
+  }
+}
+
+// Product item carousels
+.flickity-prev-next-button {
+  width: rem(50);
+  height: rem(50);
+  color: contrast($color-background, 40%);
+  background-color: contrast($color-background, 10%);
+  border-radius: 0;
+  transition: background-color $local-transition;
+
+  &.previous {
+    @include layout-spacing-half(left);
+  }
+
+  &.next {
+    @include layout-spacing-half(right);
+  }
+
+  &:hover {
+    background-color: contrast($color-background, 15%);
+  }
+
+  svg {
+    transform: scale(0.5);
+  }
+
+  .arrow {
+    fill: currentColor;
+  }
+}

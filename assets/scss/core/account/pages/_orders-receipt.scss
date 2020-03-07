@@ -1,0 +1,96 @@
+.account-page-orders-receipt .account-content {
+  padding-top: $account-gutter-inner;
+  border-top: 1px solid $account-border-color;
+}
+
+// Summary
+
+.account-receipt-summaries {
+  @extend %clearfix;
+}
+
+.account-receipt-summary {
+  float: left;
+  width: 33%;
+  padding-right: $account-gutter;
+
+  @media screen and (max-width: $account-breakpoint-medium) {
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: $account-gutter;
+  }
+}
+
+.account-receipt-summary-title {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: $account-font-size;
+}
+
+.account-receipt-summary-address {
+  line-height: 1.5;
+}
+
+.account-receipt-detail {
+  margin-bottom: 5px;
+}
+
+.account-receipt-detail-title {
+  color: $account-text-color-light;
+}
+
+// Comments
+
+.account-receipt-comments {
+  white-space: pre-line;
+}
+
+// Receipt Items (products)
+
+.account-receipt-items {
+  padding-top: $account-gutter-inner;
+}
+
+.account-receipt-download {
+  margin: 10px 0;
+}
+
+// Totals
+
+.account-receipt-totals {
+  display: table;
+  width: 50%;
+  margin-left: 50%;
+
+  @media screen and (max-width: $account-breakpoint-small) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.account-receipt-total {
+  display: table-row;
+  margin-bottom: $account-gutter-inner;
+}
+
+.account-receipt-total-title,
+.account-receipt-total-value {
+  display: table-cell;
+  padding-top: $account-gutter-inner;
+  padding-bottom: $account-gutter-inner;
+  border-top: 1px solid $account-border-color;
+
+  .account-receipt-total:first-of-type & {
+    border-top: 0;
+  }
+}
+
+.account-receipt-total-title {
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: $account-text-color-light;
+}
+
+.account-receipt-total-value {
+  text-align: right;
+}

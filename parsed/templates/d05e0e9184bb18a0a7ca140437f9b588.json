@@ -1,0 +1,3 @@
+{
+  "core/amp/css/product-options": "body {\n  padding: 0;\n  margin: 0;\n}\n\n.alert {\n  margin-bottom: 0.75rem;\n}\n\n.amp-product-options .form-inline-message {\n  margin-top: 0;\n  margin-bottom: 1rem;\n}\n\n.button-progress {\n  position: relative;\n}\n\n.button-progress.in-progress .button-text {\n  visibility: hidden;\n}\n\n.amp-product-options .add-to-cart-quantity-container {\n  max-width: 270px;\n}\n\n.amp-product-options .site-alerts {\n  position: static;\n}\n"
+}

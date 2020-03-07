@@ -1,0 +1,102 @@
+{{inject "productsPerPage" theme_settings.product_catalog_limit}}
+
+{{#partial "head"}}
+  {{#if pagination.category.previous}}
+    <link rel="prev" href="{{pagination.category.previous}}">
+  {{/if}}
+  {{#if pagination.category.next}}
+    <link rel="next" href="{{pagination.category.next}}">
+  {{/if}}
+{{/partial}}
+
+{{#partial "amp-style"}}
+  {{> core/amp/category/styles
+    header_background=../header_background
+    header_text=../header_text
+    body_background=../body_background
+    color_headings=../color_headings
+    color_text=../color_text
+    footer_background=../footer_background
+    footer_text=../footer_text
+    color_accent=../color_accent
+    color_borders=../color_borders
+  }}
+{{/partial}}
+
+{{#partial "page"}}
+  {{> core/amp/common/header}}
+  <section class="amp-product-catalog">
+    {{#if category.image}}
+      <div class="amp-product-catalog-image">
+        <amp-img
+          src="{{getImage category.image 'zoom_size'}}"
+          width="300"
+          height="150"
+          layout="responsive"
+          alt="{{category.name}}"
+        >
+        </amp-img>
+      </div>
+    {{/if}}
+
+    <div class="amp-product-catalog-header">
+      <h1 class="amp-product-catalog-image-title">
+        {{category.name}}
+      </h1>
+      {{{sanitize category.description}}}
+      {{{snippet 'categories'}}}
+    </div>
+
+    <div class="amp-product-catalog-content">
+      {{#if category.products.length}}
+        {{#block "amp-product-listing"}} {{/block}}
+      {{else}}
+        <h4 class="amp-product-catalog-empty">
+          {{lang 'core.amp.no_products'}}
+        </h4>
+      {{/if}}
+    </div>
+  </section>
+
+  {{> core/amp/category/subcategories}}
+  {{#block "amp-footer"}} {{/block}}
+
+  {{#if settings.amp_analytics_id}}
+    <amp-analytics type="googleanalytics">
+      <script type="application/json">
+      {
+        "vars": {
+          "account": "{{settings.amp_analytics_id}}"
+        },
+        "extraUrlParams": {
+          "cd1": "{{page_type}}",
+          "cd2": "{{category.id}}",
+          "cd3": "{{category.url}}",
+          "cd4": "{{category.name}}"
+        },
+        "triggers": {
+          "trackPageview": {
+            "on": "visible",
+            "request": "pageview"
+          },
+          "trackClickOnProductCard" : {
+            "on": "click",
+            "selector": ".amp-grid-item-link, .amp-grid-item-name a",
+            "request": "event",
+            "vars": {
+              "eventCategory": "Category",
+              "eventAction": "Product Card"
+            },
+            "extraUrlParams": {
+              "cd6": "${productLink}",
+              "cd7": "${productId}",
+              "cd8": "${productName}"
+            }
+          }
+        }
+      }
+      </script>
+    </amp-analytics>
+  {{/if}}
+
+{{/partial}}

@@ -1,0 +1,3 @@
+{
+  "components/common/body-classes": "{{theme_settings.product_grid_layout}}\nlogo-position-{{theme_settings.header_logo_alignment}}\n{{#if theme_settings.show_grid_image_overlay}} grid-image-overlay{{/if}}\n{{#if theme_settings.contain_grid_images}} grid-image-contain{{/if}}\n{{#if theme_settings.crop_cover_collections_banner_image}} banner-image-cover{{/if}}\n{{#unless in_production}} dev-environment{{/unless}}\n{{#if theme_settings.product_catalog_infinite_scroll}} infinite-scroll-enabled{{/if}}\n{{#any\n  template '==' 'pages/category'\n  template '==' 'pages/brand'\n  template '==' 'pages/search'\n}}\n  catalog-page\n{{/any}}\n{{#unless in_production}} dev-environment{{/unless}}\n"
+}

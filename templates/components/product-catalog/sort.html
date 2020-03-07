@@ -1,0 +1,106 @@
+<form class="product-list-sort form" method="get" data-sort-by>
+  <fieldset class="form-fieldset">
+    <div class="form-field form-field-radio">
+      {{#if result_count}}
+        <label class="form-label">
+          <input
+            class="form-input form-radio"
+            type="radio"
+            name="sort"
+            value="featured"
+            {{#if sort '===' 'relevance'}}checked{{/if}}
+          >
+          <span class="form-label-text">{{lang 'common.sorter.relevance'}}</span>
+        </label>
+      {{/if}}
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="featured"
+          {{#if sort '===' 'featured'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.featured'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="newest"
+          {{#if sort '===' 'newest'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.newest'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="bestselling"
+          {{#if sort '===' 'bestselling'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.top_sellers'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="alphaasc"
+          {{#if sort '===' 'alphaasc'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.alpha_asc'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="alphadesc"
+          {{#if sort '===' 'alphadesc'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.alpha_desc'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="avgcustomerreview"
+          {{#if sort '===' 'avgcustomerreview'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.reviews'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="priceasc"
+          {{#if sort '===' 'priceasc'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.price_asc'}}</span>
+      </label>
+
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          type="radio"
+          name="sort"
+          value="pricedesc"
+          {{#if sort '===' 'pricedesc'}}checked{{/if}}
+        >
+        <span class="form-label-text">{{lang 'common.sorter.price_desc'}}</span>
+      </label>
+    </div>
+  </fieldset>
+</form>

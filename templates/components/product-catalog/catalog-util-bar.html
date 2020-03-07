@@ -1,0 +1,177 @@
+{{!--
+  Product Catalog Utils - toolbar to refine product lists
+
+  @param catalog_type
+    The section this display applies to.
+
+  @param pagination
+    The pagination object for this section (for sort / results)
+--}}
+
+<div class="catalog-util-bar-wrapper">
+  <div class="catalog-util-bar-toggle">
+    <button
+      class="button button-primary button-x-small"
+      data-util-bar-toggle
+      aria-label="{{lang 'faceted_search.show_controls'}}"
+    >
+      {{> svg/icon-filter}}
+    </button>
+  </div>
+
+  <div class="catalog-util-bar">
+    <button class="util-panel-close">
+      {{> svg/icon-x}}
+    </button>
+
+    {{#if catalog_type.faceted_search_enabled}}
+
+      {{! Facet dropdowns}}
+      <div class="facet-block-container more-menu-container" data-util-panel="facet">
+        <span class="catalog-util-label">
+          {{lang 'faceted_search.filter_by'}}:
+        </span>
+
+        {{#each catalog_type.facets}}
+          {{#if items}}
+            {{> components/faceted-search/facet-block}}
+          {{/if}}
+          {{#if facet '===' 'price'}}
+            {{> components/faceted-search/facet-block}}
+          {{/if}}
+        {{/each}}
+      </div>
+
+      {{! More filters menu}}
+      <div
+        class="dropdown more-menu"
+        data-dropdown data-dropdown-options='{
+          "constraints": [
+            {
+              "to": "body",
+              "pin": ["left", "right"]
+            }
+          ]
+        }'
+      >
+        <button class="dropdown-toggle" data-dropdown-toggle>
+          {{lang 'faceted_search.more_filters'}}
+        </button>
+        <div class="dropdown-panel dropdown-fullwidth dropdown-more-menu" data-dropdown-panel>
+          {{#each catalog_type.facets}}
+            {{> components/faceted-search/facet-block-content index=@index}}
+          {{/each}}
+        </div>
+      </div>
+
+    {{else}}
+
+      {{#any theme_settings.show_shop_by_price theme_settings.shop_by_brand}}
+        <span class="catalog-util-label">
+          {{lang 'common.shop_by.label'}}:
+        </span>
+      {{/any}}
+
+      {{! Shop by Price}}
+      {{#if theme_settings.shop_by_price}}
+        {{#unless catalog_type '==' product_results}}
+          <div class="dropdown" data-dropdown>
+            <button class="dropdown-toggle" data-dropdown-toggle>
+              {{> components/product-catalog/shop-by-price-label
+                shop_by=catalog_type.shop_by_price
+              }}
+              {{> svg/icon-dropdown}}
+            </button>
+            <div
+              class="dropdown-panel catalog-util-dropdown-panel"
+              data-dropdown-panel
+            >
+              {{> components/product-catalog/shop-by-price
+                shop_by=catalog_type.shop_by_price
+              }}
+            </div>
+          </div>
+        {{/unless}}
+      {{/if}}
+
+      {{! Shop by Brand}}
+      {{#if theme_settings.shop_by_brand}}
+        <div class="dropdown" data-dropdown>
+          <button class="dropdown-toggle" data-dropdown-toggle>
+            {{> components/product-catalog/shop-by-brand-label
+              shop_by=shop_by_brand
+            }}
+            {{> svg/icon-dropdown}}
+          </button>
+          <div
+            class="dropdown-panel catalog-util-dropdown-panel"
+            data-dropdown-panel
+          >
+            {{> components/product-catalog/shop-by-brand shop_by=shop_by_brand}}
+          </div>
+        </div>
+      {{/if}}
+
+    {{/if}}
+
+    {{! Sort}}
+    <div class="sort-block-container" data-util-panel="sort">
+      <div
+        class="dropdown dropdown-sort"
+        data-dropdown
+        data-dropdown-options='{
+          "constraints": [
+            {
+              "to": ".product-catalog",
+              "pin": ["left", "right"]
+            }
+          ]
+        }'
+      >
+        <span class="catalog-util-label">{{lang 'common.sorter.sort_by'}}:</span>
+        <button class="dropdown-toggle" data-dropdown-toggle>
+          {{> components/product-catalog/sort-label sort=pagination.sort}}
+          {{> svg/icon-dropdown}}
+        </button>
+        <div class="dropdown-panel catalog-util-dropdown-panel" data-dropdown-panel>
+          {{> components/product-catalog/sort sort=pagination.sort}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{! Active filters}}
+  {{#any catalog_type.facets selected=true}}
+    <div class="catalog-util-active-filters">
+      {{#each catalog_type.facets}}
+        {{#each items}}
+          {{#if selected}}
+            <a class="catalog-util-active-filter" href="{{url}}" data-faceted-search-facet data-facet-remove>
+              {{#if ../../facet '===' 'rating'}}
+                {{#for 1 param_value}}
+                  {{> svg/icon-star-full}}
+                {{/for}}
+                <span class="rating-and-up-text">
+                  {{{lang 'faceted_search.and_up'}}}
+                </span>
+              {{else}}
+                {{title}}
+              {{/if}}
+
+              {{> svg/icon-x}}
+            </a>
+          {{/if}}
+        {{/each}}
+      {{/each}}
+
+      <a class="clear-all" href="{{catalog_type.url}}" data-faceted-search-facet>
+        {{lang 'faceted_search.clear_all'}}
+      </a>
+    </div>
+  {{/any}}
+
+  <div class="catalog-util-button-wrapper">
+    <button class="button button-primary" data-util-panel-toggle="facet">{{lang 'common.filter'}}</button>
+    <button class="button button-primary" data-util-panel-toggle="sort">{{lang 'common.sort'}}</button>
+  </div>
+</div>

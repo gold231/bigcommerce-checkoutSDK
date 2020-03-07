@@ -1,0 +1,45 @@
+// header search form
+.search-form {
+  width: 100%;
+  .form-field {
+    position: relative;
+  }
+
+  .form-input {
+    width: 100%;
+    padding-left: rem(48);
+    font-family: $font-primary;
+    color: $color-text;
+    border: 0px;
+
+    @include media($max: $screen-small) {
+      height: map-get($site, search-mobile);
+      padding-left: $gutter-small;
+      line-height: map-get($site, search-mobile);
+      background: $color-highlight;
+      border: 0;
+    }
+
+    &:focus {
+      background: transparent;
+    }
+  }
+
+  // search submit
+  .button-search-submit {
+    @include reset-button;
+    position: absolute;
+    top: $space-smaller;
+    left: $space-smaller;
+
+    @include media($max: $screen-small) {
+      top: rem(12);
+      right: $gutter-small;
+      left: auto;
+    }
+
+    svg  {
+      fill: $color-text;
+    }
+  }
+}

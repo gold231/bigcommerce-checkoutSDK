@@ -1,0 +1,121 @@
+// Layout
+// Each list item has 3 sections: thumbnail, body, and badge.
+
+.account-items {
+  margin-bottom: $account-gutter;
+}
+
+.account-item {
+  position: relative;
+  display: table;
+  width: 100%;
+  border-bottom: 1px solid $account-border-color;
+
+  &:first-of-type {
+    border-top: 1px solid $account-border-color;
+  }
+}
+
+.account-item-thumbnail,
+.account-item-body,
+.account-item-badge,
+.account-item-actions {
+  padding-top: $account-gutter-inner;
+  padding-bottom: $account-gutter-inner;
+
+  @media screen and (min-width: $account-breakpoint-x-small) {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+.account-item-checkbox {
+  display: table-cell;
+  min-width: 30px;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+// Link
+// Makes the entire item clickable
+
+.account-item-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+
+// Thumbnail
+
+.account-item-thumbnail {
+  min-width: 100px;
+
+  img {
+    height: auto;
+    max-width: 100px;
+  }
+}
+
+// Body
+
+.account-item-body {
+  width: 100%;
+
+  @media screen and (min-width: $account-breakpoint-x-small) {
+    .account-item-thumbnail + & {
+      padding-left: $account-gutter-inner;
+    }
+  }
+}
+
+.account-item-title {
+  margin-top: 3px;
+  font-size: $account-font-size;
+
+  a {
+    color: inherit;
+  }
+}
+
+.account-item-title-large {
+  font-size: $account-font-size * 1.2;
+}
+
+.account-item-description {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: $account-text-color;
+}
+
+.account-item-details {
+  @extend %clearfix;
+  font-size: $account-font-size;
+  color: $account-text-color;
+}
+
+.account-item-detail {
+  float: left;
+  margin-top: $account-gutter-inner;
+  margin-right: $account-gutter;
+}
+
+//scss-lint:disable VariableForProperty
+.account-item-detail-title {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: mix($account-light-color,$account-text-color,60%);
+  text-transform: uppercase;
+}
+
+// Badge
+
+.account-item-actions {
+  white-space: nowrap;
+}

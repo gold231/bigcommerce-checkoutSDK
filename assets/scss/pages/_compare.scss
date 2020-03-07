@@ -1,0 +1,141 @@
+.compare-grid-wrapper {
+  position: relative;
+  padding-top: $space-smaller;
+  padding-bottom: $space-largest;
+}
+
+.compare-grid {
+  &:not(.flickity-enabled) {
+    @include grid-container;
+  }
+
+  &::after {
+    display: none;
+    content: "flickity";
+
+    @include media($min: $screen-xxlarge) {
+      content: "";
+    }
+  }
+
+  .flickity-page-dots {
+    bottom: calc(100% + #{$space-smaller});
+  }
+}
+
+.compare-grid-item {
+  @include grid-item;
+  flex: 1 0 auto;
+  width: 80vw;
+  max-width: rem(310);
+
+  &:not(:first-child) {
+    .compare-grid-item-label {
+      visibility: hidden;
+    }
+  }
+
+  .price,
+  .product-grid-item-brand {
+    margin-top: $space-smallest;
+  }
+}
+
+.compare-grid-item-top {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .button {
+    width: 100%;
+
+    & + .button {
+      margin-top: $space-smaller;
+      margin-left: 0;
+    }
+  }
+}
+
+.compare-grid-item-image {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    @include lazy-loaded-img();
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.compare-grid-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  .product-grid-item-name {
+    order: 1;
+  }
+}
+
+.product-grid-item-brand {
+  font-family: $font-secondary;
+  color: $color-text-lighter;
+}
+
+.compare-grid-item-remove {
+  order: 2;
+  margin-top: $space-smaller;
+  color: $color-text-lighter;
+
+  & + .product-grid-item-name {
+    padding-left: $space-smaller;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  svg {
+    pointer-events: none;
+  }
+}
+
+.compare-grid-item-actions {
+  padding-top: $space-small;
+  margin-top: auto;
+}
+
+.compare-grid-item-label {
+  @extend %text-style-smallcaps;
+  position: relative;
+  margin-bottom: $space-smaller;
+
+  &.label-rating {
+    margin-top: $space-larger;
+  }
+}
+
+.compare-grid-item-remove {
+  @extend %reset-button;
+}
+
+.compare-grid-item-bottom {
+  position: relative;
+  padding-top: $space-larger;
+  margin-top: $space-larger;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% + #{$gutter-large});
+    display: block;
+    border-top: 1px solid $color-borders;
+    content: "";
+  }
+}
+
+.compare-wishlist {
+  .button-secondary {
+    @extend .button-small;
+    margin-bottom: rem(12);
+  }
+}

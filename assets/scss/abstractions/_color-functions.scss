@@ -1,0 +1,22 @@
+@import "iromi/iromi";
+
+@function shade($color, $percent) {
+  //scss-lint:disable ColorVariable - need to declare hex to shade properly
+  @return mix(#000, $color, $percent);
+}
+
+@function contrast($color, $percent: 6%, $threshold: 50) {
+  @if (lightness($color) > $threshold) {
+    @return shade($color, $percent);
+  } @else {
+    @return lighten($color, $percent);
+  }
+}
+
+@function color-text($background, $percent: 30%, $threshold: 50) {
+  @if (lightness($background) > $threshold) {
+    @return $color-text;
+  } @else {
+    @return lighten($background, $percent);
+  }
+}

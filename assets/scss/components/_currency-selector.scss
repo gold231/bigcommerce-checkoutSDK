@@ -1,0 +1,22 @@
+.currency-selector {
+  display: none;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  .currencies {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .currency-selected {
+    margin-right: rem(5);
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}

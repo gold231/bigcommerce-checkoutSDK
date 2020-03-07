@@ -1,0 +1,41 @@
+<section
+  class="
+    amp-product-images
+    {{#unless product.images}}
+      amp-no-product-images
+    {{/unless}}
+  "
+  data-image-gallery
+>
+  {{#if product.images}}
+   {{#if product.images.length}}
+     <amp-carousel
+       width="250"
+       height="250"
+       layout="responsive"
+       autoplay
+       loop
+       delay="5000"
+       type="slides"
+     >
+       {{#each product.images}}
+         <amp-img
+           class="amp-product-image"
+           src="{{getImage this 'amp-product-image'}}"
+           layout="fill"
+           alt="{{this.alt}}"
+         >
+         </amp-img>
+       {{/each}}
+     </amp-carousel>
+    {{/if}}
+  {{else}}
+    <amp-img
+      class="amp-product-image amp-no-image"
+      src="{{cdn theme_settings.default_image}}"
+      layout="fill"
+      alt="{{lang 'common.no_image'}}"
+    >
+    </amp-img>
+  {{/if}}
+</section>

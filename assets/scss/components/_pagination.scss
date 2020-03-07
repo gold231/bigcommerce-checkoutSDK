@@ -1,0 +1,50 @@
+.pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: $space-large;
+  margin-bottom: $space;
+}
+
+.pagination-item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(48);
+  height: rem(48);
+  margin-right: $space-smallest;
+  margin-left: $space-smallest;
+  border: 1px solid $color-borders;
+  color: $color-text-lighter;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+    opacity: 1;
+  }
+
+  &.pagination-current {
+    background-color: $color-primary;
+    border-color: transparent;
+    color: contrast($color-primary, 100%);
+  }
+
+  .infinite-scroll-enabled & {
+    visibility: hidden;
+  }
+
+  .account-body & {
+    width: auto;
+    height: auto;
+    border: 0;
+
+    .pagination-page {
+      margin-left: $space-smallest;
+    }
+
+    .infinite-scroll-enabled & {
+      visibility: visible;
+    }
+  }
+}

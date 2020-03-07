@@ -1,0 +1,29 @@
+// Error pages
+.error-container {
+  text-align: center;
+}
+
+.error-header {
+  .error-title {
+    margin-top: $space-largest;
+    font-weight: 300;
+    color: $color-text-light;
+  }
+}
+
+.page-error {
+  font-weight: 300;
+  color: $color-text-light;
+
+  .error-button {
+    margin-top: $gutter-large;
+
+    &.button-primary {
+      background-color: $color-secondary;
+
+      &:hover {
+        background-color: scale-color($color-secondary, $lightness: -20%);
+      }
+    }
+  }
+}

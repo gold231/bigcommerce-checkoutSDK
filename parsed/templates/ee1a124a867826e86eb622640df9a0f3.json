@@ -1,0 +1,3 @@
+{
+  "components/cart/cart-total-item": "<div class=\"cart-total-row\">\n  <span class=\"cart-total-label\">{{label}}:</span>\n  <span class=\"cart-total-value\">{{value}}</span>\n</div>\n"
+}

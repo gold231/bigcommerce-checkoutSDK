@@ -1,0 +1,44 @@
+.loading-overlay {
+  position: absolute;
+  z-index: z(loading-overlay);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(contrast($color-primary, 100%), 0.8);
+
+  body > & {
+    position: fixed;
+  }
+}
+
+.loading,
+.loading:after {
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+}
+
+.loading {
+  position: relative;
+  margin: auto;
+  font-size: 10px;
+  text-indent: -9999em;
+  border-top: 0.6em solid rgba($color-primary, 0.2);
+  border-right: 0.6em solid rgba($color-primary, 0.2);
+  border-bottom: 0.6em solid rgba($color-primary, 0.2);
+  border-left: 0.6em solid $color-primary;
+  transform: translateZ(0);
+  animation: loading 0.8s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

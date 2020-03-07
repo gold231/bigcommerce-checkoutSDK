@@ -1,0 +1,38 @@
+{{!--
+  Compare Widget - displays compare items on any page
+--}}
+
+<aside class="compare-widget" data-compare-widget data-compare-count="0" aria-hidden="true">
+  <header class="compare-widget-header">
+    <button class="compare-widget-toggle">
+      {{> svg/chevron-up-flat}}
+      <span class="compare-one">{{lang 'common.compare.compare_one'}}</span>
+      <span class="compare-multiple">
+        <span class="compare-count"></span>
+        {{lang 'common.compare.compare_multiple'}}
+      </span>
+    </button>
+    <span class="compare-widget-cta">
+      {{lang 'common.compare.compare_widget_cta'}}
+    </span>
+    <button class="compare-widget-remove-all" data-compare-remove-all>
+      {{lang 'common.compare.remove_all'}}
+    </button>
+  </header>
+  <div class="compare-widget-content">
+    <div class="compare-widget-items-wrap">
+      <div class="compare-widget-items" data-compare-items>
+        {{! Compare items injected here }}
+      </div>
+    </div>
+
+    <footer class="compare-widget-footer">
+      <button class="compare-widget-cancel" data-compare-remove-all>
+        {{lang 'common.compare.cancel'}}
+      </button>
+      <a class="compare-widget-action" href="{{urls.compare}}" data-compare-link="{{urls.compare}}">
+        {{lang 'core.product.compare'}}
+      </a>
+    </footer>
+  </div>
+</aside>

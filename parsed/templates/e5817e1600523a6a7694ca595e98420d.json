@@ -1,0 +1,3 @@
+{
+  "core/products/rating": "{{!\n  Shows the product's overall rating as N out of 5 stars.\n\n  @param rating number\n         The product's rating.\n\n  @param total number\n         The number of votes.\n}}\n{{#if rating \">=\" 0}}\n  <div class=\"rating\">\n    <div class=\"rating-stars\" aria-hidden=\"true\">\n      {{#enumerate 1 5}}\n        {{#if ../rating '>=' this}}\n          <span class=\"rating-star rating-star-full\"></span>\n        {{else}}\n          <span class=\"rating-star rating-star-empty\"></span>\n        {{/if}}\n      {{/enumerate}}\n    </div>\n\n    <span class=\"rating-score\">{{rating}}</span>\n\n    {{#if total}}\n      <span class=\"rating-votes\">{{lang 'core.rating.total_votes' votes=total}}</span>\n    {{/if}}\n  </div>\n{{/if}}\n"
+}

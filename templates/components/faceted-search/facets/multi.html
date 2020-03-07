@@ -1,0 +1,9 @@
+<ul class="facet-control facet-control-{{display}} facet-control-{{toLowerCase facet}}" data-facet-list>
+  {{#each items}}
+    {{> components/faceted-search/facet-list-item}}
+  {{/each}}
+
+  {{#if show_more_toggle}}
+    {{> components/faceted-search/facet-toggle-more}}
+  {{/if}}
+</ul>

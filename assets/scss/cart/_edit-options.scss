@@ -1,0 +1,21 @@
+.cart-options-modal {
+  opacity: 0;
+
+  .modal-wrapper.loaded & {
+    opacity: 1;
+  }
+
+  .reconfigure-errors {
+    display: none;
+  }
+
+  .form-actions {
+    margin-top: $space;
+  }
+}
+
+.cart-item-edit-button {
+  @extend %reset-button;
+  @extend %link-style;
+  margin-top: $space-smallest;
+}

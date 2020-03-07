@@ -1,0 +1,372 @@
+/*----------  Media Queries  ----------*/
+
+@mixin media($max: false, $min: false) {
+  @if $max {
+    @if $min {
+      @media screen and (max-width: #{em($max - 1)}) and (min-width: #{em($min)}) { @content; }
+    } @else {
+      @media screen and (max-width: #{em($max - 1)}) { @content; }
+    }
+  } @else {
+    @media screen and (min-width: #{em($min)}) { @content; }
+  }
+}
+
+/*----------  Layout  ----------*/
+
+@mixin container {
+  width: 100%;
+  padding-right: $gutter-small;
+  padding-left: $gutter-small;
+
+  @include media($min: $screen-medium) {
+    padding-right: $gutter-medium;
+    padding-left: $gutter-medium;
+  }
+
+  @include media($min: $screen-large) {
+    padding-right: $gutter-large;
+    padding-left: $gutter-large;
+  }
+}
+
+@mixin container-offset {
+  margin-right: -1 * $gutter-small;
+  margin-left: -1 * $gutter-small;
+
+  @include media($min: $screen-medium) {
+    margin-right: -1 * $gutter-medium;
+    margin-left: -1 * $gutter-medium;
+  }
+
+  @include media($min: $screen-large) {
+    margin-right: -1 * $gutter-large;
+    margin-left: -1 * $gutter-large;
+  }
+}
+
+@mixin grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1 * $gutter-small-half;
+  margin-left: -1 * $gutter-small-half;
+
+  @include media($min: $screen-medium) {
+    margin-right: -1 * $gutter-medium-half;
+    margin-left: -1 * $gutter-medium-half;
+  }
+
+  @include media($min: $screen-large) {
+    margin-right: -1 * $gutter-large-half;
+    margin-left: -1 * $gutter-large-half;
+  }
+}
+
+@mixin grid-item {
+  flex: 0 1 auto;
+  margin-right: $gutter-small-half;
+  margin-left: $gutter-small-half;
+
+  @include media($min: $screen-medium) {
+    margin-right: $gutter-medium-half;
+    margin-left: $gutter-medium-half;
+  }
+
+  @include media($min: $screen-large) {
+    margin-right: $gutter-large-half;
+    margin-left: $gutter-large-half;
+  }
+}
+
+/**
+ *
+ * Add responsive padding / margins to an element
+ * usage:
+ *   @include layout-spacing(margin-top);
+ * or
+ *   @include layout-spacing((margin-top, padding-bottom));
+ *
+ */
+
+@mixin layout-spacing($space-types) {
+  @each $type in $space-types {
+    #{$type}: $gutter-small;
+  }
+
+  @include media($min: $screen-medium) {
+    @each $type in $space-types {
+      #{$type}: $gutter-medium;
+    }
+  }
+
+  @include media($min: $screen-large) {
+    @each $type in $space-types {
+      #{$type}: $gutter-large;
+    }
+  }
+}
+
+@mixin layout-spacing-half($space-types) {
+  @each $type in $space-types {
+    #{$type}: $gutter-small-half;
+  }
+
+  @include media($min: $screen-medium) {
+    @each $type in $space-types {
+      #{$type}: $gutter-medium-half;
+    }
+  }
+
+  @include media($min: $screen-large) {
+    @each $type in $space-types {
+      #{$type}: $gutter-large-half;
+    }
+  }
+}
+
+@mixin col-width($columns, $full-bleed: false) {
+  $width: percentage($columns / 12);
+
+  @if $full-bleed {
+    width: $width;
+  } @else {
+    width: calc(#{$width} - #{$gutter-small});
+
+    @include media($min: $screen-medium) {
+      width: calc(#{$width} - #{$gutter-medium});
+    }
+
+    @include media($min: $screen-large) {
+      width: calc(#{$width} - #{$gutter-large});
+    }
+  }
+}
+
+/*----------  Responsive Product Grids  ----------*/
+
+@mixin product-grid-item-layout {
+  @include col-width(6);
+
+  @include media($min: $screen-small) {
+    @include col-width(4);
+  }
+
+  @include media($min: $screen-large) {
+    @include col-width(6);
+  }
+
+  @include media($min: $screen-xlarge) {
+    @include col-width(4);
+  }
+
+  @include media($min: $breakpoint-product-grid-large) {
+    @include col-width(3);
+  }
+
+  @include media($min: $screen-xxlarge) {
+    @include col-width(2);
+  }
+
+  // IE only media queries to override nested media querie issue
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    width: calc(50% - #{$gutter-medium});
+
+    @media (min-width: 540px) {
+      width: calc(25% - #{$gutter-medium});
+    }
+
+    @media (min-width: 1024px) {
+      width: calc(50% - #{$gutter-large});
+    }
+
+    @media (min-width: 1200px) {
+      width: calc(33.33333% - #{$gutter-large});
+    }
+
+    @media (min-width: 1400px) {
+      width: calc(25% - #{$gutter-large});
+    }
+
+    @media (min-width: 1800px) {
+      width: calc(16.6667% - #{$gutter-large});
+    }
+  }
+}
+
+/*----------  Maintain Aspect Ratio  ----------*/
+
+@mixin maintain-ratio($ratio: 1 1) {
+  @if length($ratio) < 2 or length($ratio) > 2 {
+    @warn "$ratio must be a list with two values.";
+  }
+
+  $width: 100%;
+  $height: percentage(nth($ratio, 2) / nth($ratio, 1));
+
+  width: $width;
+  padding-bottom: $height;
+}
+
+
+/*----------  Utils  ----------*/
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+@mixin reset-button {
+  padding: 0;
+  font-family: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+/*----------  Text styles  ----------*/
+
+@mixin text-style-smallcaps {
+  font-family: $font-primary;
+  font-size: $font-size-small-caps;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/*----------  Headings  ----------*/
+
+@mixin heading($size) {
+  font-family: $font-primary;
+  font-size: map-get($font-size-heading, $size);
+  line-height: if($size == 1, $line-height-tight, $line-height);
+  color: $color-headings;
+
+  @if $font-primary == "Work Sans" {
+    text-transform: uppercase;
+
+    @if $size == 5 or $size == 6 {
+      letter-spacing: 1px;
+    } @else {
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+/*----------  Buttons  ----------*/
+
+@mixin button($style: "primary", $size: "large", $base-style: true) {
+  @if $base-style {
+    @include text-style-smallcaps;
+    @include reset-button;
+    position: relative;
+    display: inline-block;
+    height: map-get($site, button);
+    min-width: rem(270);
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    overflow: hidden;
+    font-size: $font-size-body;
+    line-height: map-get($site, button);
+    text-align: center;
+    transition: all 0.2s ease-out;
+
+    @include media($max: $screen-small) {
+      font-size: $font-size-body-small;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      &::before {
+        opacity: 0.1;
+        transform: scale(0,0);
+        transition-duration: 0s;
+      }
+    }
+
+    &:disabled,
+    &.button-disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: {
+        image: radial-gradient(circle, $color-black 10%, transparent 10.01%);
+        position: 50%;
+        repeat: no-repeat;
+      }
+      content: "";
+      opacity: 0;
+      transform: scale(10,10);
+      transition: transform 0.2s, opacity 0.4s;
+    }
+  }
+
+  @if $size == "x-small" {
+    height: rem(40);
+    font-size: $font-size-body-small;
+    line-height: rem(40);
+  }
+
+  @if $size == "small" {
+    height: rem(48);
+    min-width: rem(230);
+    line-height: rem(48);
+  }
+
+  @if $style == "primary" {
+    color: contrast($color-primary, 100%);
+    background-color: $color-primary;
+
+    &:hover {
+      background-color: scale-color($color-primary, $lightness: -20%);
+    }
+  }
+
+  @if $style == "secondary" {
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    background-color: transparent;
+
+    &:hover {
+      color: contrast($color-primary, 100%);
+      background-color: $color-primary;
+    }
+  }
+
+  @if $style == "white" {
+    color: $color-black;
+    background-color: $color-white;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+/*---------- Images ----------*/
+
+@mixin lazy-loaded-img() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

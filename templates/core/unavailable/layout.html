@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{head.title}}</title>
+    {{{head.meta_tags}}}
+    {{{head.config}}}
+
+    {{{stylesheet '/assets/css/theme.css'}}}
+    {{getFontsCollection}}
+
+    <link href="{{head.favicon}}" rel="shortcut icon">
+  </head>
+  <body>
+    {{#block "page"}}{{/block}}
+  </body>
+</html>

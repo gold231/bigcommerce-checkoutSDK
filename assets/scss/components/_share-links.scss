@@ -1,0 +1,19 @@
+// Social icon list
+.share-links {
+  margin: $space-smaller 0;
+  background: transparent;
+}
+
+.share-link {
+  display: inline-block;
+  padding-right: $space-smallest;
+  color: $color-text-light;
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}

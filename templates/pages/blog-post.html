@@ -1,0 +1,72 @@
+{{#partial "page"}}
+
+<article class="single-blog-post">
+  {{! Blog post header }}
+  <div class="single-blog-post-header">
+    {{> components/common/page-title
+      title=blog.post.title
+    }}
+    <time class="timestamp">{{blog.post.date_published}}</time>
+  </div>
+
+  {{! Blog post thumbnail }}
+  {{#if blog.post.thumbnail}}
+    <figure class="single-blog-post-image-container">
+      {{> components/common/responsive-image
+        image=blog.post.thumbnail
+        fit="image-contain"
+        lazyload=theme_settings.lazyload_mode
+        fallback_size=theme_settings.banner
+        default_image=theme_settings.default_image
+      }}
+    </figure>
+  {{/if}}
+
+  <div class="single-blog-post-content">
+    {{! Blog post content }}
+    {{{blog.post.body}}}
+
+    <div class="single-blog-post-footer">
+      {{! Blog post author }}
+      {{#if blog.post.author}}
+        <div class="single-blog-post-author">
+          {{lang 'blog.posted_by' author=blog.post.author}}
+        </div>
+      {{/if}}
+
+      {{! Blog post tags}}
+      {{#if blog.post.tags.length}}
+        <div class="single-blog-post-tags-container">
+          <span class="single-blog-post-tag-label">{{lang 'blog.tags'}}</span>
+          <span class="single-blog-post-tags-content">
+            {{#each blog.post.tags}}
+              <a
+                href="{{url}}"
+                title="{{lang 'blog.tag_permalink' tag=name}}"
+                class="single-blog-post-tags">
+                {{name}}
+              </a>
+              {{#unless @last}},&nbsp;{{/unless}}
+            {{/each}}
+          </span>
+        </div>
+      {{/if}}
+
+      {{! Social sharing }}
+      {{#if settings.add_this.buttons.length}}
+        {{> components/common/share-links
+          url=product.url
+          title=product.title
+          share_type='product-post'
+          share_buttons=settings.add_this
+          image=(getImage product.main_image 'share')
+        }}
+      {{/if}}
+    </div>
+  </div>
+</article>
+
+{{> core/structured-data/blog-post}}
+
+{{/partial}}
+{{> layout/base}}

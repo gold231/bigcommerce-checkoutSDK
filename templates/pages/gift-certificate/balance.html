@@ -1,0 +1,16 @@
+{{#partial "page"}}
+
+
+  <div class="giftcard-container">
+    {{> core/gift-certificate/navigation page='balance'}}
+
+    <section class="giftcard-content">
+      <h1 class="giftcard-header">{{lang 'core.giftcard.balance.heading'}}</h1>
+      <p class="giftcard-subheading">{{lang 'core.giftcard.balance.subheading'}}</p>
+      {{> core/gift-certificate/balance}}
+    </section>
+  </div>
+
+{{/partial}}
+
+{{> layout/base}}

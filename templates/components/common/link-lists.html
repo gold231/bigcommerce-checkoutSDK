@@ -1,0 +1,64 @@
+{{!
+  Link lists
+
+  @param type  options
+         'pages', 'social' and 'brands' to determine content of the link list
+}}
+
+<div class="link-list-wrapper">
+  <ul class="link-list">
+    {{#if type '==' 'pages'}}
+      <li class="link-list-title">
+        {{lang 'link-list.pages'}}
+      </li>
+      {{#each pages}}
+        <li class="link-list-item">
+          <a href="{{url}}">
+            {{name}}
+          </a>
+        </li>
+      {{/each}}
+      {{#if settings.gift_certificates_enabled}}
+        <li class="link-list-item">
+          <a href="{{urls.gift_certificate.purchase}}">
+            {{lang 'link-list.gift_certificates'}}
+          </a>
+        </li>
+      {{/if}}
+      {{#if theme_settings.show_sitemap}}
+        <li class="link-list-item sitemap">
+          <a href="{{urls.sitemap}}">{{lang 'sitemap.title'}}</a>
+        </li>
+      {{/if}}
+    {{/if}}
+
+    {{#if type '==' 'brands'}}
+      <li class="link-list-title">
+        {{lang 'link-list.brands'}}
+      </li>
+      {{#each shop_by_brand}}
+        <li class="link-list-item">
+          <a href="{{url}}">{{name}}</a>
+        </li>
+      {{/each}}
+      <li class="link-list-item">
+        <a href="{{urls.brands}}" class="link-list-view-all">
+          {{lang 'link-list.view_brands'}}
+        </a>
+      </li>
+    {{/if}}
+
+    {{#if type '==' 'social'}}
+      <li class="link-list-title">
+        {{lang 'link-list.social'}}
+      </li>
+      {{#each social_media}}
+        <li class="link-list-item">
+          <a href="{{url}}" class="{{display_name}}" target="_blank">
+            {{name}}
+          </a>
+        </li>
+      {{/each}}
+    {{/if}}
+  </ul>
+</div>

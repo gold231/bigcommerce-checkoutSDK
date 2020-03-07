@@ -1,0 +1,19 @@
+{{#if messages}}
+  <table class="account-messages-table table-clean">
+    {{#each messages}}
+      <tr class="account-messages-table-message {{#if is_reply}}account-message-is-reply{{/if}} {{#unless unread}}account-message-is-read{{/unless}}">
+        <td>
+          <h2 class="account-message-subject">{{subject}}</h2>
+          <div class="account-message-content">{{message}}</div>
+        </td>
+        <td class="account-messages-table-date">
+          <time class="account-message-date">{{date}}</time>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+
+{{else}}
+  <div class="account-empty">{{lang 'core.account.messages.no_messages'}}</div>
+
+{{/if}}

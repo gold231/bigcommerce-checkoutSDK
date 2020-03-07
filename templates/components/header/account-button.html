@@ -1,0 +1,45 @@
+{{#if settings.account_creation_enabled}}
+  {{#if customer}}
+    <div class="dropdown" data-dropdown>
+      <a
+        class="dropdown-toggle account-link"
+        href="#"
+        aria-label="{{lang 'header.account'}}"
+        data-dropdown-toggle
+        data-tether-disable
+      >
+        {{> svg/icon-account}}
+        <span class="account-link-text">{{lang 'header.account'}}</span>
+        <span class="account-link-dropdown">
+          {{> svg/icon-dropdown}}
+        </span>
+      </a>
+      <ul class="dropdown-panel account-dropdown-panel" data-dropdown-panel>
+        <li class="account-dropdown-item">
+          <a class="account-utils" href="{{urls.account.index}}">
+            {{lang 'header.my_account'}}
+          </a>
+        </li>
+        <li class="account-dropdown-item">
+          <a class="account-utils" href="{{urls.account.orders.all}}">
+            {{lang 'header.my_orders'}}
+          </a>
+        </li>
+        <li class="account-dropdown-item account-logout">
+          <a class="account-utils" href="{{urls.auth.logout}}">
+            {{lang 'header.log_out'}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  {{else}}
+    <a
+      class="account-link"
+      href="{{urls.auth.login}}"
+      aria-label="{{lang 'header.account'}}"
+    >
+      {{> svg/icon-account}}
+      <span class="account-link-text">{{lang 'header.account'}}</span>
+    </a>
+  {{/if}}
+{{/if}}

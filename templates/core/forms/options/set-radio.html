@@ -1,0 +1,51 @@
+<div
+  class="
+    form-field
+    form-field-options
+    form-field-radio
+    {{#if required}}
+      form-required
+    {{/if}}
+  "
+  data-product-attribute="set-radio"
+>
+  <div class="form-field-title product-option-title">
+    {{display_name}}
+    {{#if required}}
+      <span class="required-text">{{lang 'common.required'}}</span>
+    {{/if}}
+  </div>
+  <div class="form-field-control">
+    {{#each values}}
+      <label class="form-label" data-product-attribute-value="{{id}}">
+        <input
+          class="form-input form-radio"
+          id="attribute-{{id}}"
+          name="attribute[{{../id}}]"
+          type="radio"
+          value="{{id}}"
+          {{#if selected}}
+            checked
+            data-default
+          {{/if}}
+          {{#if ../required}}required{{/if}}
+          aria-required="{{required}}"
+        >
+        <span class="form-label-text">{{label}}</span>
+      </label>
+    {{/each}}
+    {{#unless required}}
+      <label class="form-label">
+        <input
+          class="form-input form-radio"
+          name="attribute[{{../id}}]"
+          type="radio"
+          value="0"
+          {{#if prefill '==' 0}}checked{{/if}}
+          aria-required="{{required}}"
+        >
+        <span class="form-label-text">{{lang 'core.product.none'}}</span>
+      </label>
+    {{/unless}}
+  </div>
+</div>

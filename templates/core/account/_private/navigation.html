@@ -1,0 +1,106 @@
+<nav class="account-nav">
+  <ul class="account-nav-list">
+    <li
+      class="
+        account-nav-item
+        {{#if nav_page '===' 'orders'}}is-active{{/if}}
+      "
+    >
+      <a class="account-nav-link" href="{{urls.account.orders.all}}">
+        {{lang 'core.account.menu.orders'}}
+      </a>
+    </li>
+
+    {{#if settings.returns_enabled}}
+      <li
+        class="
+          account-nav-item
+          {{#if nav_page '===' 'returns'}}is-active{{/if}}
+        "
+      >
+        <a class="account-nav-link" href="{{urls.account.returns}}">
+          {{lang 'core.account.menu.returns'}}
+        </a>
+      </li>
+    {{/if}}
+
+    <li
+      class="
+        account-nav-item
+        {{#if nav_page '===' 'messages'}}is-active{{/if}}
+      "
+    >
+      <a class="account-nav-link" href="{{urls.account.inbox}}">
+        {{lang 'core.account.menu.messages'}}
+        {{#if customer.num_new_messages}}
+          <span class="account-nav-badge">{{customer.num_new_messages}}</span>
+        {{/if}}
+      </a>
+    </li>
+
+    <li
+      class="
+        account-nav-item
+        {{#if nav_page '===' 'addresses'}}is-active{{/if}}
+      "
+    >
+      <a class="account-nav-link" href="{{urls.account.addresses}}">
+        {{lang 'core.account.menu.addresses'}}
+      </a>
+    </li>
+
+    {{#if settings.show_wishlist}}
+      <li
+        class="
+          account-nav-item
+          {{#if nav_page '===' 'wishlists'}}is-active{{/if}}
+        "
+      >
+        <a class="account-nav-link" href="{{urls.account.wishlists.all}}">
+          {{lang 'core.account.menu.wishlists'}}
+        </a>
+      </li>
+    {{/if}}
+
+    <li
+      class="
+        account-nav-item
+        {{#if nav_page '===' 'recent_items'}}is-active{{/if}}
+      "
+    >
+      <a class="account-nav-link" href="{{urls.account.recent_items}}">
+        {{lang 'core.account.menu.recently_viewed'}}
+      </a>
+    </li>
+
+    <li
+      class="
+        account-nav-item
+        {{#if nav_page '===' 'settings'}}is-active{{/if}}
+      "
+    >
+      <a class="account-nav-link" href="{{urls.account.details}}">
+        {{lang 'core.account.menu.settings'}}
+      </a>
+    </li>
+
+    {{#if settings.show_payment_methods}}
+      <li
+        class="
+          account-nav-item
+          {{#if nav_page '===' 'payment_methods'}}is-active{{/if}}
+        "
+      >
+        <a class="account-nav-link" href="{{urls.account.payment_methods.all}}">
+          {{lang 'core.account.menu.payment_methods'}}
+        </a>
+      </li>
+    {{/if}}
+  </ul>
+
+  {{#if customer.store_credit.value '>' 0}}
+    {{> core/alerts/alert-success
+      (lang 'core.account.common.store_credit' store_credit=customer.store_credit.formatted)
+    }}
+  {{/if}}
+</nav>

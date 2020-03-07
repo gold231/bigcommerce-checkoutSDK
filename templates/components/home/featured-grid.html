@@ -1,0 +1,37 @@
+{{!--
+  Homepage Featured Grid
+
+  @param items object
+    The list of items to display in the section (featured, new, top sellers, or categories)
+--}}
+
+{{#each (limit items limit)}}
+  <a href="{{url}}" class="home-section-grid-featured-item">
+    <div class="home-section-grid-featured-item-image">
+      {{> components/common/responsive-image
+        image=image
+        fit="image-cover"
+        lazyload=../theme_settings.lazyload_mode
+        fallback_size=../theme_settings.featured
+        default_image=../theme_settings.default_image
+      }}
+    </div>
+    <div class="item-info">
+      <div class="item-info-name">
+        {{name}}
+      </div>
+
+      {{#if ../item_type '===' 'categories'}}
+        <div class="item-info-cta">
+          {{lang 'home.featured_grid_cta' name=name}}
+        </div>
+      {{else}}
+        {{#if brand.name}}
+          <div class="item-info-cta">
+            {{brand.name}}
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+  </a>
+{{/each}}

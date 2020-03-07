@@ -1,0 +1,59 @@
+<div
+  class="
+    form-field
+    form-field-options
+    form-field-select
+    {{#if required}}
+      form-required
+    {{/if}}
+  "
+  data-product-attribute="set-select"
+>
+  <label class="form-label">
+    <span class="form-field-title">
+      {{display_name}}
+      {{#if required}}
+        <span class="required-text">{{lang 'common.required'}}</span>
+      {{/if}}
+    </span>
+    <span class="form-field-control">
+      <div class="form-select-wrapper">
+        <select
+          class="form-input form-select"
+          id="attribute-{{id}}"
+          name="attribute[{{id}}]"
+          {{#if ../required}}required{{/if}}
+          aria-required="{{required}}"
+        >
+          <option
+            value=""
+            {{#any values selected=true}}
+            {{else}}
+              selected
+            {{/any}}
+          >
+            {{lang 'product.pick_one'}}
+          </option>
+          {{#each values}}
+            <option
+              value="{{id}}"
+              {{#if selected}}selected{{/if}}
+              data-product-attribute-value="{{id}}"
+            >
+              {{label}}
+            </option>
+          {{/each}}
+          {{#unless required}}
+            <option
+              value="{{id}}"
+              {{#if selected}}selected{{/if}}
+              data-product-attribute-value="{{id}}"
+            >
+              {{lang 'core.product.none'}}
+            </option>
+          {{/unless}}
+        </select>
+      </div>
+    </span>
+  </label>
+</div>

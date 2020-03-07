@@ -1,0 +1,30 @@
+{{#partial 'account-heading'}}
+  {{#if forms.address.address_id}}
+    {{lang 'core.account.addresses.edit_heading'}}
+  {{else}}
+    {{lang 'core.account.addresses.add_heading'}}
+  {{/if}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#if forms.address.error}}
+    {{> core/alerts/alert-error forms.address.error}}
+  {{/if}}
+
+  <form class="form account-address-form" action="{{forms.address.action}}" id="address-form" method="post" data-validated-form>
+    {{#if forms.address.address_id}}
+      <input type="hidden" name="shipid" value="{{forms.address.address_id}}">
+    {{/if}}
+
+    {{#each forms.address.shipping_fields}}
+      {{{dynamicComponent 'core/forms/common'}}}
+    {{/each}}
+
+    <div class="form-actions">
+      <input type="submit" class="button account-button-primary" value="{{lang 'core.account.addresses.submit'}}">
+      <a href="{{urls.account.addresses}}" class="button account-button-secondary">{{lang 'core.account.common.cancel'}}</a>
+    </div>
+  </form>
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='addresses' class='add-address'}}

@@ -1,0 +1,88 @@
+.section {
+    border-bottom: 1px solid #e7e7e7;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+
+    @media (max-width: 990px) {
+        flex-direction: column;
+    }
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 0;
+
+    @media (max-width: 545px) {
+        align-items: center;
+    }
+}
+
+.header {
+    // flex-basis: 33.33%;
+    color: #2d2d2d;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1.92308rem;
+    /*background: green;*/
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    @media (max-width: 990px) {
+        padding-bottom: 12px;
+    }
+
+    @media (max-width: 545px) {
+        padding-bottom: 0;
+    }
+}
+
+.headerContent {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+    @media (max-width: 545px) {
+        flex-direction: column;
+        flex-grow: 1;
+    }
+}
+
+.customerEmail {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 990px) {
+        padding-bottom: 12px;
+    }
+
+    @media (max-width: 545px) {
+        justify-content: flex-start;
+    }
+}
+
+.editButton {
+    flex-basis: 33.33%;
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    @media (max-width: 990px) {
+        padding-bottom: 12px;
+    }
+}
+
+.body {
+    display: flex;
+    flex-basis: 66.67%;
+    flex-flow: row wrap;
+    // margin: 0 -12px;
+    padding: 0 28px;
+}

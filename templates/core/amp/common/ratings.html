@@ -1,0 +1,36 @@
+{{!--
+  Display rating as series of stars
+
+  @param rating
+    The Rating value to display.
+--}}
+
+<div
+  class="rating-stars amp-rating-stars"
+  aria-label="{{lang 'product.reviews.rating_stars' rating=rating}}"
+>
+  {{#for 1 5}}
+    {{#if ../rating '>=' $index}}
+      <svg
+        class="icon-star-full"
+        width="15"
+        height="14"
+        viewBox="0 0 15 14"
+        xmlns="http://www.w3.org/2000/svg"
+        role="presentation"
+      >
+        <path d="M7.083 11.374l4.38 2.302-.837-4.876 3.543-3.454-4.898-.71L7.082.197l-2.19 4.437-4.895.71L3.54 8.8l-.837 4.876" fill-rule="nonzero" fill="currentColor"/>
+      </svg>
+    {{else}}
+      <svg
+        width="15"
+        height="14"
+        viewBox="0 0 15 14"
+        xmlns="http://www.w3.org/2000/svg"
+        role="presentation"
+      >
+        <path d="M7.083 10.12l3.14 1.65-.6-3.497 2.542-2.477-3.512-.51-1.57-3.183-1.57 3.183L2 5.796l2.542 2.477-.6 3.497 3.14-1.65zm0 1.05l-4.378 2.302.836-4.874L0 5.146l4.894-.71L7.084 0 9.27 4.435l4.895.71-3.54 3.453.835 4.874-4.377-2.3z" fill-rule="nonzero" fill="currentColor"/>
+      </svg>
+    {{/if}}
+  {{/for}}
+</div>

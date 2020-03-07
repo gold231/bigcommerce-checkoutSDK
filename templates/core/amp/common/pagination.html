@@ -1,0 +1,59 @@
+{{!--
+  Pagination: Previous / Next buttons and a list of links to other pages.
+  @param this Object containing links, count, etc
+--}}
+
+{{#any previous links next}}
+  <nav class="pagination">
+    {{#if previous}}
+      <a
+        class="pagination-item pagination-previous"
+        href="{{previous}}"
+        {{#unless reload}}
+          data-faceted-search-facet
+        {{/unless}}
+      >
+        <svg width="7" height="12" viewBox="0 0 7 12" xmlns="http://www.w3.org/2000/svg" role="presentation">
+          <path d="M6.01 10.648l-.71.704L-.01 6 5.3.648l.71.704L1.4 6" fill="currentColor"/>
+        </svg>
+        <span class="sr-only">
+          {{lang 'core.pagination.previous'}}
+        </span>
+      </a>
+    {{/if}}
+
+    {{#each links}}
+      <a
+        class="
+          pagination-item
+          {{#if number '==' ../current}}
+            pagination-current
+          {{/if}}
+        "
+        href="{{url}}"
+        {{#unless reload}}
+          data-faceted-search-facet
+        {{/unless}}
+      >
+        {{number}}
+      </a>
+    {{/each}}
+
+    {{#if next}}
+      <a
+        class="pagination-item pagination-next"
+        href="{{next}}"
+        {{#unless reload}}
+          data-faceted-search-facet
+        {{/unless}}
+      >
+        <svg width="7" height="12" viewBox="0 0 7 12" xmlns="http://www.w3.org/2000/svg" role="presentation">
+          <path d="M.34 10.66l.71.703L6.364 6.01 1.05.66l-.71.703L4.955 6.01" fill="currentColor"/>
+        </svg>
+        <span class="sr-only">
+          {{lang 'core.pagination.next'}}
+        </span>
+      </a>
+    {{/if}}
+  </nav>
+{{/any}}

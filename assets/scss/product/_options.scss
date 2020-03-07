@@ -1,0 +1,295 @@
+// ---------------------------------------------------------------- */
+// Swatch: Set of options displaying color / pattern choices
+.swatch-value {
+  font-weight: normal;
+  color: $color-text-lighter;
+}
+
+.form-field-swatch {
+  .form-label-text {
+    @extend .sr-only;
+  }
+
+  .form-field-control {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .swatch-wrap {
+    position: relative;
+    float: left;
+    margin-right: $space-smallest;
+    margin-bottom: $space-smallest;
+    border: 1px solid rgba($color-borders, 0.5);
+  }
+
+  .swatch-none {
+    .swatch {
+      overflow: visible;
+      border: 1px solid transparent;
+
+      svg {
+        width: rem(27);
+        height: rem(27);
+      }
+    }
+  }
+
+  // The block that the swatch sits within.
+  .swatch {
+    position: relative;
+    display: block;
+    width: rem(30);
+    height: rem(30);
+    border: 1px solid transparent;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .swatch-wrap:hover .swatch {
+    border-color: $color-borders;
+  }
+
+  // Blocks displaying the pattern / colors
+  .swatch-color {
+    position: absolute;
+    top: rem(1);
+    right: rem(1);
+    bottom: rem(1);
+    left: rem(1);
+    background-size: cover;
+
+    &.secondary {
+      left: 50%;
+    }
+
+    &.tertiary {
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  .swatch-radio {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+
+    // Selected Swatch Item
+    &:checked + .swatch {
+      &::after {
+        position: absolute;
+        top: rem(-5);
+        right: rem(-5);
+        width: rem(18);
+        height: rem(18);
+        background: $color-primary;
+        background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 16 16"><path class="checkmark" fill="none" stroke="#{$color-white}" stroke-width="2" stroke-miterlimit="10" d="M1 8l5 6 9-11"/></svg>');
+        background-position: center center;
+        background-repeat: no-repeat;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        content: "";
+      }
+    }
+  }
+
+  .swatch-pattern-expanded {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    display: none;
+    padding: 3px;
+    background: $color-background;
+    transform: translateX(-50%);
+
+    img {
+      display: block;
+      width: rem(100);
+      max-width: none;
+    }
+  }
+
+  @include media($min: $screen-medium) {
+    .swatch-wrap:hover .swatch-pattern-expanded {
+      display: block;
+    }
+  }
+}
+
+// ---------------------------------------------------------------- */
+// Rectangles - Form options displayed as a series of rectangles with text
+
+.form-field-rectangle {
+  .form-field-control {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rectangle {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    margin-right: $gutter-medium-half;
+
+    &:hover .rectangle-text {
+      border-color: $color-primary;
+    }
+
+    &.form-label {
+      min-width: $space;
+    }
+  }
+
+  .rectangle-text {
+    display: block;
+    height: $space;
+    padding: 0 $space-smallest;
+    font-weight: 300;
+    line-height: 2;
+    text-align: center;
+    border: 1px solid $color-borders;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  .form-input {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+
+    &:checked + .rectangle-text {
+      color: $color-white;
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+}
+
+// ---------------------------------------------------------------- */
+// Pick-Product
+
+.form-field-product-list-images {
+  .form-field-control {
+    border: 1px solid $color-borders;
+  }
+}
+
+.form-field-checkbox,
+.form-field-radio,
+.form-field-product-list {
+  .form-label-text {
+    display: inline-block;
+    padding-left: rem(28);
+    vertical-align: middle;
+    cursor: pointer;
+  }
+}
+
+// product picklist radio buttons
+.product-picklist-item {
+  position: relative;
+
+  input[type=radio] + .product-picklist-item-body {
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: rem(150);
+      display: inline-block;
+      width: rem(18);
+      height: rem(18);
+      border: 1px solid $color-borders;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      content: "";
+    }
+  }
+
+  input[type=radio]:checked + .product-picklist-item-body::before {
+    background-color: $color-primary;
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"><circle cx="8" cy="8" r="4" fill="#{$color-white}" /></svg> ');
+    background-position: 50% center;
+    background-repeat: no-repeat;
+    border: 1px solid $color-primary;
+    content: "";
+  }
+}
+
+.product-picklist-item-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: rem(60);
+  padding: rem(10) rem(20);
+  cursor: pointer;
+
+  &.picklist-none {
+    padding-left: rem(150);
+  }
+}
+
+.product-picklist-image-wrap {
+  flex: 0 0 auto;
+  width: rem(100);
+  margin-right: rem(30);
+}
+
+.product-picklist-image {
+  vertical-align: bottom;
+}
+
+.product-picklist-label-text {
+  flex: 0 1 auto;
+  line-height: $line-height;
+}
+
+// ---------------------------------------------------------------- */
+// Date Field Components
+
+.form-field-date {
+  max-width: 100%;
+
+  .form-field-control {
+    display: flex;
+    align-items: center;
+  }
+
+  .form-select {
+    width: 100%;
+  }
+
+  .form-date-year {
+    width: 44%;
+  }
+
+  .form-date-month {
+    width: 25%;
+    margin-right: 3%;
+    margin-left: 3%;
+  }
+
+  .form-date-day {
+    width: 25%;
+  }
+}
+
+// ---------------------------------------------------------------- */
+// unavialable option styles
+
+.option-unavailable {
+  opacity: 0.5;
+
+  .swatch-radio {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,20 @@
+
+<div class="form-field form-field-common form-field-email {{#if required}} form-required{{/if}}" id="{{id}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{label}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <input class="form-input"
+        id="input-{{id}}"
+        name="{{name}}"
+        type="email"
+        placeholder="{{prefill}}"
+        {{#if value}}value="{{value}}"{{/if}}
+        {{#if private_id}}data-field-type="{{private_id}}"{{/if}}
+        {{#if required}}required{{/if}}
+        aria-required="{{required}}">
+    </span>
+  </label>
+</div>

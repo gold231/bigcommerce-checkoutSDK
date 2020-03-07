@@ -1,0 +1,6 @@
+{
+  "components/faceted-search/facets/hierarchy": "<ul class=\"facet-control facet-control-{{display}} facet-control-{{toLowerCase facet}}\" data-facet-list>\n  {{#each items}}\n    {{> components/faceted-search/facet-list-item}}\n  {{/each}}\n\n  {{#if show_more_toggle}}\n    {{> components/faceted-search/facet-toggle-more}}\n  {{/if}}\n</ul>\n",
+  "components/faceted-search/facet-list-item": "<li class=\"facet-item {{#if selected}}active{{/if}}\">\n  <a class=\"facet-item-link\" href=\"{{url}}\" rel=\"nofollow\" data-faceted-search-facet>\n    <span class=\"checkbox-box\">\n      {{> svg/icon-checkmark}}\n    </span>\n\n    {{title}}\n    {{#if ../show_product_counts}}\n      <span class=\"facet-item-count\">({{count}})</span>\n    {{/if}}\n  </a>\n</li>\n",
+  "components/faceted-search/facet-toggle-more": "<li class=\"facet-toggle-more\">\n  <a href=\"#\" data-facet-more=\"{{facet}}\">\n    {{lang 'faceted_search.show_more'}}\n  </a>\n</li>\n",
+  "svg/icon-checkmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\">\n  <path class=\"checkmark\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M1 8l5 6 9-11\" fill=\"none\" stroke=\"currentColor\"/>\n</svg>\n"
+}

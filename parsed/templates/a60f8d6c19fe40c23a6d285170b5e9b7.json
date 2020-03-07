@@ -1,0 +1,3 @@
+{
+  "components/product-catalog/shop-by-price-label": "{{#any shop_by selected=true}}\n  {{#each shop_by}}\n    {{#if selected}}\n      {{low.formatted}} - {{high.formatted}}\n    {{/if}}\n  {{/each}}\n{{else}}\n  {{lang 'common.shop_by.any_price'}}\n{{/any}}\n"
+}

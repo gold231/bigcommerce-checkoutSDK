@@ -1,0 +1,6 @@
+{
+  "components/faceted-search/show-more": "{{#if category.facets}}\n  {{> components/faceted-search/show-more-facets category}}\n{{/if}}\n\n{{#if brand.facets}}\n  {{> components/faceted-search/show-more-facets brand}}\n{{/if}}\n",
+  "components/faceted-search/show-more-facets": "{{#each facets}}\n  {{#if facet '===' ../all_facets}}\n    {{#each items}}\n      {{> components/faceted-search/facet-list-item}}\n    {{/each}}\n  {{/if}}\n{{/each}}\n",
+  "components/faceted-search/facet-list-item": "<li class=\"facet-item {{#if selected}}active{{/if}}\">\n  <a class=\"facet-item-link\" href=\"{{url}}\" rel=\"nofollow\" data-faceted-search-facet>\n    <span class=\"checkbox-box\">\n      {{> svg/icon-checkmark}}\n    </span>\n\n    {{title}}\n    {{#if ../show_product_counts}}\n      <span class=\"facet-item-count\">({{count}})</span>\n    {{/if}}\n  </a>\n</li>\n",
+  "svg/icon-checkmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\">\n  <path class=\"checkmark\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M1 8l5 6 9-11\" fill=\"none\" stroke=\"currentColor\"/>\n</svg>\n"
+}

@@ -1,0 +1,38 @@
+{{#if settings.add_this.buttons}}
+  <ul
+    class="social-links"
+    data-addthis:url="{{url}}"
+    data-addthis:title="{{title}}"
+  >
+    {{#each settings.add_this.buttons}}
+      {{#all
+        (if service '!==' 'google')
+        (if service '!==' 'print')
+        (if service '!==' 'facebook')
+        (if service '!==' 'facebook_like')
+      }}
+        <li class="social-links-item social-links-item-{{service}}">
+          {{#if service '===' 'google_plusone'}}
+            <amp-social-share
+              class="amp-social-share"
+              data-params-product-link="{{url}}"
+              data-params-product-id="{{id}}"
+              data-params-product-name="{{name}}"
+              data-params-social-type="gplus"
+              type="gplus"
+            ></amp-social-share>
+          {{else}}
+            <amp-social-share
+              class="amp-social-share"
+              data-params-product-link="{{url}}"
+              data-params-product-id="{{id}}"
+              data-params-product-name="{{name}}"
+              data-params-social-type="{{service}}"
+              type="{{service}}"
+            ></amp-social-share>
+          {{/if}}
+        </li>
+      {{/all}}
+    {{/each}}
+  </ul>
+{{/if}}

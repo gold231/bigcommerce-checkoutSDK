@@ -1,0 +1,31 @@
+---
+category:
+  shop_by_price: true
+  products:
+    limit: {{theme_settings.product_catalog_limit}}
+---
+{{#partial "page"}}
+
+  <section
+    class="product-catalog"
+    {{#if category.show_compare}}data-product-compare{{/if}}
+  >
+    {{{snippet 'categories'}}}
+
+    {{> components/product-catalog/catalog-header
+      catalog_type=category
+      pagination=pagination.category
+    }}
+
+    {{{region name="category_below_header"}}}
+
+    <div class="facet-content" data-facet-content>
+      {{> components/product-catalog/catalog-index}}
+    </div>
+
+    {{{region name="category_below_content"}}}
+  </section>
+
+{{/partial}}
+
+{{> layout/base}}

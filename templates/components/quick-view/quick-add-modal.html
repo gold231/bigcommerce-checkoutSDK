@@ -1,0 +1,30 @@
+<button class="modal-close" data-quick-add-modal-close>
+  {{> svg/icon-x}}
+</button>
+
+<div class="modal-body">
+  <div
+    class="quick-add-container
+    grid-container
+    catalog-product"
+    data-quick-view-product
+    data-product-container
+  >
+    <div data-product-details data-product-title="{{product.title}}">
+      <div class="product-details-header">
+        <h1 class="product-title">
+          <a href="{{product.url}}">
+            {{product.title}}
+          </a>
+        </h1>
+      </div>
+
+      {{> components/product/add-to-cart}}
+
+      <a class="quick-view-link" href="{{product.url}}">
+        {{lang 'product.view_product'}}
+        {{> svg/chevron-right}}
+      </a>
+    </div>
+  </div>
+</div>

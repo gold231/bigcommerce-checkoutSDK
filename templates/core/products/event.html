@@ -1,0 +1,49 @@
+<div class="form-field form-field-date form-required">
+  <span class="form-label">
+
+    <span class="form-field-title">
+      {{product.event_date.name}}
+      <span class="required-text">{{lang 'common.required'}}</span>
+    </span>
+
+    <span class="form-field-control">
+      <span class="form-select-wrapper form-date-year">
+        <select class="form-input form-select" name="EventDate[Yr]" required>
+          <option disabled selected>{{lang 'forms.date.year'}}</option>
+          {{#if product.event_date.earliest_year '==' product.event_date.latest_year}}
+            <option value="{{product.event_date.earliest_year}}">{{product.event_date.earliest_year}}</option>
+          {{else}}
+            {{#for product.event_date.earliest_year product.event_date.latest_year}}
+              <option value="{{$index}}">{{$index}}</option>
+            {{/for}}
+          {{/if}}
+        </select>
+      </span>
+
+      <span class="form-select-wrapper form-date-month">
+        <select class="form-input form-select" name="EventDate[Mth]" required>
+          <option disabled selected>{{lang 'forms.date.month'}}</option>
+          {{#for 1 12}}
+            <option value="{{$index}}">{{getShortMonth $index}}</option>
+          {{/for}}
+        </select>
+      </span>
+
+      <span class="form-select-wrapper form-date-day">
+        <select class="form-input form-select" name="EventDate[Day]" required>
+          <option disabled selected>{{lang 'forms.date.day'}}</option>
+          {{#for 1 31}}
+            <option value="{{$index}}">{{$index}}</option>
+          {{/for}}
+        </select>
+      </span>
+    </span>
+
+  </span>
+
+  {{#if product.event_date.date_start}}
+    {{#if product.event_date.date_end}}
+      <span class="product-event-bounds">{{lang 'forms.date.bounds' start_date=product.event_date.date_start end_date=product.event_date.date_end}}</span>
+    {{/if}}
+  {{/if}}
+</div>

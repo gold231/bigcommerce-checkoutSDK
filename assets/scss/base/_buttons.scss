@@ -1,0 +1,99 @@
+.button {
+  @include button(false, false);
+  border-radius: 35px;
+  
+  &-x-small {
+    @include button(false, x-small, false);
+  }
+
+  &-small {
+    @include button(false, small, false);
+  }
+
+  &-primary {
+    @include button(primary, false, false);
+      color: $color-white; 
+  }
+
+  &-secondary {
+    @include button(secondary, false, false);
+  }
+
+  &-white {
+    @include button(white, false, false);
+  }
+
+  & + .button {
+    @include media($min: $screen-medium) {
+      margin-left: 1.25em;
+    }
+  }
+}
+
+// progress button
+.button-progress {
+  position: relative;
+
+  &.in-progress {
+    .button-text {
+      visibility: hidden;
+    }
+  }
+
+  .complete-text {
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    visibility: hidden;
+
+    span {
+      margin: auto;
+    }
+
+    .checkmark {
+      @extend %checkmark;
+    }
+  }
+
+  &.will-complete {
+    .complete-text {
+      visibility: visible;
+    }
+
+    .checkmark {
+      @extend %checkmark-visible;
+      transition-delay: 0.5s;
+    }
+  }
+}
+
+.overlay-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner {
+  width: $space-smaller;
+  height: $space-smaller;
+  color: inherit;
+  pointer-events: none;
+  border: 2px solid;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: 0.8s loader linear infinite;
+}
+
+@keyframes loader {
+  0% { transform: rotate(0deg); }
+
+  100% { transform: rotate(360deg); }
+}

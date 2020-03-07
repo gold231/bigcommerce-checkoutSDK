@@ -1,0 +1,19 @@
+.stepCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    transition: transform 250ms ease;
+    background: #4f4f4f;
+    color: #fff;
+    margin:auto 10px auto 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.stepCounter svg path {
+    fill:#fff;
+}

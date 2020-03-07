@@ -1,0 +1,44 @@
+<article class="amp-grid-item amp-product-grid-item">
+  {{#if price.saved}}
+    {{#unless out_of_stock_message}}
+      <div class="product-badge product-badge-sale">
+        {{lang 'core.product.sale'}}
+      </div>
+    {{/unless}}
+  {{/if}}
+  {{#if out_of_stock_message}}
+    <div class="product-badge product-badge-sold-out">
+      {{out_of_stock_message}}
+    </div>
+  {{/if}}
+
+  <div class="amp-grid-item-image-container amp-image-{{ image_ratio }}">
+    <a class="amp-grid-item-link" href="{{url}}">
+      <amp-img
+        class="amp-grid-item-image amp-{{ image_cropping }}"
+        src="{{getImage image 'amp-product-image' (cdn default)}}"
+        layout="fill"
+        alt="{{img.alt}}"
+      ></amp-img>
+    </a>
+  </div>
+
+  {{#all show_rating num_reviews}}
+    {{> core/amp/common/ratings rating=rating}}
+  {{/all}}
+
+  <h2 class="amp-grid-item-name">
+    <a href="{{url}}">{{name}}</a>
+  </h2>
+
+    {{> core/products/price
+      price=price
+      retail_price_label=retail_price_label
+      non_sale_price_label=non_sale_price_label
+      sale_price_label=sale_price_label
+      price_label=price_label
+      show_tax_labels=true
+      show_amp_classes=true
+      price_range_display=price_range_display
+    }}
+  </article>

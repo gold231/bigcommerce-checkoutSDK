@@ -1,0 +1,95 @@
+{{!--
+  Homepage Section - Displays featured content on the homepage
+
+  @param item_type The type of items to display in the section (featured, new, top sellers, or categories)
+  @param style     The layout / style to use for the section
+  @param limit     How many items to display
+--}}
+
+{{#if limit '>' 0}}
+  <section class="home-section home-section-{{style}}">
+    {{#if item_type '===' 'categories'}}
+      {{> components/home/section-title
+        title=(lang 'home.featured_categories')
+      }}
+    {{/if}}
+
+    {{#if item_type '===' 'featured'}}
+      {{> components/home/section-title
+        title=(lang 'home.featured')
+      }}
+    {{/if}}
+
+    {{#if item_type '===' 'new'}}
+      {{> components/home/section-title
+        title=(lang 'home.new')
+      }}
+    {{/if}}
+
+    {{#if item_type '===' 'top-sellers'}}
+      {{> components/home/section-title
+        title=(lang 'home.top_sellers')
+      }}
+    {{/if}}
+
+    <div class="home-section-grid-container">
+      {{#if style '===' 'grid-featured'}}
+
+        {{#if item_type '===' 'featured'}}
+          {{> components/home/featured-grid
+            items=products.featured
+          }}
+        {{/if}}
+
+        {{#if item_type '===' 'new'}}
+          {{> components/home/featured-grid
+            items=products.new
+          }}
+        {{/if}}
+
+        {{#if item_type '===' 'top-sellers'}}
+          {{> components/home/featured-grid
+            items=products.top_sellers
+          }}
+        {{/if}}
+
+        {{#if item_type '===' 'categories'}}
+          {{> components/home/featured-grid
+            items=categories
+          }}
+        {{/if}}
+
+      {{else}}
+
+        {{#if item_type '===' 'featured'}}
+          {{> components/home/grid
+            items=products.featured
+            show_actions=true
+          }}
+        {{/if}}
+
+        {{#if item_type '===' 'new'}}
+          {{> components/home/grid
+            items=products.new
+            show_actions=true
+          }}
+        {{/if}}
+
+        {{#if item_type '===' 'top-sellers'}}
+          {{> components/home/grid
+            items=products.top_sellers
+            show_actions=true
+          }}
+        {{/if}}
+
+        {{#if item_type '===' 'categories'}}
+          {{> components/home/grid
+            items=categories
+            show_actions=false
+          }}
+        {{/if}}
+
+      {{/if}}
+    </div>
+  </section>
+{{/if}}

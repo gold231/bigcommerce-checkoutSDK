@@ -1,0 +1,19 @@
+<ul class="amp-product-grid columns-{{catalog_columns}} alignment-{{info_alignment}}">
+  {{#each category.products}}
+    <li class="amp-product-item">
+      {{> core/amp/category/product-item
+        default=../default
+        show_rating=../settings.show_product_rating
+        image_ratio=../image_ratio
+        image_cropping=../image_cropping
+        price_range_display=../theme_settings.price_range_display
+        retail_price_label=../theme_settings.retail-price-label
+        non_sale_price_label=../theme_settings.non-sale-price-label
+        sale_price_label=../theme_settings.sale-price-label
+        price_label=../theme_settings.price-label
+      }}
+    </li>
+  {{/each}}
+</ul>
+
+{{> core/amp/common/pagination pagination.category}}

@@ -1,0 +1,12 @@
+// rss page
+.page-rss-group {
+  margin-bottom: $gutter-medium;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    @include heading(4);
+  }
+}

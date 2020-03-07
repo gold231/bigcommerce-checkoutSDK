@@ -1,0 +1,29 @@
+{{#partial 'account-heading'}}
+  {{lang 'core.account.messages.heading'}}
+{{/partial}}
+
+{{#partial 'account-toolbar'}}
+  {{#if customer.inbox.orders}}
+    <button class="account-tool" data-account-toggle=".account-messages-form">
+      {{lang 'core.account.inbox.show_form'}}
+    </button>
+  {{/if}}
+{{/partial}}
+
+{{#partial 'account-content'}}
+  {{#if forms.inbox.error}}
+    {{> core/alerts/alert-error message=forms.inbox.error dismissable=true}}
+  {{/if}}
+
+  {{#if forms.inbox.success}}
+    {{> core/alerts/alert-success message=forms.inbox.success dismissable=true}}
+  {{/if}}
+
+  {{#if customer.inbox.orders}}
+    {{> core/account/_private/messages-form}}
+  {{/if}}
+
+  {{> core/account/_private/messages-list messages=customer.inbox.messages}}
+{{/partial}}
+
+{{> core/account/_private/layout nav_page='messages' class='messages'}}

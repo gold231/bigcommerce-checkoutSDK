@@ -1,0 +1,93 @@
+<section class="modal-container review-modal-container" id="modal-review-form">
+  <button class="modal-close" data-review-modal-close>
+    {{> svg/icon-x}}
+  </button>
+
+  <div class="modal-body">
+    <div class="review-form-container">
+      <h1 class="review-form-title">
+        {{#if product.reviews.list.length}}
+          {{lang 'product.reviews.write_a_review'}}
+        {{else}}
+          {{lang 'product.reviews.first_review'}}
+        {{/if}}
+      </h1>
+      <form
+        class="form review-form"
+        id="form-leave-a-review"
+        action="{{urls.product.post_review}}"
+        method="post"
+      >
+        <input type="hidden" name="product_id" value="{{product.id}}">
+        <input type="hidden" name="action" value="post_review">
+        {{#if product.reviews.throttleToken}}
+          <input
+            type="hidden"
+            name="throttleToken"
+            value="{{product.reviews.throttleToken}}"
+          />
+        {{/if}}
+        <div class="review-form-section">
+          {{!-- Rating --}}
+          <div class="form-field form-field-select form-required">
+            <label class="form-label" for="rating-stars">
+              <span class="form-field-title">
+                {{lang 'product.reviews.form.rating_label'}}
+                {{#if required}}
+                  <span class="required-text">
+                    {{lang 'common.required'}}
+                  </span>
+                {{/if}}
+              </span>
+              <span class="form-field-control">
+                <span class="form-select-wrapper rating-stars-wrap">
+                  <select
+                    class="form-input form-select rating-stars"
+                    id="rating-stars"
+                    name="revrating"
+                    required
+                    aria-required="true">
+                    {{#for 1 5}}
+                      <option value="{{$index}}" {{#if $index '===' 5}}selected{{/if}}>
+                        {{lang 'product.reviews.stars_count' NUM=$index}}
+                      </option>
+                    {{/for}}
+                  </select>
+                  <div class="product-item-rating">
+                    {{> components/reviews/review-form-stars}}
+                    <span class="rating-stars-label">{{lang 'product.reviews.stars_count' NUM=5}}</span>
+                  </div>
+                </span>
+              </span>
+            </label>
+          </div>
+
+          {{!-- Name --}}
+          {{> core/forms/common/text label=(lang 'product.reviews.form.name') name="revfromname" id="revfromname" required="true" prefill=(lang 'product.reviews.form.your_name')}}
+        </div>
+
+        <div class="review-form-section">
+        {{!-- Email --}}
+          {{> core/forms/common/email label=(lang 'product.reviews.form.email') name="email" id="rating-email" required="true" prefill=(lang 'product.reviews.form.your_email')}}
+
+          {{!-- Subject --}}
+          {{> core/forms/common/text label=(lang 'product.reviews.form.subject') name="revtitle" id="rating-title" required="true" prefill=(lang 'product.reviews.form.your_subject')}}
+        </div>
+
+        {{!-- Comments --}}
+        {{> core/forms/common/multiline label=(lang 'product.reviews.form.comments') name="revtext" id="rating-comment" required="true" rows=6 prefill=(lang 'product.reviews.form.your_comments')}}
+
+        {{!-- Recaptcha V2 --}}
+        {{{product.reviews.recaptcha.markup}}}
+
+        <div class="review-form-submit">
+          <input
+            type="submit"
+            class="form-submit button button-primary"
+            value="{{lang 'product.reviews.form.submit'}}"
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+
+<div class="form-field form-field-common form-field-number {{#if required}} form-required{{/if}}" id="{{id}}">
+  <label class="form-label">
+    <span class="form-field-title">
+      {{label}}
+      {{#if required}}<span class="required-text">{{lang 'common.required'}}</span>{{/if}}
+    </span>
+    <span class="form-field-control">
+      <input
+        class="form-input"
+        id="input-{{id}}"
+        name="{{name}}"
+        type="number"
+        value="{{value}}"
+        min="{{limitfrom}}"
+        max="{{limitto}}"
+        title="{{lang 'forms.range' limitFrom=limitfrom limitTo=limitto}}"
+        {{#if private_id}}data-field-type="{{private_id}}"{{/if}}
+        {{#if required}}required{{/if}}
+        aria-required="{{required}}">
+    </span>
+  </label>
+</div>

@@ -1,0 +1,118 @@
+// Payment page layout
+.payment-method-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.payment-method-name {
+  width: 100%;
+}
+
+.payment-method {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  min-height: 250px;
+  margin-bottom: 30px;
+  text-align: center;
+  border: 1px solid $account-border-color;
+
+  @media screen and (min-width: $account-breakpoint-x-small) {
+    width: calc(50% - 15px);
+  }
+
+  .panel-payment-method {
+    display: block;
+
+    &:hover {
+      .payment-method-title {
+        color: $account-accent-color;
+      }
+    }
+  }
+
+  .panel-new-payment-method {
+    position: relative;
+    width: 100%;
+    min-width: 305px;
+
+    .panel-body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .payment-method-new-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+// Payment layout
+.payment-method-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.payment-method-brand-contianer {
+  display: flex;
+}
+
+.payment-method-icon-card {
+  width: 40px;
+  height: 30px;
+}
+
+.payment-method-brand {
+  padding-top: 2px;
+  padding-left: 10px;
+}
+
+.payment-method-default-icon {
+  width: 24px;
+  height: 24px;
+  padding-left: 5px;
+}
+
+.payment-method-expiry {
+  display: flex;
+}
+
+.payment-method-details {
+  @extend %account-card-style;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: $account-gutter;
+
+  .payment-methods-label {
+    width: calc(50% - 20px);
+
+    @media screen and (min-width: $account-breakpoint-x-small) {
+      width: calc(40% - 20px);
+    }
+  }
+
+  .payment-method-description {
+    width: calc(50% - 20px);
+    text-align: right;
+
+    @media screen and (min-width: $account-breakpoint-x-small) {
+      width: calc(60% - 20px);
+    }
+  }
+}
+
+.payment-method-edit-form {
+  @extend %account-card-style;
+  padding: $account-gutter 20px 20px;
+
+  .form-actions {
+    text-align: left;
+  }
+}

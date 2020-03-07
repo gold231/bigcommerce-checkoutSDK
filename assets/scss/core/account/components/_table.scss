@@ -1,0 +1,20 @@
+.account-wrapper {
+  table {
+    width: 100%;
+    margin-top: $account-gutter-inner;
+    margin-bottom: $account-gutter-inner;
+  }
+
+  td,
+  th {
+    padding: $account-gutter-inner;
+  }
+}
+
+.account-table-tight {
+  th,
+  td {
+    padding: 10px 0;
+    border-bottom: 1px solid $account-border-color;
+  }
+}

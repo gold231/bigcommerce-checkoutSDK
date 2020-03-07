@@ -1,0 +1,162 @@
+body {
+  margin: 10px;
+  font-family: Arial, Sans-Serif;
+  font-size: 12px;
+  color: #000;
+  background: #fff;
+}
+
+h1 {
+  color: #000;
+  text-decoration: none;
+}
+
+.invoice {
+  padding: 10px;
+  border: 2px solid #cacaca;
+}
+
+.header-logo-image {
+  max-width: 140px;
+}
+
+.invoice-title {
+  padding: 10px 12px 12px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #000;
+}
+
+.invoice-heading {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.address-row,
+.invoice-details {
+  width: 100%;
+  overflow: hidden;
+}
+
+.detail-row-upper {
+  .label,
+  .value { display: inline-block; }
+
+  .label {
+    margin-right: 8px;
+    font-weight: bold;
+  }
+}
+
+.address-row,
+.invoice-items,
+.invoice-details {
+  margin-bottom: 10px;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.invoice-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+
+  th {
+    padding: 10px 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+  }
+
+  td {
+    padding: 10px 5px;
+    vertical-align: top;
+  }
+}
+
+.invoice-totals {
+  text-align: right;
+
+  .invoice-total td {
+    font-weight: bold;
+  }
+}
+
+.invoice-totals-row {
+  &:first-child {
+    td,
+    th {
+      padding-top: 20px;
+    }
+  }
+
+  &:last-child {
+    font-weight: bold;
+  }
+}
+
+.invoice-upper-column {
+  float: left;
+  width: 48%;
+
+  ul {
+    padding-left: 0;
+  }
+}
+
+.invoice-items {
+  padding-top: 10px;
+  margin-top: 20px;
+  border-top: 2px solid #bbb;
+}
+
+.invoice-items-list {
+  border-bottom: 2px solid #bbb;
+
+  td {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.detail-row,
+.configurable-product-row {
+  margin-top: 6px;
+  overflow: hidden;
+  clear: left;
+
+  .label {
+    float: left;
+    width: 25%;
+  }
+
+  .value {
+    float: left;
+    width: 75%;
+  }
+}
+
+.configurable-product-row {
+  font-size: 11px;
+}
+
+.product-quantity {
+  width: 30px;
+}
+
+.product-sku {
+  width: 80px;
+}
+
+.product-cost,
+.product-total {
+  width: 80px;
+  text-align: right;
+}
+
+.product-preorder {
+  font-size: 11px;
+}
+

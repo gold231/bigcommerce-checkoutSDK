@@ -1,0 +1,52 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+// TODO: Will need to scope this to the filters UI
+.dropdown-toggle {
+  @include media($max: $screen-medium) {
+    &::after {
+      display: none;
+      content: "slideToggle";
+    }
+  }
+}
+
+.dropdown-panel {
+  position: absolute;
+  z-index: z(dropdown);
+  display: none;
+  max-height: calc(99vh - (#{map-get($site, header-mobile)} + #{map-get($site, util-bar)}));
+  background-color: $color-background;
+  overflow-y: auto;
+
+  &.share-dropdown-panel {
+    z-index: z(modal);
+  }
+
+  &.dropdown-fullwidth {
+    width: 100%;
+
+    @include media($min: $screen-large) {
+      width: calc(100% - #{map-get($site, sidebar)});
+    }
+  }
+
+  &.animating,
+  &.visible {
+    display: block !important;
+  }
+
+  &.animating-in,
+  &.animating-out {
+    margin-top: rem(-10);
+    opacity: 0;
+    transition: opacity 0.2s ease, margin 0.2s ease;
+  }
+
+  &.visible {
+    margin-top: 0;
+    opacity: 1;
+  }
+}

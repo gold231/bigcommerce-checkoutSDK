@@ -1,0 +1,7 @@
+{{#each facets}}
+  {{#if facet '===' ../all_facets}}
+    {{#each items}}
+      {{> components/faceted-search/facet-list-item}}
+    {{/each}}
+  {{/if}}
+{{/each}}

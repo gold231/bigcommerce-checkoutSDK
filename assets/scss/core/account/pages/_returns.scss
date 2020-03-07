@@ -1,0 +1,23 @@
+// Return form
+
+.account-return-table {
+  th {
+    text-align: left;
+
+    &:last-of-type {
+      text-align: right;
+    }
+  }
+
+  .form-field {
+    margin-bottom: 0;
+  }
+}
+
+.account-return-fields {
+  margin-top: $account-gutter;
+
+  .form-field-select {
+    width: 50%;
+  }
+}

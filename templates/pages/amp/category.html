@@ -1,0 +1,58 @@
+---
+category:
+  shop_by_price: true
+  products:
+    limit: {{theme_settings.product_catalog_limit}}
+---
+
+{{> core/amp/pages/category
+  header_background=theme_settings.color_background
+  header_text=theme_settings.color_text
+  body_background=theme_settings.color_background
+  color_headings=theme_settings.color_headings
+  color_text=theme_settings.color_text
+  footer_background=theme_settings.color_highlight
+  footer_text=theme_settings.color_text
+  color_accent=theme_settings.color_primary
+  color_borders=theme_settings.color_borders
+}}
+
+{{#partial 'amp-cart-icon'}}
+  <div class="amp-mini-cart">
+    {{> components/header/mini-cart}}
+  </div>
+{{/partial}}
+
+{{#partial 'amp-custom-header-styles'}}
+  {{> components/amp/styles/mini-cart}}
+{{/partial}}
+
+{{#partial 'amp-product-listing'}}
+  {{> core/amp/category/product-listing
+    default=theme_settings.default_image
+    as_low_as=theme_settings.product_grid_as_low_as_pricing
+    image_ratio=theme_settings.product_grid_image_ratio
+    image_cropping=theme_settings.product_grid_image_cropping
+    catalog_columns="two"
+    info_alignment="center"
+  }}
+{{/partial}}
+
+{{#partial 'amp-footer'}}
+  {{> core/amp/common/footer
+    theme_credits=theme_settings.theme_credits
+    theme_name="Brixton"
+    store_copyright=theme_settings.store_copyright
+  }}
+{{/partial}}
+
+{{#partial 'amp-social'}}
+  {{> components/common/link-lists
+    type='social'
+  }}
+{{/partial}}
+
+{{#partial 'amp-custom-footer-styles'}}
+  {{> components/amp/styles/social-links}}
+{{/partial}}
+{{> layout/amp}}

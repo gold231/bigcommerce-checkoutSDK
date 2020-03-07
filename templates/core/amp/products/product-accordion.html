@@ -1,0 +1,54 @@
+<amp-accordion class="amp-product-accordion" disable-session-states>
+  {{#if product.description}}
+    <section class="amp-product-accordion-section" expanded>
+      <h2 class="amp-product-accordion-title">
+        {{lang 'core.amp.product.description'}}
+        <span class="amp-product-accordion-title-toggle"></span>
+      </h2>
+      <div class="amp-product-accordion-content">
+        {{{product.description}}}
+      </div>
+    </section>
+  {{/if}}
+  {{#if product.videos.list.length}}
+    <section class="amp-product-accordion-section" data-video-gallery>
+      <h2 class="amp-product-accordion-title">
+        {{lang 'core.amp.product.videos'}}
+        <span class="amp-product-accordion-title-toggle"></span>
+      </h2>
+      <div class="amp-product-accordion-content">
+        {{> core/amp/products/videos
+          product.videos
+        }}
+      </div>
+    </section>
+  {{/if}}
+  {{#if settings.show_product_reviews}}
+    {{#if product.reviews.total}}
+      <section class="amp-product-accordion-section" >
+        <h2 class="amp-product-accordion-title">
+          {{lang 'core.amp.product.reviews' num=product.reviews.total}}
+          <span class="amp-product-accordion-title-toggle"></span>
+        </h2>
+        <div class="amp-product-accordion-content">
+          {{> core/amp/products/reviews
+            reviews=product.reviews
+            product=product
+            urls=urls
+          }}
+        </div>
+      </section>
+    {{/if}}
+  {{/if}}
+  {{#if settings.add_this.buttons}}
+    <section class="amp-product-accordion-section">
+      <h2 class="amp-product-accordion-title">
+        {{lang 'core.amp.product.share'}}
+        <span class="amp-product-accordion-title-toggle"></span>
+      </h2>
+      <div class="amp-product-accordion-content">
+        {{> core/amp/common/share}}
+      </div>
+    </section>
+  {{/if}}
+</amp-accordion>

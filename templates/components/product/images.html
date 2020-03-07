@@ -1,0 +1,51 @@
+<div class="product-images" data-product-images>
+  <div class="product-image-slides-wrap">
+    <div
+      class="product-image-slides"
+      data-slideshow-position="0"
+      data-product-slides
+    >
+      {{#if product.images}}
+        {{#each product.images}}
+          <a
+            class="product-image-slide"
+            href="{{getImage this 'banner'}}"
+            data-image-position="{{@index}}"
+            data-product-image
+            data-flickity-lazyload-srcset="{{getImage this 'large'}}"
+            data-flickity-lazyload-src="{{getImage this 'large'}}"
+          >
+            <img src="{{getImage this 'large'}}" alt="{{alt}}">
+          </a>
+        {{/each}}
+      {{else}}
+        <img
+          class="product-image-slide"
+          src="{{cdn theme_settings.default_image}}"
+          alt="{{lang 'common.no_image'}}"
+          data-product-image
+        >
+      {{/if}}
+    </div>
+    <div
+      class="product-images-pagination"
+      data-image-position="{{@index}}"
+      data-product-thumbnails
+    >
+      {{#each product.images}}
+        <span
+          class="product-images-pagination-item {{#if @first}}active{{/if}}"
+          style="background-image: url('{{getImage this 'thumb'}}');"
+          data-image-position="{{@index}}"
+          data-product-thumbnails-slide
+        >
+          <img
+            class="sr-only"
+            src="{{getImage this 'thumb'}}"
+            alt="{{this.alt}}"
+          >
+        </span>
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{{!
+  Shows a sale badge if a sale price has been entered
+
+  Themes can use this to display a sale badge.
+
+  @param classes string
+    Class(es) to append to sale badge
+}}
+{{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+  <span class="sale-badge {{classes}}">
+    {{lang 'core.product.sale'}}
+  </span>
+{{/or}}

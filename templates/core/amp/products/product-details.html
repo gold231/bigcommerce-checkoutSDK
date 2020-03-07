@@ -1,0 +1,46 @@
+<section class="amp-product-details">
+  {{#if product.price.saved}}
+    <div class="product-badge product-badge-sale">
+      {{lang 'core.product.sale'}}
+    </div>
+  {{/if}}
+  <div class="amp-product-details-header">
+    {{#if settings.show_product_rating}}
+      {{> core/amp/common/ratings rating=product.rating}}
+    {{/if}}
+
+    {{#if product.brand}}
+      <a
+        class="amp-product-brand"
+        href="{{product.brand.url}}"
+      >
+        {{product.brand.name}}
+      </a>
+    {{/if}}
+
+    <h1 class="amp-product-title">
+      {{product.title}}
+    </h1>
+
+    <div class="amp-price">
+      {{> core/products/price
+        retail_price_label=theme_settings.retail-price-label
+        non_sale_price_label=theme_settings.non-sale-price-label
+        sale_price_label=theme_settings.sale-price-label
+        price_label=theme_settings.price-label
+        price=product.price
+        show_tax_labels=true
+        price_range_display=theme_settings.price_range_display
+        show_savings=true
+      }}
+    </div>
+
+    {{#if product.call_for_price}}
+      <p class="amp-product-call-for-price">{{product.call_for_price}}</p>
+    {{/if}}
+  </div>
+
+  <div class="amp-additional-info">
+    {{#block 'amp-additional-info'}}{{/block}}
+  </div>
+</section>

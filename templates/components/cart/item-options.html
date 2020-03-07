@@ -1,0 +1,33 @@
+{{#or options configurable_fields}}
+  <div class="cart-item-options">
+    {{#each configurable_fields}}
+      <div class="cart-item-option-item">
+        <span class="cart-item-option-label">{{name}}:</span>
+        <span class="cart-item-option-value">
+          {{#if is_file}}
+            <a href="/viewfile.php?prodfield={{../id}}&cartitem={{../../id}}">{{{value}}}</a>
+          {{else}}
+            {{{value}}}
+          {{/if}}
+        </span>
+      </div>
+    {{/each}}
+
+    {{#each options}}
+      <div class="cart-item-option-item">
+        <span class="cart-item-option-label">{{name}}:</span>
+        <span class="cart-item-option-value">
+          {{#if is_file}}
+            <a href="/viewfile.php?prodfield={{../id}}&cartitem={{../../id}}">{{{value}}}</a>
+          {{else}}
+            {{{value}}}
+          {{/if}}
+        </span>
+      </div>
+    {{/each}}
+  </div>
+
+  <button class="cart-item-edit-button" data-item-edit="{{id}}">
+    {{lang 'cart.change_options'}}
+  </button>
+{{/or}}
