@@ -30,7 +30,7 @@
     "jquery": "^3.4.1",
     "jquery-revealer": "github:pixelunion/jquery.revealer",
     "jquery-trend": "github:pixelunion/jquery.trend",
-    "lazysizes": "5.1.0",
+    "lazysizes": "5.2.1",
     "lodash": "^4.0.0",
     "md5": "^2.2.1",
     "node-sass": "^4.13.1",
